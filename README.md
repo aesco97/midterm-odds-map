@@ -1,6 +1,6 @@
 # Midterm Odds Map
 
-Live: https://presidentl.app (GitHub Pages; the DNS for the domain is managed at Vercel)
+Live: https://presidentl.app
 
 A single-page US map of the 2026 midterms shaded by Polymarket odds. Senate, House and Governors tabs; every Senate and governor race links straight to its Polymarket market, and on the House tab you can zoom in to any state to see its congressional districts, each shaded by its own market.
 
