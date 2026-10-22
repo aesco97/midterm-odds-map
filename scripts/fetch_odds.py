@@ -59,7 +59,30 @@ def main():
             "governor": {"seats": gov.get("seats", []), "races": governor_races}}
     (root/'data/odds.json').write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding='utf-8')
     print(f"odds.json: {len(senate_races)} Senate · {len(house_races)} House · {len(governor_races)} Governor · updated {src['updated']}")
+    snapshot(data)
     subprocess.run([sys.executable, str(root/'scripts/build.py')], check=True)
+
+def snapshot(data):
+    """Append one compact price snapshot per feed update to data/history/ (Democratic price per race).
+
+    build.py folds these into the page's history series (deltas, sparklines, movers). A file is written
+    only when the feed's `updated` stamp is new, so the hourly workflow adds about two files a day."""
+    hist = root/'data/history'; hist.mkdir(exist_ok=True)
+    stamp = data['updated'][:16].replace(':', '-')  # 2026-10-22T13-50
+    out = hist/f'{stamp}.json'
+    if out.exists(): return
+    def dprice(cands):  # Democratic price; in races with no priced Democrat (NE, ID...), the non-Republican share
+        d = next((c for c in cands if c['party'] == 'D'), None)
+        r = next((c for c in cands if c['party'] == 'R'), None)
+        if d: return round(d['price'], 3)
+        return round(1 - r['price'], 3) if r else None
+    snap = {'updated': data['updated'],
+            'control': {'senate': data['senate']['control']['D'], 'house': data['house']['control']['D']},
+            'senate': {r['state']: dprice(r['cands']) for r in data['senate']['races']},
+            'governor': {r['state']: dprice(r['cands']) for r in data['governor']['races']},
+            'house': {r['id']: round(r['D']['price'], 3) for r in data['house']['races']}}
+    out.write_text(json.dumps(snap, separators=(',', ':')), encoding='utf-8')
+    print(f"history: wrote {out.name}")
 
 if __name__ == "__main__":
     main()

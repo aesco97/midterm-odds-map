@@ -32,6 +32,7 @@ src/template.html    page source: markup, CSS, and the map/panel logic
 data/states.js       projected SVG path data for the 50 states (us-atlas, Albers USA)
 data/districts.js    projected SVG paths for the 429 multi-district House seats (Census, 119th Congress)
 data/odds.json       Senate + House + Governor odds in the page's schema
+data/history/        one compact snapshot per feed update (Democratic price per race); feeds the deltas and sparklines
 scripts/build.py     template + data -> index.html
 scripts/fetch_odds.py  refresh data/odds.json from the feed, then build
 scripts/build_districts.js  regenerate data/districts.js from the Census shapefile (needs node)
@@ -54,6 +55,14 @@ The script simplifies the boundaries (topology-preserving) and projects them wit
 Color = the favourite's Polymarket price in that race. Safe ≥95%, Likely 80–95%, Lean 60–80%, Toss-up <60%; blue for the Democrat, red for the Republican. On the House tab a state's color reflects the share of its districts each party is favoured in; click a state to zoom in and see each district shaded by its own market (Esc or "All states" zooms back out). The Governors tab shades the 36 states with a 2026 governor race; there is no chamber-control market for governors, so the bar shows how many races each party is favoured in.
 
 Deep links: `#senate`, `#house`, `#governor`, or `#house/TX` to open zoomed in to a state.
+
+## Movement over time
+
+Every time the workflow sees new prices it also drops a small snapshot in `data/history/` (about two a day). `build.py` folds those into the page, which then shows for every race the change in the favourite's price (▲/▼ points), a sparkline, and a "Biggest movers" strip with a toggle to sort the ledger by movement instead of closeness. The comparison window is 7 days once there is a week of history; until then it is "since <first snapshot>". The history started on Oct 22, 2026, so the first few days show small or no deltas.
+
+## Election night
+
+The "Election night" button (and automatically from 6 PM ET on Nov 3) switches the page into results mode: the ledger is ordered by poll-closing time, each row shows when its state's polls close, and any race whose Polymarket favourite is priced at 98.5% or higher is marked **Called** (solid navy / dark red on the map, a ✓ on the state label). The control bar becomes a called-seats tally with open races in grey. Poll-closing times live in `src/template.html` (`CLOSE`), using each state's last closing time in Eastern. Before Election Day the button is a preview: a 98.5% price then just means a safe seat.
 
 ## Ideas for next steps
 
