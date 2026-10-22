@@ -16,7 +16,7 @@ Opening `index.html` directly from Finder also works.
 
 ## Refresh the odds
 
-Odds are a snapshot, not a live feed. To pull the latest prices and rebuild the page:
+The page is a static snapshot, refreshed automatically: a GitHub Actions workflow (`.github/workflows/refresh-odds.yml`) runs every hour, and whenever the feed has new prices it commits the updated `data/odds.json` and `index.html`, which redeploys the site. The feed itself updates about twice a day, so most hourly runs change nothing. To refresh by hand:
 
 ```bash
 python3 scripts/fetch_odds.py
