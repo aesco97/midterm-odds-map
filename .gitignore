@@ -1,0 +1,4 @@
+.DS_Store
+node_modules/
+*.zip
+cb_2024_us_cd119_500k.*

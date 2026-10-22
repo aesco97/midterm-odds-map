@@ -1,0 +1,348 @@
+<title>Midterm Odds Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a newsroom results board. Control bar up top, big map left, race ledger right; stacks on phones. */
+:root{
+  --bg:#f6f4ef; --panel:#fffdf9; --fg:#1d1b17; --muted:#6c675d; --line:#dcd7cc; --line-soft:#ebe7de;
+  --none:#e4e0d6; --none-fg:#8d877b;
+  --d3:#1b4fb0; --d2:#4f7fd0; --d1:#a9c1ea; --t:#c9c2b2; --r1:#efb3a6; --r2:#d9644f; --r3:#b3251c;
+  --accent:#1d1b17; --hover:#111;
+  --display:"Bricolage Grotesque","Archivo Black",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 32px}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-bottom:12px;border-bottom:2px solid var(--fg)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.tabs{display:flex;gap:4px;border:1.5px solid var(--fg);border-radius:999px;padding:3px}
+.tab{appearance:none;border:0;background:none;color:var(--fg);font:600 14px var(--body);padding:7px 18px;border-radius:999px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--fg);color:var(--bg)}
+.tab:focus-visible{outline:2px solid var(--d2);outline-offset:2px}
+.control{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.control .lab{font-family:var(--display);font-weight:700;font-size:15px}
+.control .side{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:14px;display:flex;border-radius:3px;overflow:hidden;background:var(--t)}
+.bar .d{background:var(--d3)} .bar .r{background:var(--r3)}
+.main{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:20px;padding-top:18px}
+@media (max-width:860px){.main{grid-template-columns:1fr}}
+.mapbox{min-width:0;position:relative}
+svg.map{width:100%;height:auto;display:block;max-width:100%}
+.st{stroke:none;transition:filter .15s}
+.st.live{cursor:pointer}
+.st.live:hover{filter:brightness(.88)}
+.st:focus:not(:focus-visible){outline:none}
+.st:focus-visible{outline:2px solid var(--d2)}
+.st.sel{stroke:var(--fg);stroke-width:2.2;paint-order:stroke}
+.mesh{fill:none;stroke:var(--bg);stroke-width:.9;pointer-events:none}
+/* Focused state: the map zooms in, other states fade back, and the state's districts draw on top */
+svg.focus .st:not(.sel){opacity:.38}
+svg.focus .st.sel{stroke:none}
+svg.focus .lbl{display:none}
+svg.focus .mesh{opacity:.5}
+.dist{stroke:var(--bg);stroke-width:1;vector-effect:non-scaling-stroke;cursor:pointer;transition:filter .15s}
+.dist:hover,.dist.hl{filter:brightness(.86);stroke:var(--fg);stroke-width:1.5}
+.dist.nomarket{cursor:default}
+.outline{fill:none;stroke:var(--fg);stroke-width:1.6;vector-effect:non-scaling-stroke;pointer-events:none}
+.dlbl{font-family:var(--mono);font-weight:600;fill:var(--fg);pointer-events:none;text-anchor:middle;dominant-baseline:central;paint-order:stroke;stroke:var(--panel);stroke-width:.25em;stroke-linejoin:round}
+.dlbl.inv{fill:#fff;stroke:rgba(0,0,0,.45)}
+.mapback{position:absolute;top:8px;left:8px;z-index:4;appearance:none;background:var(--panel);border:1px solid var(--line);border-radius:999px;color:var(--fg);font:600 12px var(--body);padding:6px 12px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.mapback:hover{border-color:var(--fg)}
+.mapback:focus-visible{outline:2px solid var(--d2);outline-offset:2px}
+.race.hl{background:var(--bg)}
+.lbl{font:600 10px var(--mono);fill:var(--fg);pointer-events:none;text-anchor:middle}
+.lbl.dim{fill:var(--none-fg)}
+.lbl.inv{fill:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)}
+.legend .sw{display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:-2px;margin-right:5px}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:12px;box-shadow:0 6px 20px rgba(0,0,0,.12);min-width:180px;max-width:260px;z-index:5}
+.tip b{font-family:var(--display);font-size:14px}
+.tip .row{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.panel{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;max-height:720px}
+.panel-h{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.panel-h h2{font-family:var(--display);font-size:16px;margin:0;font-weight:700}
+.panel-h .sub{font-size:12px;color:var(--muted)}
+.panel-h button{appearance:none;background:none;border:1px solid var(--line);border-radius:999px;color:var(--fg);font:500 12px var(--body);padding:3px 10px;cursor:pointer}
+.list{overflow:auto;padding:4px 0}
+.race{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--line-soft);text-decoration:none;color:inherit}
+.race:hover{background:var(--bg)}
+.race:focus-visible{outline:2px solid var(--d2);outline-offset:-2px}
+.race .code{font-family:var(--mono);font-weight:500;font-size:12px}
+.race .who{font-size:12.5px;line-height:1.3;min-width:0}
+.race .who .n{font-weight:600}
+.race .who .v{color:var(--muted);font-size:11.5px}
+.race .pct{font-family:var(--display);font-weight:800;font-size:18px;font-variant-numeric:tabular-nums;text-align:right;min-width:46px}
+.race .pct small{display:block;font:500 10px var(--mono);letter-spacing:.08em;color:var(--muted)}
+.chip{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:1px}
+.race .r2{display:flex;align-items:center;gap:6px}
+.ratingbar{height:5px;border-radius:3px;display:flex;overflow:hidden;background:var(--t);margin-top:5px;width:100%}
+.ratingbar i{display:block;height:100%}
+.foot{margin-top:18px;font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+.foot a{color:var(--muted)}
+.seatgrid{display:flex;flex-wrap:wrap;gap:4px;padding:12px 14px;border-bottom:1px solid var(--line-soft)}
+.seat{width:16px;height:16px;border-radius:3px;display:block}
+.seat:hover{outline:2px solid var(--fg);outline-offset:1px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:600px){.control{grid-template-columns:1fr auto}.control .bar{grid-column:1/-1}}
+</style>
+
+<div class="wrap">
+<header>
+  <div>
+    <p class="kicker">Polymarket · 2026 midterms · Election Day Nov 3</p>
+    <h1>Midterm Odds Map</h1>
+  </div>
+  <div class="tabs" role="tablist" aria-label="Chamber">
+    <button class="tab" role="tab" id="tab-senate" aria-selected="true" data-ch="senate">Senate</button>
+    <button class="tab" role="tab" id="tab-house" aria-selected="false" data-ch="house">House</button>
+    <button class="tab" role="tab" id="tab-governor" aria-selected="false" data-ch="governor">Governors</button>
+  </div>
+</header>
+
+<div class="control">
+  <div class="lab" id="ctl-lab">Who controls the Senate?</div>
+  <div class="bar" title="Polymarket chamber-control market"><div class="d" id="ctl-d"></div><div class="r" id="ctl-r"></div></div>
+  <div class="side" id="ctl-txt"></div>
+</div>
+
+<div class="main">
+  <div class="mapbox">
+    <button class="mapback" id="map-back" hidden>← All states</button>
+    <svg class="map" viewBox="0 0 975 610" id="map" role="img" aria-label="US map colored by Polymarket odds"></svg>
+    <div class="legend" id="legend"></div>
+    <div class="tip" id="tip" hidden></div>
+  </div>
+  <aside class="panel">
+    <div class="panel-h"><div><h2 id="p-title">Closest races</h2><div class="sub" id="p-sub"></div></div><button id="p-back" hidden>All states</button></div>
+    <div id="seatgrid" class="seatgrid" hidden></div>
+    <div class="list" id="list"></div>
+  </aside>
+</div>
+
+<div class="foot">
+  <span>Shading = favourite's Polymarket price. Safe ≥95% · Likely 80–95% · Lean 60–80% · Toss-up &lt;60%. Senate and Governors: click a state to open its market. House: click a state to zoom in to its districts, then click a district.</span>
+  <span id="stamp"></span>
+  <span>Odds data: <a href="https://polymarkettrader.com/odds/senate-forecast-2026/" target="_blank" rel="noopener">PolymarketTrader.com</a> (CC BY 4.0), via Polymarket. Prices are market odds, not polls.</span>
+</div>
+</div>
+
+<script>
+/*STATES*/
+/*DISTRICTS*/
+/*DATA*/
+const PM = m => 'https://polymarket.com/event/' + m;
+function bucket(p, party){ // p = favourite price
+  const s = p>=.95?3:p>=.8?2:p>=.6?1:0;
+  if(s===0) return 't';
+  return (party==='D'?'d':'r')+s;
+}
+const BUCKETS=[['d3','Safe D'],['d2','Likely D'],['d1','Lean D'],['t','Toss-up'],['r1','Lean R'],['r2','Likely R'],['r3','Safe R']];
+const DARK=b=>b==='d3'||b==='d2'||b==='r3'||b==='r2';
+function fav(cands){ let best=null; for(const c of cands){ if(!best||c.price>best.price) best=c;} return best; }
+function pct(p){ return Math.round(p*100)+'%'; }
+const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+
+// --- Senate and governor races, indexed by state
+const BY = {senate:{}, governor:{}};
+DATA.senate.races.forEach(r=>BY.senate[r.state]=r);
+DATA.governor.races.forEach(r=>BY.governor[r.state]=r);
+const LABEL={senate:'Senate',house:'House',governor:'Governor'};
+// --- House races by state and by district id
+const HOUSE = {}, HR = {}; DATA.house.races.forEach(r=>{ const st=r.id.slice(0,2); (HOUSE[st]=HOUSE[st]||[]).push(r); HR[r.id]=r; });
+function hFav(r){ const d=r.D?r.D.price:0, R=r.R?r.R.price:0; return d>=R?{party:'D',price:d,name:r.D?r.D.name:'Democrat'}:{party:'R',price:R,name:r.R?r.R.name:'Republican'}; }
+function hMargin(r){ return Math.abs((r.D?r.D.price:0)-(r.R?r.R.price:0)); }
+function stateHouse(st){ const rs=HOUSE[st]||[]; let d=0,r=0; rs.forEach(x=>{ hFav(x).party==='D'?d++:r++; }); return {d,r,n:rs.length}; }
+// District geometry: data/districts.js holds every multi-district state; at-large states reuse the state outline
+const DIST_IDS = {}; Object.keys(DISTRICTS).forEach(id=>{ const st=id.slice(0,2); (DIST_IDS[st]=DIST_IDS[st]||[]).push(id); });
+function stateDistricts(st){ if(DIST_IDS[st]) return DIST_IDS[st].slice().sort(); return STATES[st]?[st+'-AL']:[]; }
+function geom(id){ return DISTRICTS[id] || (id.endsWith('-AL') ? STATES[id.slice(0,2)] : null); }
+
+let chamber='senate', selState=null;
+const svg=document.getElementById('map'), tip=document.getElementById('tip'), mapbox=svg.parentElement;
+const VB0=[0,0,975,610]; let vb=VB0.slice(), zoomK=1, anim=null;
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function build(){
+  let g='';
+  for(const [st,s] of Object.entries(STATES)) g+=`<a data-sl="${st}" target="_blank" rel="noopener"><path class="st" data-st="${st}" d="${s.d}"></path></a>`;
+  g+=`<path class="mesh" d="${MESH}"/>`;
+  for(const [st,s] of Object.entries(STATES)) g+=`<text class="lbl" data-lbl="${st}" x="${s.cx}" y="${s.cy+3.5}">${st}</text>`;
+  g+=`<g id="dl"></g>`;
+  svg.innerHTML=g;
+  document.getElementById('legend').innerHTML=BUCKETS.map(([k,l])=>`<span><i class="sw" style="background:var(--${k})"></i>${l}</span>`).join('')+`<span><i class="sw" style="background:var(--none)"></i>No race in 2026</span>`;
+  svg.querySelectorAll('.st').forEach(p=>{
+    p.addEventListener('mousemove',e=>showTip(p.dataset.st,e));
+    p.addEventListener('mouseleave',()=>tip.hidden=true);
+    p.addEventListener('click',()=>clickState(p.dataset.st));
+    p.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); clickState(p.dataset.st); } });
+  });
+  svg.addEventListener('click',e=>{ if(e.target===svg && selState) focusState(null); });
+}
+function paint(){
+  for(const st of Object.keys(STATES)){
+    const p=svg.querySelector(`[data-st="${st}"]`), l=svg.querySelector(`[data-lbl="${st}"]`), a=svg.querySelector(`[data-sl="${st}"]`);
+    let b=null;
+    if(chamber==='house'){ const h=stateHouse(st); if(h.n){ const share=h.d/h.n; const lean=share>=.5?'D':'R'; const str=Math.abs(share-.5)*2; b=str>=.8?(lean+'3'):str>=.4?(lean+'2'):str>0?(lean+'1'):'t'; b=b.toLowerCase(); } }
+    else { const r=BY[chamber][st]; if(r){ const f=fav(r.cands); b=bucket(f.price,f.party); } }
+    p.setAttribute('fill', b?`var(--${b})`:'var(--none)');
+    if(chamber!=='house' && b) a.setAttribute('href',PM(BY[chamber][st].market)); else a.removeAttribute('href');
+    if(chamber==='house' && b){ p.setAttribute('tabindex','0'); p.setAttribute('role','button'); p.setAttribute('aria-label',STATES[st].name+' House districts'); }
+    else { p.removeAttribute('tabindex'); p.removeAttribute('role'); p.removeAttribute('aria-label'); }
+    p.classList.toggle('live',!!b);
+    l.className.baseVal = 'lbl'+(b?(DARK(b)?' inv':''):' dim');
+    p.classList.toggle('sel',selState===st);
+  }
+  // control bar
+  const lab=document.getElementById('ctl-lab'), txt=document.getElementById('ctl-txt');
+  if(chamber==='governor'){
+    const rs=DATA.governor.races, d=rs.filter(r=>fav(r.cands).party==='D').length, r=rs.filter(r=>fav(r.cands).party==='R').length;
+    lab.textContent=`Who wins the ${rs.length} governor races?`;
+    document.getElementById('ctl-d').style.width=(d/rs.length*100)+'%'; document.getElementById('ctl-r').style.width=(r/rs.length*100)+'%';
+    txt.textContent=`D favoured in ${d} · R in ${r}`;
+  } else {
+    const c=DATA[chamber].control; lab.textContent='Who controls the '+LABEL[chamber]+'?';
+    document.getElementById('ctl-d').style.width=(c.D*100)+'%'; document.getElementById('ctl-r').style.width=(c.R*100)+'%';
+    txt.textContent=`D ${pct(c.D)} · R ${pct(c.R)}`;
+  }
+  document.getElementById('legend').lastElementChild.hidden = chamber==='house';
+  svg.classList.toggle('focus',!!selState);
+  document.getElementById('map-back').hidden=!selState;
+  renderDistricts();
+  renderPanel();
+  setHash();
+}
+
+// ---- Focus: zoom the map to one state and draw its districts
+function clickState(st){
+  if(chamber!=='house') return; // the <a> around the state carries the Polymarket link
+  if(!HOUSE[st]) return;
+  focusState(selState===st?null:st);
+}
+function focusState(st){
+  selState=st; tip.hidden=true; paint();
+  if(st){ zoomTo(stateBox(st)); } else zoomTo(VB0);
+}
+function stateBox(st){
+  const b=svg.querySelector(`[data-st="${st}"]`).getBBox();
+  const pad=.12; let w=b.width*(1+pad*2), h=b.height*(1+pad*2), cx=b.x+b.width/2, cy=b.y+b.height/2;
+  const ar=975/610; if(w/h<ar) w=h*ar; else h=w/ar;
+  w=Math.max(w,60); h=w/ar; // don't zoom past ~16x on tiny states
+  return [cx-w/2, cy-h/2, w, h];
+}
+function setVB(v){ vb=v; svg.setAttribute('viewBox',v.map(n=>n.toFixed(2)).join(' ')); zoomK=975/v[2]; sizeLabels(); }
+function zoomTo(target){
+  if(anim) cancelAnimationFrame(anim);
+  if(reduceMotion){ setVB(target); return; }
+  const from=vb.slice(), t0=performance.now(), dur=420;
+  const step=now=>{ let t=Math.min(1,(now-t0)/dur); t=1-Math.pow(1-t,3); setVB(from.map((a,i)=>a+(target[i]-a)*t)); if(t<1) anim=requestAnimationFrame(step); else anim=null; };
+  anim=requestAnimationFrame(step);
+}
+function sizeLabels(){
+  const g=document.getElementById('dl'); g.style.fontSize=(10.5/zoomK)+'px';
+  g.querySelectorAll('.dlbl').forEach(t=>{ const b=t.dataset.box.split(','); t.style.display=(b[0]*zoomK<22||b[1]*zoomK<14)?'none':''; });
+}
+function renderDistricts(){
+  const g=document.getElementById('dl'); g.innerHTML=''; if(!selState) return;
+  const ids=stateDistricts(selState); let h='';
+  ids.forEach(id=>{ const geo=geom(id), r=HR[id]; if(!geo) return;
+    if(r){ const f=hFav(r); h+=`<a href="${PM(r.market)}" target="_blank" rel="noopener"><path class="dist" data-id="${id}" d="${geo.d}" fill="var(--${bucket(f.price,f.party)})"/></a>`; }
+    else h+=`<path class="dist nomarket" data-id="${id}" d="${geo.d}" fill="var(--none)"/>`; });
+  h+=`<path class="outline" d="${STATES[selState].d}"/>`;
+  ids.forEach(id=>{ const geo=geom(id), r=HR[id]; if(!geo) return; const b=r?bucket(hFav(r).price,hFav(r).party):null;
+    h+=`<text class="dlbl${b&&DARK(b)?' inv':''}" data-dl="${id}" x="${geo.cx}" y="${geo.cy}">${id.slice(3)}</text>`; });
+  g.innerHTML=h;
+  g.querySelectorAll('.dist').forEach(p=>{
+    const b=p.getBBox(); const t=g.querySelector(`[data-dl="${p.dataset.id}"]`); if(t) t.dataset.box=b.width+','+b.height;
+    p.addEventListener('mousemove',e=>showDistTip(p.dataset.id,e));
+    p.addEventListener('mouseleave',()=>{ tip.hidden=true; hlRow(p.dataset.id,false); });
+    p.addEventListener('mouseenter',()=>hlRow(p.dataset.id,true));
+  });
+  sizeLabels();
+}
+function hlRow(id,on){ const row=document.querySelector(`.race[data-id="${id}"]`); if(row) row.classList.toggle('hl',on); }
+function hlDist(id,on){ const d=svg.querySelector(`.dist[data-id="${id}"]`); if(d) d.classList.toggle('hl',on); }
+
+// ---- Tooltips
+function placeTip(e){
+  const box=svg.getBoundingClientRect(); let x=e.clientX-box.left+14, y=e.clientY-box.top+14;
+  if(x+260>box.width) x-=280; if(y+140>box.height) y-=120; tip.style.left=x+'px'; tip.style.top=y+'px'; tip.hidden=false;
+}
+function candRows(cands,n){ return cands.filter(c=>c.price>=.005).sort((a,b)=>b.price-a.price).slice(0,n).map(c=>`<div class="row"><span>${esc(c.name)}${c.party?' ('+c.party+')':''}</span><span>${pct(c.price)}</span></div>`).join(''); }
+function showTip(st,e){
+  let html='';
+  if(chamber!=='house'){ const r=BY[chamber][st];
+    html = r ? `<b>${STATES[st].name} ${LABEL[chamber]}</b>`+candRows(r.cands,4)+`<div style="color:var(--muted);margin-top:4px">Click to open on Polymarket ↗</div>`
+             : `<b>${STATES[st].name}</b><div>No ${chamber==='senate'?'Senate':'governor'} race in 2026</div>`; }
+  else { const h=stateHouse(st); if(!h.n){ html=`<b>${STATES[st].name}</b><div>No district markets</div>`; } else {
+    const rs=(HOUSE[st]||[]).slice().sort((a,b)=>hMargin(a)-hMargin(b));
+    html=`<b>${STATES[st].name} House</b><div class="row"><span>Favoured D / R</span><span>${h.d} / ${h.r} of ${h.n}</span></div>`+rs.slice(0,3).map(r=>{const f=hFav(r);return `<div class="row"><span>${r.id} · ${esc(f.name)}</span><span>${pct(f.price)}</span></div>`;}).join('')+`<div style="color:var(--muted);margin-top:4px">${selState===st?'Click a district to open its market':'Click to zoom in to districts'}</div>`; } }
+  tip.innerHTML=html; placeTip(e);
+}
+function showDistTip(id,e){
+  const r=HR[id]; let html=`<b>${id} · ${STATES[id.slice(0,2)].name}</b>`;
+  if(!r) html+=`<div>No Polymarket market for this district</div>`;
+  else { const cands=[]; if(r.D)cands.push({...r.D,party:'D'}); if(r.R)cands.push({...r.R,party:'R'}); if(r.other)cands.push({...r.other,party:''});
+    html+=candRows(cands,3)+(r.rating?`<div style="color:var(--muted);margin-top:4px">${esc(r.rating)} · click to open on Polymarket ↗</div>`:''); }
+  tip.innerHTML=html; placeTip(e);
+}
+
+// ---- Race ledger
+function raceRow(code,cands,market,volume,bk,id){
+  const f=fav(cands), other=cands.filter(c=>c!==f).sort((a,b)=>b.price-a.price)[0];
+  const d=cands.find(c=>c.party==='D'), r=cands.find(c=>c.party==='R');
+  const dP=d?d.price:0, rP=r?r.price:0, oP=Math.max(0,1-dP-rP);
+  return `<a class="race" href="${PM(market)}" target="_blank" rel="noopener"${id?` data-id="${id}"`:''}>
+    <span class="code"><i class="chip" style="background:var(--${bk})"></i>${code}</span>
+    <span class="who"><div class="n">${esc(f.name)}${f.party?' ('+f.party+')':''}</div><div class="v">${other?('vs '+esc(other.name)+(other.party?' ('+other.party+')':'')+' '+pct(other.price)):''}${volume?' · $'+(volume>=1e6?(volume/1e6).toFixed(1)+'M':Math.round(volume/1e3)+'K'):''}</div>
+      <div class="ratingbar"><i style="width:${dP*100}%;background:var(--d3)"></i><i style="width:${oP*100}%;background:transparent"></i><i style="width:${rP*100}%;background:var(--r3)"></i></div></span>
+    <span class="pct">${pct(f.price)}<small>${f.party||'FAV'}</small></span></a>`;
+}
+function renderPanel(){
+  const list=document.getElementById('list'), t=document.getElementById('p-title'), sub=document.getElementById('p-sub'), back=document.getElementById('p-back'), grid=document.getElementById('seatgrid');
+  back.hidden = !(chamber==='house' && selState);
+  if(chamber!=='house'){
+    grid.hidden=true;
+    const rs=DATA[chamber].races.slice().sort((a,b)=>fav(a.cands).price-fav(b.cands).price);
+    t.textContent=`All ${rs.length} ${chamber==='senate'?'Senate':'governor'} races, closest first`; sub.textContent=`Democrats favoured in ${rs.filter(r=>fav(r.cands).party==='D').length}, Republicans in ${rs.filter(r=>fav(r.cands).party==='R').length}`;
+    list.innerHTML=rs.map(r=>{const f=fav(r.cands);return raceRow(r.state,r.cands,r.market,r.volume,bucket(f.price,f.party));}).join('');
+  } else {
+    let rs = selState ? (HOUSE[selState]||[]).slice() : DATA.house.races.slice();
+    rs.sort((a,b)=>hMargin(a)-hMargin(b));
+    const dN=DATA.house.races.filter(r=>hFav(r).party==='D').length, rN=DATA.house.races.length-dN;
+    if(selState){ const h=stateHouse(selState); t.textContent=`${STATES[selState].name}: ${h.n} district${h.n>1?'s':''}`; sub.textContent=`Favoured: ${h.d} D · ${h.r} R — hover to find a district, click to open its market`; }
+    else { t.textContent='All House districts, closest first'; sub.textContent=`${DATA.house.races.length} districts with a market · favoured ${dN} D · ${rN} R (218 for a majority) · click a state to zoom in`; }
+    // seat grid: one tile per district, sorted D-safe to R-safe
+    const all=(selState?rs.slice():DATA.house.races.slice()).sort((a,b)=>{const da=(a.D?a.D.price:0)-(a.R?a.R.price:0), db=(b.D?b.D.price:0)-(b.R?b.R.price:0); return db-da;});
+    grid.hidden=false; grid.innerHTML=all.map(r=>{const f=hFav(r);return `<a class="seat" href="${PM(r.market)}" target="_blank" rel="noopener" title="${r.id}: ${esc(f.name)} ${pct(f.price)}" style="background:var(--${bucket(f.price,f.party)})"></a>`;}).join('');
+    list.innerHTML=rs.map(r=>{const f=hFav(r); const cands=[]; if(r.D)cands.push({...r.D,party:'D'}); if(r.R)cands.push({...r.R,party:'R'}); if(r.other)cands.push({...r.other,party:''}); return raceRow(r.id,cands,r.market,r.volume,bucket(f.price,f.party),selState?r.id:null);}).join('');
+    if(selState) list.querySelectorAll('.race[data-id]').forEach(a=>{ a.addEventListener('mouseenter',()=>hlDist(a.dataset.id,true)); a.addEventListener('mouseleave',()=>hlDist(a.dataset.id,false)); });
+  }
+}
+
+// ---- Tabs, back buttons, deep links (#senate · #house · #house/TX · #governor)
+function setTab(ch){ chamber=ch; document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x.dataset.ch===ch)); }
+function setHash(){ const h='#'+chamber+(selState?'/'+selState:''); if(location.hash!==h) history.replaceState(null,'',h); }
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{ setTab(b.dataset.ch); selState=null; paint(); zoomTo(VB0); }));
+document.getElementById('p-back').addEventListener('click',()=>focusState(null));
+document.getElementById('map-back').addEventListener('click',()=>focusState(null));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && selState) focusState(null); });
+document.getElementById('stamp').textContent='Odds snapshot: '+new Date(DATA.updated).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'});
+build();
+{ const m=/^#(senate|house|governor)(?:\/([A-Z]{2}))?$/.exec(location.hash); if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
+paint(); if(selState) setVB(stateBox(selState));
+</script>
