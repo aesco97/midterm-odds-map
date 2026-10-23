@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Embed the Midterm Odds Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!-- Vercel Web Analytics (page views only; the script is served by Vercel for this project) -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a newsroom results board. Control bar up top, big map left, race ledger right; stacks on phones. */
+:root{
+  --bg:#f6f4ef; --panel:#fffdf9; --fg:#1d1b17; --muted:#6c675d; --line:#dcd7cc; --line-soft:#ebe7de;
+  --none:#e4e0d6; --none-fg:#8d877b;
+  --d3:#1b4fb0; --d2:#4f7fd0; --d1:#a9c1ea; --t:#c9c2b2; --r1:#efb3a6; --r2:#d9644f; --r3:#b3251c;
+  --accent:#1d1b17; --hover:#111;
+  --display:"Bricolage Grotesque","Archivo Black",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 40px}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-bottom:12px;border-bottom:2px solid var(--fg)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:20px;margin:28px 0 8px;letter-spacing:-.01em}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+nav a{font-weight:600;text-decoration:none;margin-left:16px}
+p{max-width:68ch}
+.muted{color:var(--muted)}
+code,pre{font-family:var(--mono);font-size:12.5px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;margin:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.btn{display:inline-block;appearance:none;border:0;background:var(--fg);color:var(--bg);font:600 13px var(--body);padding:8px 14px;border-radius:6px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--fg)}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px}
+select,input{font:14px var(--body);padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg);max-width:100%}
+.foot{margin-top:32px;font-size:12px;color:var(--muted)}
+.price{font-family:var(--display);font-weight:800;font-size:28px}
+ul{padding-left:20px} li{margin:4px 0}
+table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top} th{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tbl{overflow-x:auto}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header><div><p class="kicker">presidentl.app</p><h1>Embed the odds map</h1></div><nav><a href="./">Map</a><a href="data.html">Data</a></nav></header>
+
+<p style="margin-top:18px">Put the live map on your own site or newsletter page with one line. It updates itself every hour from the same feed as presidentl.app, works on phones, and follows the reader's light or dark theme. Free with the small "presidentl.app" badge; see below for a version without it.</p>
+
+<div class="grid" style="margin-top:12px">
+  <div class="card">
+    <h2 style="margin-top:0">Build your snippet</h2>
+    <label for="ch">Chamber</label>
+    <select id="ch"><option value="senate">Senate</option><option value="house">House</option><option value="governor">Governors</option></select>
+    <label for="st" id="st-l">State to open zoomed in (House only, optional)</label>
+    <input id="st" placeholder="e.g. TX" maxlength="2" style="width:80px">
+    <label for="h">Height (px)</label>
+    <input id="h" type="number" value="560" min="320" max="1200" style="width:100px">
+    <label>Snippet</label>
+    <pre id="snip" style="white-space:pre-wrap;word-break:break-all"></pre>
+    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="copy">Copy snippet</button><a class="btn ghost" id="open" href="#" target="_blank" rel="noopener">Open preview in a new tab</a></div>
+  </div>
+  <div class="card">
+    <h2 style="margin-top:0">Preview</h2>
+    <iframe id="prev" title="Midterm Odds Map embed preview" style="width:100%;height:560px;border:0;border-radius:6px;background:var(--bg)" loading="lazy"></iframe>
+  </div>
+</div>
+
+<h2>Without the badge, in your colors</h2>
+<div class="grid">
+  <div class="card"><div class="price" id="wl-price">$149</div><div class="muted">one-time, through the 2026 cycle</div>
+    <ul><li>No "presidentl.app" badge</li><li>Your palette for the map shading and background</li><li>A fixed URL on this domain, so the snippet never changes</li><li>Same hourly refresh and election-night mode</li></ul>
+    <p class="muted" style="font-size:13px">Odds data remains credited to PolymarketTrader.com (CC BY 4.0), as its license requires; that credit stays as one line under the map.</p>
+    <a class="btn" id="wl-cta" href="#" target="_blank" rel="noopener">Ask about a white-label embed</a></div>
+  <div class="card"><h2 style="margin:0 0 6px;font-size:16px">Newsrooms and newsletters</h2>
+    <p style="font-size:14px">Running a live blog on Nov 3? The election-night mode marks races as the market calls them and orders them by poll-closing time, which usually lands minutes before the networks. Add <code>&amp;night=1</code> to the embed URL to force it on early.</p>
+    <p style="font-size:14px">Want a chart or a table instead of the map (a Senate control line, a "closest 10" list)? Those exist as data; reach out and we'll add an embed for it.</p></div>
+</div>
+
+<div class="foot">Prices are market odds, not polls or predictions; nothing here is betting advice. Links from the map to Polymarket and Kalshi may be referral links.</div>
+</div>
+<script>
+const SITE={"referral":{"polymarket":"","kalshi":""},"sponsor":{"name":"","url":"","text":"","from":"2026-11-03","to":"2026-11-05"},"newsletter":{"action":"","label":"Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."},"embed":{"whitelabel_price":"$149"},"contact":{"email":"","url":"https://github.com/aesco97"}};
+const BASE='https://presidentl.app/';
+const $=id=>document.getElementById(id);
+function url(){ const ch=$('ch').value, st=$('st').value.trim().toUpperCase(); let u=BASE+'?embed=1&chamber='+ch; if(ch==='house'&&/^[A-Z]{2}$/.test(st)) u+='&state='+st; return u; }
+function update(){ const h=Math.max(320,Math.min(1200,+$('h').value||560)); const u=url();
+  $('snip').textContent=`<iframe src="${u}" width="100%" height="${h}" style="border:0;max-width:100%" loading="lazy" title="2026 midterm odds map (presidentl.app)"></iframe>`;
+  $('prev').src=u; $('prev').style.height=h+'px'; $('open').href=u; $('st-l').style.opacity=$('ch').value==='house'?1:.5; $('st').disabled=$('ch').value!=='house'; }
+['ch','st','h'].forEach(id=>$(id).addEventListener('input',update)); update();
+$('copy').addEventListener('click',()=>{ const t=$('snip').textContent; const done=()=>{ $('copy').textContent='Copied'; setTimeout(()=>$('copy').textContent='Copy snippet',1500); };
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done).catch(()=>{ const r=document.createRange(); r.selectNodeContents($('snip')); getSelection().removeAllRanges(); getSelection().addRange(r); }); });
+{ const e=(SITE.embed||{}); if(e.whitelabel_price) $('wl-price').textContent=e.whitelabel_price;
+  const c=SITE.contact||{}; const cta=$('wl-cta'); if(c.email){ cta.href='mailto:'+c.email+'?subject=White-label%20odds%20map%20embed'; cta.textContent='Email '+c.email; } else if(c.url) cta.href=c.url; else cta.hidden=true; }
+</script>
+
+</body>
+</html>

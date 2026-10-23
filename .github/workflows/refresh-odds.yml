@@ -28,13 +28,13 @@ jobs:
         run: python3 scripts/fetch_odds.py
       - name: Commit if anything changed
         run: |
-          if git diff --quiet -- data/odds.json index.html && [ -z "$(git ls-files --others --exclude-standard data/history)" ]; then
+          git add -A data index.html embed.html data.html
+          if git diff --cached --quiet; then
             echo "Odds unchanged; nothing to commit."
             exit 0
           fi
           stamp=$(python3 -c "import json; print(json.load(open('data/odds.json'))['updated'])")
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/odds.json index.html data/history
           git commit -m "Refresh odds ($stamp)"
           git push

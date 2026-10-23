@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Midterm Odds Data</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!-- Vercel Web Analytics (page views only; the script is served by Vercel for this project) -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a newsroom results board. Control bar up top, big map left, race ledger right; stacks on phones. */
+:root{
+  --bg:#f6f4ef; --panel:#fffdf9; --fg:#1d1b17; --muted:#6c675d; --line:#dcd7cc; --line-soft:#ebe7de;
+  --none:#e4e0d6; --none-fg:#8d877b;
+  --d3:#1b4fb0; --d2:#4f7fd0; --d1:#a9c1ea; --t:#c9c2b2; --r1:#efb3a6; --r2:#d9644f; --r3:#b3251c;
+  --accent:#1d1b17; --hover:#111;
+  --display:"Bricolage Grotesque","Archivo Black",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 40px}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-bottom:12px;border-bottom:2px solid var(--fg)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:20px;margin:28px 0 8px;letter-spacing:-.01em}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+nav a{font-weight:600;text-decoration:none;margin-left:16px}
+p{max-width:68ch}
+.muted{color:var(--muted)}
+code,pre{font-family:var(--mono);font-size:12.5px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;margin:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.btn{display:inline-block;appearance:none;border:0;background:var(--fg);color:var(--bg);font:600 13px var(--body);padding:8px 14px;border-radius:6px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--fg)}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px}
+select,input{font:14px var(--body);padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg);max-width:100%}
+.foot{margin-top:32px;font-size:12px;color:var(--muted)}
+.price{font-family:var(--display);font-weight:800;font-size:28px}
+ul{padding-left:20px} li{margin:4px 0}
+table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top} th{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tbl{overflow-x:auto}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header><div><p class="kicker">presidentl.app</p><h1>The odds, as data</h1></div><nav><a href="./">Map</a><a href="embed.html">Embed</a></nav></header>
+
+<p style="margin-top:18px">Everything the map shows is a flat file in a public repository, refreshed hourly. Two things you can download right now, and one that is being built up every day.</p>
+
+<div class="grid" style="margin-top:12px">
+  <div class="card"><h2 style="margin-top:0;font-size:17px">Current odds <span class="muted" style="font-weight:500;font-size:13px">JSON</span></h2>
+    <p style="font-size:14px">Every 2026 Senate, House and governor race with a market: candidates, parties, Polymarket price, Kalshi price where one exists, volume, rating, plus the chamber-control and seat-count markets.</p>
+    <p><a class="btn" href="data/odds.json" download>odds.json</a> <a class="btn ghost" href="data/odds_2028.json" download>odds_2028.json</a></p>
+    <p class="muted" style="font-size:12.5px" id="s-updated"></p></div>
+  <div class="card"><h2 style="margin-top:0;font-size:17px">Price history <span class="muted" style="font-weight:500;font-size:13px">CSV</span></h2>
+    <p style="font-size:14px">One row per race per feed update (about two a day) since Oct 22, 2026: the Democratic candidate's price, or the non-Republican share where no Democrat is priced. This is the file that will be worth something in 2028: a daily record of every political market through a full cycle.</p>
+    <p><a class="btn" href="data/history.csv" download>history.csv</a> <a class="btn ghost" href="https://github.com/aesco97/midterm-odds-map/tree/main/data/history" target="_blank" rel="noopener">Raw snapshots</a></p>
+    <p class="muted" style="font-size:12.5px" id="s-hist"></p></div>
+</div>
+
+<h2>Schema</h2>
+<div class="tbl"><table>
+<tr><th>File</th><th>Field</th><th>Meaning</th></tr>
+<tr><td rowspan="5"><code>odds.json</code></td><td><code>updated</code></td><td>ISO timestamp of the feed snapshot (UTC)</td></tr>
+<tr><td><code>senate.races[]</code>, <code>governor.races[]</code></td><td><code>state</code>, <code>name</code>, <code>market</code> (Polymarket event slug), <code>rating</code>, <code>volume</code> (USD), <code>cands[]</code> = {name, party, price}, <code>kalshi</code> = {ticker, D, R}</td></tr>
+<tr><td><code>house.races[]</code></td><td><code>id</code> (e.g. TX-23), <code>market</code>, <code>rating</code>, <code>volume</code>, <code>D</code>/<code>R</code> = {name, price}, optional <code>other</code></td></tr>
+<tr><td><code>senate.control</code>, <code>house.control</code></td><td>{D, R}: the chamber-control market</td></tr>
+<tr><td><code>*.seats[]</code></td><td>{outcome, price}: seat-count buckets</td></tr>
+<tr><td><code>history.csv</code></td><td><code>updated_utc, chamber, race, democratic_price</code></td><td>chamber ∈ senate · house · governor · control; race is the state code, district id, or chamber name for control</td></tr>
+<tr><td><code>odds_2028.json</code></td><td><code>markets[]</code></td><td>{slug, title, outcomes[] = {name, party, price, change24h}, history{name: [[unix_s, price]]}} for the winner and both nominee markets</td></tr>
+</table></div>
+
+<h2>Terms</h2>
+<p>Prices are collected from <a href="https://polymarkettrader.com/developers/" target="_blank" rel="noopener">PolymarketTrader.com's free feed</a> of Polymarket and Kalshi markets and are released here under the same <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license: use them for anything, credit "PolymarketTrader.com via presidentl.app". A longer, cleaned history with candidate metadata and both exchanges on every race is in the works for the 2028 cycle; <span id="s-contact">watch this page</span>.</p>
+<p class="muted" style="font-size:13px">Prices are market odds, not polls or predictions, and nothing here is betting or investment advice.</p>
+
+<div class="foot">Built from <a href="https://github.com/aesco97/midterm-odds-map" target="_blank" rel="noopener">aesco97/midterm-odds-map</a>.</div>
+</div>
+<script>
+const SITE={"referral":{"polymarket":"","kalshi":""},"sponsor":{"name":"","url":"","text":"","from":"2026-11-03","to":"2026-11-05"},"newsletter":{"action":"","label":"Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."},"embed":{"whitelabel_price":"$149"},"contact":{"email":"","url":"https://github.com/aesco97"}};
+const STATS={"snapshots":3,"rows":1515,"first":"2026-10-22T13:50:29Z","last":"2026-10-23T13:50:59Z","races":505,"updated":"2026-10-23T13:50:59+00:00"};
+const fmt=s=>s?new Date(s).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}):'';
+document.getElementById('s-updated').textContent=`${STATS.races} races · updated ${fmt(STATS.updated)}`;
+document.getElementById('s-hist').textContent=STATS.rows?`${STATS.rows.toLocaleString()} rows from ${STATS.snapshots} snapshots, ${fmt(STATS.first)} to ${fmt(STATS.last)}`:'No snapshots yet.';
+{ const c=SITE.contact||{}; const el=document.getElementById('s-contact'); if(c.email) el.innerHTML=`email <a href="mailto:${c.email}">${c.email}</a> to hear when it ships`; }
+</script>
+
+</body>
+</html>

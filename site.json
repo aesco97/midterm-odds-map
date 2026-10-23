@@ -1,0 +1,24 @@
+{
+  "referral": {
+    "polymarket": "",
+    "kalshi": ""
+  },
+  "sponsor": {
+    "name": "",
+    "url": "",
+    "text": "",
+    "from": "2026-11-03",
+    "to": "2026-11-05"
+  },
+  "newsletter": {
+    "action": "",
+    "label": "Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."
+  },
+  "embed": {
+    "whitelabel_price": "$149"
+  },
+  "contact": {
+    "email": "",
+    "url": "https://github.com/aesco97"
+  }
+}

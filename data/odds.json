@@ -69,7 +69,12 @@
       "party": "D",
       "price": 0.425
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEIA-26",
+     "D": 0.415,
+     "R": 0.575
+    }
    },
    {
     "state": "KS",
@@ -88,7 +93,12 @@
       "party": "D",
       "price": 0.385
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEKS-26",
+     "D": 0.385,
+     "R": 0.615
+    }
    },
    {
     "state": "ME",
@@ -107,7 +117,12 @@
       "party": "R",
       "price": 0.33
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEME-26",
+     "D": 0.645,
+     "R": 0.365
+    }
    },
    {
     "state": "TX",
@@ -126,7 +141,12 @@
       "party": "R",
       "price": 0.335
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATETX-26",
+     "D": 0.655,
+     "R": 0.345
+    }
    },
    {
     "state": "OH",
@@ -145,7 +165,12 @@
       "party": "R",
       "price": 0.3
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEOHS-26",
+     "D": 0.685,
+     "R": 0.315
+    }
    },
    {
     "state": "MI",
@@ -164,7 +189,12 @@
       "party": "R",
       "price": 0.285
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEMI-26",
+     "D": 0.685,
+     "R": 0.315
+    }
    },
    {
     "state": "NE",
@@ -183,7 +213,12 @@
       "party": "I",
       "price": 0.265
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATENE-26",
+     "D": 0.004,
+     "R": 0.765
+    }
    },
    {
     "state": "AK",
@@ -202,7 +237,12 @@
       "party": "R",
       "price": 0.255
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEAK-26",
+     "D": 0.755,
+     "R": 0.245
+    }
    },
    {
     "state": "SC",
@@ -221,7 +261,12 @@
       "party": "D",
       "price": 0.185
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATESC-26",
+     "D": 0.185,
+     "R": 0.82
+    }
    },
    {
     "state": "MN",
@@ -240,7 +285,12 @@
       "party": "R",
       "price": 0.135
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEMN-26",
+     "D": 0.865,
+     "R": 0.145
+    }
    },
    {
     "state": "MS",
@@ -259,7 +309,12 @@
       "party": "D",
       "price": 0.115
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEMS-26",
+     "D": 0.0965,
+     "R": 0.904
+    }
    },
    {
     "state": "FL",
@@ -278,7 +333,12 @@
       "party": "D",
       "price": 0.09
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEFLS-26",
+     "D": 0.098,
+     "R": 0.9095
+    }
    },
    {
     "state": "NH",
@@ -297,7 +357,12 @@
       "party": "R",
       "price": 0.085
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATENH-26",
+     "D": 0.895,
+     "R": 0.095
+    }
    },
    {
     "state": "LA",
@@ -316,7 +381,12 @@
       "party": "D",
       "price": 0.075
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATELA-26",
+     "D": 0.0315,
+     "R": 0.968
+    }
    },
    {
     "state": "MT",
@@ -335,7 +405,12 @@
       "party": "I",
       "price": 0.0685
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEMT-26",
+     "D": 0.0045,
+     "R": 0.926
+    }
    },
    {
     "state": "SD",
@@ -354,7 +429,12 @@
       "party": "I",
       "price": 0.0495
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATESD-26",
+     "D": 0.0045,
+     "R": 0.9515
+    }
    },
    {
     "state": "AR",
@@ -373,7 +453,12 @@
       "party": "D",
       "price": 0.0475
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEAR-26",
+     "D": 0.0405,
+     "R": 0.956
+    }
    },
    {
     "state": "TN",
@@ -392,7 +477,12 @@
       "party": "D",
       "price": 0.0395
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATETN-26",
+     "D": 0.0385,
+     "R": 0.9605
+    }
    },
    {
     "state": "GA",
@@ -411,7 +501,12 @@
       "party": "R",
       "price": 0.037
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEGA-26",
+     "D": 0.9545,
+     "R": 0.0465
+    }
    },
    {
     "state": "NM",
@@ -430,7 +525,12 @@
       "party": "R",
       "price": 0.0355
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATENM-26",
+     "D": 0.965,
+     "R": 0.0345
+    }
    },
    {
     "state": "NC",
@@ -449,7 +549,12 @@
       "party": "R",
       "price": 0.0345
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATENC-26",
+     "D": 0.966,
+     "R": 0.0345
+    }
    },
    {
     "state": "ID",
@@ -468,7 +573,12 @@
       "party": "I",
       "price": 0.026
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEID-26",
+     "D": 0.0015,
+     "R": 0.9595
+    }
    },
    {
     "state": "NJ",
@@ -487,7 +597,12 @@
       "party": "R",
       "price": 0.0275
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATENJ-26",
+     "D": 0.9705,
+     "R": 0.031
+    }
    },
    {
     "state": "DE",
@@ -506,7 +621,12 @@
       "party": "R",
       "price": 0.026
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEDE-26",
+     "D": 0.981,
+     "R": 0.0195
+    }
    },
    {
     "state": "KY",
@@ -544,7 +664,12 @@
       "party": "D",
       "price": 0.0175
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEOK-26",
+     "D": 0.028,
+     "R": 0.974
+    }
    },
    {
     "state": "VA",
@@ -563,7 +688,12 @@
       "party": "R",
       "price": 0.0205
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEVA-26",
+     "D": 0.9785,
+     "R": 0.0195
+    }
    },
    {
     "state": "WV",
@@ -582,7 +712,12 @@
       "party": "D",
       "price": 0.0165
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEWV-26",
+     "D": 0.0215,
+     "R": 0.9785
+    }
    },
    {
     "state": "RI",
@@ -601,7 +736,12 @@
       "party": "R",
       "price": 0.0155
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATERI-26",
+     "D": 0.9865,
+     "R": 0.0155
+    }
    },
    {
     "state": "MA",
@@ -620,7 +760,12 @@
       "party": "R",
       "price": 0.0165
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEMA-26",
+     "D": 0.983,
+     "R": 0.0185
+    }
    },
    {
     "state": "IL",
@@ -639,7 +784,12 @@
       "party": "R",
       "price": 0.016
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEIL-26",
+     "D": 0.986,
+     "R": 0.014
+    }
    },
    {
     "state": "OR",
@@ -658,7 +808,12 @@
       "party": "R",
       "price": 0.0175
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEOR-26",
+     "D": 0.985,
+     "R": 0.014
+    }
    },
    {
     "state": "WY",
@@ -677,7 +832,12 @@
       "party": "D",
       "price": 0.0135
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEWY-26",
+     "D": 0.01,
+     "R": 0.991
+    }
    },
    {
     "state": "AL",
@@ -696,7 +856,12 @@
       "party": "D",
       "price": 0.0145
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATEAL-26",
+     "D": 0.014,
+     "R": 0.9865
+    }
    },
    {
     "state": "CO",
@@ -715,7 +880,12 @@
       "party": "R",
       "price": 0.0105
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "SENATECO-26",
+     "D": 0.9885,
+     "R": 0.011
+    }
    }
   ]
  },
@@ -6898,7 +7068,12 @@
       "party": "R",
       "price": 0.38
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYGA-26",
+     "D": 0.605,
+     "R": 0.395
+    }
    },
    {
     "state": "NV",
@@ -6917,7 +7092,12 @@
       "party": "R",
       "price": 0.335
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYNV-26",
+     "D": 0.655,
+     "R": 0.335
+    }
    },
    {
     "state": "TX",
@@ -6936,7 +7116,12 @@
       "party": "D",
       "price": 0.28
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYTX-26",
+     "D": 0.285,
+     "R": 0.72
+    }
    },
    {
     "state": "KS",
@@ -6955,7 +7140,12 @@
       "party": "D",
       "price": 0.24
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYKS-27",
+     "D": 0.225,
+     "R": 0.765
+    }
    },
    {
     "state": "VT",
@@ -6974,7 +7164,12 @@
       "party": "D",
       "price": 0.251
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYVT-26",
+     "D": 0.255,
+     "R": 0.745
+    }
    },
    {
     "state": "WI",
@@ -6993,7 +7188,12 @@
       "party": "R",
       "price": 0.195
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYWI-26",
+     "D": 0.805,
+     "R": 0.205
+    }
    },
    {
     "state": "FL",
@@ -7012,7 +7212,12 @@
       "party": "D",
       "price": 0.185
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYFL-26",
+     "D": 0.185,
+     "R": 0.815
+    }
    },
    {
     "state": "OH",
@@ -7031,7 +7236,12 @@
       "party": "R",
       "price": 0.175
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYOH-26",
+     "D": 0.815,
+     "R": 0.185
+    }
    },
    {
     "state": "OR",
@@ -7050,7 +7260,12 @@
       "party": "R",
       "price": 0.165
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYOR-26",
+     "D": 0.815,
+     "R": 0.175
+    }
    },
    {
     "state": "IA",
@@ -7069,7 +7284,12 @@
       "party": "R",
       "price": 0.115
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYIA-26",
+     "D": 0.865,
+     "R": 0.135
+    }
    },
    {
     "state": "NE",
@@ -7088,7 +7308,12 @@
       "party": "D",
       "price": 0.12
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYNE-26",
+     "D": 0.125,
+     "R": 0.875
+    }
    },
    {
     "state": "AK",
@@ -7126,7 +7351,12 @@
       "party": "D",
       "price": 0.07
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYOK-26",
+     "D": 0.0945,
+     "R": 0.905
+    }
    },
    {
     "state": "SC",
@@ -7145,7 +7375,12 @@
       "party": "D",
       "price": 0.065
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYSC-26",
+     "D": 0.0645,
+     "R": 0.9355
+    }
    },
    {
     "state": "AZ",
@@ -7164,7 +7399,12 @@
       "party": "R",
       "price": 0.07
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYAZ-26",
+     "D": 0.9185,
+     "R": 0.0895
+    }
    },
    {
     "state": "NH",
@@ -7202,7 +7442,12 @@
       "party": "D",
       "price": 0.0555
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYTN-26",
+     "D": 0.0565,
+     "R": 0.9375
+    }
    },
    {
     "state": "MI",
@@ -7221,7 +7466,12 @@
       "party": "R",
       "price": 0.056
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYMI-26",
+     "D": 0.9345,
+     "R": 0.067
+    }
    },
    {
     "state": "AL",
@@ -7240,7 +7490,12 @@
       "party": "D",
       "price": 0.034
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYAL-26",
+     "D": 0.0575,
+     "R": 0.945
+    }
    },
    {
     "state": "ME",
@@ -7259,7 +7514,12 @@
       "party": "R",
       "price": 0.0445
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYME-26",
+     "D": 0.9475,
+     "R": 0.0515
+    }
    },
    {
     "state": "MN",
@@ -7278,7 +7538,12 @@
       "party": "R",
       "price": 0.0445
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYMN-26",
+     "D": 0.9555,
+     "R": 0.048
+    }
    },
    {
     "state": "NM",
@@ -7297,7 +7562,12 @@
       "party": "R",
       "price": 0.04
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYNM-26",
+     "D": 0.9395,
+     "R": 0.0605
+    }
    },
    {
     "state": "MA",
@@ -7316,7 +7586,12 @@
       "party": "R",
       "price": 0.043
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYMA-26",
+     "D": 0.9615,
+     "R": 0.0385
+    }
    },
    {
     "state": "NY",
@@ -7335,7 +7610,12 @@
       "party": "R",
       "price": 0.04
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYNY-26",
+     "D": 0.9505,
+     "R": 0.0515
+    }
    },
    {
     "state": "RI",
@@ -7359,7 +7639,12 @@
       "party": "R",
       "price": 0.013
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYRI-26",
+     "D": 0.955,
+     "R": 0.006
+    }
    },
    {
     "state": "CA",
@@ -7378,7 +7663,12 @@
       "party": "",
       "price": 0.0305
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYCA-26",
+     "D": 0.9665,
+     "R": 0.033
+    }
    },
    {
     "state": "CO",
@@ -7397,7 +7687,12 @@
       "party": "R",
       "price": 0.033
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYCO-26",
+     "D": 0.9635,
+     "R": 0.0365
+    }
    },
    {
     "state": "IL",
@@ -7416,7 +7711,12 @@
       "party": "R",
       "price": 0.031
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYIL-26",
+     "D": 0.9685,
+     "R": 0.0335
+    }
    },
    {
     "state": "AR",
@@ -7435,7 +7735,12 @@
       "party": "D",
       "price": 0.028
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYAR-26",
+     "D": 0.0325,
+     "R": 0.966
+    }
    },
    {
     "state": "CT",
@@ -7454,7 +7759,12 @@
       "party": "R",
       "price": 0.032
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYCT-26",
+     "D": 0.965,
+     "R": 0.036
+    }
    },
    {
     "state": "SD",
@@ -7473,7 +7783,12 @@
       "party": "D",
       "price": 0.0225
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYSD-26",
+     "D": 0.028,
+     "R": 0.973
+    }
    },
    {
     "state": "ID",
@@ -7492,7 +7807,12 @@
       "party": "D",
       "price": 0.022
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYID-26",
+     "D": 0.0295,
+     "R": 0.97
+    }
    },
    {
     "state": "PA",
@@ -7511,7 +7831,12 @@
       "party": "R",
       "price": 0.023
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYPA-26",
+     "D": 0.973,
+     "R": 0.027
+    }
    },
    {
     "state": "MD",
@@ -7530,7 +7855,12 @@
       "party": "R",
       "price": 0.02
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYMD-26",
+     "D": 0.9755,
+     "R": 0.0265
+    }
    },
    {
     "state": "WY",
@@ -7549,7 +7879,12 @@
       "party": "D",
       "price": 0.013
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYWY-26",
+     "D": 0.0175,
+     "R": 0.977
+    }
    },
    {
     "state": "HI",
@@ -7568,7 +7903,12 @@
       "party": "R",
       "price": 0.008
      }
-    ]
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYHI-26",
+     "D": 0.988,
+     "R": 0.0125
+    }
    }
   ]
  }

@@ -134,12 +134,60 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
 .night-note{font-size:12px;color:var(--muted);padding:8px 14px;border-bottom:1px solid var(--line-soft);background:var(--bg)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media (max-width:600px){.control{grid-template-columns:1fr auto}.control .bar{grid-column:1/-1}}
+/* Kalshi second price + gap */
+.kal{font:500 10.5px var(--mono);color:var(--muted);white-space:nowrap}
+.kal b{font-weight:600;color:var(--fg)}
+.kal .klink{cursor:pointer;text-decoration:underline dotted}
+.kal .klink:hover{color:var(--fg)}
+.kal .gap{padding:0 4px;border-radius:3px;background:var(--line-soft)}
+.kal .gap.big{background:color-mix(in srgb,var(--r2) 18%,transparent);color:var(--fg)}
+/* Sponsor band */
+.sponsor[hidden]{display:none}
+.sponsor{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between;margin-top:12px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font-size:13px}
+.sponsor .k{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sponsor a{font-weight:600}
+/* Newsletter */
+.nl{padding:12px 14px;border-top:1px solid var(--line);background:var(--bg);border-radius:0 0 8px 8px}
+.nl label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.nl form{display:flex;gap:6px}
+.nl input{flex:1;min-width:0;font:14px var(--body);padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg)}
+.nl button{appearance:none;border:0;background:var(--fg);color:var(--bg);font:600 13px var(--body);padding:7px 14px;border-radius:6px;cursor:pointer}
+.nl .ok{font-size:12px;color:var(--d2)}
+/* Footer links row */
+.foot .links{display:flex;flex-wrap:wrap;gap:4px 14px}
+.foot .links a{font-weight:600;color:var(--fg)}
+.disclosure{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.5}
+/* 2028: three leaderboards, no map */
+.boards{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-top:18px;align-items:start}
+.boards.on{display:grid}
+@media (max-width:900px){.boards{grid-template-columns:1fr}}
+.board{background:var(--panel);border:1px solid var(--line);border-radius:8px;min-width:0}
+.board h2{font-family:var(--display);font-size:16px;margin:0;padding:12px 14px 2px;font-weight:700}
+.board .sub{font-size:12px;color:var(--muted);padding:0 14px 10px;border-bottom:1px solid var(--line)}
+.board .cand{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:8px 14px;border-bottom:1px solid var(--line-soft);text-decoration:none;color:inherit;align-items:center}
+.board .cand:hover{background:var(--bg)}
+.board .cand .n{font-weight:600;font-size:13px}
+.board .cand .p{font-family:var(--display);font-weight:800;font-size:17px;font-variant-numeric:tabular-nums;text-align:right}
+.board .cand .bar2{grid-column:1/-1;height:5px;border-radius:3px;background:var(--line-soft);overflow:hidden}
+.board .cand .bar2 i{display:block;height:100%}
+.board .cand .bar2 i.D{background:var(--d3)} .board .cand .bar2 i.R{background:var(--r3)} .board .cand .bar2 i.X{background:var(--none-fg)}
+.board .empty{padding:18px 14px;font-size:13px;color:var(--muted)}
+.board .more{display:block;padding:10px 14px;font-size:12px;color:var(--muted);text-decoration:none}
+/* Embed mode: map only, with a badge */
+body.embed{padding-block:8px 8px}
+body.embed header,body.embed .control,body.embed .panel,body.embed .foot,body.embed .sponsor,body.embed .boards{display:none!important}
+body.embed .main{grid-template-columns:1fr;padding-top:0}
+body.embed .panel{display:none}
+.badge{display:none;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);margin-top:6px}
+body.embed .badge{display:flex}
+.badge a{font-weight:600;color:var(--fg);text-decoration:none}
+.badge .sp{color:var(--muted)}
 </style>
 
 <div class="wrap">
 <header>
   <div>
-    <p class="kicker">Polymarket · 2026 midterms · Election Day Nov 3</p>
+    <p class="kicker">Polymarket &amp; Kalshi odds · 2026 midterms · Election Day Nov 3</p>
     <h1>Midterm Odds Map</h1>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
@@ -148,9 +196,11 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
       <button class="tab" role="tab" id="tab-senate" aria-selected="true" data-ch="senate">Senate</button>
       <button class="tab" role="tab" id="tab-house" aria-selected="false" data-ch="house">House</button>
       <button class="tab" role="tab" id="tab-governor" aria-selected="false" data-ch="governor">Governors</button>
+      <button class="tab" role="tab" id="tab-2028" aria-selected="false" data-ch="2028">2028</button>
     </div>
   </div>
 </header>
+<div class="sponsor" id="sponsor" hidden></div>
 
 <div class="control">
   <div class="lab" id="ctl-lab">Who controls the Senate?</div>
@@ -171,13 +221,17 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
     <div id="movers" class="movers" hidden></div>
     <div id="seatgrid" class="seatgrid" hidden></div>
     <div class="list" id="list"></div>
+    <div class="nl" id="nl" hidden></div>
   </aside>
 </div>
+<div class="badge" id="badge"></div>
+<div class="boards" id="boards"></div>
 
 <div class="foot">
-  <span>Shading = favourite's Polymarket price. Safe ≥95% · Likely 80–95% · Lean 60–80% · Toss-up &lt;60%. Senate and Governors: click a state to open its market. House: click a state to zoom in to its districts, then click a district.</span>
+  <span class="links"><a href="embed.html">Embed this map</a><a href="data.html">Download the data</a><a href="https://github.com/aesco97/midterm-odds-map" target="_blank" rel="noopener">Source</a></span>
   <span id="stamp"></span>
-  <span>Odds data: <a href="https://polymarkettrader.com/odds/senate-forecast-2026/" target="_blank" rel="noopener">PolymarketTrader.com</a> (CC BY 4.0), via Polymarket. Prices are market odds, not polls.</span>
+  <span>Shading = favourite's Polymarket price. Safe ≥95% · Likely 80–95% · Lean 60–80% · Toss-up &lt;60%. Senate and Governors: click a state to open its market. House: click a state to zoom in to its districts, then click a district.</span>
+  <span class="disclosure" id="disclosure">Odds data: <a href="https://polymarkettrader.com/odds/senate-forecast-2026/" target="_blank" rel="noopener">PolymarketTrader.com</a> (CC BY 4.0), via Polymarket and Kalshi. Prices are market odds, not polls or predictions, and nothing here is betting or investment advice. Prediction markets are not available everywhere; check what is legal where you live.<span id="ref-note"></span></span>
 </div>
 </div>
 
@@ -185,7 +239,13 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
 /*STATES*/
 /*DISTRICTS*/
 /*DATA*/
-const PM = m => 'https://polymarket.com/event/' + m;
+// Outbound links. Referral codes come from site.json; with none set these are plain market links.
+const REF = (SITE.referral)||{};
+const PM = m => 'https://polymarket.com/event/' + m + (REF.polymarket ? '?r=' + encodeURIComponent(REF.polymarket) : '');
+// Kalshi market pages are keyed by series ticker (SENATEIA-26 -> kalshi.com/markets/senateia); the referral code rides along as ?referral=
+const KL = t => 'https://kalshi.com/markets/' + String(t).split('-')[0].toLowerCase() + (REF.kalshi ? '?referral=' + encodeURIComponent(REF.kalshi) : '');
+const EMBED = new URLSearchParams(location.search).get('embed')==='1';
+if(REF.polymarket||REF.kalshi) document.getElementById('ref-note').textContent=' Some links to Polymarket and Kalshi are referral links: if you sign up through them, this site may earn a commission at no cost to you.';
 function bucket(p, party){ // p = favourite price
   const s = p>=.95?3:p>=.8?2:p>=.6?1:0;
   if(s===0) return 't';
@@ -224,7 +284,7 @@ const ELECTION_START = Date.UTC(2026,10,3,23,0); // 6 PM ET on Election Day (EST
 const CALL_T=0.985; // a favourite priced at or above this is treated as called by the market
 function closeLabel(st){ const c=CLOSE[st]; if(!c) return ''; let h=c[0]%24, m=c[1]; const ampm=h>=12?'PM':'AM'; h=h%12||12; return `${h}${m?':'+String(m).padStart(2,'0'):''} ${ampm} ET${c[0]>=24?' (Wed)':''}`; }
 function closeOrder(st){ const c=CLOSE[st]||[99,0]; return c[0]*60+c[1]; }
-let night = Date.now()>=ELECTION_START;
+let night = Date.now()>=ELECTION_START || new URLSearchParams(location.search).get('night')==='1';
 function calledParty(favPrice,favParty){ return night && favPrice>=CALL_T ? favParty : null; }
 function calledHtml(p){ return `<span class="called ${p}">✓ ${p}</span>`; }
 
@@ -264,6 +324,11 @@ function build(){
   svg.addEventListener('click',e=>{ if(e.target===svg && selState) focusState(null); });
 }
 function paint(){
+  const is2028 = chamber==='2028';
+  document.querySelector('.main').style.display = is2028?'none':'';
+  document.querySelector('.control').style.display = is2028?'none':'';
+  document.getElementById('boards').classList.toggle('on',is2028);
+  if(is2028){ render2028(); setHash(); return; }
   for(const st of Object.keys(STATES)){
     const p=svg.querySelector(`[data-st="${st}"]`), l=svg.querySelector(`[data-lbl="${st}"]`), a=svg.querySelector(`[data-sl="${st}"]`);
     let b=null;
@@ -367,11 +432,12 @@ function placeTip(e){
   if(x+260>box.width) x-=280; if(y+140>box.height) y-=120; tip.style.left=x+'px'; tip.style.top=y+'px'; tip.hidden=false;
 }
 function candRows(cands,n){ return cands.filter(c=>c.price>=.005).sort((a,b)=>b.price-a.price).slice(0,n).map(c=>`<div class="row"><span>${esc(c.name)}${c.party?' ('+c.party+')':''}</span><span>${pct(c.price)}</span></div>`).join(''); }
+function tipKalshi(r){ const k=r.kalshi, f=fav(r.cands); if(!k||!f.party||k[f.party]==null) return ''; const gap=(f.price-k[f.party])*100; return `<div class="row"><span style="color:var(--muted)">Kalshi, ${esc(f.name.split(' ').slice(-1)[0])}</span><span>${pct(k[f.party])} <span style="color:var(--muted)">(${gap>0?'+':''}${gap.toFixed(0)})</span></span></div>`; }
 function tipDelta(ch,key,party){ const dl=delta(ch,key,party); if(!dl) return ''; return `<div class="row"><span style="color:var(--muted)">Favourite, ${windowLabel(dl)}</span>${deltaHtml(dl,party)}</div>`; }
 function showTip(st,e){
   let html='';
   if(chamber!=='house'){ const r=BY[chamber][st];
-    html = r ? `<b>${STATES[st].name} ${LABEL[chamber]}</b>`+candRows(r.cands,4)+tipDelta(chamber,st,fav(r.cands).party)+`<div style="color:var(--muted);margin-top:4px">${night?'Polls close '+closeLabel(st)+' · ':''}Click to open on Polymarket ↗</div>`
+    html = r ? `<b>${STATES[st].name} ${LABEL[chamber]}</b>`+candRows(r.cands,4)+tipDelta(chamber,st,fav(r.cands).party)+tipKalshi(r)+`<div style="color:var(--muted);margin-top:4px">${night?'Polls close '+closeLabel(st)+' · ':''}Click to open on Polymarket ↗</div>`
              : `<b>${STATES[st].name}</b><div>No ${chamber==='senate'?'Senate':'governor'} race in 2026</div>`; }
   else { const h=stateHouse(st); if(!h.n){ html=`<b>${STATES[st].name}</b><div>No district markets</div>`; } else {
     const rs=(HOUSE[st]||[]).slice().sort((a,b)=>hMargin(a)-hMargin(b));
@@ -395,11 +461,19 @@ function raceRow(code,cands,market,volume,bk,id,ch,key,st){
   const dl=delta(ch,key,f.party), spark=sparkline(ch,key,f.party), called=calledParty(f.price,f.party);
   const vol=volume?' · $'+(volume>=1e6?(volume/1e6).toFixed(1)+'M':Math.round(volume/1e3)+'K'):'';
   const closes=night&&st?`<span class="closes">Polls close ${closeLabel(st)}</span>`:'';
+  const kal=kalshiHtml(ch,key,f);
   return `<a class="race${called?' is-called':''}" href="${PM(market)}" target="_blank" rel="noopener"${id?` data-id="${id}"`:''}>
     <span class="code"><i class="chip" style="background:var(--${called?(called==='D'?'dc':'rc'):bk})"></i>${code}</span>
     <span class="who"><div class="n">${esc(f.name)}${f.party?' ('+f.party+')':''}</div><div class="v">${closes?closes+' · ':''}${other?('vs '+esc(other.name)+(other.party?' ('+other.party+')':'')+' '+pct(other.price)):''}${vol}</div>
-      ${spark||`<div class="ratingbar"><i style="width:${dP*100}%;background:var(--d3)"></i><i style="width:${oP*100}%;background:transparent"></i><i style="width:${rP*100}%;background:var(--r3)"></i></div>`}</span>
+      ${kal}${spark||`<div class="ratingbar"><i style="width:${dP*100}%;background:var(--d3)"></i><i style="width:${oP*100}%;background:transparent"></i><i style="width:${rP*100}%;background:var(--r3)"></i></div>`}</span>
     <span class="pct">${called?calledHtml(called)+'<small>'+pct(f.price)+'</small>':pct(f.price)+'<small>'+(f.party||'FAV')+'</small>'}${deltaHtml(dl,f.party)}</span></a>`;
+}
+// Kalshi price for the favourite's side, and the Polymarket–Kalshi gap in points (3+ is worth a look)
+function kalshiHtml(ch,key,f){
+  const r=BY[ch]&&BY[ch][key]; const k=r&&r.kalshi; if(!k||!f.party||k[f.party]==null) return '';
+  const gap=(f.price-k[f.party])*100, big=Math.abs(gap)>=3;
+  // a nested <a> would break the row's own link, so the Kalshi link is a span that opens its market on click
+  return `<div class="kal"><span class="klink" role="link" tabindex="0" data-href="${KL(k.ticker)}" title="Open on Kalshi">Kalshi <b>${pct(k[f.party])}</b></span> · gap <span class="gap${big?' big':''}" title="Polymarket minus Kalshi, ${esc(f.name)}">${gap>0?'+':''}${gap.toFixed(0)} pts</span></div>`;
 }
 function houseCands(r){ const c=[]; if(r.D)c.push({...r.D,party:'D'}); if(r.R)c.push({...r.R,party:'R'}); if(r.other)c.push({...r.other,party:''}); return c; }
 // Rows for the current view as a uniform list, so sorting and the movers strip work the same for every chamber
@@ -445,18 +519,49 @@ function renderPanel(){
   if(chamber==='house'&&selState) list.querySelectorAll('.race[data-id]').forEach(a=>{ a.addEventListener('mouseenter',()=>hlDist(a.dataset.id,true)); a.addEventListener('mouseleave',()=>hlDist(a.dataset.id,false)); });
 }
 
-// ---- Tabs, back buttons, deep links (#senate · #house · #house/TX · #governor)
+// ---- 2028: three leaderboards (winner, Democratic nominee, Republican nominee) from data/odds_2028.json
+function render2028(){
+  const el=document.getElementById('boards'); const ms=DATA2028.markets||[];
+  if(!ms.length){ el.innerHTML=`<div class="board" style="grid-column:1/-1"><h2>2028 presidential odds</h2><div class="sub">Coming with the next data refresh</div><div class="empty">The 2028 winner and nominee markets are pulled from the same feed as the midterm odds. If this box is still here an hour from now, the hourly refresh has not run; the markets themselves are at <a href="${PM('presidential-election-winner-2028')}" target="_blank" rel="noopener">Polymarket</a>.</div></div>`; return; }
+  el.innerHTML=ms.map(m=>{
+    const top=m.outcomes.slice(0,12), rest=m.outcomes.length-top.length;
+    const vol=m.volume?` · $${m.volume>=1e6?(m.volume/1e6).toFixed(1)+'M':Math.round(m.volume/1e3)+'K'} traded`:'';
+    return `<section class="board"><h2>${esc(m.label)}</h2><div class="sub">${esc(m.title)}${vol}</div>`+
+      top.map(o=>{ const ch=o.change24h!=null?(Math.abs(o.change24h*100)>=0.5?`<span class="delta ${o.change24h>0?'up':'dn'}" title="24h change">${o.change24h>0?'▲':'▼'}${Math.abs(o.change24h*100).toFixed(1)}</span>`:''):'';
+        return `<a class="cand" href="${PM(m.slug)}" target="_blank" rel="noopener"><span class="n">${esc(o.name)}${o.party?` <span style="color:var(--muted);font-weight:500">(${o.party})</span>`:''}</span><span class="p">${(o.price*100).toFixed(1)}% ${ch}</span><span class="bar2"><i class="${o.party||'X'}" style="width:${Math.min(100,o.price*100)}%"></i></span></a>`; }).join('')+
+      (rest>0?`<a class="more" href="${PM(m.slug)}" target="_blank" rel="noopener">+${rest} more on Polymarket ↗</a>`:'')+`</section>`;
+  }).join('');
+}
+// ---- Sponsor slot (site.json → sponsor), shown only inside its date window
+{ const sp=SITE.sponsor||{}, el=document.getElementById('sponsor');
+  const today=new Date().toISOString().slice(0,10);
+  if(sp.name && sp.url && (!sp.from||today>=sp.from) && (!sp.to||today<=sp.to)){
+    el.hidden=false; el.innerHTML=`<span class="k">Election coverage presented by</span><a href="${esc(sp.url)}" target="_blank" rel="noopener sponsored">${esc(sp.name)}</a>${sp.text?`<span style="color:var(--muted)">${esc(sp.text)}</span>`:''}`; } }
+// ---- Newsletter signup (site.json → newsletter.action: a form endpoint such as Buttondown's embed-subscribe URL)
+{ const nl=SITE.newsletter||{}, el=document.getElementById('nl');
+  if(nl.action){ el.hidden=false; el.innerHTML=`<label for="nl-email">${esc(nl.label||'Get the biggest odds moves in your inbox.')}</label><form id="nl-form" action="${esc(nl.action)}" method="post" target="_blank"><input id="nl-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email"><button type="submit">Subscribe</button></form>`;
+    el.querySelector('form').addEventListener('submit',()=>{ setTimeout(()=>{ el.innerHTML='<span class="ok">Check your inbox to confirm.</span>'; },300); }); } }
+// ---- Embed mode: ?embed=1[&chamber=senate|house|governor][&state=TX] strips the page to the map and a badge
+if(EMBED){ document.body.classList.add('embed');
+  const q=new URLSearchParams(location.search), ch=q.get('chamber'); if(['senate','house','governor'].includes(ch)) setTab(ch);
+  const st=(q.get('state')||'').toUpperCase(); if(chamber==='house' && HOUSE[st]) selState=st;
+  const home='https://presidentl.app/#'+chamber+(selState?'/'+selState:'');
+  document.getElementById('badge').innerHTML=`<span>Polymarket odds · ${new Date(DATA.updated).toLocaleDateString(undefined,{month:'short',day:'numeric'})}</span><span><a href="${home}" target="_blank" rel="noopener">presidentl.app ↗</a> <span class="sp">· data: PolymarketTrader.com</span></span>`; }
+
+// ---- Tabs, back buttons, deep links (#senate · #house · #house/TX · #governor · #2028)
 function setTab(ch){ chamber=ch; document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x.dataset.ch===ch)); }
-function setHash(){ const h='#'+chamber+(selState?'/'+selState:''); if(location.hash!==h) history.replaceState(null,'',h); }
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{ setTab(b.dataset.ch); selState=null; paint(); zoomTo(VB0); }));
+function setHash(){ if(EMBED) return; const h='#'+chamber+(selState?'/'+selState:''); if(location.hash!==h) history.replaceState(null,'',h); }
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{ setTab(b.dataset.ch); selState=null; paint(); if(chamber!=='2028') zoomTo(VB0); }));
 document.getElementById('p-back').addEventListener('click',()=>focusState(null));
 document.getElementById('map-back').addEventListener('click',()=>focusState(null));
 document.addEventListener('keydown',e=>{ if(e.key==='Escape' && selState) focusState(null); });
 document.getElementById('nightbtn').addEventListener('click',()=>{ night=!night; paint(); });
+document.getElementById('list').addEventListener('click',e=>{ const k=e.target.closest('.klink'); if(k){ e.preventDefault(); e.stopPropagation(); window.open(k.dataset.href,'_blank','noopener'); } });
+document.getElementById('list').addEventListener('keydown',e=>{ const k=e.target.closest('.klink'); if(k&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); e.stopPropagation(); window.open(k.dataset.href,'_blank','noopener'); } });
 { const age=(Date.now()-new Date(DATA.updated))/3.6e6, el=document.getElementById('stamp');
   el.textContent='Odds as of '+new Date(DATA.updated).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'})+(age>12?` (${Math.round(age)} h old)`:'');
   if(age>12) el.style.color='var(--r2)'; }
 build();
-{ const m=/^#(senate|house|governor)(?:\/([A-Z]{2}))?$/.exec(location.hash); if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
+if(!EMBED){ const m=/^#(senate|house|governor|2028)(?:\/([A-Z]{2}))?$/.exec(location.hash); if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
 paint(); if(selState) setVB(stateBox(selState));
 </script>
