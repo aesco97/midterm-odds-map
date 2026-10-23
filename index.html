@@ -105,6 +105,9 @@ svg.focus .mesh{opacity:.5}
 .seatgrid{display:flex;flex-wrap:wrap;gap:4px;padding:12px 14px;border-bottom:1px solid var(--line-soft)}
 .seat{width:16px;height:16px;border-radius:3px;display:block}
 .seat:hover{outline:2px solid var(--fg);outline-offset:1px}
+.seatgrid .cap{width:100%;font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.tip.fixed{position:fixed}
+.st.hl{filter:brightness(.86);stroke:var(--fg);stroke-width:2;paint-order:stroke}
 /* Price history: deltas, sparklines, movers */
 .delta{font:600 11px var(--mono);white-space:nowrap;font-variant-numeric:tabular-nums}
 .delta.up{color:var(--d2)} .delta.upr{color:var(--r2)} .delta.dn{color:var(--muted)} .delta.flat{color:var(--muted)}
@@ -233,6 +236,7 @@ body.embed .badge{display:flex}
 </div>
 <div class="badge" id="badge"></div>
 <div class="boards" id="boards"></div>
+<div class="tip fixed" id="ptip" hidden></div>
 
 <div class="foot">
   <span class="links"><a href="embed.html">Embed this map</a><a href="data.html">Download the data</a><a href="https://github.com/aesco97/midterm-odds-map" target="_blank" rel="noopener">Source</a></span>
@@ -465,6 +469,27 @@ function showDistTip(id,e){
   tip.innerHTML=html; placeTip(e);
 }
 
+// ---- Seat tiles: hover card (viewport-fixed, since the grid scrolls inside the panel) + highlight on the map
+const ptip=document.getElementById('ptip');
+function placePTip(e){
+  let x=e.clientX+14, y=e.clientY+14;
+  if(x+270>innerWidth) x=e.clientX-284; if(y+160>innerHeight) y=e.clientY-150;
+  ptip.style.left=x+'px'; ptip.style.top=y+'px'; ptip.hidden=false;
+}
+function seatTip(x,e){
+  let html;
+  if(chamber==='house'){ const r=HR[x.key]; html=`<b>${x.key} · ${STATES[x.st].name}</b>`+candRows(x.cands,3)+tipDelta('house',x.key,x.fav.party)+(r&&r.rating?`<div style="color:var(--muted);margin-top:4px">${esc(r.rating)}</div>`:''); }
+  else { const r=BY[chamber][x.key]; html=`<b>${STATES[x.st].name} ${LABEL[chamber]}</b>`+candRows(x.cands,4)+tipDelta(chamber,x.key,x.fav.party)+tipKalshi(r); }
+  if(x.called) html+=`<div class="row"><span style="color:var(--muted)">Market call</span>${calledHtml(x.called)}</div>`;
+  html+=`<div style="color:var(--muted);margin-top:4px">${night&&x.st?'Polls close '+closeLabel(x.st)+' · ':''}Click to open on Polymarket ↗</div>`;
+  ptip.innerHTML=html; placePTip(e);
+}
+function hlMap(x,on){
+  if(chamber==='house'&&selState){ hlDist(x.key,on); return; }
+  const p=svg.querySelector(`.st[data-st="${x.st}"]`); if(p) p.classList.toggle('hl',on);
+}
+const lean=x=>{ const d=x.cands.find(c=>c.party==='D'), r=x.cands.find(c=>c.party==='R'); return (d?d.price:0)-(r?r.price:0); };
+
 // ---- Race ledger
 // Every row knows its history key: senate/governor rows use the state code, house rows the district id.
 function raceRow(code,cands,market,volume,bk,id,ch,key,st){
@@ -518,16 +543,21 @@ function renderPanel(){
   const dN=rows.filter(x=>x.fav.party==='D').length, rN=rows.filter(x=>x.fav.party==='R').length;
   const order = night?'by poll close':sortMode==='movers'?'biggest moves first':'closest first';
   if(chamber!=='house'){
-    grid.hidden=true;
     t.textContent=`All ${rows.length} ${chamber==='senate'?'Senate':'governor'} races, ${order}`; sub.textContent=`Democrats favoured in ${dN}, Republicans in ${rN}`;
   } else {
     const allD=DATA.house.races.filter(r=>hFav(r).party==='D').length, allR=DATA.house.races.length-allD;
     if(selState){ const h=stateHouse(selState); t.textContent=`${STATES[selState].name}: ${h.n} district${h.n>1?'s':''}`; sub.textContent=`Favoured: ${h.d} D · ${h.r} R — hover to find a district, click to open its market`; }
     else { t.textContent=`All House districts, ${order}`; sub.textContent=`${DATA.house.races.length} districts with a market · favoured ${allD} D · ${allR} R (218 for a majority) · click a state to zoom in`; }
-    // seat grid: one tile per district, sorted D-safe to R-safe
-    const all=(selState?(HOUSE[selState]||[]):DATA.house.races).slice().sort((a,b)=>{const da=(a.D?a.D.price:0)-(a.R?a.R.price:0), db=(b.D?b.D.price:0)-(b.R?b.R.price:0); return db-da;});
-    grid.hidden=false; grid.innerHTML=all.map(r=>{const f=hFav(r); const c=calledParty(f.price,f.party); return `<a class="seat" href="${PM(r.market)}" target="_blank" rel="noopener" title="${r.id}: ${esc(f.name)} ${pct(f.price)}${c?' · called':''}" style="background:var(--${c?(c==='D'?'dc':'rc'):bucket(f.price,f.party)})"></a>`;}).join('');
   }
+  // seat grid: one tile per race, sorted D-safe to R-safe; hover for the race card, click to open its market
+  const tiles=rows.slice().sort((a,b)=>lean(b)-lean(a));
+  const what=chamber==='house'?(selState?'districts':'districts with a market'):chamber==='senate'?'Senate races':'governor races';
+  grid.hidden=false; grid.innerHTML=`<div class="cap">${tiles.length} ${what} · one square each, Democratic favourites left</div>`+tiles.map((x,i)=>`<a class="seat" href="${PM(x.market)}" target="_blank" rel="noopener" data-i="${i}" aria-label="${x.code}: ${esc(x.fav.name)} ${pct(x.fav.price)}" style="background:var(--${x.called?(x.called==='D'?'dc':'rc'):bucket(x.fav.price,x.fav.party)})"></a>`).join('');
+  grid.querySelectorAll('.seat').forEach(a=>{ const x=tiles[+a.dataset.i];
+    a.addEventListener('mousemove',e=>seatTip(x,e));
+    a.addEventListener('mouseenter',()=>hlMap(x,true));
+    a.addEventListener('mouseleave',()=>{ ptip.hidden=true; hlMap(x,false); });
+    a.addEventListener('focus',()=>hlMap(x,true)); a.addEventListener('blur',()=>hlMap(x,false)); });
   list.innerHTML=rows.map(x=>raceRow(x.code,x.cands,x.market,x.volume,bucket(x.fav.price,x.fav.party),x.id,chamber,x.key,x.st)).join('');
   if(chamber==='house'&&selState) list.querySelectorAll('.race[data-id]').forEach(a=>{ a.addEventListener('mouseenter',()=>hlDist(a.dataset.id,true)); a.addEventListener('mouseleave',()=>hlDist(a.dataset.id,false)); });
 }
