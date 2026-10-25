@@ -1,0 +1,29 @@
+{
+  "asof": "2026-10-25",
+  "note": "Current composition and who holds each seat that is up in 2026. Used for the projected seat counts and the flip list. Senate D count includes the two independents who caucus with the Democrats. House counts are the full chamber with vacancies filled by the party that held the seat.",
+  "senate": {
+    "current": {"D": 47, "R": 53},
+    "majority": 51,
+    "holders": {
+      "AL": "R", "AK": "R", "AR": "R", "CO": "D", "DE": "D", "FL": "R", "GA": "D", "ID": "R", "IL": "D", "IA": "R",
+      "KS": "R", "KY": "R", "LA": "R", "ME": "R", "MA": "D", "MI": "D", "MN": "D", "MS": "R", "MT": "R", "NE": "R",
+      "NH": "D", "NJ": "D", "NM": "D", "NC": "R", "OH": "R", "OK": "R", "OR": "D", "RI": "D", "SC": "R", "SD": "R",
+      "TN": "R", "TX": "R", "VA": "D", "WV": "R", "WY": "R"
+    }
+  },
+  "house": {
+    "current": {"D": 215, "R": 220},
+    "majority": 218,
+    "total": 435
+  },
+  "governor": {
+    "current": {"D": 24, "R": 26},
+    "majority": null,
+    "holders": {
+      "AL": "R", "AK": "R", "AZ": "D", "AR": "R", "CA": "D", "CO": "D", "CT": "D", "FL": "R", "GA": "R", "HI": "D",
+      "ID": "R", "IL": "D", "IA": "R", "KS": "D", "ME": "D", "MD": "D", "MA": "D", "MI": "D", "MN": "D", "NE": "R",
+      "NV": "R", "NH": "R", "NM": "D", "NY": "D", "OH": "R", "OK": "R", "OR": "D", "PA": "D", "RI": "D", "SC": "R",
+      "SD": "R", "TN": "R", "TX": "R", "VT": "R", "WI": "D", "WY": "R"
+    }
+  }
+}

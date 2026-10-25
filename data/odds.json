@@ -7300,12 +7300,12 @@
     "cands": [
      {
       "name": "Jonathan Kreiss-Tomkins",
-      "party": "",
+      "party": "D",
       "price": 0.8655
      },
      {
       "name": "Bernadette Wilson",
-      "party": "",
+      "party": "R",
       "price": 0.13
      }
     ]
@@ -7775,12 +7775,12 @@
     "cands": [
      {
       "name": "Xavier Becerra",
-      "party": "",
+      "party": "D",
       "price": 0.9715
      },
      {
       "name": "Steve Hilton",
-      "party": "",
+      "party": "R",
       "price": 0.0285
      }
     ],

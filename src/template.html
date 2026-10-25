@@ -129,6 +129,22 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--dc:#4d8cff;--rc:#ff6a55} }
 :root[data-theme="dark"]{--dc:#4d8cff;--rc:#ff6a55}
 .bar .o{background:var(--none)}
+/* Projected seats: every race to its current favourite, versus today's composition */
+.proj{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line)}
+.proj[hidden]{display:none}
+.proj .lab{font-family:var(--display);font-weight:700;font-size:15px}
+.proj .nums{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;font-variant-numeric:tabular-nums}
+.proj .num{font-family:var(--display);font-weight:800;font-size:22px;line-height:1}
+.proj .num.d{color:var(--d2)} .proj .num.r{color:var(--r2)}
+.proj .num small{font:600 12px var(--mono);margin-left:4px;vertical-align:2px}
+.proj .num small.up{color:var(--fg)} .proj .num small.dn{color:var(--muted)}
+.proj .maj{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.proj .flips{grid-column:2;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+.proj .flip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:2px 8px;font:500 11.5px var(--mono);color:var(--fg);text-decoration:none;background:var(--bg)}
+.proj .flip:hover{border-color:var(--fg)}
+.proj .flip i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.proj .note{grid-column:2;font-size:11.5px;color:var(--muted)}
+@media (max-width:600px){.proj{grid-template-columns:1fr}.proj .flips,.proj .note{grid-column:1}}
 .bar.tally .d{background:var(--dc)} .bar.tally .r{background:var(--rc)}
 .called{display:inline-flex;align-items:center;gap:4px;font:700 11px var(--mono);letter-spacing:.06em;padding:2px 7px;border-radius:4px;color:#fff}
 .called.D{background:var(--dc)} .called.R{background:var(--rc)}
@@ -178,7 +194,7 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
 .board .more{display:block;padding:10px 14px;font-size:12px;color:var(--muted);text-decoration:none}
 /* Embed mode: map only, with a badge */
 body.embed{padding-block:8px 8px}
-body.embed header,body.embed .control,body.embed .panel,body.embed .foot,body.embed .sponsor,body.embed .boards{display:none!important}
+body.embed header,body.embed .control,body.embed .proj,body.embed .panel,body.embed .foot,body.embed .sponsor,body.embed .boards{display:none!important}
 body.embed .main{grid-template-columns:1fr;padding-top:0}
 body.embed .panel{display:none}
 .badge{display:none;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);margin-top:6px}
@@ -210,6 +226,7 @@ body.embed .badge{display:flex}
   <div class="bar" id="ctl-bar" title="Polymarket chamber-control market"><div class="d" id="ctl-d"></div><div class="o" id="ctl-o" style="width:0"></div><div class="r" id="ctl-r"></div></div>
   <div class="side" id="ctl-txt"></div>
 </div>
+<div class="proj" id="proj" hidden></div>
 
 <div class="main">
   <div class="mapbox">
@@ -332,6 +349,7 @@ function paint(){
   document.querySelector('.main').style.display = is2028?'none':'';
   document.querySelector('.control').style.display = is2028?'none':'';
   document.getElementById('boards').classList.toggle('on',is2028);
+  document.getElementById('proj').hidden=is2028;
   if(is2028){ render2028(); setHash(); return; }
   for(const st of Object.keys(STATES)){
     const p=svg.querySelector(`[data-st="${st}"]`), l=svg.querySelector(`[data-lbl="${st}"]`), a=svg.querySelector(`[data-sl="${st}"]`);
@@ -376,6 +394,7 @@ function paint(){
   svg.classList.toggle('focus',!!selState);
   document.getElementById('map-back').hidden=!selState;
   renderDistricts();
+  renderProjection();
   renderPanel();
   setHash();
 }
@@ -506,6 +525,39 @@ function viewRows(){
   if(chamber!=='house') return DATA[chamber].races.map(r=>{const f=fav(r.cands); return {code:r.state, st:r.state, key:r.state, cands:r.cands, market:r.market, volume:r.volume, fav:f, margin:f.price-(r.cands.filter(c=>c!==f).sort((a,b)=>b.price-a.price)[0]||{price:0}).price, id:null};});
   const rs=selState?(HOUSE[selState]||[]):DATA.house.races;
   return rs.map(r=>{const f=hFav(r); return {code:r.id, st:r.id.slice(0,2), key:r.id, cands:houseCands(r), market:r.market, volume:r.volume, fav:f, margin:hMargin(r), id:selState?r.id:null};});
+}
+// ---- Projected seats: every race goes to its current favourite; compared with the baseline in data/baseline.json
+function projection(){
+  const b=BASE[chamber]; if(!b||!b.current) return null;
+  let d=0,r=0,o=0; const flips=[];
+  if(chamber==='house'){
+    DATA.house.races.forEach(x=>{ hFav(x).party==='D'?d++:r++; });
+    const missing=(b.total||435)-DATA.house.races.length;
+    return {d,r,o,flips,missing,current:b.current,majority:b.majority,dD:d-b.current.D,dR:r-b.current.R};
+  }
+  const held={D:0,R:0};
+  DATA[chamber].races.forEach(x=>{ const h=b.holders&&b.holders[x.state]; if(held[h]!=null) held[h]++;
+    const f=fav(x.cands); if(f.party==='D')d++; else if(f.party==='R')r++; else o++;
+    if(h&&f.party&&h!==f.party) flips.push({st:x.state,from:h,to:f.party,price:f.price,market:x.market,name:f.name}); });
+  d+=b.current.D-held.D; r+=b.current.R-held.R;
+  flips.sort((a,b2)=>b2.price-a.price);
+  return {d,r,o,flips,missing:0,current:b.current,majority:b.majority,dD:d-b.current.D,dR:r-b.current.R};
+}
+function renderProjection(){
+  const el=document.getElementById('proj'), p=chamber==='2028'?null:projection();
+  if(!p){ el.hidden=true; return; }
+  const sg=n=>n>0?'+'+n:n===0?'±0':'−'+Math.abs(n);
+  const chg=n=>`<small class="${n>0?'up':n<0?'dn':''}" title="change from today">${sg(n)}</small>`;
+  const what=chamber==='senate'?'Senate seats':chamber==='house'?'House seats':'Governorships';
+  const majTxt=p.majority?`${p.majority} for a majority`:'';
+  const flipHtml=p.flips.length?`<span>Projected flips (${p.flips.length}):</span>`+p.flips.map(f=>`<a class="flip" href="${PM(f.market)}" target="_blank" rel="noopener" title="${esc(f.name)} ${pct(f.price)}"><i style="background:var(--${f.to==='D'?'d3':'r3'})"></i>${f.st} ${f.from}→${f.to} <span style="color:var(--muted)">${pct(f.price)}</span></a>`).join('')
+    : chamber==='house'?'':'<span>No seat is projected to change hands.</span>';
+  const notes=[`If every race goes to its current favourite, however close.`, `Today: D ${p.current.D} · R ${p.current.R}${chamber==='senate'?' (D includes 2 independents)':''}${BASE.asof?', as of '+new Date(BASE.asof+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}):''}.`];
+  if(p.missing) notes.push(`${p.missing} district${p.missing>1?'s have':' has'} no market and is left out, so the changes do not sum to zero.`);
+  if(p.o) notes.push(`${p.o} race${p.o>1?'s':''} favour${p.o>1?'':'s'} a candidate with no party label.`);
+  el.hidden=false;
+  el.innerHTML=`<div class="lab">Projected ${what}</div><div class="nums"><span class="num d">${p.d} D${chg(p.dD)}</span>${majTxt?`<span class="maj">${majTxt}</span>`:''}<span class="num r">${p.r} R${chg(p.dR)}</span></div>`+
+    (chamber==='house'?'':`<div class="flips">${flipHtml}</div>`)+`<div class="note">${notes.join(' ')}</div>`;
 }
 function tally(){ let d=0,r=0,open=0; viewRows().forEach(x=>{ const c=calledParty(x.fav.price,x.fav.party); if(c==='D')d++; else if(c==='R')r++; else open++; }); return {d,r,open}; }
 function renderPanel(){

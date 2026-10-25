@@ -32,6 +32,7 @@ src/template.html    page source: markup, CSS, and the map/panel logic
 data/states.js       projected SVG path data for the 50 states (us-atlas, Albers USA)
 data/districts.js    projected SVG paths for the 429 multi-district House seats (Census, 119th Congress)
 data/odds.json       Senate + House + Governor odds in the page's schema
+data/baseline.json   current seat counts and who holds each seat up in 2026 (for the projection and flip list)
 data/history/        one compact snapshot per feed update (Democratic price per race); feeds the deltas and sparklines
 scripts/build.py     template + data -> index.html
 scripts/fetch_odds.py  refresh data/odds.json from the feed, then build
@@ -59,6 +60,10 @@ Deep links: `#senate`, `#house`, `#governor`, or `#house/TX` to open zoomed in t
 ## Movement over time
 
 Every time the workflow sees new prices it also drops a small snapshot in `data/history/` (about two a day). `build.py` folds those into the page, which then shows for every race the change in the favourite's price (▲/▼ points), a sparkline, and a "Biggest movers" strip with a toggle to sort the ledger by movement instead of closeness. The comparison window is 7 days once there is a week of history; until then it is "since <first snapshot>". The history started on Oct 22, 2026, so the first few days show small or no deltas.
+
+## Projected seat counts
+
+Under the control bar each chamber shows what the chamber would look like if every race went to its current favourite, next to the change from today's composition, and which seats would flip. The baseline lives in `data/baseline.json`: the current D/R counts, the majority threshold, and the party holding every seat that is up in 2026. Update it when a seat changes hands (a resignation, a special election). Senate D counts include the two independents who caucus with the Democrats. The House projection only covers districts with a market (CA-40 has none at the moment), so its two changes do not sum to zero.
 
 ## Election night
 

@@ -8,7 +8,9 @@ root = pathlib.Path(__file__).resolve().parent.parent
 URL = 'https://polymarkettrader.com/api/v1/midterms-2026.json'
 STATE_CODE = {"Alabama":"AL","Alaska":"AK","Arizona":"AZ","Arkansas":"AR","California":"CA","Colorado":"CO","Connecticut":"CT","Delaware":"DE","Florida":"FL","Georgia":"GA","Hawaii":"HI","Idaho":"ID","Illinois":"IL","Indiana":"IN","Iowa":"IA","Kansas":"KS","Kentucky":"KY","Louisiana":"LA","Maine":"ME","Maryland":"MD","Massachusetts":"MA","Michigan":"MI","Minnesota":"MN","Mississippi":"MS","Missouri":"MO","Montana":"MT","Nebraska":"NE","Nevada":"NV","New Hampshire":"NH","New Jersey":"NJ","New Mexico":"NM","New York":"NY","North Carolina":"NC","North Dakota":"ND","Ohio":"OH","Oklahoma":"OK","Oregon":"OR","Pennsylvania":"PA","Rhode Island":"RI","South Carolina":"SC","South Dakota":"SD","Tennessee":"TN","Texas":"TX","Utah":"UT","Vermont":"VT","Virginia":"VA","Washington":"WA","West Virginia":"WV","Wisconsin":"WI","Wyoming":"WY"}
 # Markets that list candidates without party labels: name -> party
-PARTY_FIX = {"alaska-senate-election-winner": {"Mary Peltola": "D", "Sen. Dan Sullivan": "R"}}
+PARTY_FIX = {"alaska-senate-election-winner": {"Mary Peltola": "D", "Sen. Dan Sullivan": "R"},
+             "alaska-governor-election-winner": {"Jonathan Kreiss-Tomkins": "D", "Bernadette Wilson": "R"},
+             "california-governor-election-2026": {"Xavier Becerra": "D", "Steve Hilton": "R"}}
 
 def control(ch):
     out = {"D": 0, "R": 0}

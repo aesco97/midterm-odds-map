@@ -17,6 +17,7 @@ def write(p, s): (root/p).write_text(s, encoding='utf-8')
 data = json.loads(read('data/odds.json'))
 data2028 = json.loads(read('data/odds_2028.json')) if (root/'data/odds_2028.json').exists() else {"updated": None, "markets": []}
 site = json.loads(read('site.json')) if (root/'site.json').exists() else {}
+base = json.loads(read('data/baseline.json')) if (root/'data/baseline.json').exists() else {}
 
 def history():
     """Fold data/history/*.json into series of [unix_seconds, democratic_price] per race, oldest first."""
@@ -48,7 +49,7 @@ def page(body):
 
 J = lambda o: json.dumps(o, ensure_ascii=False, separators=(',', ':'))
 site_js = 'const SITE=' + J(site) + ';'
-inject = f"const DATA={J(data)};\nconst HIST={J(hist)};\nconst DATA2028={J(data2028)};\n{site_js}"
+inject = f"const DATA={J(data)};\nconst HIST={J(hist)};\nconst DATA2028={J(data2028)};\nconst BASE={J(base)};\n{site_js}"
 body = read('src/template.html').replace('/*STATES*/', read('data/states.js')).replace('/*DISTRICTS*/', read('data/districts.js')).replace('/*DATA*/', inject)
 write('index.html', page(body))
 
