@@ -66,8 +66,8 @@ def main():
             "governor": {"seats": gov.get("seats", []), "races": governor_races}}
     (root/'data/odds.json').write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding='utf-8')
     print(f"odds.json: {len(senate_races)} Senate · {len(house_races)} House · {len(governor_races)} Governor · updated {src['updated']}")
-    snapshot(data)
     fetch_2028()
+    snapshot(data)
     subprocess.run([sys.executable, str(root/'scripts/build.py')], check=True)
 
 MARKETS_2028 = [  # PolymarketTrader single-market feed slugs (= Polymarket event slugs)
@@ -168,7 +168,15 @@ def snapshot(data):
     hist = root/'data/history'; hist.mkdir(exist_ok=True)
     stamp = data['updated'][:16].replace(':', '-')  # 2026-10-22T13-50
     out = hist/f'{stamp}.json'
-    if out.exists(): return
+    p2028 = {}
+    if (root/'data/odds_2028.json').exists():
+        for m in json.loads((root/'data/odds_2028.json').read_text(encoding='utf-8'))['markets']:
+            p2028[m['slug']] = {o['name']: round(o['price'], 4) for o in m['outcomes']}
+    if out.exists():  # same feed stamp as before; only add the 2028 prices if that snapshot predates them
+        snap = json.loads(out.read_text(encoding='utf-8'))
+        if 'p2028' in snap or not p2028: return
+        snap['p2028'] = p2028; out.write_text(json.dumps(snap, separators=(',', ':')), encoding='utf-8')
+        print(f"history: added 2028 prices to {out.name}"); return
     def dprice(cands):  # Democratic price; in races with no priced Democrat (NE, ID...), the non-Republican share
         d = next((c for c in cands if c['party'] == 'D'), None)
         r = next((c for c in cands if c['party'] == 'R'), None)
@@ -179,6 +187,7 @@ def snapshot(data):
             'senate': {r['state']: dprice(r['cands']) for r in data['senate']['races']},
             'governor': {r['state']: dprice(r['cands']) for r in data['governor']['races']},
             'house': {r['id']: round(r['D']['price'], 3) for r in data['house']['races']}}
+    if p2028: snap['p2028'] = p2028
     out.write_text(json.dumps(snap, separators=(',', ':')), encoding='utf-8')
     print(f"history: wrote {out.name}")
 

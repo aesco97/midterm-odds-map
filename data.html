@@ -82,7 +82,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <tr><td><code>house.races[]</code></td><td><code>id</code> (e.g. TX-23), <code>market</code>, <code>rating</code>, <code>volume</code>, <code>D</code>/<code>R</code> = {name, price}, optional <code>other</code></td></tr>
 <tr><td><code>senate.control</code>, <code>house.control</code></td><td>{D, R}: the chamber-control market</td></tr>
 <tr><td><code>*.seats[]</code></td><td>{outcome, price}: seat-count buckets</td></tr>
-<tr><td><code>history.csv</code></td><td><code>updated_utc, chamber, race, democratic_price</code></td><td>chamber ∈ senate · house · governor · control; race is the state code, district id, or chamber name for control</td></tr>
+<tr><td><code>history.csv</code></td><td><code>updated_utc, chamber, race, democratic_price</code></td><td>chamber ∈ senate · house · governor · control, or a 2028 market slug; race is the state code, district id, chamber name for control, or the candidate's name for 2028 (price = that candidate's)</td></tr>
 <tr><td><code>odds_2028.json</code></td><td><code>markets[]</code></td><td>{slug, title, outcomes[] = {name, party, price, change24h}, history{name: [[unix_s, price]]}} for the winner and both nominee markets</td></tr>
 </table></div>
 
@@ -94,7 +94,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 </div>
 <script>
 const SITE={"referral":{"polymarket":"","kalshi":""},"sponsor":{"name":"","url":"","text":"","from":"2026-11-03","to":"2026-11-05"},"newsletter":{"action":"","label":"Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."},"embed":{"whitelabel_price":"$149"},"contact":{"email":"","url":"https://github.com/aesco97"}};
-const STATS={"snapshots":7,"rows":3535,"first":"2026-10-22T13:50:29Z","last":"2026-10-25T13:53:53Z","races":505,"updated":"2026-10-25T13:53:53+00:00"};
+const STATS={"snapshots":7,"rows":3610,"first":"2026-10-22T13:50:29Z","last":"2026-10-25T13:53:53Z","races":505,"updated":"2026-10-25T13:53:53+00:00"};
 const fmt=s=>s?new Date(s).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}):'';
 document.getElementById('s-updated').textContent=`${STATS.races} races · updated ${fmt(STATS.updated)}`;
 document.getElementById('s-hist').textContent=STATS.rows?`${STATS.rows.toLocaleString()} rows from ${STATS.snapshots} snapshots, ${fmt(STATS.first)} to ${fmt(STATS.last)}`:'No snapshots yet.';

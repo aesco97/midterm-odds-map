@@ -21,7 +21,7 @@ base = json.loads(read('data/baseline.json')) if (root/'data/baseline.json').exi
 
 def history():
     """Fold data/history/*.json into series of [unix_seconds, democratic_price] per race, oldest first."""
-    series = {'senate': {}, 'house': {}, 'governor': {}, 'control': {'senate': [], 'house': []}}
+    series = {'senate': {}, 'house': {}, 'governor': {}, 'control': {'senate': [], 'house': []}, 'p2028': {}}
     files = sorted((root/'data/history').glob('*.json')) if (root/'data/history').exists() else []
     rows = []
     for f in files:
@@ -35,6 +35,9 @@ def history():
         for ch in ('senate', 'house'):
             v = snap.get('control', {}).get(ch)
             if v is not None: series['control'][ch].append([t, v]); rows.append((stamp, 'control', ch, v))
+        for slug, prices in snap.get('p2028', {}).items():  # 2028 markets: price per candidate, keyed by market slug
+            for name, v in prices.items():
+                series['p2028'].setdefault(slug, {}).setdefault(name, []).append([t, v]); rows.append((stamp, slug, name, v))
     return series, rows, len(files)
 
 hist, rows, nsnap = history()

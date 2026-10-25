@@ -602,14 +602,24 @@ function renderPanel(){
 }
 
 // ---- 2028: three leaderboards (winner, Democratic nominee, Republican nominee) from data/odds_2028.json
+// Change per candidate comes from our own snapshots (HIST.p2028, same 7-day/since-first window as the midterm races);
+// until there are two snapshots it falls back to the feed's 24-hour change, which the feed only reports for some names.
+function delta2028(slug,name){ const s=(HIST.p2028&&HIST.p2028[slug]&&HIST.p2028[slug][name])||[]; const i=refIndex(s); if(i<0) return null; return {pts:(s[s.length-1][1]-s[i][1])*100, days:(s[s.length-1][0]-s[i][0])/86400, since:s[i][0]}; }
+function change2028Html(slug,o){
+  const dl=delta2028(slug,o.name); let pts, title;
+  if(dl){ pts=dl.pts; title=windowLabel(dl); } else if(o.change24h!=null){ pts=o.change24h*100; title='24h change (feed)'; } else return '<span class="delta flat" title="no change data yet">—</span>';
+  if(Math.abs(pts)<0.1) return `<span class="delta flat" title="${title}">—</span>`;
+  return `<span class="delta ${pts>0?'up':'dn'}" title="${title}">${pts>0?'▲':'▼'}${Math.abs(pts).toFixed(1)}</span>`;
+}
 function render2028(){
   const el=document.getElementById('boards'); const ms=DATA2028.markets||[];
   if(!ms.length){ el.innerHTML=`<div class="board" style="grid-column:1/-1"><h2>2028 presidential odds</h2><div class="sub">Coming with the next data refresh</div><div class="empty">The 2028 winner and nominee markets are pulled from the same feed as the midterm odds. If this box is still here an hour from now, the hourly refresh has not run; the markets themselves are at <a href="${PM('presidential-election-winner-2028')}" target="_blank" rel="noopener">Polymarket</a>.</div></div>`; return; }
   el.innerHTML=ms.map(m=>{
     const top=m.outcomes.slice(0,12), rest=m.outcomes.length-top.length;
     const vol=m.volume?` · $${m.volume>=1e6?(m.volume/1e6).toFixed(1)+'M':Math.round(m.volume/1e3)+'K'} traded`:'';
-    return `<section class="board"><h2>${esc(m.label)}</h2><div class="sub">${esc(m.title)}${vol}</div>`+
-      top.map(o=>{ const ch=o.change24h!=null?(Math.abs(o.change24h*100)>=0.5?`<span class="delta ${o.change24h>0?'up':'dn'}" title="24h change">${o.change24h>0?'▲':'▼'}${Math.abs(o.change24h*100).toFixed(1)}</span>`:''):'';
+    const anyDl=top.map(o=>delta2028(m.slug,o.name)).find(x=>x); const win=anyDl?(anyDl.days>=6.5?'7-day change':'change since '+new Date(anyDl.since*1000).toLocaleDateString(undefined,{month:'short',day:'numeric'})):'24h change (feed)';
+    return `<section class="board"><h2>${esc(m.label)}</h2><div class="sub">${esc(m.title)}${vol} · ${win}</div>`+
+      top.map(o=>{ const ch=change2028Html(m.slug,o);
         return `<a class="cand" href="${PM(m.slug)}" target="_blank" rel="noopener"><span class="n">${esc(o.name)}${o.party?` <span style="color:var(--muted);font-weight:500">(${o.party})</span>`:''}</span><span class="p">${(o.price*100).toFixed(1)}% ${ch}</span><span class="bar2"><i class="${o.party||'X'}" style="width:${Math.min(100,o.price*100)}%"></i></span></a>`; }).join('')+
       (rest>0?`<a class="more" href="${PM(m.slug)}" target="_blank" rel="noopener">+${rest} more on Polymarket ↗</a>`:'')+`</section>`;
   }).join('');

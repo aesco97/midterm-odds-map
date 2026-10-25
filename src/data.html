@@ -75,7 +75,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <tr><td><code>house.races[]</code></td><td><code>id</code> (e.g. TX-23), <code>market</code>, <code>rating</code>, <code>volume</code>, <code>D</code>/<code>R</code> = {name, price}, optional <code>other</code></td></tr>
 <tr><td><code>senate.control</code>, <code>house.control</code></td><td>{D, R}: the chamber-control market</td></tr>
 <tr><td><code>*.seats[]</code></td><td>{outcome, price}: seat-count buckets</td></tr>
-<tr><td><code>history.csv</code></td><td><code>updated_utc, chamber, race, democratic_price</code></td><td>chamber ∈ senate · house · governor · control; race is the state code, district id, or chamber name for control</td></tr>
+<tr><td><code>history.csv</code></td><td><code>updated_utc, chamber, race, democratic_price</code></td><td>chamber ∈ senate · house · governor · control, or a 2028 market slug; race is the state code, district id, chamber name for control, or the candidate's name for 2028 (price = that candidate's)</td></tr>
 <tr><td><code>odds_2028.json</code></td><td><code>markets[]</code></td><td>{slug, title, outcomes[] = {name, party, price, change24h}, history{name: [[unix_s, price]]}} for the winner and both nominee markets</td></tr>
 </table></div>
 
