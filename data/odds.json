@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28T01:52:56+00:00",
+ "updated": "2026-10-28T13:56:26+00:00",
  "senate": {
   "control": {
    "D": 0.665,
@@ -8,7 +8,7 @@
   "seats": [
    {
     "outcome": "≤47",
-    "price": 0.405
+    "price": 0.4
    },
    {
     "outcome": "48",
@@ -16,15 +16,15 @@
    },
    {
     "outcome": "49",
-    "price": 0.105
+    "price": 0.115
    },
    {
     "outcome": "50",
-    "price": 0.105
+    "price": 0.125
    },
    {
     "outcome": "51",
-    "price": 0.095
+    "price": 0.075
    },
    {
     "outcome": "52",
@@ -32,23 +32,23 @@
    },
    {
     "outcome": "53",
-    "price": 0.052
+    "price": 0.053
    },
    {
     "outcome": "54",
-    "price": 0.0075
+    "price": 0.015
    },
    {
     "outcome": "55",
-    "price": 0.0035
+    "price": 0.0005
    },
    {
     "outcome": "56",
-    "price": 0.0035
+    "price": 0.0025
    },
    {
     "outcome": "57+",
-    "price": 0.0055
+    "price": 0.0025
    }
   ],
   "races": [
@@ -57,7 +57,7 @@
     "name": "Iowa",
     "market": "iowa-senate-election-winner",
     "rating": "Toss-up",
-    "volume": 1132330,
+    "volume": 1151921,
     "cands": [
      {
       "name": "Ashley Hinson",
@@ -67,12 +67,12 @@
      {
       "name": "Josh Turek",
       "party": "D",
-      "price": 0.425
+      "price": 0.435
      }
     ],
     "kalshi": {
      "ticker": "SENATEIA-26",
-     "D": 0.435,
+     "D": 0.445,
      "R": 0.565
     }
    },
@@ -81,7 +81,7 @@
     "name": "Kansas",
     "market": "kansas-senate-election-winner",
     "rating": "Lean Republican",
-    "volume": 1344921,
+    "volume": 1368116,
     "cands": [
      {
       "name": "Roger Marshall",
@@ -91,13 +91,13 @@
      {
       "name": "Adam Hamilton",
       "party": "D",
-      "price": 0.385
+      "price": 0.395
      }
     ],
     "kalshi": {
      "ticker": "SENATEKS-26",
      "D": 0.395,
-     "R": 0.595
+     "R": 0.605
     }
    },
    {
@@ -105,7 +105,7 @@
     "name": "Maine",
     "market": "maine-senate-election-winner",
     "rating": "Lean Democrat",
-    "volume": 2799494,
+    "volume": 2816828,
     "cands": [
      {
       "name": "Troy Jackson",
@@ -115,7 +115,7 @@
      {
       "name": "Susan Collins",
       "party": "R",
-      "price": 0.375
+      "price": 0.37
      }
     ],
     "kalshi": {
@@ -129,7 +129,7 @@
     "name": "Texas",
     "market": "texas-senate-election-winner",
     "rating": "Lean Democrat",
-    "volume": 7016428,
+    "volume": 7061823,
     "cands": [
      {
       "name": "James Talarico",
@@ -149,11 +149,35 @@
     }
    },
    {
+    "state": "OH",
+    "name": "Ohio",
+    "market": "ohio-senate-election-winner",
+    "rating": "Lean Democrat",
+    "volume": 1908630,
+    "cands": [
+     {
+      "name": "Sherrod Brown",
+      "party": "D",
+      "price": 0.69
+     },
+     {
+      "name": "Jon Husted",
+      "party": "R",
+      "price": 0.31
+     }
+    ],
+    "kalshi": {
+     "ticker": "SENATEOHS-26",
+     "D": 0.675,
+     "R": 0.335
+    }
+   },
+   {
     "state": "MI",
     "name": "Michigan",
     "market": "michigan-senate-election-winner",
     "rating": "Lean Democrat",
-    "volume": 2832821,
+    "volume": 2843450,
     "cands": [
      {
       "name": "Abdul El-Sayed",
@@ -173,40 +197,16 @@
     }
    },
    {
-    "state": "OH",
-    "name": "Ohio",
-    "market": "ohio-senate-election-winner",
-    "rating": "Lean Democrat",
-    "volume": 1881830,
-    "cands": [
-     {
-      "name": "Sherrod Brown",
-      "party": "D",
-      "price": 0.705
-     },
-     {
-      "name": "Jon Husted",
-      "party": "R",
-      "price": 0.3
-     }
-    ],
-    "kalshi": {
-     "ticker": "SENATEOHS-26",
-     "D": 0.675,
-     "R": 0.325
-    }
-   },
-   {
     "state": "NE",
     "name": "Nebraska",
     "market": "nebraska-senate-election-winner",
     "rating": "Lean Republican",
-    "volume": 1033761,
+    "volume": 1039354,
     "cands": [
      {
       "name": "Pete Ricketts",
       "party": "R",
-      "price": 0.72
+      "price": 0.715
      },
      {
       "name": "Independent",
@@ -217,7 +217,31 @@
     "kalshi": {
      "ticker": "SENATENE-26",
      "D": 0.002,
-     "R": 0.715
+     "R": 0.705
+    }
+   },
+   {
+    "state": "SC",
+    "name": "South Carolina",
+    "market": "south-carolina-senate-election-winner",
+    "rating": "Lean Republican",
+    "volume": 1276420,
+    "cands": [
+     {
+      "name": "Darline Graham Nordone",
+      "party": "R",
+      "price": 0.725
+     },
+     {
+      "name": "Annie Andrews",
+      "party": "D",
+      "price": 0.27
+     }
+    ],
+    "kalshi": {
+     "ticker": "SENATESC-26",
+     "D": 0.255,
+     "R": 0.735
     }
    },
    {
@@ -225,7 +249,7 @@
     "name": "Alaska",
     "market": "alaska-senate-election-winner",
     "rating": "Lean (Mary Peltola)",
-    "volume": 1787443,
+    "volume": 1796030,
     "cands": [
      {
       "name": "Mary Peltola",
@@ -245,59 +269,11 @@
     }
    },
    {
-    "state": "SC",
-    "name": "South Carolina",
-    "market": "south-carolina-senate-election-winner",
-    "rating": "Lean Republican",
-    "volume": 1115311,
-    "cands": [
-     {
-      "name": "Darline Graham Nordone",
-      "party": "R",
-      "price": 0.795
-     },
-     {
-      "name": "Annie Andrews",
-      "party": "D",
-      "price": 0.205
-     }
-    ],
-    "kalshi": {
-     "ticker": "SENATESC-26",
-     "D": 0.225,
-     "R": 0.765
-    }
-   },
-   {
-    "state": "MN",
-    "name": "Minnesota",
-    "market": "minnesota-senate-election-winner",
-    "rating": "Likely Democrat",
-    "volume": 453520,
-    "cands": [
-     {
-      "name": "Peggy Flanagan",
-      "party": "D",
-      "price": 0.855
-     },
-     {
-      "name": "Michele Tafoya",
-      "party": "R",
-      "price": 0.145
-     }
-    ],
-    "kalshi": {
-     "ticker": "SENATEMN-26",
-     "D": 0.845,
-     "R": 0.155
-    }
-   },
-   {
     "state": "MS",
     "name": "Mississippi",
     "market": "mississippi-senate-election-winner",
     "rating": "Likely Republican",
-    "volume": 410210,
+    "volume": 420498,
     "cands": [
      {
       "name": "Cindy Hyde-Smith",
@@ -321,23 +297,71 @@
     "name": "Louisiana",
     "market": "louisiana-senate-election-winner",
     "rating": "Likely Republican",
-    "volume": 68104,
+    "volume": 70439,
     "cands": [
      {
       "name": "Julia Letlow",
       "party": "R",
-      "price": 0.89
+      "price": 0.885
      },
      {
       "name": "Jamie Davis",
       "party": "D",
-      "price": 0.11
+      "price": 0.115
      }
     ],
     "kalshi": {
      "ticker": "SENATELA-26",
-     "D": 0.037,
+     "D": 0.0355,
      "R": 0.9655
+    }
+   },
+   {
+    "state": "NH",
+    "name": "New Hampshire",
+    "market": "new-hampshire-senate-election-winner",
+    "rating": "Likely Democrat",
+    "volume": 477941,
+    "cands": [
+     {
+      "name": "Chris Pappas",
+      "party": "D",
+      "price": 0.9
+     },
+     {
+      "name": "John E. Sununu",
+      "party": "R",
+      "price": 0.105
+     }
+    ],
+    "kalshi": {
+     "ticker": "SENATENH-26",
+     "D": 0.885,
+     "R": 0.115
+    }
+   },
+   {
+    "state": "MN",
+    "name": "Minnesota",
+    "market": "minnesota-senate-election-winner",
+    "rating": "Likely Democrat",
+    "volume": 484392,
+    "cands": [
+     {
+      "name": "Peggy Flanagan",
+      "party": "D",
+      "price": 0.905
+     },
+     {
+      "name": "Michele Tafoya",
+      "party": "R",
+      "price": 0.09
+     }
+    ],
+    "kalshi": {
+     "ticker": "SENATEMN-26",
+     "D": 0.9005,
+     "R": 0.105
     }
    },
    {
@@ -345,7 +369,7 @@
     "name": "Florida",
     "market": "florida-senate-election-winner",
     "rating": "Likely Republican",
-    "volume": 307802,
+    "volume": 310583,
     "cands": [
      {
       "name": "Ashley Moody",
@@ -355,13 +379,13 @@
      {
       "name": "Angie Nixon",
       "party": "D",
-      "price": 0.095
+      "price": 0.09
      }
     ],
     "kalshi": {
      "ticker": "SENATEFLS-26",
-     "D": 0.115,
-     "R": 0.885
+     "D": 0.105,
+     "R": 0.895
     }
    },
    {
@@ -369,7 +393,7 @@
     "name": "Montana",
     "market": "montana-senate-election-winner",
     "rating": "Likely Republican",
-    "volume": 209086,
+    "volume": 209936,
     "cands": [
      {
       "name": "Kurt Alme",
@@ -379,61 +403,37 @@
      {
       "name": "Independent",
       "party": "I",
-      "price": 0.087
+      "price": 0.0835
      }
     ],
     "kalshi": {
      "ticker": "SENATEMT-26",
-     "D": 0.004,
-     "R": 0.9215
-    }
-   },
-   {
-    "state": "NH",
-    "name": "New Hampshire",
-    "market": "new-hampshire-senate-election-winner",
-    "rating": "Likely Democrat",
-    "volume": 448679,
-    "cands": [
-     {
-      "name": "Chris Pappas",
-      "party": "D",
-      "price": 0.915
-     },
-     {
-      "name": "John E. Sununu",
-      "party": "R",
-      "price": 0.085
-     }
-    ],
-    "kalshi": {
-     "ticker": "SENATENH-26",
-     "D": 0.895,
-     "R": 0.105
+     "D": 0.009,
+     "R": 0.921
     }
    },
    {
     "state": "AR",
     "name": "Arkansas",
     "market": "arkansas-senate-election-winner",
-    "rating": "Likely Republican",
-    "volume": 103655,
+    "rating": "Safe Republican",
+    "volume": 103694,
     "cands": [
      {
       "name": "Tom Cotton",
       "party": "R",
-      "price": 0.946
+      "price": 0.951
      },
      {
       "name": "Hallie Shoffner",
       "party": "D",
-      "price": 0.0495
+      "price": 0.049
      }
     ],
     "kalshi": {
      "ticker": "SENATEAR-26",
-     "D": 0.0495,
-     "R": 0.9435
+     "D": 0.0525,
+     "R": 0.9455
     }
    },
    {
@@ -441,17 +441,17 @@
     "name": "South Dakota",
     "market": "south-dakota-senate-election-winner",
     "rating": "Safe Republican",
-    "volume": 72712,
+    "volume": 72830,
     "cands": [
      {
       "name": "Mike Rounds",
       "party": "R",
-      "price": 0.9515
+      "price": 0.952
      },
      {
       "name": "Brian Bengs",
       "party": "I",
-      "price": 0.045
+      "price": 0.044
      }
     ],
     "kalshi": {
@@ -465,7 +465,7 @@
     "name": "Idaho",
     "market": "idaho-senate-election-winner",
     "rating": "Safe Republican",
-    "volume": 436593,
+    "volume": 436629,
     "cands": [
      {
       "name": "Jim Risch",
@@ -475,13 +475,13 @@
      {
       "name": "Todd Achilles",
       "party": "I",
-      "price": 0.0405
+      "price": 0.0385
      }
     ],
     "kalshi": {
      "ticker": "SENATEID-26",
      "D": 0.001,
-     "R": 0.9465
+     "R": 0.9515
     }
    },
    {
@@ -489,23 +489,23 @@
     "name": "Georgia",
     "market": "georgia-senate-election-winner",
     "rating": "Safe Democrat",
-    "volume": 331425,
+    "volume": 356136,
     "cands": [
      {
       "name": "Jon Ossoff",
       "party": "D",
-      "price": 0.958
+      "price": 0.9585
      },
      {
       "name": "Mike Collins",
       "party": "R",
-      "price": 0.0415
+      "price": 0.0395
      }
     ],
     "kalshi": {
      "ticker": "SENATEGA-26",
-     "D": 0.9475,
-     "R": 0.052
+     "D": 0.9515,
+     "R": 0.0485
     }
    },
    {
@@ -513,7 +513,7 @@
     "name": "Tennessee",
     "market": "tennessee-senate-election-winner",
     "rating": "Safe Republican",
-    "volume": 114937,
+    "volume": 115265,
     "cands": [
      {
       "name": "Bill Hagerty",
@@ -523,13 +523,37 @@
      {
       "name": "Marquita Bradshaw",
       "party": "D",
-      "price": 0.036
+      "price": 0.0355
      }
     ],
     "kalshi": {
      "ticker": "SENATETN-26",
      "D": 0.0365,
-     "R": 0.9625
+     "R": 0.9635
+    }
+   },
+   {
+    "state": "NC",
+    "name": "North Carolina",
+    "market": "north-carolina-senate-election-winner",
+    "rating": "Safe Democrat",
+    "volume": 268256,
+    "cands": [
+     {
+      "name": "Roy Cooper",
+      "party": "D",
+      "price": 0.972
+     },
+     {
+      "name": "Michael Whatley",
+      "party": "R",
+      "price": 0.028
+     }
+    ],
+    "kalshi": {
+     "ticker": "SENATENC-26",
+     "D": 0.965,
+     "R": 0.036
     }
    },
    {
@@ -542,42 +566,18 @@
      {
       "name": "Democrat",
       "party": "D",
-      "price": 0.9715
+      "price": 0.973
      },
      {
       "name": "Republican",
       "party": "R",
-      "price": 0.0295
+      "price": 0.0275
      }
     ],
     "kalshi": {
      "ticker": "SENATEDE-26",
      "D": 0.9825,
-     "R": 0.0205
-    }
-   },
-   {
-    "state": "NC",
-    "name": "North Carolina",
-    "market": "north-carolina-senate-election-winner",
-    "rating": "Safe Democrat",
-    "volume": 267670,
-    "cands": [
-     {
-      "name": "Roy Cooper",
-      "party": "D",
-      "price": 0.9715
-     },
-     {
-      "name": "Michael Whatley",
-      "party": "R",
-      "price": 0.027
-     }
-    ],
-    "kalshi": {
-     "ticker": "SENATENC-26",
-     "D": 0.9665,
-     "R": 0.035
+     "R": 0.0215
     }
    },
    {
@@ -590,61 +590,37 @@
      {
       "name": "Andy Barr",
       "party": "R",
-      "price": 0.974
+      "price": 0.975
      },
      {
       "name": "Charles Booker",
       "party": "D",
-      "price": 0.028
+      "price": 0.026
      }
     ]
-   },
-   {
-    "state": "IL",
-    "name": "Illinois",
-    "market": "illinois-senate-election-winner",
-    "rating": "Safe Democrat",
-    "volume": 37386,
-    "cands": [
-     {
-      "name": "Juliana Stratton",
-      "party": "D",
-      "price": 0.9785
-     },
-     {
-      "name": "Don Tracy",
-      "party": "R",
-      "price": 0.02
-     }
-    ],
-    "kalshi": {
-     "ticker": "SENATEIL-26",
-     "D": 0.9815,
-     "R": 0.019
-    }
    },
    {
     "state": "OK",
     "name": "Oklahoma",
     "market": "oklahoma-senate-election-winner",
     "rating": "Safe Republican",
-    "volume": 28253,
+    "volume": 28254,
     "cands": [
      {
       "name": "Kevin Hern",
       "party": "R",
-      "price": 0.9785
+      "price": 0.975
      },
      {
       "name": "N’Kiyla “Jasmine” Thomas",
       "party": "D",
-      "price": 0.0185
+      "price": 0.019
      }
     ],
     "kalshi": {
      "ticker": "SENATEOK-26",
-     "D": 0.0245,
-     "R": 0.9745
+     "D": 0.026,
+     "R": 0.974
     }
    },
    {
@@ -652,23 +628,47 @@
     "name": "New Mexico",
     "market": "new-mexico-senate-election-winner",
     "rating": "Safe Democrat",
-    "volume": 33029,
+    "volume": 33030,
     "cands": [
      {
       "name": "Ben Ray Luján",
       "party": "D",
-      "price": 0.9795
+      "price": 0.9775
      },
      {
       "name": "Larry Marker",
       "party": "R",
-      "price": 0.025
+      "price": 0.024
      }
     ],
     "kalshi": {
      "ticker": "SENATENM-26",
      "D": 0.971,
      "R": 0.0285
+    }
+   },
+   {
+    "state": "NJ",
+    "name": "New Jersey",
+    "market": "new-jersey-senate-election-winner",
+    "rating": "Safe Democrat",
+    "volume": 29435,
+    "cands": [
+     {
+      "name": "Cory Booker",
+      "party": "D",
+      "price": 0.9805
+     },
+     {
+      "name": "Justin Murphy",
+      "party": "R",
+      "price": 0.017
+     }
+    ],
+    "kalshi": {
+     "ticker": "SENATENJ-26",
+     "D": 0.9715,
+     "R": 0.03
     }
    },
    {
@@ -681,12 +681,12 @@
      {
       "name": "Jack Reed",
       "party": "D",
-      "price": 0.9805
+      "price": 0.9815
      },
      {
       "name": "Raymond McKay",
       "party": "R",
-      "price": 0.016
+      "price": 0.017
      }
     ],
     "kalshi": {
@@ -705,7 +705,7 @@
      {
       "name": "Mark Warner",
       "party": "D",
-      "price": 0.983
+      "price": 0.982
      },
      {
       "name": "Bert Mizusawa",
@@ -715,56 +715,32 @@
     ],
     "kalshi": {
      "ticker": "SENATEVA-26",
-     "D": 0.979,
+     "D": 0.9785,
      "R": 0.0175
     }
    },
    {
-    "state": "MA",
-    "name": "Massachusetts",
-    "market": "massachusetts-senate-election-winner",
+    "state": "IL",
+    "name": "Illinois",
+    "market": "illinois-senate-election-winner",
     "rating": "Safe Democrat",
-    "volume": 52841,
+    "volume": 37637,
     "cands": [
      {
-      "name": "Ed Markey",
+      "name": "Juliana Stratton",
       "party": "D",
-      "price": 0.985
+      "price": 0.9835
      },
      {
-      "name": "John Deaton",
+      "name": "Don Tracy",
       "party": "R",
-      "price": 0.0135
+      "price": 0.0145
      }
     ],
     "kalshi": {
-     "ticker": "SENATEMA-26",
-     "D": 0.9815,
-     "R": 0.0165
-    }
-   },
-   {
-    "state": "NJ",
-    "name": "New Jersey",
-    "market": "new-jersey-senate-election-winner",
-    "rating": "Safe Democrat",
-    "volume": 29434,
-    "cands": [
-     {
-      "name": "Cory Booker",
-      "party": "D",
-      "price": 0.985
-     },
-     {
-      "name": "Justin Murphy",
-      "party": "R",
-      "price": 0.0165
-     }
-    ],
-    "kalshi": {
-     "ticker": "SENATENJ-26",
-     "D": 0.972,
-     "R": 0.0325
+     "ticker": "SENATEIL-26",
+     "D": 0.984,
+     "R": 0.016
     }
    },
    {
@@ -772,12 +748,12 @@
     "name": "West Virginia",
     "market": "west-virginia-senate-election-winner",
     "rating": "Safe Republican",
-    "volume": 19237,
+    "volume": 19238,
     "cands": [
      {
       "name": "Shelley Moore Capito",
       "party": "R",
-      "price": 0.9855
+      "price": 0.984
      },
      {
       "name": "Rachel Fetty Anderson",
@@ -787,8 +763,56 @@
     ],
     "kalshi": {
      "ticker": "SENATEWV-26",
-     "D": 0.0225,
-     "R": 0.978
+     "D": 0.0245,
+     "R": 0.9775
+    }
+   },
+   {
+    "state": "MA",
+    "name": "Massachusetts",
+    "market": "massachusetts-senate-election-winner",
+    "rating": "Safe Democrat",
+    "volume": 52942,
+    "cands": [
+     {
+      "name": "Ed Markey",
+      "party": "D",
+      "price": 0.9845
+     },
+     {
+      "name": "John Deaton",
+      "party": "R",
+      "price": 0.0165
+     }
+    ],
+    "kalshi": {
+     "ticker": "SENATEMA-26",
+     "D": 0.9855,
+     "R": 0.0185
+    }
+   },
+   {
+    "state": "CO",
+    "name": "Colorado",
+    "market": "colorado-senate-election-winner",
+    "rating": "Safe Democrat",
+    "volume": 52408,
+    "cands": [
+     {
+      "name": "John Hickenlooper",
+      "party": "D",
+      "price": 0.9865
+     },
+     {
+      "name": "Mark Baisley",
+      "party": "R",
+      "price": 0.015
+     }
+    ],
+    "kalshi": {
+     "ticker": "SENATECO-26",
+     "D": 0.9785,
+     "R": 0.023
     }
    },
    {
@@ -796,17 +820,17 @@
     "name": "Wyoming",
     "market": "wyoming-senate-election-winner",
     "rating": "Safe Republican",
-    "volume": 21449,
+    "volume": 21450,
     "cands": [
      {
       "name": "Harriet Hageman",
       "party": "R",
-      "price": 0.9865
+      "price": 0.987
      },
      {
       "name": "James W. Byrd",
       "party": "D",
-      "price": 0.0125
+      "price": 0.012
      }
     ],
     "kalshi": {
@@ -820,7 +844,7 @@
     "name": "Oregon",
     "market": "oregon-senate-election-winner",
     "rating": "Safe Democrat",
-    "volume": 10279,
+    "volume": 10280,
     "cands": [
      {
       "name": "Jeff Merkley",
@@ -830,13 +854,13 @@
      {
       "name": "David Brock Smith",
       "party": "R",
-      "price": 0.012
+      "price": 0.0105
      }
     ],
     "kalshi": {
      "ticker": "SENATEOR-26",
      "D": 0.989,
-     "R": 0.012
+     "R": 0.01
     }
    },
    {
@@ -844,12 +868,12 @@
     "name": "Alabama",
     "market": "alabama-senate-election-winner-154",
     "rating": "Safe Republican",
-    "volume": 14120,
+    "volume": 14121,
     "cands": [
      {
       "name": "Barry Moore",
       "party": "R",
-      "price": 0.9885
+      "price": 0.9895
      },
      {
       "name": "Everett Wess",
@@ -859,32 +883,8 @@
     ],
     "kalshi": {
      "ticker": "SENATEAL-26",
-     "D": 0.016,
-     "R": 0.9775
-    }
-   },
-   {
-    "state": "CO",
-    "name": "Colorado",
-    "market": "colorado-senate-election-winner",
-    "rating": "Safe Democrat",
-    "volume": 52114,
-    "cands": [
-     {
-      "name": "John Hickenlooper",
-      "party": "D",
-      "price": 0.9895
-     },
-     {
-      "name": "Mark Baisley",
-      "party": "R",
-      "price": 0.01
-     }
-    ],
-    "kalshi": {
-     "ticker": "SENATECO-26",
-     "D": 0.981,
-     "R": 0.019
+     "D": 0.017,
+     "R": 0.9785
     }
    }
   ]
@@ -897,7 +897,7 @@
   "seats": [
    {
     "outcome": "Below 190",
-    "price": 0.345
+    "price": 0.315
    },
    {
     "outcome": "190-194",
@@ -905,35 +905,35 @@
    },
    {
     "outcome": "195-199",
-    "price": 0.145
+    "price": 0.155
    },
    {
     "outcome": "200-204",
-    "price": 0.1425
+    "price": 0.1365
    },
    {
     "outcome": "205-209",
-    "price": 0.126
+    "price": 0.1415
    },
    {
     "outcome": "210-214",
-    "price": 0.047
+    "price": 0.0435
    },
    {
     "outcome": "215-219",
-    "price": 0.0515
+    "price": 0.0675
    },
    {
     "outcome": "220-224",
-    "price": 0.0465
+    "price": 0.0385
    },
    {
     "outcome": "225-229",
-    "price": 0.023
+    "price": 0.0115
    },
    {
     "outcome": "230+",
-    "price": 0.004
+    "price": 0.003
    }
   ],
   "races": [
@@ -941,46 +941,46 @@
     "id": "AK-AL",
     "market": "ak-al-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 67592,
+    "volume": 67788,
     "R": {
      "name": "Republican Party",
      "price": 0.765
     },
     "D": {
      "name": "Democratic Party",
-     "price": 0.0145
+     "price": 0.013
     },
     "other": {
      "name": "Bill Hill",
-     "price": 0.2195
+     "price": 0.224
     }
    },
    {
     "id": "AL-01",
     "market": "al-01-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 49595,
+    "volume": 49600,
     "R": {
      "name": "Jerry Carl",
-     "price": 0.967
+     "price": 0.9665
     },
     "D": {
      "name": "Clyde Jones Jr.",
-     "price": 0.032
+     "price": 0.03
     }
    },
    {
     "id": "AL-02",
     "market": "al-02-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 188180,
+    "volume": 188468,
     "R": {
      "name": "Rhett Marques",
-     "price": 0.65
+     "price": 0.66
     },
     "D": {
      "name": "Shomari Figures",
-     "price": 0.345
+     "price": 0.34
     }
    },
    {
@@ -990,11 +990,11 @@
     "volume": 44928,
     "R": {
      "name": "Mike Rogers",
-     "price": 0.9765
+     "price": 0.9745
     },
     "D": {
      "name": "Lee McInnis",
-     "price": 0.0055
+     "price": 0.0105
     }
    },
    {
@@ -1004,7 +1004,7 @@
     "volume": 38876,
     "R": {
      "name": "Robert Aderholt",
-     "price": 0.981
+     "price": 0.9795
     },
     "D": {
      "name": "Amanda Pusczek",
@@ -1015,14 +1015,14 @@
     "id": "AL-05",
     "market": "al-05-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 70122,
+    "volume": 70159,
     "R": {
      "name": "Dale Strong",
-     "price": 0.94
+     "price": 0.943
     },
     "D": {
      "name": "Andrew Sneed",
-     "price": 0.0495
+     "price": 0.048
     }
    },
    {
@@ -1032,11 +1032,11 @@
     "volume": 26377,
     "R": {
      "name": "Gary Palmer",
-     "price": 0.962
+     "price": 0.965
     },
     "D": {
      "name": "Maurice Mercer",
-     "price": 0.0235
+     "price": 0.025
     }
    },
    {
@@ -1046,11 +1046,11 @@
     "volume": 95497,
     "D": {
      "name": "Terri Sewell",
-     "price": 0.968
+     "price": 0.974
     },
     "R": {
      "name": "Ammie Akin",
-     "price": 0.022
+     "price": 0.0225
     }
    },
    {
@@ -1060,21 +1060,21 @@
     "volume": 27235,
     "R": {
      "name": "Rick Crawford",
-     "price": 0.967
+     "price": 0.9625
     },
     "D": {
      "name": "Terri Green",
-     "price": 0.0275
+     "price": 0.0315
     }
    },
    {
     "id": "AR-02",
     "market": "ar-02-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 82221,
+    "volume": 82240,
     "R": {
      "name": "French Hill",
-     "price": 0.8
+     "price": 0.805
     },
     "D": {
      "name": "Chris Jones",
@@ -1084,15 +1084,15 @@
    {
     "id": "AR-03",
     "market": "ar-03-house-election-winner",
-    "rating": "Likely Republican",
-    "volume": 33738,
+    "rating": "Safe Republican",
+    "volume": 39451,
     "R": {
      "name": "Steve Womack",
-     "price": 0.943
+     "price": 0.964
     },
     "D": {
      "name": "Robb Ryerse",
-     "price": 0.0375
+     "price": 0.0215
     }
    },
    {
@@ -1102,39 +1102,39 @@
     "volume": 24968,
     "R": {
      "name": "Bruce Westerman",
-     "price": 0.9655
+     "price": 0.967
     },
     "D": {
      "name": "James Russell",
-     "price": 0.034
+     "price": 0.0335
     }
    },
    {
     "id": "AZ-01",
     "market": "az-01-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 143965,
+    "volume": 159795,
     "D": {
      "name": "Amish Shah",
-     "price": 0.795
+     "price": 0.77
     },
     "R": {
      "name": "Jay Feely",
-     "price": 0.205
+     "price": 0.225
     }
    },
    {
     "id": "AZ-02",
     "market": "az-02-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 26036,
+    "volume": 26374,
     "R": {
      "name": "Eli Crane",
-     "price": 0.68
+     "price": 0.665
     },
     "D": {
      "name": "Jonathan Nez",
-     "price": 0.315
+     "price": 0.325
     }
    },
    {
@@ -1158,18 +1158,18 @@
     "volume": 40719,
     "D": {
      "name": "Greg Stanton",
-     "price": 0.958
+     "price": 0.959
     },
     "R": {
      "name": "Zuhdi Jasser",
-     "price": 0.048
+     "price": 0.0425
     }
    },
    {
     "id": "AZ-05",
     "market": "az-05-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 44653,
+    "volume": 44655,
     "R": {
      "name": "Mark Lamb",
      "price": 0.895
@@ -1183,7 +1183,7 @@
     "id": "AZ-06",
     "market": "az-06-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 37854,
+    "volume": 39014,
     "D": {
      "name": "JoAnna Mendoza",
      "price": 0.885
@@ -1200,7 +1200,7 @@
     "volume": 40916,
     "D": {
      "name": "Adelita Grijalva",
-     "price": 0.966
+     "price": 0.964
     },
     "R": {
      "name": "Daniel Butierez",
@@ -1225,14 +1225,14 @@
     "id": "AZ-09",
     "market": "az-09-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 38678,
+    "volume": 38683,
     "R": {
      "name": "Paul Gosar",
-     "price": 0.96
+     "price": 0.9655
     },
     "D": {
      "name": "Dani Sterbinsky",
-     "price": 0.035
+     "price": 0.0325
     }
    },
    {
@@ -1242,11 +1242,11 @@
     "volume": 50129,
     "D": {
      "name": "Mike McGuire",
-     "price": 0.9595
+     "price": 0.96
     },
     "R": {
      "name": "James Gallagher",
-     "price": 0.038
+     "price": 0.04
     }
    },
    {
@@ -1256,7 +1256,7 @@
     "volume": 22110,
     "D": {
      "name": "Jared Huffman",
-     "price": 0.986
+     "price": 0.985
     },
     "R": {
      "name": "Robin Littau",
@@ -1270,11 +1270,11 @@
     "volume": 44214,
     "D": {
      "name": "Ami Bera",
-     "price": 0.9625
+     "price": 0.96
     },
     "R": {
      "name": "Robb Tucker",
-     "price": 0.0275
+     "price": 0.0375
     }
    },
    {
@@ -1284,7 +1284,7 @@
     "volume": 52075,
     "D": {
      "name": "Democratic Party",
-     "price": 0.974
+     "price": 0.9755
     },
     "R": {
      "name": "Republican Party",
@@ -1295,28 +1295,28 @@
     "id": "CA-05",
     "market": "ca-05-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 24088,
+    "volume": 32390,
     "R": {
      "name": "Tom McClintock",
-     "price": 0.925
+     "price": 0.93
     },
     "D": {
      "name": "Michael Masuda",
-     "price": 0.0745
+     "price": 0.0615
     }
    },
    {
     "id": "CA-06",
     "market": "ca-06-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 92097,
+    "volume": 92560,
     "D": {
      "name": "Democratic Party",
      "price": 0.965
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.0185
+     "price": 0.016
     }
    },
    {
@@ -1354,11 +1354,11 @@
     "volume": 28036,
     "D": {
      "name": "Josh Harder",
-     "price": 0.988
+     "price": 0.989
     },
     "R": {
      "name": "John McBride",
-     "price": 0.0055
+     "price": 0.005
     }
    },
    {
@@ -1368,11 +1368,11 @@
     "volume": 28788,
     "D": {
      "name": "Mark DeSaulnier",
-     "price": 0.9725
+     "price": 0.971
     },
     "R": {
      "name": "Jeff Frese",
-     "price": 0.021
+     "price": 0.0215
     }
    },
    {
@@ -1393,10 +1393,10 @@
     "id": "CA-12",
     "market": "ca-12-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 48107,
+    "volume": 48153,
     "D": {
      "name": "Democratic Party",
-     "price": 0.964
+     "price": 0.971
     },
     "R": {
      "name": "Republican Party",
@@ -1406,15 +1406,15 @@
    {
     "id": "CA-13",
     "market": "ca-13-house-election-winner",
-    "rating": "Safe Democrat",
-    "volume": 49828,
+    "rating": "Likely Democrat",
+    "volume": 49848,
     "D": {
      "name": "Adam Gray",
-     "price": 0.9545
+     "price": 0.9495
     },
     "R": {
      "name": "Kevin Lincoln",
-     "price": 0.0475
+     "price": 0.044
     }
    },
    {
@@ -1424,7 +1424,7 @@
     "volume": 43262,
     "D": {
      "name": "Democratic Party",
-     "price": 0.9945
+     "price": 0.995
     },
     "R": {
      "name": "Republican Party",
@@ -1442,7 +1442,7 @@
     },
     "R": {
      "name": "Charles Hoelter",
-     "price": 0.0245
+     "price": 0.0185
     }
    },
    {
@@ -1456,7 +1456,7 @@
     },
     "R": {
      "name": "Peter Soulé",
-     "price": 0.019
+     "price": 0.0195
     }
    },
    {
@@ -1466,11 +1466,11 @@
     "volume": 16855,
     "D": {
      "name": "Ro Khanna",
-     "price": 0.9775
+     "price": 0.9785
     },
     "R": {
      "name": "Ritesh Tandon",
-     "price": 0.022
+     "price": 0.0215
     }
    },
    {
@@ -1480,11 +1480,11 @@
     "volume": 50157,
     "D": {
      "name": "Zoe Lofgren",
-     "price": 0.982
+     "price": 0.984
     },
     "R": {
      "name": "Shane Lewis",
-     "price": 0.023
+     "price": 0.0225
     }
    },
    {
@@ -1498,7 +1498,7 @@
     },
     "R": {
      "name": "Peter Coe Verbica",
-     "price": 0.021
+     "price": 0.018
     }
    },
    {
@@ -1508,11 +1508,11 @@
     "volume": 50140,
     "R": {
      "name": "Vince Fong",
-     "price": 0.975
+     "price": 0.9745
     },
     "D": {
      "name": "Sandra Van Scotter",
-     "price": 0.0285
+     "price": 0.033
     }
    },
    {
@@ -1522,39 +1522,39 @@
     "volume": 43264,
     "D": {
      "name": "Jim Costa",
-     "price": 0.955
+     "price": 0.9505
     },
     "R": {
      "name": "Kyle Kirkland",
-     "price": 0.042
+     "price": 0.044
     }
    },
    {
     "id": "CA-22",
     "market": "which-party-will-win-the-house-race-for-the-ca-22-seat",
     "rating": "Likely Democrat",
-    "volume": 32543,
+    "volume": 34910,
     "D": {
      "name": "Randy Villegas",
-     "price": 0.905
+     "price": 0.92
     },
     "R": {
      "name": "David Valadao",
-     "price": 0.09
+     "price": 0.08
     }
    },
    {
     "id": "CA-23",
     "market": "ca-23-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 110585,
+    "volume": 110623,
     "R": {
      "name": "Jay Obernolte",
-     "price": 0.9555
+     "price": 0.956
     },
     "D": {
      "name": "Tessa Lynn Hodge",
-     "price": 0.029
+     "price": 0.0325
     }
    },
    {
@@ -1578,7 +1578,7 @@
     "volume": 26699,
     "D": {
      "name": "Raul Ruiz",
-     "price": 0.959
+     "price": 0.952
     },
     "R": {
      "name": "Joe Males",
@@ -1592,25 +1592,25 @@
     "volume": 36594,
     "D": {
      "name": "Jacqui Irwin",
-     "price": 0.955
+     "price": 0.959
     },
     "R": {
      "name": "Sam Gallucci",
-     "price": 0.0365
+     "price": 0.0355
     }
    },
    {
     "id": "CA-27",
     "market": "which-party-will-win-the-house-race-for-the-ca-27-seat",
     "rating": "Safe Democrat",
-    "volume": 23223,
+    "volume": 23252,
     "D": {
      "name": "George Whitesides",
-     "price": 0.96
+     "price": 0.9585
     },
     "R": {
      "name": "Jason Gibbs",
-     "price": 0.025
+     "price": 0.0215
     }
    },
    {
@@ -1620,7 +1620,7 @@
     "volume": 142483,
     "D": {
      "name": "Judy Chu",
-     "price": 0.9705
+     "price": 0.9685
     },
     "R": {
      "name": "April Verlato",
@@ -1634,11 +1634,11 @@
     "volume": 30955,
     "D": {
      "name": "Democratic Party",
-     "price": 0.987
+     "price": 0.986
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.0245
+     "price": 0.0155
     }
    },
    {
@@ -1648,35 +1648,35 @@
     "volume": 35511,
     "D": {
      "name": "Laura Friedman",
-     "price": 0.9645
+     "price": 0.962
     },
     "R": {
      "name": "Scott Meyers",
-     "price": 0.021
+     "price": 0.017
     }
    },
    {
     "id": "CA-31",
     "market": "ca-31-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 18874,
+    "volume": 18895,
     "D": {
      "name": "Gil Cisneros",
-     "price": 0.955
+     "price": 0.9505
     },
     "R": {
      "name": "Eric Ching",
-     "price": 0.041
+     "price": 0.05
     }
    },
    {
     "id": "CA-32",
     "market": "ca-32-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 29431,
+    "volume": 29490,
     "D": {
      "name": "Brad Sherman",
-     "price": 0.9815
+     "price": 0.979
     },
     "R": {
      "name": "Larry Thompson",
@@ -1690,7 +1690,7 @@
     "volume": 21640,
     "D": {
      "name": "Pete Aguilar",
-     "price": 0.954
+     "price": 0.96
     },
     "R": {
      "name": "Stephanie Vargas",
@@ -1704,11 +1704,11 @@
     "volume": 50696,
     "D": {
      "name": "Democratic Party",
-     "price": 0.9845
+     "price": 0.9815
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.002
+     "price": 0.0065
     }
    },
    {
@@ -1718,7 +1718,7 @@
     "volume": 46088,
     "D": {
      "name": "Norma Torres",
-     "price": 0.9805
+     "price": 0.98
     },
     "R": {
      "name": "Mike Cargile",
@@ -1732,11 +1732,11 @@
     "volume": 86167,
     "D": {
      "name": "Ted Lieu",
-     "price": 0.9655
+     "price": 0.9695
     },
     "R": {
      "name": "Houston Brignano",
-     "price": 0.026
+     "price": 0.025
     }
    },
    {
@@ -1746,7 +1746,7 @@
     "volume": 3400,
     "D": {
      "name": "Democratic Party",
-     "price": 0.9655
+     "price": 0.965
     },
     "R": {
      "name": "Republican Party",
@@ -1760,11 +1760,11 @@
     "volume": 65914,
     "D": {
      "name": "Hilda Solis",
-     "price": 0.9755
+     "price": 0.971
     },
     "R": {
      "name": "Pedro Casas",
-     "price": 0.0165
+     "price": 0.018
     }
    },
    {
@@ -1774,11 +1774,11 @@
     "volume": 59055,
     "D": {
      "name": "Mark Takano",
-     "price": 0.965
+     "price": 0.9665
     },
     "R": {
      "name": "Steve Manos",
-     "price": 0.032
+     "price": 0.0315
     }
    },
    {
@@ -1792,7 +1792,7 @@
     },
     "R": {
      "name": "Mitch Clemmons",
-     "price": 0.0385
+     "price": 0.042
     }
    },
    {
@@ -1802,7 +1802,7 @@
     "volume": 43042,
     "D": {
      "name": "Robert Garcia",
-     "price": 0.964
+     "price": 0.9635
     },
     "R": {
      "name": "Brian Burley",
@@ -1813,14 +1813,14 @@
     "id": "CA-43",
     "market": "ca-43-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 33398,
+    "volume": 33637,
     "D": {
      "name": "Maxine Waters",
-     "price": 0.9635
+     "price": 0.965
     },
     "R": {
      "name": "Cristian Morales",
-     "price": 0.0375
+     "price": 0.036
     }
    },
    {
@@ -1830,7 +1830,7 @@
     "volume": 47461,
     "D": {
      "name": "Nanette Barragán",
-     "price": 0.963
+     "price": 0.9615
     },
     "R": {
      "name": "Genevieve Angel",
@@ -1841,7 +1841,7 @@
     "id": "CA-45",
     "market": "ca-45-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 54804,
+    "volume": 54825,
     "D": {
      "name": "Derek Tran",
      "price": 0.94
@@ -1858,11 +1858,11 @@
     "volume": 51401,
     "D": {
      "name": "Lou Correa",
-     "price": 0.962
+     "price": 0.9605
     },
     "R": {
      "name": "David Pan",
-     "price": 0.0365
+     "price": 0.036
     }
    },
    {
@@ -1872,18 +1872,18 @@
     "volume": 31590,
     "D": {
      "name": "Dave Min",
-     "price": 0.9615
+     "price": 0.961
     },
     "R": {
      "name": "Jenny Le Roux",
-     "price": 0.031
+     "price": 0.0325
     }
    },
    {
     "id": "CA-48",
     "market": "ca-48-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 44810,
+    "volume": 46839,
     "D": {
      "name": "Marni von Wilpert",
      "price": 0.935
@@ -1900,25 +1900,25 @@
     "volume": 28662,
     "D": {
      "name": "Mike Levin",
-     "price": 0.9655
+     "price": 0.968
     },
     "R": {
      "name": "Armen Kurdian",
-     "price": 0.0315
+     "price": 0.031
     }
    },
    {
     "id": "CA-50",
     "market": "ca-50-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 69497,
+    "volume": 69635,
     "D": {
      "name": "Scott Peters",
-     "price": 0.9625
+     "price": 0.9645
     },
     "R": {
      "name": "Steve Cohen",
-     "price": 0.0315
+     "price": 0.032
     }
    },
    {
@@ -1928,11 +1928,11 @@
     "volume": 34854,
     "D": {
      "name": "Sara Jacobs",
-     "price": 0.9705
+     "price": 0.974
     },
     "R": {
      "name": "Ricardo Cabrera",
-     "price": 0.023
+     "price": 0.0225
     }
    },
    {
@@ -1946,7 +1946,7 @@
     },
     "R": {
      "name": "Jeff Belle",
-     "price": 0.023
+     "price": 0.0215
     }
    },
    {
@@ -1956,7 +1956,7 @@
     "volume": 43820,
     "D": {
      "name": "Melat Kiros",
-     "price": 0.9835
+     "price": 0.9795
     },
     "R": {
      "name": "Christy Peterson",
@@ -1967,21 +1967,21 @@
     "id": "CO-02",
     "market": "co-02-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 44710,
+    "volume": 44755,
     "D": {
      "name": "Joe Neguse",
-     "price": 0.969
+     "price": 0.973
     },
     "R": {
      "name": "Kelley Dennison",
-     "price": 0.019
+     "price": 0.0215
     }
    },
    {
     "id": "CO-03",
     "market": "co-03-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 35796,
+    "volume": 39163,
     "R": {
      "name": "Jeff Hurd",
      "price": 0.66
@@ -1995,10 +1995,10 @@
     "id": "CO-04",
     "market": "co-04-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 69538,
+    "volume": 69917,
     "R": {
      "name": "Lauren Boebert",
-     "price": 0.65
+     "price": 0.645
     },
     "D": {
      "name": "Eileen Laubacher",
@@ -2009,14 +2009,14 @@
     "id": "CO-05",
     "market": "co-05-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 41176,
+    "volume": 41843,
     "R": {
      "name": "Jeff Crank",
      "price": 0.6
     },
     "D": {
      "name": "Jessica Killin",
-     "price": 0.39
+     "price": 0.395
     }
    },
    {
@@ -2026,11 +2026,11 @@
     "volume": 32345,
     "D": {
      "name": "Jason Crow",
-     "price": 0.96
+     "price": 0.9605
     },
     "R": {
      "name": "Jason Clark",
-     "price": 0.026
+     "price": 0.0295
     }
    },
    {
@@ -2040,18 +2040,18 @@
     "volume": 28046,
     "D": {
      "name": "Brittany Pettersen",
-     "price": 0.97
+     "price": 0.971
     },
     "R": {
      "name": "Tim Bennett",
-     "price": 0.031
+     "price": 0.0275
     }
    },
    {
     "id": "CO-08",
     "market": "co-08-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 31844,
+    "volume": 31981,
     "D": {
      "name": "Manny Rutinel",
      "price": 0.85
@@ -2072,7 +2072,7 @@
     },
     "R": {
      "name": "Amy Chai",
-     "price": 0.016
+     "price": 0.0155
     }
    },
    {
@@ -2082,11 +2082,11 @@
     "volume": 18860,
     "D": {
      "name": "Joe Courtney",
-     "price": 0.9835
+     "price": 0.9715
     },
     "R": {
      "name": "George Austin",
-     "price": 0.0205
+     "price": 0.0305
     }
    },
    {
@@ -2096,11 +2096,11 @@
     "volume": 31144,
     "D": {
      "name": "Rosa DeLauro",
-     "price": 0.9685
+     "price": 0.969
     },
     "R": {
      "name": "Chris Lancia",
-     "price": 0.037
+     "price": 0.036
     }
    },
    {
@@ -2110,11 +2110,11 @@
     "volume": 48962,
     "D": {
      "name": "Jim Himes",
-     "price": 0.973
+     "price": 0.9665
     },
     "R": {
      "name": "Michael Goldstein",
-     "price": 0.0215
+     "price": 0.0225
     }
    },
    {
@@ -2124,11 +2124,11 @@
     "volume": 12136,
     "D": {
      "name": "Jahana Hayes",
-     "price": 0.9675
+     "price": 0.968
     },
     "R": {
      "name": "Chris Shea",
-     "price": 0.0195
+     "price": 0.0205
     }
    },
    {
@@ -2138,11 +2138,11 @@
     "volume": 48546,
     "D": {
      "name": "Democratic Party",
-     "price": 0.966
+     "price": 0.9695
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.032
+     "price": 0.0285
     }
    },
    {
@@ -2152,7 +2152,7 @@
     "volume": 119100,
     "R": {
      "name": "Jimmy Patronis",
-     "price": 0.9665
+     "price": 0.967
     },
     "D": {
      "name": "Gay Valimont",
@@ -2163,14 +2163,14 @@
     "id": "FL-02",
     "market": "fl-02-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 19105,
+    "volume": 19157,
     "R": {
      "name": "Austin Rogers",
      "price": 0.915
     },
     "D": {
      "name": "Amanda Green",
-     "price": 0.08
+     "price": 0.075
     }
    },
    {
@@ -2191,14 +2191,14 @@
     "id": "FL-04",
     "market": "fl-04-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 37949,
+    "volume": 38206,
     "R": {
      "name": "Aaron Bean",
      "price": 0.83
     },
     "D": {
      "name": "LaShonda Holloway",
-     "price": 0.165
+     "price": 0.18
     }
    },
    {
@@ -2219,49 +2219,49 @@
     "id": "FL-06",
     "market": "fl-06-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 41665,
+    "volume": 41690,
     "R": {
      "name": "Randy Fine",
-     "price": 0.9655
+     "price": 0.966
     },
     "D": {
      "name": "Eric Yonce",
-     "price": 0.0335
+     "price": 0.034
     }
    },
    {
     "id": "FL-07",
     "market": "fl-07-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 73169,
+    "volume": 73257,
     "R": {
      "name": "Ryan Elijah",
-     "price": 0.74
+     "price": 0.745
     },
     "D": {
      "name": "Bale Dalton",
-     "price": 0.24
+     "price": 0.245
     }
    },
    {
     "id": "FL-08",
     "market": "fl-08-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 63972,
+    "volume": 64190,
     "R": {
      "name": "Mike Haridopolos",
-     "price": 0.9425
+     "price": 0.94
     },
     "D": {
      "name": "Jennifer Jenkins",
-     "price": 0.043
+     "price": 0.047
     }
    },
    {
     "id": "FL-09",
     "market": "fl-09-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 27246,
+    "volume": 27264,
     "R": {
      "name": "Dan Green",
      "price": 0.685
@@ -2275,21 +2275,21 @@
     "id": "FL-10",
     "market": "fl-10-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 24282,
+    "volume": 24353,
     "D": {
      "name": "Maxwell Frost",
-     "price": 0.978
+     "price": 0.973
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.0135
+     "price": 0.0165
     }
    },
    {
     "id": "FL-11",
     "market": "fl-11-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 43868,
+    "volume": 44127,
     "R": {
      "name": "Joe Strada",
      "price": 0.885
@@ -2303,21 +2303,21 @@
     "id": "FL-12",
     "market": "fl-12-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 97075,
+    "volume": 98424,
     "R": {
      "name": "Gus Bilirakis",
-     "price": 0.83
+     "price": 0.85
     },
     "D": {
      "name": "Kimberly Overman",
-     "price": 0.16
+     "price": 0.155
     }
    },
    {
     "id": "FL-13",
     "market": "fl-13-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 38237,
+    "volume": 38288,
     "R": {
      "name": "Anna Paulina Luna",
      "price": 0.715
@@ -2331,14 +2331,14 @@
     "id": "FL-14",
     "market": "fl-14-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 98763,
+    "volume": 109097,
     "D": {
      "name": "Kathy Castor",
-     "price": 0.645
+     "price": 0.675
     },
     "R": {
      "name": "Mike Beltran",
-     "price": 0.325
+     "price": 0.32
     }
    },
    {
@@ -2348,11 +2348,11 @@
     "volume": 39263,
     "R": {
      "name": "Laurel Lee",
-     "price": 0.947
+     "price": 0.9465
     },
     "D": {
      "name": "Robert People",
-     "price": 0.046
+     "price": 0.0485
     }
    },
    {
@@ -2366,7 +2366,7 @@
     },
     "D": {
      "name": "Kelly Kirschner",
-     "price": 0.24
+     "price": 0.235
     }
    },
    {
@@ -2376,7 +2376,7 @@
     "volume": 32792,
     "R": {
      "name": "Greg Steube",
-     "price": 0.9635
+     "price": 0.9625
     },
     "D": {
      "name": "Matthew Montavon",
@@ -2387,14 +2387,14 @@
     "id": "FL-18",
     "market": "fl-18-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 74890,
+    "volume": 75255,
     "R": {
      "name": "Scott Franklin",
      "price": 0.925
     },
     "D": {
      "name": "Curtis Gibson",
-     "price": 0.08
+     "price": 0.07
     }
    },
    {
@@ -2408,7 +2408,7 @@
     },
     "D": {
      "name": "Victor Arias",
-     "price": 0.034
+     "price": 0.0395
     }
    },
    {
@@ -2418,39 +2418,39 @@
     "volume": 43183,
     "D": {
      "name": "Debbie Wasserman Schultz",
-     "price": 0.98
+     "price": 0.9795
     },
     "R": {
      "name": "Brent Andersen",
-     "price": 0.015
+     "price": 0.016
     }
    },
    {
     "id": "FL-21",
     "market": "fl-21-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 44510,
+    "volume": 44946,
     "R": {
      "name": "Brian Mast",
      "price": 0.87
     },
     "D": {
      "name": "James Martin",
-     "price": 0.1275
+     "price": 0.1215
     }
    },
    {
     "id": "FL-22",
     "market": "fl-22-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 62186,
+    "volume": 64188,
     "D": {
      "name": "Pia Dandiya",
-     "price": 0.625
+     "price": 0.635
     },
     "R": {
      "name": "Casey Askar",
-     "price": 0.375
+     "price": 0.37
     }
    },
    {
@@ -2460,7 +2460,7 @@
     "volume": 27001,
     "D": {
      "name": "Lois Frankel",
-     "price": 0.958
+     "price": 0.957
     },
     "R": {
      "name": "Deborah Adeimy",
@@ -2474,21 +2474,21 @@
     "volume": 34845,
     "D": {
      "name": "Oliver Gilbert",
-     "price": 0.9545
+     "price": 0.956
     },
     "R": {
      "name": "Te Mayonna Brown",
-     "price": 0.031
+     "price": 0.0335
     }
    },
    {
     "id": "FL-25",
     "market": "fl-25-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 103866,
+    "volume": 104366,
     "D": {
      "name": "Jared Moskowitz",
-     "price": 0.77
+     "price": 0.75
     },
     "R": {
      "name": "Scott Singer",
@@ -2499,14 +2499,14 @@
     "id": "FL-26",
     "market": "fl-26-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 98006,
+    "volume": 99538,
     "R": {
      "name": "Mario Díaz-Balart",
-     "price": 0.85
+     "price": 0.835
     },
     "D": {
      "name": "Nicole Locklin",
-     "price": 0.15
+     "price": 0.155
     }
    },
    {
@@ -2516,7 +2516,7 @@
     "volume": 54332,
     "R": {
      "name": "María Elvira Salazar",
-     "price": 0.65
+     "price": 0.655
     },
     "D": {
      "name": "Eliott Rodriguez",
@@ -2527,28 +2527,28 @@
     "id": "FL-28",
     "market": "fl-28-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 71806,
+    "volume": 76810,
     "R": {
      "name": "Carlos Giménez",
-     "price": 0.94
+     "price": 0.925
     },
     "D": {
      "name": "Phil Ehr",
-     "price": 0.055
+     "price": 0.065
     }
    },
    {
     "id": "GA-01",
     "market": "ga-01-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 25873,
+    "volume": 26239,
     "R": {
      "name": "Jim Kingston",
-     "price": 0.845
+     "price": 0.855
     },
     "D": {
      "name": "Amanda Hollowell",
-     "price": 0.145
+     "price": 0.14
     }
    },
    {
@@ -2558,25 +2558,25 @@
     "volume": 27343,
     "D": {
      "name": "Sanford Bishop",
-     "price": 0.9705
+     "price": 0.969
     },
     "R": {
      "name": "Matt Day",
-     "price": 0.033
+     "price": 0.031
     }
    },
    {
     "id": "GA-03",
     "market": "ga-03-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 31448,
+    "volume": 31458,
     "R": {
      "name": "Brian Jack",
      "price": 0.95
     },
     "D": {
      "name": "Maura Keller",
-     "price": 0.045
+     "price": 0.05
     }
    },
    {
@@ -2590,7 +2590,7 @@
     },
     "R": {
      "name": "James Duffie",
-     "price": 0.017
+     "price": 0.018
     }
    },
    {
@@ -2600,7 +2600,7 @@
     "volume": 53848,
     "D": {
      "name": "Nikema Williams",
-     "price": 0.987
+     "price": 0.988
     },
     "R": {
      "name": "John Oscar Salvesen",
@@ -2611,70 +2611,70 @@
     "id": "GA-06",
     "market": "ga-06-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 24093,
+    "volume": 24153,
     "D": {
      "name": "Lucy McBath",
-     "price": 0.978
+     "price": 0.976
     },
     "R": {
      "name": "Kevin Martin",
-     "price": 0.021
+     "price": 0.023
     }
    },
    {
     "id": "GA-07",
     "market": "ga-07-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 49484,
+    "volume": 49549,
     "R": {
      "name": "Rich McCormick",
-     "price": 0.91
+     "price": 0.915
     },
     "D": {
      "name": "Tony Kozycki",
-     "price": 0.08
+     "price": 0.075
     }
    },
    {
     "id": "GA-08",
     "market": "ga-08-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 50404,
+    "volume": 50439,
     "R": {
      "name": "Austin Scott",
-     "price": 0.9755
+     "price": 0.977
     },
     "D": {
      "name": "Kelly Esti",
-     "price": 0.0265
+     "price": 0.022
     }
    },
    {
     "id": "GA-09",
     "market": "ga-09-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 60270,
+    "volume": 60285,
     "R": {
      "name": "Andrew Clyde",
      "price": 0.9665
     },
     "D": {
      "name": "Caitlyn Gegen",
-     "price": 0.028
+     "price": 0.0285
     }
    },
    {
     "id": "GA-10",
     "market": "ga-10-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 67682,
+    "volume": 67762,
     "R": {
      "name": "Houston Gaines",
      "price": 0.978
     },
     "D": {
      "name": "Pam Delancy",
-     "price": 0.0215
+     "price": 0.0205
     }
    },
    {
@@ -2684,7 +2684,7 @@
     "volume": 91074,
     "R": {
      "name": "John Cowan",
-     "price": 0.949
+     "price": 0.9495
     },
     "D": {
      "name": "Chris Harden",
@@ -2702,7 +2702,7 @@
     },
     "D": {
      "name": "Ceretta Smith",
-     "price": 0.15
+     "price": 0.155
     }
    },
    {
@@ -2712,11 +2712,11 @@
     "volume": 39550,
     "D": {
      "name": "Jasmine Clark",
-     "price": 0.9725
+     "price": 0.9705
     },
     "R": {
      "name": "Jonathan Chavez",
-     "price": 0.026
+     "price": 0.0275
     }
    },
    {
@@ -2726,11 +2726,11 @@
     "volume": 19559,
     "R": {
      "name": "Clay Fuller",
-     "price": 0.9745
+     "price": 0.9755
     },
     "D": {
      "name": "Shawn Harris",
-     "price": 0.0235
+     "price": 0.023
     }
    },
    {
@@ -2744,28 +2744,28 @@
     },
     "R": {
      "name": "Adriel Lam",
-     "price": 0.025
+     "price": 0.024
     }
    },
    {
     "id": "HI-02",
     "market": "hi-02-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 82913,
+    "volume": 82933,
     "D": {
      "name": "Jill Tokuda",
-     "price": 0.9675
+     "price": 0.966
     },
     "R": {
      "name": "Brenton Awa",
-     "price": 0.031
+     "price": 0.032
     }
    },
    {
     "id": "IA-01",
     "market": "ia-01-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 64478,
+    "volume": 64481,
     "D": {
      "name": "Christina Bohannan",
      "price": 0.93
@@ -2779,28 +2779,28 @@
     "id": "IA-02",
     "market": "ia-02-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 65688,
+    "volume": 65839,
     "D": {
      "name": "Lindsay James",
-     "price": 0.705
+     "price": 0.695
     },
     "R": {
      "name": "Joe Mitchell",
-     "price": 0.295
+     "price": 0.3
     }
    },
    {
     "id": "IA-03",
     "market": "ia-03-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 18745,
+    "volume": 19963,
     "D": {
      "name": "Sarah Trone Garriott",
-     "price": 0.85
+     "price": 0.83
     },
     "R": {
      "name": "Zach Nunn",
-     "price": 0.15
+     "price": 0.165
     }
    },
    {
@@ -2810,11 +2810,11 @@
     "volume": 67329,
     "R": {
      "name": "Chris McGowan",
-     "price": 0.963
+     "price": 0.9605
     },
     "D": {
      "name": "David Dawson",
-     "price": 0.023
+     "price": 0.0205
     }
    },
    {
@@ -2828,7 +2828,7 @@
     },
     "D": {
      "name": "Kaylee Peterson",
-     "price": 0.0275
+     "price": 0.029
     }
    },
    {
@@ -2838,11 +2838,11 @@
     "volume": 43476,
     "R": {
      "name": "Mike Simpson",
-     "price": 0.972
+     "price": 0.9595
     },
     "D": {
      "name": "Ellie Gilbreath",
-     "price": 0.017
+     "price": 0.02
     }
    },
    {
@@ -2852,7 +2852,7 @@
     "volume": 60464,
     "D": {
      "name": "Jonathan Jackson",
-     "price": 0.9615
+     "price": 0.962
     },
     "R": {
      "name": "Christian Maxwell",
@@ -2866,7 +2866,7 @@
     "volume": 36904,
     "D": {
      "name": "Donna Miller",
-     "price": 0.972
+     "price": 0.9735
     },
     "R": {
      "name": "Michael Noack",
@@ -2877,28 +2877,28 @@
     "id": "IL-03",
     "market": "il-03-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 52018,
+    "volume": 52077,
     "D": {
      "name": "Delia Ramirez",
-     "price": 0.9615
+     "price": 0.963
     },
     "R": {
      "name": "Angel Oakley",
-     "price": 0.021
+     "price": 0.0205
     }
    },
    {
     "id": "IL-04",
     "market": "il-04-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 68566,
+    "volume": 68876,
     "D": {
      "name": "Patty Garcia",
-     "price": 0.9595
+     "price": 0.961
     },
     "R": {
      "name": "Lupe Castillo",
-     "price": 0.0145
+     "price": 0.011
     }
    },
    {
@@ -2908,11 +2908,11 @@
     "volume": 35478,
     "D": {
      "name": "Mike Quigley",
-     "price": 0.9645
+     "price": 0.966
     },
     "R": {
      "name": "Tommy Hanson",
-     "price": 0.023
+     "price": 0.022
     }
    },
    {
@@ -2936,11 +2936,11 @@
     "volume": 26845,
     "D": {
      "name": "La Shawn Ford",
-     "price": 0.969
+     "price": 0.967
     },
     "R": {
      "name": "Chad Koppie",
-     "price": 0.015
+     "price": 0.0155
     }
    },
    {
@@ -2954,7 +2954,7 @@
     },
     "R": {
      "name": "Jennifer Davis",
-     "price": 0.041
+     "price": 0.0405
     }
    },
    {
@@ -2964,25 +2964,25 @@
     "volume": 31973,
     "D": {
      "name": "Daniel Biss",
-     "price": 0.974
+     "price": 0.971
     },
     "R": {
      "name": "John Elleson",
-     "price": 0.0265
+     "price": 0.0245
     }
    },
    {
     "id": "IL-10",
     "market": "il-10-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 33863,
+    "volume": 33967,
     "D": {
      "name": "Brad Schneider",
-     "price": 0.969
+     "price": 0.963
     },
     "R": {
      "name": "Carl Lambrecht",
-     "price": 0.0225
+     "price": 0.0275
     }
    },
    {
@@ -2992,7 +2992,7 @@
     "volume": 47174,
     "D": {
      "name": "Bill Foster",
-     "price": 0.9545
+     "price": 0.9595
     },
     "R": {
      "name": "Jeff Walter",
@@ -3006,11 +3006,11 @@
     "volume": 26164,
     "R": {
      "name": "Mike Bost",
-     "price": 0.9685
+     "price": 0.969
     },
     "D": {
      "name": "Julie Fortier",
-     "price": 0.032
+     "price": 0.031
     }
    },
    {
@@ -3020,11 +3020,11 @@
     "volume": 21484,
     "D": {
      "name": "Nikki Budzinski",
-     "price": 0.962
+     "price": 0.9675
     },
     "R": {
      "name": "Jeff Wilson",
-     "price": 0.0215
+     "price": 0.0195
     }
    },
    {
@@ -3052,21 +3052,21 @@
     },
     "D": {
      "name": "Jennifer Todd",
-     "price": 0.03
+     "price": 0.034
     }
    },
    {
     "id": "IL-16",
     "market": "il-16-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 72058,
+    "volume": 72208,
     "R": {
      "name": "Darin LaHood",
-     "price": 0.9585
+     "price": 0.9575
     },
     "D": {
      "name": "Paul Nolley",
-     "price": 0.0345
+     "price": 0.034
     }
    },
    {
@@ -3090,11 +3090,11 @@
     "volume": 24432,
     "D": {
      "name": "Frank Mrvan",
-     "price": 0.9585
+     "price": 0.9605
     },
     "R": {
      "name": "Barb Regnitz",
-     "price": 0.0195
+     "price": 0.019
     }
    },
    {
@@ -3104,11 +3104,11 @@
     "volume": 39049,
     "R": {
      "name": "Rudy Yakym",
-     "price": 0.965
+     "price": 0.958
     },
     "D": {
      "name": "Jamee Decio",
-     "price": 0.0315
+     "price": 0.0405
     }
    },
    {
@@ -3132,67 +3132,67 @@
     "volume": 49534,
     "R": {
      "name": "Jim Baird",
-     "price": 0.955
+     "price": 0.95
     },
     "D": {
      "name": "Drew Cox",
-     "price": 0.045
+     "price": 0.042
     }
    },
    {
     "id": "IN-05",
     "market": "in-05-house-election-winner",
-    "rating": "Lean Republican",
-    "volume": 59131,
+    "rating": "Likely Republican",
+    "volume": 59913,
     "R": {
      "name": "Victoria Spartz",
-     "price": 0.79
+     "price": 0.805
     },
     "D": {
      "name": "J. D. Ford",
-     "price": 0.215
+     "price": 0.18
     }
    },
    {
     "id": "IN-06",
     "market": "in-06-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 37861,
+    "volume": 37871,
     "R": {
      "name": "Jefferson Shreve",
-     "price": 0.963
+     "price": 0.9645
     },
     "D": {
      "name": "Cinde Wirth",
-     "price": 0.031
+     "price": 0.032
     }
    },
    {
     "id": "IN-07",
     "market": "in-07-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 46016,
+    "volume": 46057,
     "D": {
      "name": "André Carson",
-     "price": 0.9765
+     "price": 0.97
     },
     "R": {
      "name": "Patrick McAuley",
-     "price": 0.0205
+     "price": 0.021
     }
    },
    {
     "id": "IN-08",
     "market": "in-08-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 51863,
+    "volume": 51890,
     "R": {
      "name": "Mark Messmer",
-     "price": 0.949
+     "price": 0.948
     },
     "D": {
      "name": "Mary Allen",
-     "price": 0.0435
+     "price": 0.0445
     }
    },
    {
@@ -3202,11 +3202,11 @@
     "volume": 36374,
     "R": {
      "name": "Erin Houchin",
-     "price": 0.9725
+     "price": 0.9775
     },
     "D": {
      "name": "Brad Meyer",
-     "price": 0.0265
+     "price": 0.026
     }
    },
    {
@@ -3216,18 +3216,18 @@
     "volume": 37184,
     "R": {
      "name": "Tracey Mann",
-     "price": 0.955
+     "price": 0.954
     },
     "D": {
      "name": "Lauren Reinhold",
-     "price": 0.0325
+     "price": 0.0425
     }
    },
    {
     "id": "KS-02",
     "market": "ks-02-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 45754,
+    "volume": 45798,
     "R": {
      "name": "Derek Schmidt",
      "price": 0.79
@@ -3248,7 +3248,7 @@
     },
     "R": {
      "name": "Eric Jenkins",
-     "price": 0.041
+     "price": 0.039
     }
    },
    {
@@ -3258,7 +3258,7 @@
     "volume": 156812,
     "R": {
      "name": "Ron Estes",
-     "price": 0.956
+     "price": 0.959
     },
     "D": {
      "name": "Katy Tyndell",
@@ -3272,7 +3272,7 @@
     "volume": 50864,
     "R": {
      "name": "James Comer",
-     "price": 0.9755
+     "price": 0.9795
     },
     "D": {
      "name": "Drew Williams",
@@ -3286,11 +3286,11 @@
     "volume": 18613,
     "R": {
      "name": "Brett Guthrie",
-     "price": 0.9665
+     "price": 0.9675
     },
     "D": {
      "name": "Megan Wingfield",
-     "price": 0.024
+     "price": 0.025
     }
    },
    {
@@ -3300,11 +3300,11 @@
     "volume": 48374,
     "D": {
      "name": "Morgan McGarvey",
-     "price": 0.973
+     "price": 0.975
     },
     "R": {
      "name": "Maria Rodriguez",
-     "price": 0.024
+     "price": 0.0205
     }
    },
    {
@@ -3314,35 +3314,35 @@
     "volume": 47640,
     "R": {
      "name": "Ed Gallrein",
-     "price": 0.952
+     "price": 0.953
     },
     "D": {
      "name": "Melissa Strange",
-     "price": 0.0425
+     "price": 0.0435
     }
    },
    {
     "id": "KY-05",
     "market": "ky-05-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 68615,
+    "volume": 68645,
     "R": {
      "name": "Hal Rogers",
      "price": 0.973
     },
     "D": {
      "name": "Ned Pillersdorf",
-     "price": 0.025
+     "price": 0.022
     }
    },
    {
     "id": "KY-06",
     "market": "ky-06-house-election-winner",
     "rating": "Toss-up",
-    "volume": 102169,
+    "volume": 102676,
     "R": {
      "name": "Ralph Alvarado",
-     "price": 0.535
+     "price": 0.525
     },
     "D": {
      "name": "Zach Dembo",
@@ -3356,11 +3356,11 @@
     "volume": 52651,
     "R": {
      "name": "Republican Party",
-     "price": 0.9685
+     "price": 0.9675
     },
     "D": {
      "name": "Democratic Party",
-     "price": 0.0345
+     "price": 0.036
     }
    },
    {
@@ -3384,11 +3384,11 @@
     "volume": 35618,
     "R": {
      "name": "Republican Party",
-     "price": 0.9755
+     "price": 0.973
     },
     "D": {
      "name": "Democratic Party",
-     "price": 0.029
+     "price": 0.031
     }
    },
    {
@@ -3398,11 +3398,11 @@
     "volume": 21006,
     "R": {
      "name": "Republican Party",
-     "price": 0.9535
+     "price": 0.954
     },
     "D": {
      "name": "Democratic Party",
-     "price": 0.033
+     "price": 0.0335
     }
    },
    {
@@ -3412,11 +3412,11 @@
     "volume": 25991,
     "R": {
      "name": "Republican Party",
-     "price": 0.9725
+     "price": 0.974
     },
     "D": {
      "name": "Democratic Party",
-     "price": 0.032
+     "price": 0.028
     }
    },
    {
@@ -3426,7 +3426,7 @@
     "volume": 75477,
     "R": {
      "name": "Republican Party",
-     "price": 0.93
+     "price": 0.925
     },
     "D": {
      "name": "Democratic Party",
@@ -3440,11 +3440,11 @@
     "volume": 56231,
     "D": {
      "name": "Richard Neal",
-     "price": 0.9705
+     "price": 0.9725
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.026
+     "price": 0.022
     }
    },
    {
@@ -3454,7 +3454,7 @@
     "volume": 75839,
     "D": {
      "name": "Jim McGovern",
-     "price": 0.978
+     "price": 0.977
     },
     "R": {
      "name": "Republican Party",
@@ -3465,10 +3465,10 @@
     "id": "MA-03",
     "market": "ma-03-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 23625,
+    "volume": 23652,
     "D": {
      "name": "Lori Trahan",
-     "price": 0.9825
+     "price": 0.972
     },
     "R": {
      "name": "Gary Grossi",
@@ -3486,21 +3486,21 @@
     },
     "R": {
      "name": "Tom Stalcup",
-     "price": 0.0185
+     "price": 0.018
     }
    },
    {
     "id": "MA-05",
     "market": "ma-05-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 37536,
+    "volume": 37562,
     "D": {
      "name": "Katherine Clark",
-     "price": 0.9695
+     "price": 0.97
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.015
+     "price": 0.0135
     }
    },
    {
@@ -3514,7 +3514,7 @@
     },
     "R": {
      "name": "Micah Jones",
-     "price": 0.0335
+     "price": 0.0355
     }
    },
    {
@@ -3524,7 +3524,7 @@
     "volume": 36454,
     "D": {
      "name": "Ayanna Pressley",
-     "price": 0.981
+     "price": 0.98
     },
     "R": {
      "name": "Republican Party",
@@ -3535,28 +3535,28 @@
     "id": "MA-08",
     "market": "ma-08-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 28179,
+    "volume": 28397,
     "D": {
      "name": "Stephen Lynch",
-     "price": 0.953
+     "price": 0.959
     },
     "R": {
      "name": "Robert Burke",
-     "price": 0.0265
+     "price": 0.018
     }
    },
    {
     "id": "MA-09",
     "market": "ma-09-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 30545,
+    "volume": 30577,
     "D": {
      "name": "Bill Keating",
-     "price": 0.968
+     "price": 0.9665
     },
     "R": {
      "name": "Tyler MacAllister",
-     "price": 0.0195
+     "price": 0.022
     }
    },
    {
@@ -3577,14 +3577,14 @@
     "id": "MD-02",
     "market": "md-02-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 25044,
+    "volume": 25102,
     "D": {
      "name": "Johnny Olszewski",
-     "price": 0.9585
+     "price": 0.9595
     },
     "R": {
      "name": "Dave Wallace",
-     "price": 0.0315
+     "price": 0.033
     }
    },
    {
@@ -3594,53 +3594,53 @@
     "volume": 53864,
     "D": {
      "name": "Sarah Elfreth",
-     "price": 0.966
+     "price": 0.9655
     },
     "R": {
      "name": "Berney Flowers",
-     "price": 0.024
+     "price": 0.022
     }
    },
    {
     "id": "MD-04",
     "market": "md-04-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 48481,
+    "volume": 48521,
     "D": {
      "name": "Glenn Ivey",
-     "price": 0.98
+     "price": 0.9785
     },
     "R": {
      "name": "George McDermott",
-     "price": 0.003
+     "price": 0.018
     }
    },
    {
     "id": "MD-05",
     "market": "md-05-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 24471,
+    "volume": 24522,
     "D": {
      "name": "Adrian Boafo",
-     "price": 0.9695
+     "price": 0.9685
     },
     "R": {
      "name": "Chris Chaffee",
-     "price": 0.0285
+     "price": 0.028
     }
    },
    {
     "id": "MD-06",
     "market": "md-06-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 35367,
+    "volume": 35523,
     "D": {
      "name": "April McClain Delaney",
-     "price": 0.9535
+     "price": 0.962
     },
     "R": {
      "name": "Robin Ficker",
-     "price": 0.0375
+     "price": 0.038
     }
    },
    {
@@ -3650,11 +3650,11 @@
     "volume": 24481,
     "D": {
      "name": "Kweisi Mfume",
-     "price": 0.9745
+     "price": 0.978
     },
     "R": {
      "name": "Scott Collier",
-     "price": 0.016
+     "price": 0.0165
     }
    },
    {
@@ -3664,11 +3664,11 @@
     "volume": 28113,
     "D": {
      "name": "Jamie Raskin",
-     "price": 0.9805
+     "price": 0.979
     },
     "R": {
      "name": "Cheryl Riley",
-     "price": 0.018
+     "price": 0.02
     }
    },
    {
@@ -3678,25 +3678,25 @@
     "volume": 47965,
     "D": {
      "name": "Chellie Pingree",
-     "price": 0.9615
+     "price": 0.963
     },
     "R": {
      "name": "Ronald Russell",
-     "price": 0.028
+     "price": 0.0285
     }
    },
    {
     "id": "ME-02",
     "market": "me-02-house-election-winner-20260720160226434",
     "rating": "Toss-up",
-    "volume": 73326,
+    "volume": 77010,
     "R": {
      "name": "Paul LePage",
-     "price": 0.58
+     "price": 0.565
     },
     "D": {
      "name": "Matthew Dunlap",
-     "price": 0.43
+     "price": 0.44
     }
    },
    {
@@ -3710,7 +3710,7 @@
     },
     "D": {
      "name": "Callie Barr",
-     "price": 0.14
+     "price": 0.145
     }
    },
    {
@@ -3724,7 +3724,7 @@
     },
     "D": {
      "name": "Ben Ambrose",
-     "price": 0.029
+     "price": 0.03
     }
    },
    {
@@ -3734,25 +3734,25 @@
     "volume": 61282,
     "D": {
      "name": "Hillary Scholten",
-     "price": 0.9505
+     "price": 0.951
     },
     "R": {
      "name": "Terri DeBoer",
-     "price": 0.0405
+     "price": 0.0445
     }
    },
    {
     "id": "MI-04",
     "market": "mi-04-house-election-winner",
     "rating": "Toss-up",
-    "volume": 33137,
+    "volume": 33142,
     "D": {
      "name": "Sean McCann",
      "price": 0.565
     },
     "R": {
      "name": "Bill Huizenga",
-     "price": 0.425
+     "price": 0.435
     }
    },
    {
@@ -3762,11 +3762,11 @@
     "volume": 47253,
     "R": {
      "name": "Tim Walberg",
-     "price": 0.934
+     "price": 0.932
     },
     "D": {
      "name": "Christian Vukasovich",
-     "price": 0.066
+     "price": 0.0685
     }
    },
    {
@@ -3776,21 +3776,21 @@
     "volume": 53867,
     "D": {
      "name": "Debbie Dingell",
-     "price": 0.9685
+     "price": 0.9645
     },
     "R": {
      "name": "Heather Smiley",
-     "price": 0.0195
+     "price": 0.0215
     }
    },
    {
     "id": "MI-07",
     "market": "mi-07-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 66295,
+    "volume": 66402,
     "D": {
      "name": "William Lawrence",
-     "price": 0.715
+     "price": 0.72
     },
     "R": {
      "name": "Tom Barrett",
@@ -3808,7 +3808,7 @@
     },
     "R": {
      "name": "Thomas Smith",
-     "price": 0.0475
+     "price": 0.047
     }
    },
    {
@@ -3822,14 +3822,14 @@
     },
     "D": {
      "name": "Ray Pooley",
-     "price": 0.033
+     "price": 0.0345
     }
    },
    {
     "id": "MI-10",
     "market": "mi-10-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 14359,
+    "volume": 14490,
     "D": {
      "name": "Christina Hines",
      "price": 0.665
@@ -3860,7 +3860,7 @@
     "volume": 41508,
     "D": {
      "name": "Rashida Tlaib",
-     "price": 0.9795
+     "price": 0.98
     },
     "R": {
      "name": "James Hooper",
@@ -3878,49 +3878,49 @@
     },
     "R": {
      "name": "T.P. Nykoriak",
-     "price": 0.017
+     "price": 0.014
     }
    },
    {
     "id": "MN-01",
     "market": "mn-01-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 82402,
+    "volume": 85672,
     "R": {
      "name": "Brad Finstad",
      "price": 0.625
     },
     "D": {
      "name": "Jake Johnson",
-     "price": 0.365
+     "price": 0.375
     }
    },
    {
     "id": "MN-02",
     "market": "mn-02-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 64259,
+    "volume": 64484,
     "D": {
      "name": "Matt Little",
-     "price": 0.9405
+     "price": 0.9445
     },
     "R": {
      "name": "Eric Pratt",
-     "price": 0.0505
+     "price": 0.05
     }
    },
    {
     "id": "MN-03",
     "market": "mn-03-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 29522,
+    "volume": 29672,
     "D": {
      "name": "Kelly Morrison",
-     "price": 0.967
+     "price": 0.9695
     },
     "R": {
      "name": "Tyler Bass",
-     "price": 0.034
+     "price": 0.024
     }
    },
    {
@@ -3930,7 +3930,7 @@
     "volume": 29442,
     "D": {
      "name": "Betty McCollum",
-     "price": 0.977
+     "price": 0.9775
     },
     "R": {
      "name": "Paul Wikstrom",
@@ -3944,11 +3944,11 @@
     "volume": 78947,
     "D": {
      "name": "Ilhan Omar",
-     "price": 0.965
+     "price": 0.9705
     },
     "R": {
      "name": "John Nagel",
-     "price": 0.0315
+     "price": 0.0295
     }
    },
    {
@@ -3958,11 +3958,11 @@
     "volume": 99845,
     "R": {
      "name": "Tom Emmer",
-     "price": 0.9595
+     "price": 0.952
     },
     "D": {
      "name": "Doug Chapin",
-     "price": 0.0345
+     "price": 0.0455
     }
    },
    {
@@ -3972,11 +3972,11 @@
     "volume": 36483,
     "R": {
      "name": "Michelle Fischbach",
-     "price": 0.9515
+     "price": 0.955
     },
     "D": {
      "name": "Erik Osberg",
-     "price": 0.036
+     "price": 0.0385
     }
    },
    {
@@ -3990,7 +3990,7 @@
     },
     "D": {
      "name": "Trina Swanson",
-     "price": 0.185
+     "price": 0.19
     }
    },
    {
@@ -4004,35 +4004,35 @@
     },
     "R": {
      "name": "Paul Berry",
-     "price": 0.0135
+     "price": 0.015
     }
    },
    {
     "id": "MO-02",
     "market": "mo-02-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 117681,
+    "volume": 117878,
     "R": {
      "name": "Ann Wagner",
-     "price": 0.625
+     "price": 0.62
     },
     "D": {
      "name": "Fred Wellman",
-     "price": 0.375
+     "price": 0.38
     }
    },
    {
     "id": "MO-03",
     "market": "mo-03-house-election-winner",
-    "rating": "Safe Republican",
-    "volume": 42814,
+    "rating": "Likely Republican",
+    "volume": 43736,
     "R": {
      "name": "Bob Onder",
-     "price": 0.9575
+     "price": 0.949
     },
     "D": {
      "name": "Bethany Mann",
-     "price": 0.027
+     "price": 0.038
     }
    },
    {
@@ -4042,11 +4042,11 @@
     "volume": 73263,
     "R": {
      "name": "Mark Alford",
-     "price": 0.9675
+     "price": 0.965
     },
     "D": {
      "name": "Jordan Herrera",
-     "price": 0.0335
+     "price": 0.0345
     }
    },
    {
@@ -4060,21 +4060,21 @@
     },
     "R": {
      "name": "Rick Brattin",
-     "price": 0.0355
+     "price": 0.036
     }
    },
    {
     "id": "MO-06",
     "market": "mo-06-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 60083,
+    "volume": 67714,
     "R": {
      "name": "Chris Stigall",
-     "price": 0.952
+     "price": 0.969
     },
     "D": {
      "name": "Josh Smead",
-     "price": 0.047
+     "price": 0.0295
     }
    },
    {
@@ -4084,7 +4084,7 @@
     "volume": 39134,
     "R": {
      "name": "Eric Burlison",
-     "price": 0.976
+     "price": 0.9775
     },
     "D": {
      "name": "Missi Hesketh",
@@ -4098,11 +4098,11 @@
     "volume": 46239,
     "R": {
      "name": "Jason Smith",
-     "price": 0.976
+     "price": 0.979
     },
     "D": {
      "name": "Chris Reichard",
-     "price": 0.022
+     "price": 0.0225
     }
    },
    {
@@ -4112,11 +4112,11 @@
     "volume": 118221,
     "R": {
      "name": "Trent Kelly",
-     "price": 0.965
+     "price": 0.9645
     },
     "D": {
      "name": "Cliff Johnson",
-     "price": 0.029
+     "price": 0.026
     }
    },
    {
@@ -4126,11 +4126,11 @@
     "volume": 45876,
     "D": {
      "name": "Bennie Thompson",
-     "price": 0.9705
+     "price": 0.974
     },
     "R": {
      "name": "Ron Eller",
-     "price": 0.024
+     "price": 0.0205
     }
    },
    {
@@ -4158,21 +4158,21 @@
     },
     "D": {
      "name": "Jeffrey Hulum III",
-     "price": 0.0395
+     "price": 0.038
     }
    },
    {
     "id": "MT-01",
     "market": "mt-01-house-election-winner",
     "rating": "Toss-up",
-    "volume": 146049,
+    "volume": 146728,
     "R": {
      "name": "Aaron Flint",
-     "price": 0.55
+     "price": 0.54
     },
     "D": {
      "name": "Sam Forstag",
-     "price": 0.455
+     "price": 0.45
     }
    },
    {
@@ -4182,25 +4182,25 @@
     "volume": 69988,
     "R": {
      "name": "Troy Downing",
-     "price": 0.978
+     "price": 0.9765
     },
     "D": {
      "name": "Brian Miller",
-     "price": 0.022
+     "price": 0.021
     }
    },
    {
     "id": "NC-01",
     "market": "nc-01-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 60206,
+    "volume": 60342,
     "D": {
      "name": "Don Davis",
      "price": 0.825
     },
     "R": {
      "name": "Laurie Buckhout",
-     "price": 0.165
+     "price": 0.17
     }
    },
    {
@@ -4210,39 +4210,39 @@
     "volume": 28068,
     "D": {
      "name": "Deborah Ross",
-     "price": 0.992
+     "price": 0.991
     },
     "R": {
      "name": "Eugene Douglass",
-     "price": 0.0095
+     "price": 0.011
     }
    },
    {
     "id": "NC-03",
     "market": "nc-03-house-election-winner",
-    "rating": "Toss-up",
-    "volume": 109058,
+    "rating": "Lean Republican",
+    "volume": 112791,
     "R": {
      "name": "Greg Murphy",
-     "price": 0.555
+     "price": 0.615
     },
     "D": {
      "name": "Raymond Smith Jr.",
-     "price": 0.42
+     "price": 0.375
     }
    },
    {
     "id": "NC-04",
     "market": "nc-04-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 84136,
+    "volume": 84794,
     "D": {
      "name": "Valerie Foushee",
-     "price": 0.964
+     "price": 0.9615
     },
     "R": {
      "name": "Max Ganorkar",
-     "price": 0.037
+     "price": 0.0295
     }
    },
    {
@@ -4252,25 +4252,25 @@
     "volume": 49283,
     "R": {
      "name": "Virginia Foxx",
-     "price": 0.86
+     "price": 0.855
     },
     "D": {
      "name": "Chuck Hubbard",
-     "price": 0.141
+     "price": 0.144
     }
    },
    {
     "id": "NC-06",
     "market": "nc-06-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 67460,
+    "volume": 68098,
     "R": {
      "name": "Addison McDowell",
-     "price": 0.885
+     "price": 0.89
     },
     "D": {
      "name": "Cyril Jefferson",
-     "price": 0.11
+     "price": 0.1
     }
    },
    {
@@ -4280,39 +4280,39 @@
     "volume": 41744,
     "R": {
      "name": "David Rouzer",
-     "price": 0.755
+     "price": 0.75
     },
     "D": {
      "name": "Kimberly Hardy",
-     "price": 0.235
+     "price": 0.25
     }
    },
    {
     "id": "NC-08",
     "market": "nc-08-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 57949,
+    "volume": 58001,
     "R": {
      "name": "Mark Harris",
-     "price": 0.9595
+     "price": 0.957
     },
     "D": {
      "name": "Colby Watson",
-     "price": 0.0405
+     "price": 0.04
     }
    },
    {
     "id": "NC-09",
     "market": "nc-09-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 156023,
+    "volume": 240566,
     "R": {
      "name": "Richard Hudson",
-     "price": 0.705
+     "price": 0.67
     },
     "D": {
      "name": "Richard Ojeda",
-     "price": 0.29
+     "price": 0.335
     }
    },
    {
@@ -4322,25 +4322,25 @@
     "volume": 15316,
     "R": {
      "name": "Pat Harrigan",
-     "price": 0.951
+     "price": 0.95
     },
     "D": {
      "name": "Ashley Bell",
-     "price": 0.051
+     "price": 0.05
     }
    },
    {
     "id": "NC-11",
     "market": "nc-11-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 79620,
+    "volume": 80890,
     "D": {
      "name": "Jamie Ager",
      "price": 0.875
     },
     "R": {
      "name": "Jennifer Balkcom",
-     "price": 0.115
+     "price": 0.12
     }
    },
    {
@@ -4350,39 +4350,39 @@
     "volume": 66355,
     "D": {
      "name": "Alma Adams",
-     "price": 0.9715
+     "price": 0.9625
     },
     "R": {
      "name": "Jack Codiga",
-     "price": 0.0185
+     "price": 0.02
     }
    },
    {
     "id": "NC-13",
     "market": "nc-13-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 223941,
+    "volume": 227247,
     "R": {
      "name": "Brad Knott",
-     "price": 0.625
+     "price": 0.645
     },
     "D": {
      "name": "Paul Barringer",
-     "price": 0.365
+     "price": 0.335
     }
    },
    {
     "id": "NC-14",
     "market": "nc-14-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 40823,
+    "volume": 40863,
     "R": {
      "name": "Tim Moore",
-     "price": 0.825
+     "price": 0.8
     },
     "D": {
      "name": "Lakesha Womack",
-     "price": 0.17
+     "price": 0.2
     }
    },
    {
@@ -4396,28 +4396,28 @@
     },
     "D": {
      "name": "Trygve Hammer",
-     "price": 0.0255
+     "price": 0.025
     }
    },
    {
     "id": "NE-01",
     "market": "ne-01-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 53747,
+    "volume": 54469,
     "R": {
      "name": "Mike Flood",
-     "price": 0.795
+     "price": 0.79
     },
     "D": {
      "name": "Chris Backemeyer",
-     "price": 0.19
+     "price": 0.21
     }
    },
    {
     "id": "NE-02",
     "market": "ne-02-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 68160,
+    "volume": 68218,
     "D": {
      "name": "Denise Powell",
      "price": 0.925
@@ -4434,7 +4434,7 @@
     "volume": 16067,
     "R": {
      "name": "Adrian Smith",
-     "price": 0.9665
+     "price": 0.9705
     },
     "D": {
      "name": "Becky Stille",
@@ -4448,11 +4448,11 @@
     "volume": 56014,
     "D": {
      "name": "Stefany Shaheen",
-     "price": 0.962
+     "price": 0.9595
     },
     "R": {
      "name": "Anthony DiLorenzo",
-     "price": 0.034
+     "price": 0.04
     }
    },
    {
@@ -4462,11 +4462,11 @@
     "volume": 52669,
     "D": {
      "name": "Maggie Goodlander",
-     "price": 0.977
+     "price": 0.975
     },
     "R": {
      "name": "Lily Tang Williams",
-     "price": 0.0275
+     "price": 0.027
     }
    },
    {
@@ -4476,25 +4476,25 @@
     "volume": 54423,
     "D": {
      "name": "Donald Norcross",
-     "price": 0.9625
+     "price": 0.964
     },
     "R": {
      "name": "Damon Galdo",
-     "price": 0.036
+     "price": 0.035
     }
    },
    {
     "id": "NJ-02",
     "market": "nj-02-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 173491,
+    "volume": 195547,
     "R": {
      "name": "Jeff Van Drew",
      "price": 0.675
     },
     "D": {
      "name": "Zack Mullock",
-     "price": 0.325
+     "price": 0.3
     }
    },
    {
@@ -4508,7 +4508,7 @@
     },
     "R": {
      "name": "Michael McGuire",
-     "price": 0.0175
+     "price": 0.018
     }
    },
    {
@@ -4518,11 +4518,11 @@
     "volume": 22704,
     "R": {
      "name": "Chris Smith",
-     "price": 0.9525
+     "price": 0.9555
     },
     "D": {
      "name": "Rachel Peace",
-     "price": 0.042
+     "price": 0.0395
     }
    },
    {
@@ -4532,11 +4532,11 @@
     "volume": 32547,
     "D": {
      "name": "Josh Gottheimer",
-     "price": 0.96
+     "price": 0.9595
     },
     "R": {
      "name": "Sean Kirrane",
-     "price": 0.0395
+     "price": 0.041
     }
    },
    {
@@ -4546,39 +4546,39 @@
     "volume": 34701,
     "D": {
      "name": "Frank Pallone",
-     "price": 0.9705
+     "price": 0.97
     },
     "R": {
      "name": "Hillary Herzig",
-     "price": 0.015
+     "price": 0.0145
     }
    },
    {
     "id": "NJ-07",
     "market": "nj-07-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 54474,
+    "volume": 56726,
     "D": {
      "name": "Rebecca Bennett",
      "price": 0.935
     },
     "R": {
      "name": "Thomas Kean Jr.",
-     "price": 0.055
+     "price": 0.065
     }
    },
    {
     "id": "NJ-08",
     "market": "nj-08-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 49460,
+    "volume": 49533,
     "D": {
      "name": "Rob Menendez",
-     "price": 0.9605
+     "price": 0.961
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.018
+     "price": 0.0185
     }
    },
    {
@@ -4599,28 +4599,28 @@
     "id": "NJ-10",
     "market": "nj-10-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 59090,
+    "volume": 59138,
     "D": {
      "name": "LaMonica McIver",
-     "price": 0.981
+     "price": 0.975
     },
     "R": {
      "name": "Carmen Bucco",
-     "price": 0.019
+     "price": 0.023
     }
    },
    {
     "id": "NJ-11",
     "market": "nj-11-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 47561,
+    "volume": 47601,
     "D": {
      "name": "Analilia Mejia",
      "price": 0.955
     },
     "R": {
      "name": "Joe Hathaway",
-     "price": 0.022
+     "price": 0.025
     }
    },
    {
@@ -4630,7 +4630,7 @@
     "volume": 30418,
     "D": {
      "name": "Adam Hamawy",
-     "price": 0.979
+     "price": 0.9785
     },
     "R": {
      "name": "Gregg Mele",
@@ -4644,11 +4644,11 @@
     "volume": 45778,
     "D": {
      "name": "Melanie Stansbury",
-     "price": 0.9575
+     "price": 0.9565
     },
     "R": {
      "name": "Didi Okpareke",
-     "price": 0.0385
+     "price": 0.035
     }
    },
    {
@@ -4672,32 +4672,32 @@
     "volume": 54068,
     "D": {
      "name": "Teresa Leger Fernández",
-     "price": 0.961
+     "price": 0.9515
     },
     "R": {
      "name": "Martin Zamora",
-     "price": 0.0345
+     "price": 0.031
     }
    },
    {
     "id": "NV-01",
     "market": "nv-01-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 36633,
+    "volume": 36758,
     "D": {
      "name": "Dina Titus",
-     "price": 0.961
+     "price": 0.9575
     },
     "R": {
      "name": "Carrie Buck",
-     "price": 0.039
+     "price": 0.045
     }
    },
    {
     "id": "NV-02",
     "market": "nv-02-house-election-winner",
     "rating": "Toss-up",
-    "volume": 58955,
+    "volume": 58967,
     "R": {
      "name": "David Flippo",
      "price": 0.59
@@ -4714,25 +4714,25 @@
     "volume": 12372,
     "D": {
      "name": "Susie Lee",
-     "price": 0.955
+     "price": 0.95
     },
     "R": {
      "name": "Martin O'Donnell",
-     "price": 0.0385
+     "price": 0.043
     }
    },
    {
     "id": "NV-04",
     "market": "nv-04-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 37148,
+    "volume": 37149,
     "D": {
      "name": "Steven Horsford",
-     "price": 0.9635
+     "price": 0.963
     },
     "R": {
      "name": "Cody Whipple",
-     "price": 0.029
+     "price": 0.0285
     }
    },
    {
@@ -4742,32 +4742,32 @@
     "volume": 76133,
     "R": {
      "name": "Nick LaLota",
-     "price": 0.77
+     "price": 0.775
     },
     "D": {
      "name": "Chris Gallant",
-     "price": 0.22
+     "price": 0.215
     }
    },
    {
     "id": "NY-02",
     "market": "ny-02-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 22435,
+    "volume": 22715,
     "R": {
      "name": "Andrew Garbarino",
-     "price": 0.79
+     "price": 0.78
     },
     "D": {
      "name": "Patrick Halpin",
-     "price": 0.22
+     "price": 0.225
     }
    },
    {
     "id": "NY-03",
     "market": "ny-03-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 50806,
+    "volume": 50848,
     "D": {
      "name": "Tom Suozzi",
      "price": 0.89
@@ -4788,7 +4788,7 @@
     },
     "R": {
      "name": "Jeanine Driscoll",
-     "price": 0.088
+     "price": 0.086
     }
    },
    {
@@ -4802,7 +4802,7 @@
     },
     "R": {
      "name": "George Marsh",
-     "price": 0.0105
+     "price": 0.0115
     }
    },
    {
@@ -4812,11 +4812,11 @@
     "volume": 27746,
     "D": {
      "name": "Grace Meng",
-     "price": 0.983
+     "price": 0.985
     },
     "R": {
      "name": "Joseph Chou",
-     "price": 0.0075
+     "price": 0.009
     }
    },
    {
@@ -4840,25 +4840,25 @@
     "volume": 32863,
     "D": {
      "name": "Hakeem Jeffries",
-     "price": 0.9775
+     "price": 0.975
     },
     "R": {
      "name": "Lewis Mizrahi",
-     "price": 0.0275
+     "price": 0.027
     }
    },
    {
     "id": "NY-09",
     "market": "ny-09-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 61623,
+    "volume": 61673,
     "D": {
      "name": "Yvette Clarke",
-     "price": 0.9655
+     "price": 0.966
     },
     "R": {
      "name": "Joel Anabilah-Azumah",
-     "price": 0.019
+     "price": 0.0205
     }
    },
    {
@@ -4868,11 +4868,11 @@
     "volume": 56332,
     "D": {
      "name": "Brad Lander",
-     "price": 0.967
+     "price": 0.9675
     },
     "R": {
      "name": "Jennifer Moore",
-     "price": 0.0115
+     "price": 0.0105
     }
    },
    {
@@ -4882,7 +4882,7 @@
     "volume": 48995,
     "R": {
      "name": "Nicole Malliotakis",
-     "price": 0.9265
+     "price": 0.927
     },
     "D": {
      "name": "Michael DeCillis",
@@ -4893,14 +4893,14 @@
     "id": "NY-12",
     "market": "ny-12-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 35273,
+    "volume": 35303,
     "D": {
      "name": "Micah Lasher",
-     "price": 0.9775
+     "price": 0.978
     },
     "R": {
      "name": "Caroline Shinkle",
-     "price": 0.007
+     "price": 0.0075
     }
    },
    {
@@ -4910,25 +4910,25 @@
     "volume": 40833,
     "D": {
      "name": "Darializa Avila Chevalier",
-     "price": 0.9825
+     "price": 0.9855
     },
     "R": {
      "name": "Jomo Williams",
-     "price": 0.0175
+     "price": 0.0135
     }
    },
    {
     "id": "NY-14",
     "market": "ny-14-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 63466,
+    "volume": 64182,
     "D": {
      "name": "Alexandria Ocasio-Cortez",
-     "price": 0.981
+     "price": 0.984
     },
     "R": {
      "name": "Diamant Hysenaj",
-     "price": 0.016
+     "price": 0.015
     }
    },
    {
@@ -4942,7 +4942,7 @@
     },
     "R": {
      "name": "Stylo Sapaskis",
-     "price": 0.0175
+     "price": 0.018
     }
    },
    {
@@ -4952,39 +4952,39 @@
     "volume": 41820,
     "D": {
      "name": "George Latimer",
-     "price": 0.967
+     "price": 0.9665
     },
     "R": {
      "name": "Joseph Cinquemani",
-     "price": 0.0255
+     "price": 0.026
     }
    },
    {
     "id": "NY-17",
     "market": "ny-17-house-election-winner",
-    "rating": "Toss-up",
-    "volume": 98046,
+    "rating": "Lean Democrat",
+    "volume": 98064,
     "D": {
      "name": "Cait Conley",
-     "price": 0.595
+     "price": 0.6
     },
     "R": {
      "name": "Mike Lawler",
-     "price": 0.4
+     "price": 0.405
     }
    },
    {
     "id": "NY-18",
     "market": "ny-18-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 46209,
+    "volume": 46220,
     "D": {
      "name": "Pat Ryan",
-     "price": 0.961
+     "price": 0.959
     },
     "R": {
      "name": "Jacqueline Auringer",
-     "price": 0.038
+     "price": 0.0395
     }
    },
    {
@@ -4994,32 +4994,32 @@
     "volume": 36096,
     "D": {
      "name": "Josh Riley",
-     "price": 0.957
+     "price": 0.9565
     },
     "R": {
      "name": "Peter Oberacker",
-     "price": 0.0345
+     "price": 0.044
     }
    },
    {
     "id": "NY-20",
     "market": "ny-20-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 47441,
+    "volume": 47637,
     "D": {
      "name": "Paul Tonko",
      "price": 0.974
     },
     "R": {
      "name": "Ralph Ambrosio",
-     "price": 0.0265
+     "price": 0.0185
     }
    },
    {
     "id": "NY-21",
     "market": "ny-21-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 112351,
+    "volume": 112368,
     "R": {
      "name": "Anthony Constantino",
      "price": 0.66
@@ -5036,11 +5036,11 @@
     "volume": 40583,
     "D": {
      "name": "John Mannion",
-     "price": 0.9705
+     "price": 0.9675
     },
     "R": {
      "name": "Kailee Buller",
-     "price": 0.026
+     "price": 0.029
     }
    },
    {
@@ -5050,39 +5050,39 @@
     "volume": 89506,
     "R": {
      "name": "Nick Langworthy",
-     "price": 0.963
+     "price": 0.962
     },
     "D": {
      "name": "Aaron Gies",
-     "price": 0.0135
+     "price": 0.013
     }
    },
    {
     "id": "NY-24",
     "market": "ny-24-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 52240,
+    "volume": 52347,
     "R": {
      "name": "Claudia Tenney",
-     "price": 0.965
+     "price": 0.9625
     },
     "D": {
      "name": "Alissa Ellman",
-     "price": 0.036
+     "price": 0.0355
     }
    },
    {
     "id": "NY-25",
     "market": "ny-25-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 41842,
+    "volume": 41992,
     "D": {
      "name": "Joseph Morelle",
-     "price": 0.969
+     "price": 0.9705
     },
     "R": {
      "name": "Virginia McIntyre",
-     "price": 0.0275
+     "price": 0.019
     }
    },
    {
@@ -5092,11 +5092,11 @@
     "volume": 42783,
     "D": {
      "name": "Tim Kennedy",
-     "price": 0.9675
+     "price": 0.967
     },
     "R": {
      "name": "Dennis Hannon",
-     "price": 0.0295
+     "price": 0.033
     }
    },
    {
@@ -5106,11 +5106,11 @@
     "volume": 65073,
     "D": {
      "name": "Greg Landsman",
-     "price": 0.9565
+     "price": 0.955
     },
     "R": {
      "name": "Eric Conroy",
-     "price": 0.036
+     "price": 0.0435
     }
    },
    {
@@ -5124,7 +5124,7 @@
     },
     "D": {
      "name": "Jennifer Mazzuckelli",
-     "price": 0.015
+     "price": 0.0155
     }
    },
    {
@@ -5134,7 +5134,7 @@
     "volume": 58913,
     "D": {
      "name": "Joyce Beatty",
-     "price": 0.967
+     "price": 0.9675
     },
     "R": {
      "name": "Cleophus Dulaney",
@@ -5152,21 +5152,21 @@
     },
     "D": {
      "name": "Joshua Kolasinski",
-     "price": 0.05
+     "price": 0.045
     }
    },
    {
     "id": "OH-05",
     "market": "oh-05-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 66479,
+    "volume": 66502,
     "R": {
      "name": "Bob Latta",
-     "price": 0.9605
+     "price": 0.9625
     },
     "D": {
      "name": "Brian Shaver",
-     "price": 0.032
+     "price": 0.0315
     }
    },
    {
@@ -5176,21 +5176,21 @@
     "volume": 82776,
     "R": {
      "name": "Michael Rulli",
-     "price": 0.9685
+     "price": 0.9695
     },
     "D": {
      "name": "Elizabeth Kirtley",
-     "price": 0.032
+     "price": 0.033
     }
    },
    {
     "id": "OH-07",
     "market": "oh-07-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 136778,
+    "volume": 137022,
     "D": {
      "name": "Brian Poindexter",
-     "price": 0.85
+     "price": 0.835
     },
     "R": {
      "name": "Max Miller",
@@ -5204,7 +5204,7 @@
     "volume": 18948,
     "R": {
      "name": "Warren Davidson",
-     "price": 0.935
+     "price": 0.93
     },
     "D": {
      "name": "Vanessa Enoch",
@@ -5215,42 +5215,42 @@
     "id": "OH-09",
     "market": "oh-09-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 55734,
+    "volume": 56743,
     "D": {
      "name": "Marcy Kaptur",
      "price": 0.75
     },
     "R": {
      "name": "Derek Merrin",
-     "price": 0.24
+     "price": 0.245
     }
    },
    {
     "id": "OH-10",
     "market": "oh-10-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 65301,
+    "volume": 65408,
     "R": {
      "name": "Mike Turner",
      "price": 0.71
     },
     "D": {
      "name": "Kristina Knickerbocker",
-     "price": 0.29
+     "price": 0.285
     }
    },
    {
     "id": "OH-11",
     "market": "oh-11-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 39176,
+    "volume": 39236,
     "D": {
      "name": "Shontel Brown",
-     "price": 0.9855
+     "price": 0.987
     },
     "R": {
      "name": "Mike Kirchner",
-     "price": 0.0115
+     "price": 0.0125
     }
    },
    {
@@ -5264,7 +5264,7 @@
     },
     "D": {
      "name": "Jerrad Christian",
-     "price": 0.045
+     "price": 0.047
     }
    },
    {
@@ -5274,7 +5274,7 @@
     "volume": 45777,
     "D": {
      "name": "Emilia Sykes",
-     "price": 0.959
+     "price": 0.958
     },
     "R": {
      "name": "Carey Coleman",
@@ -5285,24 +5285,24 @@
     "id": "OH-14",
     "market": "oh-14-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 101919,
+    "volume": 101957,
     "R": {
      "name": "David Joyce",
-     "price": 0.9615
+     "price": 0.9625
     },
     "D": {
      "name": "Maria Jukic",
-     "price": 0.027
+     "price": 0.0285
     }
    },
    {
     "id": "OH-15",
     "market": "oh-15-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 53973,
+    "volume": 54006,
     "R": {
      "name": "Mike Carey",
-     "price": 0.625
+     "price": 0.63
     },
     "D": {
      "name": "Don Leonard",
@@ -5316,7 +5316,7 @@
     "volume": 44336,
     "R": {
      "name": "Mark Tedford",
-     "price": 0.973
+     "price": 0.974
     },
     "D": {
      "name": "John Croisant",
@@ -5327,28 +5327,28 @@
     "id": "OK-02",
     "market": "ok-02-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 34383,
+    "volume": 34473,
     "R": {
      "name": "Josh Brecheen",
-     "price": 0.9795
+     "price": 0.973
     },
     "D": {
      "name": "Brandon Wade",
-     "price": 0.0155
+     "price": 0.02
     }
    },
    {
     "id": "OK-03",
     "market": "ok-03-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 106804,
+    "volume": 106862,
     "R": {
      "name": "Frank Lucas",
-     "price": 0.9675
+     "price": 0.968
     },
     "D": {
      "name": "Suzie Byrd",
-     "price": 0.0225
+     "price": 0.0235
     }
    },
    {
@@ -5369,14 +5369,14 @@
     "id": "OK-05",
     "market": "ok-05-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 35173,
+    "volume": 35192,
     "R": {
      "name": "Stephanie Bice",
-     "price": 0.845
+     "price": 0.83
     },
     "D": {
      "name": "Jena Nelson",
-     "price": 0.155
+     "price": 0.165
     }
    },
    {
@@ -5386,11 +5386,11 @@
     "volume": 27654,
     "D": {
      "name": "Suzanne Bonamici",
-     "price": 0.964
+     "price": 0.9665
     },
     "R": {
      "name": "Barbara Kahl",
-     "price": 0.0275
+     "price": 0.031
     }
    },
    {
@@ -5400,11 +5400,11 @@
     "volume": 22892,
     "R": {
      "name": "Cliff Bentz",
-     "price": 0.961
+     "price": 0.9605
     },
     "D": {
      "name": "Chris Beck",
-     "price": 0.0375
+     "price": 0.0385
     }
    },
    {
@@ -5414,11 +5414,11 @@
     "volume": 21466,
     "D": {
      "name": "Maxine Dexter",
-     "price": 0.9715
+     "price": 0.9735
     },
     "R": {
      "name": "Loran Ayles",
-     "price": 0.02
+     "price": 0.022
     }
    },
    {
@@ -5428,11 +5428,11 @@
     "volume": 35856,
     "D": {
      "name": "Val Hoyle",
-     "price": 0.9585
+     "price": 0.957
     },
     "R": {
      "name": "Monique DeSpain",
-     "price": 0.031
+     "price": 0.032
     }
    },
    {
@@ -5442,11 +5442,11 @@
     "volume": 34711,
     "D": {
      "name": "Janelle Bynum",
-     "price": 0.9635
+     "price": 0.9565
     },
     "R": {
      "name": "Patti Adair",
-     "price": 0.0375
+     "price": 0.0285
     }
    },
    {
@@ -5456,25 +5456,25 @@
     "volume": 27130,
     "D": {
      "name": "Andrea Salinas",
-     "price": 0.9545
+     "price": 0.956
     },
     "R": {
      "name": "David Russ",
-     "price": 0.0325
+     "price": 0.0355
     }
    },
    {
     "id": "PA-01",
     "market": "pa-01-house-election-winner",
     "rating": "Toss-up",
-    "volume": 110539,
+    "volume": 111145,
     "R": {
      "name": "Brian Fitzpatrick",
      "price": 0.555
     },
     "D": {
      "name": "Bob Harvie",
-     "price": 0.45
+     "price": 0.445
     }
    },
    {
@@ -5502,7 +5502,7 @@
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.0225
+     "price": 0.022
     }
    },
    {
@@ -5512,46 +5512,46 @@
     "volume": 21934,
     "D": {
      "name": "Madeleine Dean",
-     "price": 0.969
+     "price": 0.974
     },
     "R": {
      "name": "Aurora Stuski",
-     "price": 0.0255
+     "price": 0.0235
     }
    },
    {
     "id": "PA-05",
     "market": "pa-05-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 38751,
+    "volume": 38771,
     "D": {
      "name": "Mary Gay Scanlon",
-     "price": 0.9805
+     "price": 0.98
     },
     "R": {
      "name": "Nicholas Manganaro",
-     "price": 0.0135
+     "price": 0.014
     }
    },
    {
     "id": "PA-06",
     "market": "pa-06-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 41096,
+    "volume": 41181,
     "D": {
      "name": "Chrissy Houlahan",
-     "price": 0.985
+     "price": 0.992
     },
     "R": {
      "name": "Marty Young",
-     "price": 0.0155
+     "price": 0.0075
     }
    },
    {
     "id": "PA-07",
     "market": "pa-07-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 40484,
+    "volume": 40594,
     "D": {
      "name": "Bob Brooks",
      "price": 0.855
@@ -5565,28 +5565,28 @@
     "id": "PA-08",
     "market": "pa-08-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 52492,
+    "volume": 55712,
     "D": {
      "name": "Paige Cognetti",
-     "price": 0.85
+     "price": 0.855
     },
     "R": {
      "name": "Rob Bresnahan",
-     "price": 0.145
+     "price": 0.14
     }
    },
    {
     "id": "PA-09",
     "market": "pa-09-house-election-winner",
-    "rating": "Safe Republican",
+    "rating": "Likely Republican",
     "volume": 23632,
     "R": {
      "name": "Dan Meuser",
-     "price": 0.9525
+     "price": 0.9485
     },
     "D": {
      "name": "Rachel Wallace",
-     "price": 0.049
+     "price": 0.0535
     }
    },
    {
@@ -5610,11 +5610,11 @@
     "volume": 67389,
     "R": {
      "name": "Lloyd Smucker",
-     "price": 0.953
+     "price": 0.9535
     },
     "D": {
      "name": "Nancy Mannion",
-     "price": 0.0465
+     "price": 0.0475
     }
    },
    {
@@ -5624,11 +5624,11 @@
     "volume": 24708,
     "D": {
      "name": "Summer Lee",
-     "price": 0.9725
+     "price": 0.9775
     },
     "R": {
      "name": "James Hayes",
-     "price": 0.0145
+     "price": 0.016
     }
    },
    {
@@ -5638,11 +5638,11 @@
     "volume": 18025,
     "R": {
      "name": "John Joyce",
-     "price": 0.9785
+     "price": 0.979
     },
     "D": {
      "name": "Beth Farnham",
-     "price": 0.0215
+     "price": 0.021
     }
    },
    {
@@ -5656,21 +5656,21 @@
     },
     "D": {
      "name": "Alan Bradstock",
-     "price": 0.0235
+     "price": 0.023
     }
    },
    {
     "id": "PA-15",
     "market": "pa-15-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 30822,
+    "volume": 30862,
     "R": {
      "name": "Glenn Thompson",
      "price": 0.949
     },
     "D": {
      "name": "Ray Bilger",
-     "price": 0.0385
+     "price": 0.0415
     }
    },
    {
@@ -5684,7 +5684,7 @@
     },
     "D": {
      "name": "Justin Wagner",
-     "price": 0.047
+     "price": 0.0485
     }
    },
    {
@@ -5694,11 +5694,11 @@
     "volume": 33019,
     "D": {
      "name": "Chris Deluzio",
-     "price": 0.951
+     "price": 0.952
     },
     "R": {
      "name": "Tony Guy",
-     "price": 0.046
+     "price": 0.044
     }
    },
    {
@@ -5708,39 +5708,39 @@
     "volume": 47335,
     "D": {
      "name": "Gabe Amo",
-     "price": 0.961
+     "price": 0.964
     },
     "R": {
      "name": "Kellie Keenan",
-     "price": 0.0335
+     "price": 0.0305
     }
    },
    {
     "id": "RI-02",
     "market": "ri-02-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 62534,
+    "volume": 62627,
     "D": {
      "name": "Seth Magaziner",
      "price": 0.9515
     },
     "R": {
      "name": "Victor Mellor",
-     "price": 0.0455
+     "price": 0.047
     }
    },
    {
     "id": "SC-01",
     "market": "sc-01-house-election-winner",
-    "rating": "Toss-up",
-    "volume": 129357,
+    "rating": "Lean Republican",
+    "volume": 134141,
     "R": {
      "name": "Jenny Costa Honeycutt",
-     "price": 0.595
+     "price": 0.62
     },
     "D": {
      "name": "Nancy Lacore",
-     "price": 0.405
+     "price": 0.38
     }
    },
    {
@@ -5754,7 +5754,7 @@
     },
     "D": {
      "name": "Zyon Khalifa",
-     "price": 0.15
+     "price": 0.145
     }
    },
    {
@@ -5764,11 +5764,11 @@
     "volume": 55289,
     "R": {
      "name": "Sheri Biggs",
-     "price": 0.9735
+     "price": 0.972
     },
     "D": {
      "name": "Eunice Lehmacher",
-     "price": 0.0175
+     "price": 0.0225
     }
    },
    {
@@ -5782,7 +5782,7 @@
     },
     "D": {
      "name": "Courtney McClain",
-     "price": 0.036
+     "price": 0.0415
     }
    },
    {
@@ -5792,25 +5792,25 @@
     "volume": 11173,
     "R": {
      "name": "Wes Climer",
-     "price": 0.93
+     "price": 0.935
     },
     "D": {
      "name": "Mallory Dittmer",
-     "price": 0.065
+     "price": 0.07
     }
    },
    {
     "id": "SC-06",
     "market": "sc-06-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 44250,
+    "volume": 44282,
     "D": {
      "name": "Jim Clyburn",
-     "price": 0.9645
+     "price": 0.98
     },
     "R": {
      "name": "John Peterson",
-     "price": 0.0235
+     "price": 0.0205
     }
    },
    {
@@ -5834,11 +5834,11 @@
     "volume": 37469,
     "R": {
      "name": "Marty Jackley",
-     "price": 0.95
+     "price": 0.955
     },
     "D": {
      "name": "Nikki Gronli",
-     "price": 0.041
+     "price": 0.0405
     }
    },
    {
@@ -5848,11 +5848,11 @@
     "volume": 27653,
     "R": {
      "name": "Diana Harshbarger",
-     "price": 0.976
+     "price": 0.9755
     },
     "D": {
      "name": "Kristi Burke",
-     "price": 0.0205
+     "price": 0.022
     }
    },
    {
@@ -5866,7 +5866,7 @@
     },
     "D": {
      "name": "Michaela Barnett",
-     "price": 0.0475
+     "price": 0.047
     }
    },
    {
@@ -5876,11 +5876,11 @@
     "volume": 45208,
     "R": {
      "name": "Chuck Fleischmann",
-     "price": 0.9615
+     "price": 0.962
     },
     "D": {
      "name": "Anna Golladay",
-     "price": 0.0365
+     "price": 0.0375
     }
    },
    {
@@ -5890,25 +5890,25 @@
     "volume": 135998,
     "R": {
      "name": "Scott DesJarlais",
-     "price": 0.971
+     "price": 0.972
     },
     "D": {
      "name": "Victoria Broderick",
-     "price": 0.0185
+     "price": 0.018
     }
    },
    {
     "id": "TN-05",
     "market": "tn-05-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 76447,
+    "volume": 76683,
     "R": {
      "name": "Charlie Hatcher",
-     "price": 0.885
+     "price": 0.9
     },
     "D": {
      "name": "Chaz Molder",
-     "price": 0.1045
+     "price": 0.096
     }
    },
    {
@@ -5929,42 +5929,42 @@
     "id": "TN-07",
     "market": "tn-07-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 55947,
+    "volume": 56052,
     "R": {
      "name": "Matt Van Epps",
-     "price": 0.964
+     "price": 0.9595
     },
     "D": {
      "name": "Darden Copeland",
-     "price": 0.035
+     "price": 0.043
     }
    },
    {
     "id": "TN-08",
     "market": "tn-08-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 51050,
+    "volume": 51132,
     "R": {
      "name": "David Kustoff",
-     "price": 0.985
+     "price": 0.984
     },
     "D": {
      "name": "Heidi Kuhn",
-     "price": 0.0255
+     "price": 0.0205
     }
    },
    {
     "id": "TN-09",
     "market": "tn-09-house-election-winner",
-    "rating": "Lean Republican",
-    "volume": 65033,
+    "rating": "Likely Republican",
+    "volume": 65934,
     "R": {
      "name": "Brent Taylor",
-     "price": 0.785
+     "price": 0.805
     },
     "D": {
      "name": "Justin Pearson",
-     "price": 0.21
+     "price": 0.195
     }
    },
    {
@@ -5974,21 +5974,21 @@
     "volume": 60162,
     "R": {
      "name": "Nathaniel Moran",
-     "price": 0.972
+     "price": 0.9705
     },
     "D": {
      "name": "Yolanda Prince",
-     "price": 0.0195
+     "price": 0.0225
     }
    },
    {
     "id": "TX-02",
     "market": "tx-02-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 33526,
+    "volume": 33701,
     "R": {
      "name": "Steve Toth",
-     "price": 0.93
+     "price": 0.935
     },
     "D": {
      "name": "Shaun Finnie",
@@ -5999,14 +5999,14 @@
     "id": "TX-03",
     "market": "tx-03-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 56704,
+    "volume": 56947,
     "R": {
      "name": "Keith Self",
-     "price": 0.954
+     "price": 0.95
     },
     "D": {
      "name": "Evan Hunt",
-     "price": 0.0405
+     "price": 0.0425
     }
    },
    {
@@ -6016,11 +6016,11 @@
     "volume": 93067,
     "R": {
      "name": "Pat Fallon",
-     "price": 0.9575
+     "price": 0.9605
     },
     "D": {
      "name": "Jason Pearce",
-     "price": 0.0355
+     "price": 0.029
     }
    },
    {
@@ -6030,11 +6030,11 @@
     "volume": 65101,
     "R": {
      "name": "Lance Gooden",
-     "price": 0.959
+     "price": 0.9595
     },
     "D": {
      "name": "Chelsey Hockett",
-     "price": 0.0375
+     "price": 0.0355
     }
    },
    {
@@ -6048,7 +6048,7 @@
     },
     "D": {
      "name": "Danny Minton",
-     "price": 0.0105
+     "price": 0.0095
     }
    },
    {
@@ -6058,11 +6058,11 @@
     "volume": 30905,
     "D": {
      "name": "Lizzie Fletcher",
-     "price": 0.9595
+     "price": 0.96
     },
     "R": {
      "name": "Alexander Hale",
-     "price": 0.0385
+     "price": 0.0355
     }
    },
    {
@@ -6076,21 +6076,21 @@
     },
     "D": {
      "name": "Laura Jones",
-     "price": 0.0345
+     "price": 0.037
     }
    },
    {
     "id": "TX-09",
     "market": "tx-09-house-election-winner",
     "rating": "Lean Republican",
-    "volume": 50111,
+    "volume": 50305,
     "R": {
      "name": "Alex Mealer",
      "price": 0.765
     },
     "D": {
      "name": "Leticia Gutierrez",
-     "price": 0.225
+     "price": 0.23
     }
    },
    {
@@ -6114,11 +6114,11 @@
     "volume": 35605,
     "R": {
      "name": "August Pfluger",
-     "price": 0.9605
+     "price": 0.966
     },
     "D": {
      "name": "Claire Reynolds",
-     "price": 0.03
+     "price": 0.0315
     }
    },
    {
@@ -6128,11 +6128,11 @@
     "volume": 69359,
     "R": {
      "name": "Craig Goldman",
-     "price": 0.96
+     "price": 0.962
     },
     "D": {
      "name": "Angela Rodriguez Prilliman",
-     "price": 0.028
+     "price": 0.0275
     }
    },
    {
@@ -6142,11 +6142,11 @@
     "volume": 19383,
     "R": {
      "name": "Ronny Jackson",
-     "price": 0.974
+     "price": 0.971
     },
     "D": {
      "name": "Mark Nair",
-     "price": 0.029
+     "price": 0.0265
     }
    },
    {
@@ -6156,25 +6156,25 @@
     "volume": 39842,
     "R": {
      "name": "Randy Weber",
-     "price": 0.971
+     "price": 0.9705
     },
     "D": {
      "name": "Thurman Bartie",
-     "price": 0.0225
+     "price": 0.025
     }
    },
    {
     "id": "TX-15",
     "market": "tx-15-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 106339,
+    "volume": 108704,
     "D": {
      "name": "Bobby Pulido",
-     "price": 0.815
+     "price": 0.845
     },
     "R": {
      "name": "Monica De La Cruz",
-     "price": 0.185
+     "price": 0.15
     }
    },
    {
@@ -6184,25 +6184,25 @@
     "volume": 27504,
     "D": {
      "name": "Veronica Escobar",
-     "price": 0.9665
+     "price": 0.961
     },
     "R": {
      "name": "Adam Bauman",
-     "price": 0.0295
+     "price": 0.0305
     }
    },
    {
     "id": "TX-17",
     "market": "tx-17-house-election-winner",
-    "rating": "Safe Republican",
-    "volume": 52805,
+    "rating": "Likely Republican",
+    "volume": 52947,
     "R": {
      "name": "Pete Sessions",
-     "price": 0.9665
+     "price": 0.9415
     },
     "D": {
      "name": "Casey Shepard",
-     "price": 0.037
+     "price": 0.0565
     }
    },
    {
@@ -6212,11 +6212,11 @@
     "volume": 16813,
     "D": {
      "name": "Christian Menefee",
-     "price": 0.9785
+     "price": 0.978
     },
     "R": {
      "name": "Ronald Whitfield",
-     "price": 0.017
+     "price": 0.0165
     }
    },
    {
@@ -6226,7 +6226,7 @@
     "volume": 31408,
     "R": {
      "name": "Tom Sell",
-     "price": 0.968
+     "price": 0.9705
     },
     "D": {
      "name": "Kyle Rable",
@@ -6240,11 +6240,11 @@
     "volume": 40184,
     "D": {
      "name": "Joaquin Castro",
-     "price": 0.975
+     "price": 0.968
     },
     "R": {
      "name": "Edgardo Rafael Baez",
-     "price": 0.0165
+     "price": 0.022
     }
    },
    {
@@ -6254,32 +6254,32 @@
     "volume": 83058,
     "R": {
      "name": "Mark Teixeira",
-     "price": 0.9595
+     "price": 0.959
     },
     "D": {
      "name": "Kristin Hook",
-     "price": 0.0165
+     "price": 0.014
     }
    },
    {
     "id": "TX-22",
     "market": "tx-22-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 42826,
+    "volume": 42905,
     "R": {
      "name": "Trever Nehls",
      "price": 0.945
     },
     "D": {
      "name": "Marquette Greene-Scott",
-     "price": 0.0375
+     "price": 0.043
     }
    },
    {
     "id": "TX-23",
     "market": "tx-23-house-election-winner",
     "rating": "Toss-up",
-    "volume": 134805,
+    "volume": 134831,
     "R": {
      "name": "Brandon Herrera",
      "price": 0.58
@@ -6293,7 +6293,7 @@
     "id": "TX-24",
     "market": "tx-24-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 86488,
+    "volume": 87774,
     "R": {
      "name": "Beth Van Duyne",
      "price": 0.935
@@ -6314,49 +6314,49 @@
     },
     "D": {
      "name": "Dione Sims",
-     "price": 0.021
+     "price": 0.025
     }
    },
    {
     "id": "TX-26",
     "market": "tx-26-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 89948,
+    "volume": 93522,
     "R": {
      "name": "Brandon Gill",
-     "price": 0.993
+     "price": 0.9905
     },
     "D": {
      "name": "Steven Shook",
-     "price": 0.0075
+     "price": 0.0095
     }
    },
    {
     "id": "TX-27",
     "market": "tx-27-house-election-winner",
-    "rating": "Safe Republican",
-    "volume": 50601,
+    "rating": "Likely Republican",
+    "volume": 50990,
     "R": {
      "name": "Michael Cloud",
-     "price": 0.9515
+     "price": 0.942
     },
     "D": {
      "name": "Tanya Lloyd",
-     "price": 0.036
+     "price": 0.0585
     }
    },
    {
     "id": "TX-28",
     "market": "tx-28-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 17162,
+    "volume": 20475,
     "D": {
      "name": "Henry Cuellar",
-     "price": 0.935
+     "price": 0.925
     },
     "R": {
      "name": "Tano Tijerina",
-     "price": 0.055
+     "price": 0.08
     }
    },
    {
@@ -6366,11 +6366,11 @@
     "volume": 20064,
     "D": {
      "name": "Sylvia Garcia",
-     "price": 0.9645
+     "price": 0.964
     },
     "R": {
      "name": "Martha Fierro",
-     "price": 0.0305
+     "price": 0.031
     }
    },
    {
@@ -6380,25 +6380,25 @@
     "volume": 48708,
     "D": {
      "name": "Frederick Haynes III",
-     "price": 0.962
+     "price": 0.958
     },
     "R": {
      "name": "Everett Jackson",
-     "price": 0.0265
+     "price": 0.026
     }
    },
    {
     "id": "TX-31",
     "market": "tx-31-house-election-winner",
-    "rating": "Likely Republican",
-    "volume": 68705,
+    "rating": "Safe Republican",
+    "volume": 68730,
     "R": {
      "name": "John Carter",
-     "price": 0.945
+     "price": 0.955
     },
     "D": {
      "name": "Justin Early",
-     "price": 0.0445
+     "price": 0.043
     }
    },
    {
@@ -6408,32 +6408,32 @@
     "volume": 48324,
     "R": {
      "name": "Jace Yarbrough",
-     "price": 0.87
+     "price": 0.875
     },
     "D": {
      "name": "Dan Barrios",
-     "price": 0.128
+     "price": 0.126
     }
    },
    {
     "id": "TX-33",
     "market": "tx-33-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 17992,
+    "volume": 18074,
     "D": {
      "name": "Colin Allred",
-     "price": 0.974
+     "price": 0.973
     },
     "R": {
      "name": "Patrick Gillespie",
-     "price": 0.0135
+     "price": 0.023
     }
    },
    {
     "id": "TX-34",
     "market": "tx-34-house-election-winner",
     "rating": "Likely Democrat",
-    "volume": 30593,
+    "volume": 30840,
     "D": {
      "name": "Vicente Gonzalez",
      "price": 0.88
@@ -6447,14 +6447,14 @@
     "id": "TX-35",
     "market": "tx-35-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 94813,
+    "volume": 94826,
     "D": {
      "name": "Johnny Garcia",
-     "price": 0.685
+     "price": 0.69
     },
     "R": {
      "name": "Carlos De La Cruz",
-     "price": 0.305
+     "price": 0.315
     }
    },
    {
@@ -6478,11 +6478,11 @@
     "volume": 45575,
     "D": {
      "name": "Greg Casar",
-     "price": 0.975
+     "price": 0.9755
     },
     "R": {
      "name": "Lauren Peña",
-     "price": 0.017
+     "price": 0.02
     }
    },
    {
@@ -6492,11 +6492,11 @@
     "volume": 32069,
     "R": {
      "name": "Jon Bonck",
-     "price": 0.963
+     "price": 0.9635
     },
     "D": {
      "name": "Melissa McDonough",
-     "price": 0.042
+     "price": 0.0395
     }
    },
    {
@@ -6506,25 +6506,25 @@
     "volume": 54001,
     "D": {
      "name": "Ben McAdams",
-     "price": 0.9695
+     "price": 0.966
     },
     "R": {
      "name": "Riley Owen",
-     "price": 0.025
+     "price": 0.0255
     }
    },
    {
     "id": "UT-02",
     "market": "ut-02-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 33001,
+    "volume": 33390,
     "R": {
      "name": "Blake Moore",
-     "price": 0.945
+     "price": 0.935
     },
     "D": {
      "name": "Peter Crosby",
-     "price": 0.043
+     "price": 0.0445
     }
    },
    {
@@ -6534,11 +6534,11 @@
     "volume": 17592,
     "R": {
      "name": "Celeste Maloy",
-     "price": 0.9645
+     "price": 0.9625
     },
     "D": {
      "name": "Kent Udell",
-     "price": 0.038
+     "price": 0.0325
     }
    },
    {
@@ -6552,14 +6552,14 @@
     },
     "D": {
      "name": "Jonny Larsen",
-     "price": 0.034
+     "price": 0.0355
     }
    },
    {
     "id": "VA-01",
     "market": "va-01-house-election-winner",
     "rating": "Lean Democrat",
-    "volume": 108445,
+    "volume": 108492,
     "D": {
      "name": "Shannon Taylor",
      "price": 0.645
@@ -6590,39 +6590,39 @@
     "volume": 68702,
     "D": {
      "name": "Bobby Scott",
-     "price": 0.955
+     "price": 0.957
     },
     "R": {
      "name": "Edwin Rivera",
-     "price": 0.0305
+     "price": 0.031
     }
    },
    {
     "id": "VA-04",
     "market": "va-04-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 42740,
+    "volume": 42745,
     "D": {
      "name": "Jennifer McClellan",
-     "price": 0.973
+     "price": 0.9705
     },
     "R": {
      "name": "Robert Murray",
-     "price": 0.017
+     "price": 0.0175
     }
    },
    {
     "id": "VA-05",
     "market": "va-05-house-election-winner",
-    "rating": "Lean Republican",
-    "volume": 264614,
+    "rating": "Toss-up",
+    "volume": 281272,
     "R": {
      "name": "John McGuire",
-     "price": 0.635
+     "price": 0.56
     },
     "D": {
      "name": "Tom Perriello",
-     "price": 0.345
+     "price": 0.435
     }
    },
    {
@@ -6632,7 +6632,7 @@
     "volume": 128084,
     "R": {
      "name": "Ben Cline",
-     "price": 0.93
+     "price": 0.935
     },
     "D": {
      "name": "Beth Macy",
@@ -6646,11 +6646,11 @@
     "volume": 17053,
     "D": {
      "name": "Eugene Vindman",
-     "price": 0.954
+     "price": 0.9575
     },
     "R": {
      "name": "Doug Ollivant",
-     "price": 0.0415
+     "price": 0.0385
     }
    },
    {
@@ -6660,11 +6660,11 @@
     "volume": 41362,
     "D": {
      "name": "Don Beyer",
-     "price": 0.966
+     "price": 0.9725
     },
     "R": {
      "name": "Tony Sabio",
-     "price": 0.026
+     "price": 0.0235
     }
    },
    {
@@ -6678,7 +6678,7 @@
     },
     "D": {
      "name": "Joy Powers",
-     "price": 0.026
+     "price": 0.0245
     }
    },
    {
@@ -6688,11 +6688,11 @@
     "volume": 8217,
     "D": {
      "name": "Suhas Subramanyam",
-     "price": 0.9645
+     "price": 0.9715
     },
     "R": {
      "name": "Dave Beckwith",
-     "price": 0.026
+     "price": 0.022
     }
    },
    {
@@ -6706,49 +6706,49 @@
     },
     "R": {
      "name": "Arthur Purves",
-     "price": 0.0245
+     "price": 0.0265
     }
    },
    {
     "id": "VT-AL",
     "market": "vt-al-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 51462,
+    "volume": 51611,
     "D": {
      "name": "Becca Balint",
-     "price": 0.972
+     "price": 0.9715
     },
     "R": {
      "name": "Gerald Malloy",
-     "price": 0.0215
+     "price": 0.022
     }
    },
    {
     "id": "WA-01",
     "market": "wa-01-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 46758,
+    "volume": 46979,
     "D": {
      "name": "Suzan DelBene",
-     "price": 0.959
+     "price": 0.9625
     },
     "R": {
      "name": "Mary Silva",
-     "price": 0.034
+     "price": 0.0335
     }
    },
    {
     "id": "WA-02",
     "market": "wa-02-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 32613,
+    "volume": 32642,
     "D": {
      "name": "Rick Larsen",
-     "price": 0.9585
+     "price": 0.9715
     },
     "R": {
      "name": "Edwin Feller",
-     "price": 0.0325
+     "price": 0.031
     }
    },
    {
@@ -6758,7 +6758,7 @@
     "volume": 64163,
     "D": {
      "name": "Marie Gluesenkamp Perez",
-     "price": 0.88
+     "price": 0.885
     },
     "R": {
      "name": "John Braun",
@@ -6769,28 +6769,28 @@
     "id": "WA-04",
     "market": "wa-04-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 64682,
+    "volume": 64787,
     "R": {
      "name": "Amanda McKinney",
      "price": 0.9
     },
     "D": {
      "name": "John Duresky",
-     "price": 0.09
+     "price": 0.1
     }
    },
    {
     "id": "WA-05",
     "market": "wa-05-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 106112,
+    "volume": 106567,
     "R": {
      "name": "Michael Baumgartner",
      "price": 0.835
     },
     "D": {
      "name": "Carmela Conroy",
-     "price": 0.1655
+     "price": 0.165
     }
    },
    {
@@ -6804,17 +6804,17 @@
     },
     "R": {
      "name": "Teresa Fox",
-     "price": 0.019
+     "price": 0.017
     }
    },
    {
     "id": "WA-07",
     "market": "wa-07-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 34648,
+    "volume": 34739,
     "D": {
      "name": "Pramila Jayapal",
-     "price": 0.982
+     "price": 0.973
     },
     "R": {
      "name": "Nirav Sheth",
@@ -6825,56 +6825,56 @@
     "id": "WA-08",
     "market": "wa-08-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 28899,
+    "volume": 28949,
     "D": {
      "name": "Kim Schrier",
-     "price": 0.9855
+     "price": 0.9845
     },
     "R": {
      "name": "Spencer Meline",
-     "price": 0.014
+     "price": 0.0145
     }
    },
    {
     "id": "WA-09",
     "market": "wa-09-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 55883,
+    "volume": 55933,
     "D": {
      "name": "Adam Smith",
-     "price": 0.9735
+     "price": 0.973
     },
     "R": {
      "name": "Doug Basler",
-     "price": 0.0195
+     "price": 0.02
     }
    },
    {
     "id": "WA-10",
     "market": "wa-10-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 37471,
+    "volume": 37533,
     "D": {
      "name": "Marilyn Strickland",
-     "price": 0.9655
+     "price": 0.9795
     },
     "R": {
      "name": "Chris Chung",
-     "price": 0.023
+     "price": 0.022
     }
    },
    {
     "id": "WI-01",
     "market": "wi-01-house-election-winner",
     "rating": "Toss-up",
-    "volume": 27098,
+    "volume": 27494,
     "R": {
      "name": "Bryan Steil",
-     "price": 0.545
+     "price": 0.54
     },
     "D": {
      "name": "Mitchell Berman",
-     "price": 0.45
+     "price": 0.455
     }
    },
    {
@@ -6884,25 +6884,25 @@
     "volume": 103807,
     "D": {
      "name": "Mark Pocan",
-     "price": 0.9795
+     "price": 0.98
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.0175
+     "price": 0.0155
     }
    },
    {
     "id": "WI-03",
     "market": "wi-03-house-election-winner",
-    "rating": "Lean Democrat",
-    "volume": 11029,
+    "rating": "Likely Democrat",
+    "volume": 15592,
     "D": {
      "name": "Rebecca Cooke",
-     "price": 0.775
+     "price": 0.84
     },
     "R": {
      "name": "Derrick Van Orden",
-     "price": 0.225
+     "price": 0.16
     }
    },
    {
@@ -6912,11 +6912,11 @@
     "volume": 37435,
     "D": {
      "name": "Gwen Moore",
-     "price": 0.9575
+     "price": 0.956
     },
     "R": {
      "name": "Tim Rogers",
-     "price": 0.041
+     "price": 0.0415
     }
    },
    {
@@ -6930,7 +6930,7 @@
     },
     "D": {
      "name": "Andrew Beck",
-     "price": 0.0335
+     "price": 0.032
     }
    },
    {
@@ -6950,15 +6950,15 @@
    {
     "id": "WI-07",
     "market": "wi-07-house-election-winner",
-    "rating": "Likely Republican",
+    "rating": "Safe Republican",
     "volume": 78459,
     "R": {
      "name": "Michael Alfonso",
-     "price": 0.945
+     "price": 0.95
     },
     "D": {
      "name": "Fred Clark",
-     "price": 0.038
+     "price": 0.0415
     }
    },
    {
@@ -6982,11 +6982,11 @@
     "volume": 62864,
     "R": {
      "name": "Carol Miller",
-     "price": 0.9735
+     "price": 0.972
     },
     "D": {
      "name": "Vince George",
-     "price": 0.024
+     "price": 0.0235
     }
    },
    {
@@ -7000,7 +7000,7 @@
     },
     "D": {
      "name": "Ace Parsi",
-     "price": 0.0275
+     "price": 0.0265
     }
    },
    {
@@ -7010,11 +7010,11 @@
     "volume": 54994,
     "R": {
      "name": "Chuck Gray",
-     "price": 0.9575
+     "price": 0.967
     },
     "D": {
      "name": "Lisa Kinney",
-     "price": 0.034
+     "price": 0.028
     }
    }
   ]
@@ -7023,19 +7023,19 @@
   "seats": [
    {
     "outcome": "<22",
-    "price": 0.245
+    "price": 0.275
    },
    {
     "outcome": "22–23",
-    "price": 0.33
+    "price": 0.36
    },
    {
     "outcome": "24–25",
-    "price": 0.205
+    "price": 0.21
    },
    {
     "outcome": "26–27",
-    "price": 0.115
+    "price": 0.11
    },
    {
     "outcome": "28–29",
@@ -7047,7 +7047,7 @@
    },
    {
     "outcome": "32+",
-    "price": 0.0195
+    "price": 0.011
    }
   ],
   "races": [
@@ -7056,7 +7056,7 @@
     "name": "Georgia",
     "market": "georgia-governor-winner-2026",
     "rating": "Lean Democrat",
-    "volume": 281384,
+    "volume": 283445,
     "cands": [
      {
       "name": "Keisha Lance Bottoms",
@@ -7066,7 +7066,7 @@
      {
       "name": "Rick Jackson",
       "party": "R",
-      "price": 0.375
+      "price": 0.38
      }
     ],
     "kalshi": {
@@ -7080,23 +7080,23 @@
     "name": "Texas",
     "market": "texas-governor-winner-2026",
     "rating": "Lean Republican",
-    "volume": 1040989,
+    "volume": 1058893,
     "cands": [
      {
       "name": "Greg Abbott",
       "party": "R",
-      "price": 0.6545
+      "price": 0.6505
      },
      {
       "name": "Gina Hinojosa",
       "party": "D",
-      "price": 0.335
+      "price": 0.345
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYTX-26",
-     "D": 0.325,
-     "R": 0.675
+     "D": 0.335,
+     "R": 0.665
     }
    },
    {
@@ -7104,12 +7104,12 @@
     "name": "Kansas",
     "market": "kansas-governor-winner-2026",
     "rating": "Lean Republican",
-    "volume": 112419,
+    "volume": 114388,
     "cands": [
      {
       "name": "Ty Masterson",
       "party": "R",
-      "price": 0.73
+      "price": 0.725
      },
      {
       "name": "Cindy Holscher",
@@ -7120,55 +7120,7 @@
     "kalshi": {
      "ticker": "GOVPARTYKS-27",
      "D": 0.265,
-     "R": 0.745
-    }
-   },
-   {
-    "state": "OH",
-    "name": "Ohio",
-    "market": "ohio-governor-winner-2026",
-    "rating": "Lean Democrat",
-    "volume": 1078323,
-    "cands": [
-     {
-      "name": "Amy Acton",
-      "party": "D",
-      "price": 0.785
-     },
-     {
-      "name": "Vivek Ramaswamy",
-      "party": "R",
-      "price": 0.215
-     }
-    ],
-    "kalshi": {
-     "ticker": "GOVPARTYOH-26",
-     "D": 0.775,
-     "R": 0.235
-    }
-   },
-   {
-    "state": "VT",
-    "name": "Vermont",
-    "market": "vermont-governor-winner-2026",
-    "rating": "Lean Republican",
-    "volume": 291352,
-    "cands": [
-     {
-      "name": "Phil Scott",
-      "party": "R",
-      "price": 0.79
-     },
-     {
-      "name": "Amanda Janoo",
-      "party": "D",
-      "price": 0.2075
-     }
-    ],
-    "kalshi": {
-     "ticker": "GOVPARTYVT-26",
-     "D": 0.225,
-     "R": 0.775
+     "R": 0.725
     }
    },
    {
@@ -7176,22 +7128,46 @@
     "name": "Florida",
     "market": "florida-governor-winner-2026",
     "rating": "Lean Republican",
-    "volume": 516855,
+    "volume": 607279,
     "cands": [
      {
       "name": "Byron Donalds",
       "party": "R",
-      "price": 0.795
+      "price": 0.755
      },
      {
       "name": "David Jolly",
       "party": "D",
-      "price": 0.215
+      "price": 0.245
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYFL-26",
-     "D": 0.225,
+     "D": 0.245,
+     "R": 0.745
+    }
+   },
+   {
+    "state": "VT",
+    "name": "Vermont",
+    "market": "vermont-governor-winner-2026",
+    "rating": "Lean Republican",
+    "volume": 292867,
+    "cands": [
+     {
+      "name": "Phil Scott",
+      "party": "R",
+      "price": 0.775
+     },
+     {
+      "name": "Amanda Janoo",
+      "party": "D",
+      "price": 0.2235
+     }
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYVT-26",
+     "D": 0.235,
      "R": 0.765
     }
    },
@@ -7200,7 +7176,7 @@
     "name": "Nevada",
     "market": "nevada-governor-winner-2026",
     "rating": "Lean Democrat",
-    "volume": 896148,
+    "volume": 904622,
     "cands": [
      {
       "name": "Aaron Ford",
@@ -7220,51 +7196,51 @@
     }
    },
    {
+    "state": "OH",
+    "name": "Ohio",
+    "market": "ohio-governor-winner-2026",
+    "rating": "Lean Democrat",
+    "volume": 1084496,
+    "cands": [
+     {
+      "name": "Amy Acton",
+      "party": "D",
+      "price": 0.795
+     },
+     {
+      "name": "Vivek Ramaswamy",
+      "party": "R",
+      "price": 0.205
+     }
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYOH-26",
+     "D": 0.765,
+     "R": 0.225
+    }
+   },
+   {
     "state": "WI",
     "name": "Wisconsin",
     "market": "wisconsin-governor-winner-2026",
-    "rating": "Likely Democrat",
-    "volume": 837588,
+    "rating": "Lean Democrat",
+    "volume": 843301,
     "cands": [
      {
       "name": "David Crowley",
       "party": "D",
-      "price": 0.8
+      "price": 0.795
      },
      {
       "name": "Tom Tiffany",
       "party": "R",
-      "price": 0.2
+      "price": 0.205
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYWI-26",
      "D": 0.795,
-     "R": 0.22
-    }
-   },
-   {
-    "state": "NE",
-    "name": "Nebraska",
-    "market": "nebraska-governor-winner-2026",
-    "rating": "Likely Republican",
-    "volume": 45588,
-    "cands": [
-     {
-      "name": "Jim Pillen",
-      "party": "R",
-      "price": 0.82
-     },
-     {
-      "name": "Lynne Walz",
-      "party": "D",
-      "price": 0.18
-     }
-    ],
-    "kalshi": {
-     "ticker": "GOVPARTYNE-26",
-     "D": 0.175,
-     "R": 0.835
+     "R": 0.215
     }
    },
    {
@@ -7272,7 +7248,7 @@
     "name": "Oregon",
     "market": "oregon-governor-winner-2026",
     "rating": "Likely Democrat",
-    "volume": 129224,
+    "volume": 129842,
     "cands": [
      {
       "name": "Tina Kotek",
@@ -7282,7 +7258,7 @@
      {
       "name": "Christine Drazan",
       "party": "R",
-      "price": 0.17
+      "price": 0.175
      }
     ],
     "kalshi": {
@@ -7296,12 +7272,12 @@
     "name": "Iowa",
     "market": "iowa-governor-winner-2026",
     "rating": "Likely Democrat",
-    "volume": 366230,
+    "volume": 374408,
     "cands": [
      {
       "name": "Rob Sand",
       "party": "D",
-      "price": 0.845
+      "price": 0.835
      },
      {
       "name": "Zach Lahn",
@@ -7311,8 +7287,32 @@
     ],
     "kalshi": {
      "ticker": "GOVPARTYIA-26",
-     "D": 0.825,
-     "R": 0.165
+     "D": 0.845,
+     "R": 0.155
+    }
+   },
+   {
+    "state": "NE",
+    "name": "Nebraska",
+    "market": "nebraska-governor-winner-2026",
+    "rating": "Likely Republican",
+    "volume": 56898,
+    "cands": [
+     {
+      "name": "Jim Pillen",
+      "party": "R",
+      "price": 0.855
+     },
+     {
+      "name": "Lynne Walz",
+      "party": "D",
+      "price": 0.16
+     }
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYNE-26",
+     "D": 0.175,
+     "R": 0.825
     }
    },
    {
@@ -7320,17 +7320,17 @@
     "name": "Alaska",
     "market": "alaska-governor-election-winner",
     "rating": "Likely (Jonathan Kreiss-Tomkins)",
-    "volume": 1681126,
+    "volume": 1684507,
     "cands": [
      {
       "name": "Jonathan Kreiss-Tomkins",
       "party": "D",
-      "price": 0.867
+      "price": 0.88
      },
      {
       "name": "Bernadette Wilson",
       "party": "R",
-      "price": 0.115
+      "price": 0.12
      }
     ]
    },
@@ -7339,23 +7339,23 @@
     "name": "Oklahoma",
     "market": "oklahoma-governor-winner-2026",
     "rating": "Likely Republican",
-    "volume": 112843,
+    "volume": 121348,
     "cands": [
      {
       "name": "Mike Mazzei",
       "party": "R",
-      "price": 0.89
+      "price": 0.905
      },
      {
       "name": "Cyndi Munson",
       "party": "D",
-      "price": 0.115
+      "price": 0.095
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYOK-26",
      "D": 0.115,
-     "R": 0.875
+     "R": 0.885
     }
    },
    {
@@ -7363,7 +7363,7 @@
     "name": "Arizona",
     "market": "arizona-governor-winner-2026",
     "rating": "Likely Democrat",
-    "volume": 378127,
+    "volume": 394679,
     "cands": [
      {
       "name": "Katie Hobbs",
@@ -7387,23 +7387,23 @@
     "name": "Michigan",
     "market": "michigan-governor-winner-2026",
     "rating": "Likely Democrat",
-    "volume": 431406,
+    "volume": 452989,
     "cands": [
      {
       "name": "Jocelyn Benson",
       "party": "D",
-      "price": 0.927
+      "price": 0.9255
      },
      {
       "name": "John James",
       "party": "R",
-      "price": 0.073
+      "price": 0.074
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYMI-26",
-     "D": 0.9185,
-     "R": 0.085
+     "D": 0.917,
+     "R": 0.088
     }
    },
    {
@@ -7411,7 +7411,7 @@
     "name": "New Hampshire",
     "market": "new-hampshire-governor-winner-2026",
     "rating": "Likely Republican",
-    "volume": 52726,
+    "volume": 53184,
     "cands": [
      {
       "name": "Kelly Ayotte",
@@ -7421,7 +7421,7 @@
      {
       "name": "Cinde Warmington",
       "party": "D",
-      "price": 0.066
+      "price": 0.0675
      }
     ]
    },
@@ -7430,71 +7430,47 @@
     "name": "Tennessee",
     "market": "tennessee-governor-winner-2026",
     "rating": "Likely Republican",
-    "volume": 63376,
+    "volume": 69836,
     "cands": [
      {
       "name": "Marsha Blackburn",
       "party": "R",
-      "price": 0.937
+      "price": 0.939
      },
      {
       "name": "Jerri Green",
       "party": "D",
-      "price": 0.0585
+      "price": 0.062
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYTN-26",
-     "D": 0.0745,
-     "R": 0.9245
+     "D": 0.0645,
+     "R": 0.9275
     }
    },
    {
-    "state": "SC",
-    "name": "South Carolina",
-    "market": "south-carolina-governor-winner-2026",
+    "state": "AL",
+    "name": "Alabama",
+    "market": "alabama-governor-winner-2026",
     "rating": "Likely Republican",
-    "volume": 36567,
+    "volume": 49869,
     "cands": [
      {
-      "name": "Alan Wilson",
+      "name": "Tommy Tuberville",
       "party": "R",
-      "price": 0.9395
+      "price": 0.9495
      },
      {
-      "name": "Jermaine Johnson",
+      "name": "Doug Jones",
       "party": "D",
-      "price": 0.0545
+      "price": 0.0495
      }
     ],
     "kalshi": {
-     "ticker": "GOVPARTYSC-26",
-     "D": 0.055,
+     "ticker": "GOVPARTYAL-26",
+     "D": 0.056,
      "R": 0.9405
-    }
-   },
-   {
-    "state": "NM",
-    "name": "New Mexico",
-    "market": "new-mexico-governor-winner-2026",
-    "rating": "Likely Democrat",
-    "volume": 90037,
-    "cands": [
-     {
-      "name": "Deb Haaland",
-      "party": "D",
-      "price": 0.942
-     },
-     {
-      "name": "Gregg Hull",
-      "party": "R",
-      "price": 0.0575
-     }
-    ],
-    "kalshi": {
-     "ticker": "GOVPARTYNM-26",
-     "D": 0.935,
-     "R": 0.0665
     }
    },
    {
@@ -7512,85 +7488,37 @@
      {
       "name": "Lisa Demuth",
       "party": "R",
-      "price": 0.046
+      "price": 0.0445
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYMN-26",
-     "D": 0.9515,
-     "R": 0.049
+     "D": 0.955,
+     "R": 0.0455
     }
    },
    {
-    "state": "AL",
-    "name": "Alabama",
-    "market": "alabama-governor-winner-2026",
-    "rating": "Safe Republican",
-    "volume": 49782,
-    "cands": [
-     {
-      "name": "Tommy Tuberville",
-      "party": "R",
-      "price": 0.951
-     },
-     {
-      "name": "Doug Jones",
-      "party": "D",
-      "price": 0.048
-     }
-    ],
-    "kalshi": {
-     "ticker": "GOVPARTYAL-26",
-     "D": 0.064,
-     "R": 0.939
-    }
-   },
-   {
-    "state": "MA",
-    "name": "Massachusetts",
-    "market": "massachusetts-governor-winner-2026",
+    "state": "NM",
+    "name": "New Mexico",
+    "market": "new-mexico-governor-winner-2026",
     "rating": "Safe Democrat",
-    "volume": 162785,
+    "volume": 100394,
     "cands": [
      {
-      "name": "Maura Healey",
-      "party": "D",
-      "price": 0.9515
-     },
-     {
-      "name": "Michael Minogue",
-      "party": "R",
-      "price": 0.0455
-     }
-    ],
-    "kalshi": {
-     "ticker": "GOVPARTYMA-26",
-     "D": 0.9485,
-     "R": 0.0555
-    }
-   },
-   {
-    "state": "ME",
-    "name": "Maine",
-    "market": "maine-governor-winner-2026",
-    "rating": "Safe Democrat",
-    "volume": 46458,
-    "cands": [
-     {
-      "name": "Hannah Pingree",
+      "name": "Deb Haaland",
       "party": "D",
       "price": 0.9545
      },
      {
-      "name": "Robert Charles",
+      "name": "Gregg Hull",
       "party": "R",
       "price": 0.0435
      }
     ],
     "kalshi": {
-     "ticker": "GOVPARTYME-26",
-     "D": 0.951,
-     "R": 0.0545
+     "ticker": "GOVPARTYNM-26",
+     "D": 0.945,
+     "R": 0.0565
     }
    },
    {
@@ -7598,23 +7526,23 @@
     "name": "New York",
     "market": "new-york-governor-winner-2026",
     "rating": "Safe Democrat",
-    "volume": 327723,
+    "volume": 343102,
     "cands": [
      {
       "name": "Kathy Hochul",
       "party": "D",
-      "price": 0.955
+      "price": 0.9545
      },
      {
       "name": "Bruce Blakeman",
       "party": "R",
-      "price": 0.046
+      "price": 0.0445
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYNY-26",
-     "D": 0.9445,
-     "R": 0.0535
+     "D": 0.9435,
+     "R": 0.0595
     }
    },
    {
@@ -7622,22 +7550,22 @@
     "name": "Rhode Island",
     "market": "rhode-island-governor-winner-2026",
     "rating": "Safe Democrat",
-    "volume": 76017,
+    "volume": 76018,
     "cands": [
      {
       "name": "Helena Foulkes",
       "party": "D",
-      "price": 0.96
+      "price": 0.9545
      },
      {
       "name": "Independent",
       "party": "I",
-      "price": 0.0265
+      "price": 0.0295
      },
      {
       "name": "Republican",
       "party": "R",
-      "price": 0.01
+      "price": 0.007
      }
     ],
     "kalshi": {
@@ -7647,27 +7575,75 @@
     }
    },
    {
-    "state": "CA",
-    "name": "California",
-    "market": "california-governor-election-2026",
-    "rating": "Safe (Xavier Becerra)",
-    "volume": 42717125,
+    "state": "ME",
+    "name": "Maine",
+    "market": "maine-governor-winner-2026",
+    "rating": "Safe Democrat",
+    "volume": 46496,
     "cands": [
      {
-      "name": "Xavier Becerra",
+      "name": "Hannah Pingree",
       "party": "D",
-      "price": 0.9645
+      "price": 0.955
      },
      {
-      "name": "Steve Hilton",
+      "name": "Robert Charles",
       "party": "R",
-      "price": 0.036
+      "price": 0.0385
      }
     ],
     "kalshi": {
-     "ticker": "GOVPARTYCA-26",
-     "D": 0.9615,
-     "R": 0.0415
+     "ticker": "GOVPARTYME-26",
+     "D": 0.951,
+     "R": 0.054
+    }
+   },
+   {
+    "state": "MA",
+    "name": "Massachusetts",
+    "market": "massachusetts-governor-winner-2026",
+    "rating": "Safe Democrat",
+    "volume": 163112,
+    "cands": [
+     {
+      "name": "Maura Healey",
+      "party": "D",
+      "price": 0.955
+     },
+     {
+      "name": "Michael Minogue",
+      "party": "R",
+      "price": 0.0435
+     }
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYMA-26",
+     "D": 0.951,
+     "R": 0.0515
+    }
+   },
+   {
+    "state": "SC",
+    "name": "South Carolina",
+    "market": "south-carolina-governor-winner-2026",
+    "rating": "Safe Republican",
+    "volume": 44780,
+    "cands": [
+     {
+      "name": "Alan Wilson",
+      "party": "R",
+      "price": 0.966
+     },
+     {
+      "name": "Jermaine Johnson",
+      "party": "D",
+      "price": 0.0345
+     }
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYSC-26",
+     "D": 0.0435,
+     "R": 0.957
     }
    },
    {
@@ -7675,7 +7651,7 @@
     "name": "Connecticut",
     "market": "connecticut-governor-winner-2026",
     "rating": "Safe Democrat",
-    "volume": 9916,
+    "volume": 10008,
     "cands": [
      {
       "name": "Ned Lamont",
@@ -7690,8 +7666,8 @@
     ],
     "kalshi": {
      "ticker": "GOVPARTYCT-26",
-     "D": 0.9625,
-     "R": 0.038
+     "D": 0.963,
+     "R": 0.0365
     }
    },
    {
@@ -7704,12 +7680,12 @@
      {
       "name": "Phil Weiser",
       "party": "D",
-      "price": 0.97
+      "price": 0.969
      },
      {
       "name": "Victor Marx",
       "party": "R",
-      "price": 0.0295
+      "price": 0.0285
      }
     ],
     "kalshi": {
@@ -7719,11 +7695,35 @@
     }
    },
    {
+    "state": "CA",
+    "name": "California",
+    "market": "california-governor-election-2026",
+    "rating": "Safe (Xavier Becerra)",
+    "volume": 42783550,
+    "cands": [
+     {
+      "name": "Xavier Becerra",
+      "party": "D",
+      "price": 0.97
+     },
+     {
+      "name": "Steve Hilton",
+      "party": "R",
+      "price": 0.031
+     }
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYCA-26",
+     "D": 0.9615,
+     "R": 0.0385
+    }
+   },
+   {
     "state": "IL",
     "name": "Illinois",
     "market": "illinois-governor-winner-2026",
     "rating": "Safe Democrat",
-    "volume": 29287,
+    "volume": 29338,
     "cands": [
      {
       "name": "JB Pritzker",
@@ -7733,37 +7733,13 @@
      {
       "name": "Darren Bailey",
       "party": "R",
-      "price": 0.026
+      "price": 0.0285
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYIL-26",
      "D": 0.9635,
-     "R": 0.0385
-    }
-   },
-   {
-    "state": "SD",
-    "name": "South Dakota",
-    "market": "south-dakota-governor-winner-2026",
-    "rating": "Safe Republican",
-    "volume": 27511,
-    "cands": [
-     {
-      "name": "Larry Rhoden",
-      "party": "R",
-      "price": 0.971
-     },
-     {
-      "name": "Dan Ahlers",
-      "party": "D",
-      "price": 0.0235
-     }
-    ],
-    "kalshi": {
-     "ticker": "GOVPARTYSD-26",
-     "D": 0.0265,
-     "R": 0.9725
+     "R": 0.0375
     }
    },
    {
@@ -7776,18 +7752,42 @@
      {
       "name": "Sarah Huckabee Sanders",
       "party": "R",
-      "price": 0.9735
+      "price": 0.971
      },
      {
       "name": "Fredrick Love",
       "party": "D",
-      "price": 0.0135
+      "price": 0.0225
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYAR-26",
-     "D": 0.0165,
-     "R": 0.973
+     "D": 0.025,
+     "R": 0.972
+    }
+   },
+   {
+    "state": "SD",
+    "name": "South Dakota",
+    "market": "south-dakota-governor-winner-2026",
+    "rating": "Safe Republican",
+    "volume": 27511,
+    "cands": [
+     {
+      "name": "Larry Rhoden",
+      "party": "R",
+      "price": 0.9715
+     },
+     {
+      "name": "Dan Ahlers",
+      "party": "D",
+      "price": 0.023
+     }
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYSD-26",
+     "D": 0.0255,
+     "R": 0.9725
     }
    },
    {
@@ -7805,13 +7805,13 @@
      {
       "name": "Terri Pickens",
       "party": "D",
-      "price": 0.022
+      "price": 0.024
      }
     ],
     "kalshi": {
      "ticker": "GOVPARTYID-26",
      "D": 0.0255,
-     "R": 0.973
+     "R": 0.9725
     }
    },
    {
@@ -7819,47 +7819,47 @@
     "name": "Maryland",
     "market": "maryland-governor-winner-2026",
     "rating": "Safe Democrat",
-    "volume": 24415,
+    "volume": 24607,
     "cands": [
      {
       "name": "Wes Moore",
       "party": "D",
-      "price": 0.9765
+      "price": 0.9755
      },
      {
       "name": "Dan Cox",
-      "party": "R",
-      "price": 0.0185
-     }
-    ],
-    "kalshi": {
-     "ticker": "GOVPARTYMD-26",
-     "D": 0.9765,
-     "R": 0.023
-    }
-   },
-   {
-    "state": "PA",
-    "name": "Pennsylvania",
-    "market": "pennsylvania-governor-winner-2026",
-    "rating": "Safe Democrat",
-    "volume": 64465,
-    "cands": [
-     {
-      "name": "Josh Shapiro",
-      "party": "D",
-      "price": 0.9775
-     },
-     {
-      "name": "Stacy Garrity",
       "party": "R",
       "price": 0.0225
      }
     ],
     "kalshi": {
-     "ticker": "GOVPARTYPA-26",
-     "D": 0.9695,
-     "R": 0.0325
+     "ticker": "GOVPARTYMD-26",
+     "D": 0.975,
+     "R": 0.027
+    }
+   },
+   {
+    "state": "WY",
+    "name": "Wyoming",
+    "market": "wyoming-governor-winner-2026",
+    "rating": "Safe Republican",
+    "volume": 12106,
+    "cands": [
+     {
+      "name": "Eric Barlow",
+      "party": "R",
+      "price": 0.9775
+     },
+     {
+      "name": "Kenneth Casner",
+      "party": "D",
+      "price": 0.015
+     }
+    ],
+    "kalshi": {
+     "ticker": "GOVPARTYWY-26",
+     "D": 0.018,
+     "R": 0.978
     }
    },
    {
@@ -7882,32 +7882,32 @@
     ],
     "kalshi": {
      "ticker": "GOVPARTYHI-26",
-     "D": 0.98,
-     "R": 0.021
+     "D": 0.979,
+     "R": 0.022
     }
    },
    {
-    "state": "WY",
-    "name": "Wyoming",
-    "market": "wyoming-governor-winner-2026",
-    "rating": "Safe Republican",
-    "volume": 12106,
+    "state": "PA",
+    "name": "Pennsylvania",
+    "market": "pennsylvania-governor-winner-2026",
+    "rating": "Safe Democrat",
+    "volume": 64465,
     "cands": [
      {
-      "name": "Eric Barlow",
-      "party": "R",
-      "price": 0.978
+      "name": "Josh Shapiro",
+      "party": "D",
+      "price": 0.9785
      },
      {
-      "name": "Kenneth Casner",
-      "party": "D",
-      "price": 0.0145
+      "name": "Stacy Garrity",
+      "party": "R",
+      "price": 0.0225
      }
     ],
     "kalshi": {
-     "ticker": "GOVPARTYWY-26",
-     "D": 0.018,
-     "R": 0.9775
+     "ticker": "GOVPARTYPA-26",
+     "D": 0.97,
+     "R": 0.0295
     }
    }
   ]
