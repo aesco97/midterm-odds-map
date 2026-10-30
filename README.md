@@ -91,6 +91,14 @@ Everything that turns the site into a business lives in one file; `scripts/build
 
 Kalshi prices (`kalshi` on each Senate and governor race) show as a second line in the ledger with the Polymarket–Kalshi gap; gaps of 3+ points are highlighted.
 
+## Turnout tab (early vote)
+
+`scripts/fetch_earlyvote.py` (run by the hourly workflow) saves one snapshot a day of the UF Election Lab's 2026 early-vote tracker to `data/earlyvote/YYYY-MM-DD.json`, refreshes the Texas day-by-day series in `data/earlyvote_ref.json` from the Texas SOS daily reports (via github.com/Seeker-Cliff/tx-early-vote-live), and, with `--backfill`, tries to fill earlier days from the Wayback Machine (it rate-limits and had no captures when tried on Oct 30, so this is off in the hourly run). `data/earlyvote_ref.json` also holds static reference data: 2018 and 2022 total ballots and eligible population per state (UF Election Lab turnout files) and the 2022 final early-vote totals per state (US Elections Project 2022 tracker).
+
+The page shows early ballots so far as a share of 2022 and 2018 total turnout and of the 2022 final early vote, in-person vs mail, party registration where states report it, a national day-by-day line built from the snapshots, and a Texas chart that lines up the same day of early voting in 2018, 2022, 2024 and 2026. No national day-by-day series exists for 2018 or 2022, which is why those years appear as final totals.
+
+The hourly workflow runs the script after the odds fetch and rebuilds; if the UF feed is down the last snapshot is kept.
+
 ## Ideas for next steps
 
 - Live prices in the browser: Polymarket's Gamma API (`https://gamma-api.polymarket.com/events?slug=<market>`) is public; each race's `market` slug in `odds.json` is the event slug.

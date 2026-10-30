@@ -42,6 +42,32 @@ def history():
 
 hist, rows, nsnap = history()
 
+def earlyvote():
+    """data/earlyvote/*.json (one per day) + data/earlyvote_ref.json -> {ref, days:[...], latest:{st:{...}}, series:{st:[[day, voted, inperson, mail]]}}."""
+    ref = json.loads(read('data/earlyvote_ref.json')) if (root/'data/earlyvote_ref.json').exists() else {}
+    files = sorted((root/'data/earlyvote').glob('????-??-??.json')) if (root/'data/earlyvote').exists() else []
+    days, series, latest, fetched = [], {}, {}, None
+    for f in files:
+        snap = json.loads(f.read_text(encoding='utf-8')); day = f.stem; days.append(day); fetched = snap.get('fetched')
+        for st, r in snap['states'].items():
+            voted = max(r.get('voted_all', 0), r.get('inperson_all', 0) + r.get('accept_all', 0))  # a few states under-report voted_all
+            series.setdefault(st, []).append([day, voted, r.get('inperson_all', 0), r.get('accept_all', 0)])
+            latest[st] = dict(r, voted=voted, day=day)
+    # Texas: extend the day-by-day 2026 series with the UF statewide in-person figure for days the county file hasn't covered yet
+    tx = ref.get('tx'); start = (ref.get('tx_ev_start') or {}).get('2026')
+    if tx is not None and start and 'TX' in latest:
+        from datetime import date as _d
+        lu = latest['TX'].get('last_update', '')
+        try:
+            n = (_d.fromisoformat(lu) - _d.fromisoformat(start)).days + 1
+            cur = tx.get('2026') or []
+            if 1 <= n <= 12 and (not cur or cur[-1][0] < n):
+                cur.append([n, lu, latest['TX'].get('inperson_all', 0), latest['TX'].get('accept_all', 0)]); tx['2026'] = cur
+        except ValueError:
+            pass
+    return {'ref': ref, 'days': days, 'latest': latest, 'series': series, 'fetched': fetched}
+ev = earlyvote()
+
 # history.csv: one row per (snapshot, chamber, race); the price is the Democrat's (or the non-Republican share where no Democrat is priced)
 with (root/'data/history.csv').open('w', newline='', encoding='utf-8') as f:
     w = csv.writer(f); w.writerow(['updated_utc', 'chamber', 'race', 'democratic_price']); w.writerows(rows)
@@ -52,7 +78,7 @@ def page(body):
 
 J = lambda o: json.dumps(o, ensure_ascii=False, separators=(',', ':'))
 site_js = 'const SITE=' + J(site) + ';'
-inject = f"const DATA={J(data)};\nconst HIST={J(hist)};\nconst DATA2028={J(data2028)};\nconst BASE={J(base)};\n{site_js}"
+inject = f"const DATA={J(data)};\nconst HIST={J(hist)};\nconst DATA2028={J(data2028)};\nconst BASE={J(base)};\nconst EV={J(ev)};\n{site_js}"
 body = read('src/template.html').replace('/*STATES*/', read('data/states.js')).replace('/*DISTRICTS*/', read('data/districts.js')).replace('/*DATA*/', inject)
 write('index.html', page(body))
 
@@ -65,4 +91,4 @@ if (root/'src/data.html').exists():
 
 print(f"index.html: {len(body)//1024} KB · {len(data['senate']['races'])} Senate · {len(data['house']['races'])} House · "
       f"{len(data['governor']['races'])} Governor · {len(data2028['markets'])} 2028 markets · odds as of {data['updated']} · "
-      f"{len(rows)} history rows from {nsnap} snapshots")
+      f"{len(rows)} history rows from {nsnap} snapshots · early vote: {len(ev['days'])} day(s), {len(ev['latest'])} states")

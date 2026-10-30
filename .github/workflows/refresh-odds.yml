@@ -26,6 +26,10 @@ jobs:
           python-version: "3.12"
       - name: Fetch odds and rebuild the page
         run: python3 scripts/fetch_odds.py
+      - name: Fetch early-vote turnout
+        run: python3 scripts/fetch_earlyvote.py || echo "early vote fetch failed; keeping last snapshot"
+      - name: Rebuild
+        run: python3 scripts/build.py
       - name: Commit if anything changed
         run: |
           git add -A data index.html embed.html data.html

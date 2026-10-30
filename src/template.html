@@ -26,6 +26,7 @@
   --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
   --accent:#ebe8e1; --hover:#fff; color-scheme:dark }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.45;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 32px}
 a{color:inherit}
@@ -33,8 +34,9 @@ a{color:inherit}
 header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-bottom:12px;border-bottom:2px solid var(--fg)}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
 .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
-.tabs{display:flex;gap:4px;border:1.5px solid var(--fg);border-radius:999px;padding:3px}
-.tab{appearance:none;border:0;background:none;color:var(--fg);font:600 14px var(--body);padding:7px 18px;border-radius:999px;cursor:pointer}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;border:1.5px solid var(--fg);border-radius:22px;padding:3px;max-width:100%}
+.tab{appearance:none;border:0;background:none;color:var(--fg);font:600 14px var(--body);padding:7px 14px;border-radius:999px;cursor:pointer}
+@media (max-width:600px){.tab{font-size:13px;padding:6px 10px}}
 .tab[aria-selected="true"]{background:var(--fg);color:var(--bg)}
 .tab:focus-visible{outline:2px solid var(--d2);outline-offset:2px}
 .control{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
@@ -67,7 +69,7 @@ svg.focus .mesh{opacity:.5}
 .mapback{position:absolute;top:8px;left:8px;z-index:4;appearance:none;background:var(--panel);border:1px solid var(--line);border-radius:999px;color:var(--fg);font:600 12px var(--body);padding:6px 12px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 .mapback:hover{border-color:var(--fg)}
 .mapback:focus-visible{outline:2px solid var(--d2);outline-offset:2px}
-.race.hl{background:var(--bg)}
+.race.hl,.evrow.hl{background:var(--bg)}
 .lbl{font:600 10px var(--mono);fill:var(--fg);pointer-events:none;text-anchor:middle}
 .lbl.dim{fill:var(--none-fg)}
 .lbl.inv{fill:#fff}
@@ -176,6 +178,45 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
 .foot .links{display:flex;flex-wrap:wrap;gap:4px 14px}
 .foot .links a{font-weight:600;color:var(--fg)}
 .disclosure{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.5}
+/* Turnout tab */
+:root{--ev1:#dfe6f3;--ev2:#b7c8e8;--ev3:#8aa6d9;--ev4:#5b82c8;--ev5:#2f5db0;--ev6:#163d8a}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--ev1:#262b3a;--ev2:#2f3c5c;--ev3:#3a5083;--ev4:#4866ad;--ev5:#5f82d2;--ev6:#86a6ea} }
+:root[data-theme="dark"]{--ev1:#262b3a;--ev2:#2f3c5c;--ev3:#3a5083;--ev4:#4866ad;--ev5:#5f82d2;--ev6:#86a6ea}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}
+.tile{min-width:0}
+.tile .v{overflow-wrap:anywhere}
+.tile .k{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tile .s{font-size:12px;color:var(--muted)}
+.evctl{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:10px 0 0;font-size:12px;color:var(--muted)}
+.evctl .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px}
+.evctl .seg button{appearance:none;border:0;background:none;color:var(--fg);font:600 12px var(--body);padding:4px 10px;border-radius:999px;cursor:pointer}
+.evctl .seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.evrow{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--line-soft);text-decoration:none;color:inherit}
+.evrow:hover{background:var(--bg)}
+.evrow .code{font-family:var(--mono);font-weight:500;font-size:12px}
+.evrow .who{min-width:0;font-size:12px;color:var(--muted);line-height:1.35}
+.evrow .who b{color:var(--fg);font-weight:600}
+.evrow .pct{font-family:var(--display);font-weight:800;font-size:18px;font-variant-numeric:tabular-nums;text-align:right;min-width:52px}
+.evrow .pct small{display:block;font:500 10px var(--mono);letter-spacing:.06em;color:var(--muted)}
+.mbar{height:6px;border-radius:3px;background:var(--line-soft);overflow:hidden;display:flex;margin-top:4px}
+.mbar i{display:block;height:100%}
+.mbar .ip{background:var(--ev5)} .mbar .ml{background:var(--ev3)}
+.pbar{height:5px;border-radius:3px;background:var(--line-soft);overflow:hidden;display:flex;margin-top:3px}
+.pbar .d{background:var(--d3)} .pbar .r{background:var(--r3)} .pbar .n{background:var(--t)}
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.chart h3{font-family:var(--display);font-size:14px;margin:0 0 2px;font-weight:700}
+.chart .sub{font-size:11.5px;color:var(--muted);margin-bottom:8px}
+.chart svg{width:100%;height:auto;display:block;max-width:100%}
+.chart .ax{font:500 10px var(--mono);fill:var(--muted)}
+.chart .gl{stroke:var(--line-soft);stroke-width:1}
+.chart .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.chart .ln.y26{stroke:var(--ev5)} .chart .ln.y24{stroke:var(--none-fg);stroke-dasharray:3 3} .chart .ln.y22{stroke:var(--r2)} .chart .ln.y18{stroke:var(--d1)}
+.chart .lg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11px;color:var(--muted);margin-top:6px}
+.chart .lg i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:4px;border-radius:2px}
+.evcharts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media (max-width:900px){.evcharts{grid-template-columns:1fr}}
+.evnote{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
 /* 2028: three leaderboards, no map */
 .boards{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-top:18px;align-items:start}
 .boards.on{display:grid}
@@ -194,7 +235,7 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
 .board .more{display:block;padding:10px 14px;font-size:12px;color:var(--muted);text-decoration:none}
 /* Embed mode: map only, with a badge */
 body.embed{padding-block:8px 8px}
-body.embed header,body.embed .control,body.embed .proj,body.embed .panel,body.embed .foot,body.embed .sponsor,body.embed .boards{display:none!important}
+body.embed header,body.embed .control,body.embed .proj,body.embed #evtop,body.embed #evbottom,body.embed .panel,body.embed .foot,body.embed .sponsor,body.embed .boards{display:none!important}
 body.embed .main{grid-template-columns:1fr;padding-top:0}
 body.embed .panel{display:none}
 .badge{display:none;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);margin-top:6px}
@@ -215,6 +256,7 @@ body.embed .badge{display:flex}
       <button class="tab" role="tab" id="tab-senate" aria-selected="true" data-ch="senate">Senate</button>
       <button class="tab" role="tab" id="tab-house" aria-selected="false" data-ch="house">House</button>
       <button class="tab" role="tab" id="tab-governor" aria-selected="false" data-ch="governor">Governors</button>
+      <button class="tab" role="tab" id="tab-turnout" aria-selected="false" data-ch="turnout">Turnout</button>
       <button class="tab" role="tab" id="tab-2028" aria-selected="false" data-ch="2028">2028</button>
     </div>
   </div>
@@ -228,6 +270,7 @@ body.embed .badge{display:flex}
 </div>
 <div class="proj" id="proj" hidden></div>
 
+<div id="evtop" hidden></div>
 <div class="main">
   <div class="mapbox">
     <button class="mapback" id="map-back" hidden>← All states</button>
@@ -246,6 +289,7 @@ body.embed .badge{display:flex}
 </div>
 <div class="badge" id="badge"></div>
 <div class="boards" id="boards"></div>
+<div id="evbottom" hidden></div>
 <div class="tip fixed" id="ptip" hidden></div>
 
 <div class="foot">
@@ -345,12 +389,15 @@ function build(){
   svg.addEventListener('click',e=>{ if(e.target===svg && selState) focusState(null); });
 }
 function paint(){
-  const is2028 = chamber==='2028';
+  const is2028 = chamber==='2028', isEV = chamber==='turnout';
   document.querySelector('.main').style.display = is2028?'none':'';
-  document.querySelector('.control').style.display = is2028?'none':'';
+  document.querySelector('.control').style.display = (is2028||isEV)?'none':'';
   document.getElementById('boards').classList.toggle('on',is2028);
-  document.getElementById('proj').hidden=is2028;
+  document.getElementById('proj').hidden=is2028||isEV;
+  document.getElementById('evtop').hidden=!isEV; document.getElementById('evbottom').hidden=!isEV;
+  document.getElementById('nightbtn').hidden = is2028||isEV;
   if(is2028){ render2028(); setHash(); return; }
+  if(isEV){ renderTurnout(); setHash(); return; }
   for(const st of Object.keys(STATES)){
     const p=svg.querySelector(`[data-st="${st}"]`), l=svg.querySelector(`[data-lbl="${st}"]`), a=svg.querySelector(`[data-sl="${st}"]`);
     let b=null;
@@ -401,6 +448,7 @@ function paint(){
 
 // ---- Focus: zoom the map to one state and draw its districts
 function clickState(st){
+  if(chamber==='turnout'){ const row=document.querySelector(`.evrow[data-ev="${st}"]`); if(row){ row.scrollIntoView({block:'center',behavior:reduceMotion?'auto':'smooth'}); row.classList.add('hl'); setTimeout(()=>row.classList.remove('hl'),1500); } return; }
   if(chamber!=='house') return; // the <a> around the state carries the Polymarket link
   if(!HOUSE[st]) return;
   focusState(selState===st?null:st);
@@ -459,6 +507,10 @@ function tipKalshi(r){ const k=r.kalshi, f=fav(r.cands); if(!k||!f.party||k[f.pa
 function tipDelta(ch,key,party){ const dl=delta(ch,key,party); if(!dl) return ''; return `<div class="row"><span style="color:var(--muted)">Favourite, ${windowLabel(dl)}</span>${deltaHtml(dl,party)}</div>`; }
 function showTip(st,e){
   let html='';
+  if(chamber==='turnout'){ const x=EV.latest[st]&&evState(st); if(!x){ html=`<b>${STATES[st].name}</b><div>No early-vote data</div>`; } else {
+    html=`<b>${STATES[st].name}</b><div class="row"><span>Early ballots</span><span>${fmtFull(x.voted)}</span></div><div class="row"><span>In person · mail</span><span>${fmtFull(x.ip)} · ${fmtFull(x.mail)}</span></div>`+(x.t22!=null?`<div class="row"><span>Of 2022 turnout</span><span>${(x.t22*100).toFixed(0)}%</span></div>`:'')+(x.t18!=null?`<div class="row"><span>Of 2018 turnout</span><span>${(x.t18*100).toFixed(0)}%</span></div>`:'')+(x.ev22!=null?`<div class="row"><span>Of 2022 early vote</span><span>${(x.ev22*100).toFixed(0)}%</span></div>`:'')+(x.party?`<div class="row"><span>Reg. D / R / other</span><span>${(x.party.d/x.voted*100).toFixed(0)} / ${(x.party.r/x.voted*100).toFixed(0)} / ${(x.party.n/x.voted*100).toFixed(0)}%</span></div>`:'')+`<div style="color:var(--muted);margin-top:4px">Updated ${x.l.last_update}</div>`; }
+    tip.innerHTML=html; placeTip(e); return; }
+
   if(chamber!=='house'){ const r=BY[chamber][st];
     html = r ? `<b>${STATES[st].name} ${LABEL[chamber]}</b>`+candRows(r.cands,4)+tipDelta(chamber,st,fav(r.cands).party)+tipKalshi(r)+`<div style="color:var(--muted);margin-top:4px">${night?'Polls close '+closeLabel(st)+' · ':''}Click to open on Polymarket ↗</div>`
              : `<b>${STATES[st].name}</b><div>No ${chamber==='senate'?'Senate':'governor'} race in 2026</div>`; }
@@ -601,6 +653,102 @@ function renderPanel(){
   if(chamber==='house'&&selState) list.querySelectorAll('.race[data-id]').forEach(a=>{ a.addEventListener('mouseenter',()=>hlDist(a.dataset.id,true)); a.addEventListener('mouseleave',()=>hlDist(a.dataset.id,false)); });
 }
 
+// ---- Turnout: early-vote tracker (UF Election Lab snapshots) against 2022 and 2018
+const EVREF=EV.ref||{}, TURN=EVREF.turnout||{}, EV22=EVREF.ev2022||{};
+let evMetric='t22'; // t22 | ev22 | party | mail
+const fmtN=n=>n>=1e6?(n/1e6).toFixed(n>=1e7?1:2)+'M':n>=1e3?Math.round(n/1e3)+'K':String(n);
+const fmtFull=n=>Math.round(n).toLocaleString();
+function evState(st){ const l=EV.latest[st]; if(!l) return null; const t=TURN[st]||{}, e=EV22[st]||{};
+  const party=(l.voted_dem||l.voted_rep)?{d:l.voted_dem,r:l.voted_rep,n:l.voted_none}:null;
+  return {st,l,voted:l.voted,ip:l.inperson_all,mail:l.accept_all,req:l.request_all,party,
+    t22:t.b22?l.voted/t.b22:null, t18:t.b18?l.voted/t.b18:null, ev22:e.total?l.voted/e.total:null, ev22tot:e.total||null,
+    mailShare:l.voted?l.accept_all/l.voted:null, ser:EV.series[st]||[]}; }
+function evMetricVal(x){ return evMetric==='t22'?x.t22:evMetric==='ev22'?x.ev22:evMetric==='mail'?x.mailShare:(x.party?(x.party.d-x.party.r)/(x.party.d+x.party.r+x.party.n):null); }
+function evBucket(v){ // sequential 6-step for shares; diverging for party
+  if(v==null) return null;
+  if(evMetric==='party'){ const a=Math.abs(v); const s=a>=.2?3:a>=.1?2:a>=.03?1:0; return s===0?'t':(v>0?'d':'r')+s; }
+  const cuts=evMetric==='t22'?[.1,.2,.3,.4,.55]:evMetric==='ev22'?[.4,.6,.8,1,1.2]:[.1,.3,.5,.7,.9];
+  let i=0; while(i<cuts.length&&v>=cuts[i]) i++; return 'ev'+(i+1);
+}
+function evLegend(){
+  const L=document.getElementById('legend');
+  if(evMetric==='party'){ L.innerHTML=[['d3','D +20'],['d2','D +10'],['d1','D +3'],['t','Even'],['r1','R +3'],['r2','R +10'],['r3','R +20']].map(([k,l])=>`<span><i class="sw" style="background:var(--${k})"></i>${l}</span>`).join('')+`<span><i class="sw" style="background:var(--none)"></i>No party data</span>`; return; }
+  const labels=evMetric==='t22'?['<10%','10–20%','20–30%','30–40%','40–55%','55%+']:evMetric==='ev22'?['<40%','40–60%','60–80%','80–100%','100–120%','120%+']:['<10%','10–30%','30–50%','50–70%','70–90%','90%+'];
+  L.innerHTML=labels.map((l,i)=>`<span><i class="sw" style="background:var(--ev${i+1})"></i>${l}</span>`).join('')+`<span><i class="sw" style="background:var(--none)"></i>Not reporting</span>`;
+}
+function renderTurnout(){
+  svg.classList.remove('focus'); document.getElementById('map-back').hidden=true; document.getElementById('dl').innerHTML='';
+  const all=Object.keys(EV.latest).map(evState).filter(Boolean);
+  const nat={voted:0,ip:0,mail:0,t22:0,t18:0,ev22:0,ev22tot:0,states:all.length};
+  all.forEach(x=>{ nat.voted+=x.voted; nat.ip+=x.ip; nat.mail+=x.mail; nat.t22+=(TURN[x.st]||{}).b22||0; nat.t18+=(TURN[x.st]||{}).b18||0; if(x.ev22tot){nat.ev22+=x.voted; nat.ev22tot+=x.ev22tot;} });
+  const prevDay=EV.days.length>1?EV.days[EV.days.length-2]:null;
+  let delta=null; if(prevDay){ let a=0; all.forEach(x=>{ const r=x.ser.find(q=>q[0]===prevDay); if(r) a+=r[1]; }); delta=nat.voted-a; }
+  const asOf=all.reduce((m,x)=>x.l.last_update>m?x.l.last_update:m,'');
+  // map
+  for(const st of Object.keys(STATES)){
+    const pth=svg.querySelector(`[data-st="${st}"]`), l=svg.querySelector(`[data-lbl="${st}"]`), a=svg.querySelector(`[data-sl="${st}"]`);
+    const x=EV.latest[st]&&evState(st); const b=x?evBucket(evMetricVal(x)):null;
+    pth.setAttribute('fill', b?`var(--${b})`:'var(--none)'); a.removeAttribute('href'); pth.classList.toggle('live',!!x); pth.classList.remove('sel');
+    pth.removeAttribute('tabindex'); pth.removeAttribute('role');
+    const dark=b&&(/^ev[456]$/.test(b)||DARK(b)); l.className.baseVal='lbl'+(x?(dark?' inv':''):' dim'); l.textContent=st;
+  }
+  evLegend();
+  // tiles
+  const top=document.getElementById('evtop');
+  top.innerHTML=`<div class="tiles">
+    <div class="tile"><div class="k">Early ballots cast</div><div class="v">${fmtN(nat.voted)}</div><div class="s">${nat.states} states reporting · as of ${new Date(asOf+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'})}${delta!=null?` · <b>+${fmtN(delta)}</b> since ${new Date(prevDay+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'})}`:''}</div></div>
+    <div class="tile"><div class="k">Of 2022 total turnout</div><div class="v">${(nat.voted/nat.t22*100).toFixed(0)}%</div><div class="s">${fmtN(nat.t22)} ballots were cast in 2022 in these states</div></div>
+    <div class="tile"><div class="k">Of 2018 total turnout</div><div class="v">${(nat.voted/nat.t18*100).toFixed(0)}%</div><div class="s">${fmtN(nat.t18)} ballots in 2018 · early share that year ${Math.round((EVREF.national_early_share||{})['2018']*100)}%</div></div>
+    <div class="tile"><div class="k">Vs. 2022 final early vote</div><div class="v">${(nat.ev22/nat.ev22tot*100).toFixed(0)}%</div><div class="s">${fmtN(nat.ev22tot)} early ballots by Election Day 2022, same ${all.filter(x=>x.ev22tot).length} states</div></div>
+    <div class="tile"><div class="k">In person · by mail</div><div class="v">${(nat.ip/(nat.ip+nat.mail)*100).toFixed(0)}% · ${(nat.mail/(nat.ip+nat.mail)*100).toFixed(0)}%</div><div class="s">${fmtN(nat.ip)} in person, ${fmtN(nat.mail)} mail ballots returned</div></div>
+  </div>
+  <div class="evctl"><span>Color the map by</span><span class="seg" id="evseg">
+    <button aria-pressed="${evMetric==='t22'}" data-m="t22">% of 2022 turnout</button><button aria-pressed="${evMetric==='ev22'}" data-m="ev22">vs 2022 early vote</button><button aria-pressed="${evMetric==='party'}" data-m="party">Party registration</button><button aria-pressed="${evMetric==='mail'}" data-m="mail">Mail share</button></span>
+    <span>Click a state to find it in the list.</span></div>`;
+  top.querySelectorAll('#evseg button').forEach(b=>b.addEventListener('click',()=>{ evMetric=b.dataset.m; renderTurnout(); }));
+  // panel list
+  const t=document.getElementById('p-title'), sub=document.getElementById('p-sub'), list=document.getElementById('list');
+  document.getElementById('seatgrid').hidden=true; document.getElementById('movers').hidden=true; document.getElementById('night-note').hidden=true; document.getElementById('p-back').hidden=true;
+  const mname={t22:'share of 2022 turnout',ev22:'share of 2022 early vote',party:'Democratic registration edge',mail:'mail share'}[evMetric];
+  const rows=all.filter(x=>evMetricVal(x)!=null).sort((a,b)=>evMetricVal(b)-evMetricVal(a));
+  t.textContent=`Every reporting state, by ${mname}`; sub.textContent=`Alabama and New Hampshire do not publish early-vote counts. Party figures are voter registration, not votes.`;
+  list.innerHTML=rows.map(x=>{ const v=evMetricVal(x); const prev=x.ser.length>1?x.ser[x.ser.length-2][1]:null; const d=prev!=null?x.voted-prev:null;
+    const big=evMetric==='party'?`${v>0?'D':'R'} +${(Math.abs(v)*100).toFixed(0)}<small>REG. EDGE</small>`:`${(v*100).toFixed(0)}%<small>${evMetric==='t22'?'OF 2022':evMetric==='ev22'?'OF 2022 EV':'MAIL'}</small>`;
+    return `<a class="evrow" href="${/^https?:/.test(x.l.source)?esc(x.l.source):'#'}" target="_blank" rel="noopener" data-ev="${x.st}">
+      <span class="code">${x.st}</span>
+      <span class="who"><b>${fmtFull(x.voted)}</b> cast${d!=null?` · +${fmtN(d)} today`:''}${x.t22!=null?` · ${(x.t22*100).toFixed(0)}% of 2022 turnout`:''}${x.ev22!=null?` · ${(x.ev22*100).toFixed(0)}% of 2022 early vote`:''}
+        <div class="mbar" title="In person ${fmtFull(x.ip)} · mail ${fmtFull(x.mail)}"><i class="ip" style="width:${x.voted?x.ip/x.voted*100:0}%"></i><i class="ml" style="width:${x.voted?x.mail/x.voted*100:0}%"></i></div>
+        ${x.party?`<div class="pbar" title="Registered D ${fmtFull(x.party.d)} · R ${fmtFull(x.party.r)} · other ${fmtFull(x.party.n)}"><i class="d" style="width:${x.party.d/x.voted*100}%"></i><i class="n" style="width:${x.party.n/x.voted*100}%"></i><i class="r" style="width:${x.party.r/x.voted*100}%"></i></div>`:''}</span>
+      <span class="pct">${big}</span></a>`; }).join('');
+  // charts
+  document.getElementById('evbottom').innerHTML=`<div class="evcharts">${natChart(all)}${txChart()}</div>
+    <div class="evnote">Early-vote counts: <a href="https://election.lab.ufl.edu/early-vote/2026-early-voting/" target="_blank" rel="noopener">UF Election Lab</a> (Michael McDonald), snapshotted here once a day since Oct 29. 2022 early-vote finals: <a href="https://rpubs.com/ElectProject/early_vote_2022" target="_blank" rel="noopener">US Elections Project 2022 tracker</a>. 2018 and 2022 total turnout: UF Election Lab turnout data. Day-by-day state series for 2018 and 2022 were never published in one place, so the national chart compares against the final totals of those years; Texas is the exception, where the Secretary of State's daily reports let us line up the same day of early voting across cycles. "% of 2022 turnout" = early ballots so far ÷ all ballots cast in 2022, the cleanest like-for-like number across states with different voting rules.</div>`;
+}
+function natChart(all){
+  const days=EV.days; if(!days.length) return '';
+  const tot=days.map(d=>{ let s=0; all.forEach(x=>{ const r=x.ser.find(q=>q[0]===d); if(r) s+=r[1]; }); return s; });
+  const ev22=(EVREF.ev2022_national||{}).total||0; const W=520,H=200,P={l:46,r:12,t:12,b:26};
+  const t0=new Date(days[0]+'T12:00:00'), t1=new Date(EVREF.election_day+'T12:00:00'); const span=Math.max(1,t1-t0);
+  const ymax=Math.max(ev22, ...tot)*1.08; const X=d=>P.l+(new Date(d+'T12:00:00')-t0)/span*(W-P.l-P.r), Y=v=>P.t+(1-v/ymax)*(H-P.t-P.b);
+  const grid=[0,.25,.5,.75,1].map(f=>{const v=f*ymax; return `<line class="gl" x1="${P.l}" x2="${W-P.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${P.l-6}" y="${Y(v)+3}" text-anchor="end">${fmtN(v)}</text>`;}).join('');
+  const pts=days.map((d,i)=>`${X(d).toFixed(1)},${Y(tot[i]).toFixed(1)}`).join(' ');
+  const dots=days.map((d,i)=>`<circle cx="${X(d)}" cy="${Y(tot[i])}" r="3" fill="var(--ev5)"><title>${d}: ${fmtFull(tot[i])}</title></circle>`).join('');
+  const ref=ev22?`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(ev22)}" y2="${Y(ev22)}" stroke="var(--r2)" stroke-dasharray="4 3"/><text class="ax" x="${W-P.r}" y="${Y(ev22)-4}" text-anchor="end" fill="var(--r2)">2022 final early vote ${fmtN(ev22)}</text>`:'';
+  const xl=[days[0],EVREF.election_day].map(d=>`<text class="ax" x="${X(d)}" y="${H-8}" text-anchor="${d===days[0]?'start':'end'}">${new Date(d+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'})}${d===EVREF.election_day?' (Election Day)':''}</text>`).join('');
+  return `<div class="chart"><h3>Early ballots cast, day by day</h3><div class="sub">All reporting states, cumulative. One point per daily snapshot; the first snapshot is Oct 29.</div><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative early ballots by day">${grid}${ref}<polyline class="ln y26" points="${pts}"/>${dots}${xl}</svg><div class="lg"><span><i style="background:var(--ev5)"></i>2026 (${fmtN(tot[tot.length-1])})</span><span><i style="background:var(--r2)"></i>2022 final, same tracker</span></div></div>`;
+}
+function txChart(){
+  const tx=EVREF.tx; if(!tx||!tx['2022']) return '';
+  const W=520,H=200,P={l:46,r:12,t:12,b:26}; const series=[['2026',tx['2026']||[],'y26'],['2024',tx['2024']||[],'y24'],['2022',tx['2022']||[],'y22'],['2018',tx['2018']||[],'y18']];
+  const ymax=Math.max(...series.flatMap(([,s])=>s.map(r=>r[r.length>2?2:1])))*1.08; const X=n=>P.l+(n-1)/11*(W-P.l-P.r), Y=v=>P.t+(1-v/ymax)*(H-P.t-P.b);
+  const grid=[0,.25,.5,.75,1].map(f=>{const v=f*ymax; return `<line class="gl" x1="${P.l}" x2="${W-P.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${P.l-6}" y="${Y(v)+3}" text-anchor="end">${fmtN(v)}</text>`;}).join('');
+  const lines=series.map(([y,s,c])=>{ if(!s.length) return ''; const pts=s.map(r=>`${X(r[0]).toFixed(1)},${Y(r.length>2?r[2]:r[1]).toFixed(1)}`).join(' '); const last=s[s.length-1]; const lv=last.length>2?last[2]:last[1]; return `<polyline class="ln ${c}" points="${pts}"/><circle cx="${X(last[0])}" cy="${Y(lv)}" r="3" fill="currentColor" class="${c}" style="fill:var(--${c==='y26'?'ev5':c==='y22'?'r2':c==='y18'?'d1':'none-fg'})"><title>${y} day ${last[0]}: ${fmtFull(lv)}</title></circle>`; }).join('');
+  const xl=[1,4,8,12].map(n=>`<text class="ax" x="${X(n)}" y="${H-8}" text-anchor="${n===1?'start':n===12?'end':'middle'}">Day ${n}</text>`).join('');
+  const cur=(tx['2026']||[]).slice(-1)[0]; let cmp='';
+  if(cur){ const n=cur[0], v=cur[2]; const r22=(tx['2022'].find(r=>r[0]===n)||[])[1], r18=(tx['2018'].find(r=>r[0]===n)||[])[1]; cmp=`Through day ${n}: <b>${fmtFull(v)}</b> in person${r22?`, ${v>=r22?'+':''}${((v/r22-1)*100).toFixed(0)}% vs the same day in 2022`:''}${r18?` and ${v>=r18?'+':''}${((v/r18-1)*100).toFixed(0)}% vs 2018 (30 largest counties)`:''}.`; }
+  return `<div class="chart"><h3>Texas, same day of early voting</h3><div class="sub">Cumulative in-person early vote by day of the 12-day period. ${cmp}</div><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Texas early vote by day, 2018 to 2026">${grid}${lines}${xl}</svg><div class="lg"><span><i style="background:var(--ev5)"></i>2026</span><span><i style="background:var(--r2)"></i>2022</span><span><i style="background:var(--d1)"></i>2018</span><span><i style="background:var(--none-fg)"></i>2024 (presidential)</span></div></div>`;
+}
+
 // ---- 2028: three leaderboards (winner, Democratic nominee, Republican nominee) from data/odds_2028.json
 // Change per candidate comes from our own snapshots (HIST.p2028, same 7-day/since-first window as the midterm races);
 // until there are two snapshots it falls back to the feed's 24-hour change, which the feed only reports for some names.
@@ -635,7 +783,7 @@ function render2028(){
     el.querySelector('form').addEventListener('submit',()=>{ setTimeout(()=>{ el.innerHTML='<span class="ok">Check your inbox to confirm.</span>'; },300); }); } }
 // ---- Embed mode: ?embed=1[&chamber=senate|house|governor][&state=TX] strips the page to the map and a badge
 if(EMBED){ document.body.classList.add('embed');
-  const q=new URLSearchParams(location.search), ch=q.get('chamber'); if(['senate','house','governor'].includes(ch)) setTab(ch);
+  const q=new URLSearchParams(location.search), ch=q.get('chamber'); if(['senate','house','governor','turnout'].includes(ch)) setTab(ch);
   const st=(q.get('state')||'').toUpperCase(); if(chamber==='house' && HOUSE[st]) selState=st;
   const home='https://presidentl.app/#'+chamber+(selState?'/'+selState:'');
   document.getElementById('badge').innerHTML=`<span>Polymarket odds · ${new Date(DATA.updated).toLocaleDateString(undefined,{month:'short',day:'numeric'})}</span><span><a href="${home}" target="_blank" rel="noopener">presidentl.app ↗</a> <span class="sp">· data: PolymarketTrader.com</span></span>`; }
@@ -643,7 +791,7 @@ if(EMBED){ document.body.classList.add('embed');
 // ---- Tabs, back buttons, deep links (#senate · #house · #house/TX · #governor · #2028)
 function setTab(ch){ chamber=ch; document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x.dataset.ch===ch)); }
 function setHash(){ if(EMBED) return; const h='#'+chamber+(selState?'/'+selState:''); if(location.hash!==h) history.replaceState(null,'',h); }
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{ setTab(b.dataset.ch); selState=null; paint(); if(chamber!=='2028') zoomTo(VB0); }));
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{ setTab(b.dataset.ch); selState=null; paint(); if(chamber!=='2028'&&chamber!=='turnout') zoomTo(VB0); }));
 document.getElementById('p-back').addEventListener('click',()=>focusState(null));
 document.getElementById('map-back').addEventListener('click',()=>focusState(null));
 document.addEventListener('keydown',e=>{ if(e.key==='Escape' && selState) focusState(null); });
@@ -654,6 +802,6 @@ document.getElementById('list').addEventListener('keydown',e=>{ const k=e.target
   el.textContent='Odds as of '+new Date(DATA.updated).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'})+(age>12?` (${Math.round(age)} h old)`:'');
   if(age>12) el.style.color='var(--r2)'; }
 build();
-if(!EMBED){ const m=/^#(senate|house|governor|2028)(?:\/([A-Z]{2}))?$/.exec(location.hash); if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
+if(!EMBED){ const m=/^#(senate|house|governor|2028|turnout)(?:\/([A-Z]{2}))?$/.exec(location.hash); if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
 paint(); if(selState) setVB(stateBox(selState));
 </script>
