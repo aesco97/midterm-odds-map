@@ -217,6 +217,21 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
 .evcharts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
 @media (max-width:900px){.evcharts{grid-template-columns:1fr}}
 .evnote{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
+/* Fun stats */
+.fun{display:none;padding-top:18px}
+.fun.on{display:block}
+.fun .tiles{border-bottom:0;padding-top:0}
+.fun .chart{margin-top:4px}
+.fun .chart .ln.house{stroke:var(--d2)} .fun .chart .ln.senate{stroke:var(--d3)} .fun .chart .ln.life{stroke:var(--r2)} .fun .chart .ln.median{stroke:var(--none-fg);stroke-dasharray:4 3}
+.fun .chart .cross{stroke:var(--fg);stroke-width:1;stroke-dasharray:2 2;opacity:.6}
+.fun .chart .lg i.house{background:var(--d2)} .fun .chart .lg i.senate{background:var(--d3)} .fun .chart .lg i.life{background:var(--r2)} .fun .chart .lg i.median{background:var(--none-fg)}
+.fun .people{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media (max-width:700px){.fun .people{grid-template-columns:1fr}}
+.fun .people .row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--line-soft);font-size:13px}
+.fun .people .row b{font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums}
+.fun .people .row span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fun .readout{font-size:12px;color:var(--muted);min-height:1.5em;margin-top:4px;font-variant-numeric:tabular-nums}
+body.embed .fun{display:none!important}
 /* 2028: three leaderboards, no map */
 .boards{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-top:18px;align-items:start}
 .boards.on{display:grid}
@@ -258,6 +273,7 @@ body.embed .badge{display:flex}
       <button class="tab" role="tab" id="tab-governor" aria-selected="false" data-ch="governor">Governors</button>
       <button class="tab" role="tab" id="tab-turnout" aria-selected="false" data-ch="turnout">Turnout</button>
       <button class="tab" role="tab" id="tab-2028" aria-selected="false" data-ch="2028">2028</button>
+      <button class="tab" role="tab" id="tab-fun" aria-selected="false" data-ch="fun">Fun stats</button>
     </div>
   </div>
 </header>
@@ -290,6 +306,7 @@ body.embed .badge{display:flex}
 <div class="badge" id="badge"></div>
 <div class="boards" id="boards"></div>
 <div id="evbottom" hidden></div>
+<div class="fun" id="fun"></div>
 <div class="tip fixed" id="ptip" hidden></div>
 
 <div class="foot">
@@ -389,13 +406,15 @@ function build(){
   svg.addEventListener('click',e=>{ if(e.target===svg && selState) focusState(null); });
 }
 function paint(){
-  const is2028 = chamber==='2028', isEV = chamber==='turnout';
-  document.querySelector('.main').style.display = is2028?'none':'';
-  document.querySelector('.control').style.display = (is2028||isEV)?'none':'';
+  const is2028 = chamber==='2028', isEV = chamber==='turnout', isFun = chamber==='fun';
+  document.querySelector('.main').style.display = (is2028||isFun)?'none':'';
+  document.querySelector('.control').style.display = (is2028||isEV||isFun)?'none':'';
   document.getElementById('boards').classList.toggle('on',is2028);
-  document.getElementById('proj').hidden=is2028||isEV;
+  document.getElementById('fun').classList.toggle('on',isFun);
+  document.getElementById('proj').hidden=is2028||isEV||isFun;
   document.getElementById('evtop').hidden=!isEV; document.getElementById('evbottom').hidden=!isEV;
-  document.getElementById('nightbtn').hidden = is2028||isEV;
+  document.getElementById('nightbtn').hidden = is2028||isEV||isFun;
+  if(isFun){ renderFun(); setHash(); return; }
   if(is2028){ render2028(); setHash(); return; }
   if(isEV){ renderTurnout(); setHash(); return; }
   for(const st of Object.keys(STATES)){
@@ -749,6 +768,49 @@ function txChart(){
   return `<div class="chart"><h3>Texas, same day of early voting</h3><div class="sub">Cumulative in-person early vote by day of the 12-day period. ${cmp}</div><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Texas early vote by day, 2018 to 2026">${grid}${lines}${xl}</svg><div class="lg"><span><i style="background:var(--ev5)"></i>2026</span><span><i style="background:var(--r2)"></i>2022</span><span><i style="background:var(--d1)"></i>2018</span><span><i style="background:var(--none-fg)"></i>2024 (presidential)</span></div></div>`;
 }
 
+// ---- Fun stats: how old is Congress, against the country it represents (data/funstats.json)
+function renderFun(){
+  const el=document.getElementById('fun'); if(!FUN.congress){ el.innerHTML='<div class="chart"><h3>Fun stats</h3><div class="sub">No data yet: run scripts/fetch_funstats.py</div></div>'; return; }
+  const T=FUN.today, le=T.life_expectancy, cg=FUN.congress.filter(r=>r.house&&r.senate);
+  const now=cg[cg.length-1], first1900=cg.find(r=>r.year>=1901);
+  const tiles=`<div class="tiles">
+    <div class="tile"><div class="k">Average age, House</div><div class="v">${T.house.mean}</div><div class="s">${T.house.n} members today · ${first1900.house.mean} in ${first1900.year}</div></div>
+    <div class="tile"><div class="k">Average age, Senate</div><div class="v">${T.senate.mean}</div><div class="s">${T.senate.n} senators today · ${first1900.senate.mean} in ${first1900.year}</div></div>
+    <div class="tile"><div class="k">US life expectancy</div><div class="v">${le[1]}</div><div class="s">at birth, ${le[0]} · ${FUN.life.find(l=>l[0]>=1901)[1]} in ${FUN.life.find(l=>l[0]>=1901)[0]}</div></div>
+    <div class="tile"><div class="k">Older than life expectancy</div><div class="v">${T.house.over_le+T.senate.over_le}</div><div class="s">${T.house.over_le} representatives, ${T.senate.over_le} senators at ${le[1]}+</div></div>
+    <div class="tile"><div class="k">70 or older · under 40</div><div class="v">${T.house.over70+T.senate.over70} · ${T.house.under40+T.senate.under40}</div><div class="s">of ${T.house.n+T.senate.n} members</div></div>
+  </div>`;
+  // chart: 1900 to now
+  const W=760,H=300,P={l:36,r:14,t:14,b:26}, x0=1900, x1=Math.max(now.year, le[0])+1;
+  const series=[
+    ['senate','Senate, average age',cg.filter(r=>r.year>=x0).map(r=>[r.year,r.senate.mean])],
+    ['house','House, average age',cg.filter(r=>r.year>=x0).map(r=>[r.year,r.house.mean])],
+    ['life','US life expectancy at birth',FUN.life.filter(l=>l[0]>=x0)],
+    ['median','Median age of all Americans',FUN.median_age_us.filter(l=>l[0]>=x0)]];
+  const allv=series.flatMap(([,,s])=>s.map(p=>p[1])); const ymin=Math.floor(Math.min(...allv)/10)*10, ymax=Math.ceil(Math.max(...allv)/10)*10;
+  const X=y=>P.l+(y-x0)/(x1-x0)*(W-P.l-P.r), Y=v=>P.t+(1-(v-ymin)/(ymax-ymin))*(H-P.t-P.b);
+  let grid=''; for(let v=ymin;v<=ymax;v+=10) grid+=`<line class="gl" x1="${P.l}" x2="${W-P.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${P.l-6}" y="${Y(v)+3}" text-anchor="end">${v}</text>`;
+  let xl=''; for(let y=x0;y<=x1;y+=20) xl+=`<text class="ax" x="${X(y)}" y="${H-8}" text-anchor="middle">${y}</text>`;
+  const lines=series.map(([k,,s])=>`<polyline class="ln ${k}" points="${s.map(p=>X(p[0]).toFixed(1)+','+Y(p[1]).toFixed(1)).join(' ')}"/>`).join('');
+  const ends=series.map(([k,,s])=>{const p=s[s.length-1]; return `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="3" class="dot ${k}" style="fill:var(--${k==='house'?'d2':k==='senate'?'d3':k==='life'?'r2':'none-fg'})"/>`;}).join('');
+  const chart=`<div class="chart"><h3>How old is Congress, compared with the country it represents</h3><div class="sub">Average age of members at the start of each Congress, US life expectancy at birth, and the median age of the population, 1900 to today. Hover for a year.</div>
+    <svg viewBox="0 0 ${W} ${H}" id="funsvg" role="img" aria-label="Average age of Congress versus US life expectancy, 1900 to today">${grid}${lines}${ends}<line class="cross" id="funcross" x1="0" x2="0" y1="${P.t}" y2="${H-P.b}" hidden/>${xl}</svg>
+    <div class="readout" id="funread">${now.year}: House ${now.house.mean} · Senate ${now.senate.mean} · life expectancy ${le[1]} (${le[0]}) · median American ${FUN.median_age_us[FUN.median_age_us.length-1][1]} (${FUN.median_age_us[FUN.median_age_us.length-1][0]})</div>
+    <div class="lg">${series.map(([k,l])=>`<span><i class="${k}"></i>${l}</span>`).join('')}</div></div>`;
+  const person=p=>`<div class="row"><span>${esc(p.name)} <span style="color:var(--muted)">(${p.party}-${p.state}, ${p.chamber})</span></span><b>${p.age.toFixed(0)}</b></div>`;
+  const people=`<div class="people"><div class="chart"><h3>Oldest sitting members</h3>${T.oldest.map(person).join('')}</div><div class="chart"><h3>Youngest sitting members</h3>${T.youngest.map(person).join('')}</div></div>
+    <div class="evnote">Ages: <a href="https://github.com/unitedstates/congress-legislators" target="_blank" rel="noopener">unitedstates/congress-legislators</a>, every member's birthday and terms; each Congress counts the members seated in its first year, aged at its opening day (March 4 until 1933, Jan 3 since 1935). Life expectancy: <a href="https://ourworldindata.org/grapher/life-expectancy?country=~USA" target="_blank" rel="noopener">Our World in Data</a> (UN World Population Prospects; Human Mortality Database before 1950). Median age: US Census Bureau. Today's ages as of ${new Date(T.date+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})}; the House total includes the six non-voting delegates.</div>`;
+  el.innerHTML=tiles+chart+people;
+  // hover readout: nearest Congress year
+  const svgEl=document.getElementById('funsvg'), cross=document.getElementById('funcross'), read=document.getElementById('funread');
+  const nearest=(s,y)=>s.reduce((b,p)=>Math.abs(p[0]-y)<Math.abs(b[0]-y)?p:b);
+  svgEl.addEventListener('mousemove',e=>{ const r=svgEl.getBoundingClientRect(); const px=(e.clientX-r.left)/r.width*W; const yr=Math.max(x0,Math.min(x1,Math.round(x0+(px-P.l)/(W-P.l-P.r)*(x1-x0))));
+    const c=nearest(series[0][2],yr), h=nearest(series[1][2],yr), l=nearest(series[2][2],yr), m=nearest(series[3][2],yr);
+    cross.setAttribute('x1',X(c[0])); cross.setAttribute('x2',X(c[0])); cross.hidden=false;
+    read.textContent=`${c[0]}: House ${h[1]} · Senate ${c[1]} · life expectancy ${l[1]} (${l[0]}) · median American ${m[1]} (${m[0]})`; });
+  svgEl.addEventListener('mouseleave',()=>{ cross.hidden=true; });
+}
+
 // ---- 2028: three leaderboards (winner, Democratic nominee, Republican nominee) from data/odds_2028.json
 // Change per candidate comes from our own snapshots (HIST.p2028, same 7-day/since-first window as the midterm races);
 // until there are two snapshots it falls back to the feed's 24-hour change, which the feed only reports for some names.
@@ -791,7 +853,7 @@ if(EMBED){ document.body.classList.add('embed');
 // ---- Tabs, back buttons, deep links (#senate · #house · #house/TX · #governor · #2028)
 function setTab(ch){ chamber=ch; document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x.dataset.ch===ch)); }
 function setHash(){ if(EMBED) return; const h='#'+chamber+(selState?'/'+selState:''); if(location.hash!==h) history.replaceState(null,'',h); }
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{ setTab(b.dataset.ch); selState=null; paint(); if(chamber!=='2028'&&chamber!=='turnout') zoomTo(VB0); }));
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{ setTab(b.dataset.ch); selState=null; paint(); if(chamber!=='2028'&&chamber!=='turnout'&&chamber!=='fun') zoomTo(VB0); }));
 document.getElementById('p-back').addEventListener('click',()=>focusState(null));
 document.getElementById('map-back').addEventListener('click',()=>focusState(null));
 document.addEventListener('keydown',e=>{ if(e.key==='Escape' && selState) focusState(null); });
@@ -802,6 +864,6 @@ document.getElementById('list').addEventListener('keydown',e=>{ const k=e.target
   el.textContent='Odds as of '+new Date(DATA.updated).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'})+(age>12?` (${Math.round(age)} h old)`:'');
   if(age>12) el.style.color='var(--r2)'; }
 build();
-if(!EMBED){ const m=/^#(senate|house|governor|2028|turnout)(?:\/([A-Z]{2}))?$/.exec(location.hash); if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
+if(!EMBED){ const m=/^#(senate|house|governor|2028|turnout|fun)(?:\/([A-Z]{2}))?$/.exec(location.hash); if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
 paint(); if(selState) setVB(stateBox(selState));
 </script>

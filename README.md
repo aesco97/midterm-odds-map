@@ -33,6 +33,7 @@ data/states.js       projected SVG path data for the 50 states (us-atlas, Albers
 data/districts.js    projected SVG paths for the 429 multi-district House seats (Census, 119th Congress)
 data/odds.json       Senate + House + Governor odds in the page's schema
 data/baseline.json   current seat counts and who holds each seat up in 2026 (for the projection and flip list)
+data/funstats.json   age of Congress per Congress, US life expectancy, median age (Fun stats tab)
 data/history/        one compact snapshot per feed update (Democratic price per race); feeds the deltas and sparklines
 scripts/build.py     template + data -> index.html
 scripts/fetch_odds.py  refresh data/odds.json from the feed, then build
@@ -98,6 +99,10 @@ Kalshi prices (`kalshi` on each Senate and governor race) show as a second line 
 The page shows early ballots so far as a share of 2022 and 2018 total turnout and of the 2022 final early vote, in-person vs mail, party registration where states report it, a national day-by-day line built from the snapshots, and a Texas chart that lines up the same day of early voting in 2018, 2022, 2024 and 2026. No national day-by-day series exists for 2018 or 2022, which is why those years appear as final totals.
 
 The hourly workflow runs the script after the odds fetch and rebuilds; if the UF feed is down the last snapshot is kept.
+
+## Fun stats tab
+
+`scripts/fetch_funstats.py` computes the average age of the House and Senate at the start of every Congress from the unitedstates/congress-legislators dataset, pulls US life expectancy at birth from Our World in Data, and adds the Census median age of the population (hand-entered in the script). The tab charts the four lines from 1900, with tiles for today's averages, how many sitting members are older than the national life expectancy, and the oldest and youngest members. Rerun the script at the start of each Congress (or any time, for today's ages): `python3 scripts/fetch_funstats.py`.
 
 ## Ideas for next steps
 
