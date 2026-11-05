@@ -14822,3 +14822,140 @@ updated_utc,chamber,race,democratic_price
 2026-11-04T14:06:54Z,republican-presidential-nominee-2028,Greg Abbott,0.0025
 2026-11-04T14:06:54Z,republican-presidential-nominee-2028,Nikki Haley,0.0025
 2026-11-04T14:06:54Z,republican-presidential-nominee-2028,Eric Trump,0.0025
+2026-11-05T03:31:47Z,senate,AK,0.94
+2026-11-05T03:31:47Z,senate,MS,0.972
+2026-11-05T03:31:47Z,house,AK-AL,0.001
+2026-11-05T03:31:47Z,house,AR-02,0.033
+2026-11-05T03:31:47Z,house,AZ-01,1.0
+2026-11-05T03:31:47Z,house,AZ-02,0.24
+2026-11-05T03:31:47Z,house,AZ-05,0.042
+2026-11-05T03:31:47Z,house,AZ-06,0.995
+2026-11-05T03:31:47Z,house,AZ-08,0.035
+2026-11-05T03:31:47Z,house,CA-04,0.997
+2026-11-05T03:31:47Z,house,CA-07,0.996
+2026-11-05T03:31:47Z,house,CA-11,0.994
+2026-11-05T03:31:47Z,house,CA-14,0.995
+2026-11-05T03:31:47Z,house,CA-23,0.225
+2026-11-05T03:31:47Z,house,CA-29,0.991
+2026-11-05T03:31:47Z,house,CA-47,1.0
+2026-11-05T03:31:47Z,house,CA-48,1.0
+2026-11-05T03:31:47Z,house,CO-03,0.011
+2026-11-05T03:31:47Z,house,CO-04,0.885
+2026-11-05T03:31:47Z,house,CO-05,0.984
+2026-11-05T03:31:47Z,house,FL-07,0.028
+2026-11-05T03:31:47Z,house,FL-09,0.99
+2026-11-05T03:31:47Z,house,FL-13,0.002
+2026-11-05T03:31:47Z,house,FL-26,0.029
+2026-11-05T03:31:47Z,house,FL-27,0.06
+2026-11-05T03:31:47Z,house,LA-05,0.052
+2026-11-05T03:31:47Z,house,LA-06,0.068
+2026-11-05T03:31:47Z,house,ME-02,0.004
+2026-11-05T03:31:47Z,house,MN-01,0.938
+2026-11-05T03:31:47Z,house,MT-01,0.994
+2026-11-05T03:31:47Z,house,NC-01,1.0
+2026-11-05T03:31:47Z,house,NC-03,0.767
+2026-11-05T03:31:47Z,house,NC-05,0.926
+2026-11-05T03:31:47Z,house,NC-06,0.995
+2026-11-05T03:31:47Z,house,NC-07,0.013
+2026-11-05T03:31:47Z,house,NC-08,0.024
+2026-11-05T03:31:47Z,house,NC-09,0.994
+2026-11-05T03:31:47Z,house,NC-10,0.019
+2026-11-05T03:31:47Z,house,NC-13,0.994
+2026-11-05T03:31:47Z,house,NC-14,0.989
+2026-11-05T03:31:47Z,house,NJ-02,0.995
+2026-11-05T03:31:47Z,house,NV-02,1.0
+2026-11-05T03:31:47Z,house,NY-01,0.017
+2026-11-05T03:31:47Z,house,NY-02,0.043
+2026-11-05T03:31:47Z,house,NY-17,0.995
+2026-11-05T03:31:47Z,house,NY-21,0.006
+2026-11-05T03:31:47Z,house,OH-10,0.985
+2026-11-05T03:31:47Z,house,SC-01,0.991
+2026-11-05T03:31:47Z,house,SC-02,0.011
+2026-11-05T03:31:47Z,house,TN-04,0.949
+2026-11-05T03:31:47Z,house,TN-07,0.01
+2026-11-05T03:31:47Z,house,TN-09,0.001
+2026-11-05T03:31:47Z,house,UT-02,0.013
+2026-11-05T03:31:47Z,house,UT-04,0.02
+2026-11-05T03:31:47Z,house,VA-01,1.0
+2026-11-05T03:31:47Z,house,VA-05,0.014
+2026-11-05T03:31:47Z,house,WA-04,0.039
+2026-11-05T03:31:47Z,house,WA-05,0.115
+2026-11-05T03:31:47Z,governor,KS,0.998
+2026-11-05T03:31:47Z,governor,AK,1.0
+2026-11-05T03:31:47Z,control,senate,0
+2026-11-05T03:31:47Z,control,house,0
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Jon Ossoff,0.1785
+2026-11-05T03:31:47Z,presidential-election-winner-2028,JD Vance,0.167
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Alexandria Ocasio-Cortez,0.1245
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Marco Rubio,0.083
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Gavin Newsom,0.0785
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Ron DeSantis,0.054
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Kamala Harris,0.0305
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Josh Shapiro,0.0265
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Pete Buttigieg,0.0245
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Raphael Warnock,0.0155
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Donald Trump,0.0145
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Tucker Carlson,0.0135
+2026-11-05T03:31:47Z,presidential-election-winner-2028,James Talarico,0.0135
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Andy Beshear,0.0125
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Thomas Massie,0.0095
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Mark Kelly,0.0095
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Dwayne 'The Rock' Johnson,0.0085
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Wes Moore,0.0075
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Ro Khanna,0.0075
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Ivanka Trump,0.0055
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Donald Trump Jr.,0.0045
+2026-11-05T03:31:47Z,presidential-election-winner-2028,JB Pritzker,0.0045
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Ted Cruz,0.0045
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Rahm Emanuel,0.0045
+2026-11-05T03:31:47Z,presidential-election-winner-2028,Gretchen Whitmer,0.0035
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Jon Ossoff,0.2635
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Alexandria Ocasio-Cortez,0.142
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Gavin Newsom,0.1405
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Josh Shapiro,0.053
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Kamala Harris,0.0485
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Pete Buttigieg,0.0475
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Andy Beshear,0.0345
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Raphael Warnock,0.0265
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,James Talarico,0.025
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Mark Kelly,0.024
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Wes Moore,0.0155
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Ro Khanna,0.0145
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,J.B. Pritzker,0.0135
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Dwayne 'The Rock' Johnson,0.013
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Chelsea Clinton,0.0105
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Rahm Emanuel,0.0095
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Bernie Sanders,0.0065
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Roy Cooper,0.0065
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Gretchen Whitmer,0.0065
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Michelle Obama,0.006
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Cory Booker,0.0055
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Jon Stewart,0.0055
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Ruben Gallego,0.0045
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Adam Hamilton,0.0045
+2026-11-05T03:31:47Z,democratic-presidential-nominee-2028,Hunter Biden,0.0025
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,J.D. Vance,0.336
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Marco Rubio,0.1895
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Ron DeSantis,0.139
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Tucker Carlson,0.0305
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Ted Cruz,0.0245
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Thomas Massie,0.0215
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Donald Trump Jr.,0.017
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Ivanka Trump,0.0155
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Glenn Youngkin,0.0135
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Brian Kemp,0.012
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Byron Donalds,0.0085
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Donald Trump,0.0085
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Joe Kent,0.006
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Nikki Haley,0.0055
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Tom Cotton,0.0055
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Elon Musk,0.0045
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Rand Paul,0.0045
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Sarah Huckabee Sanders,0.0035
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Josh Hawley,0.0035
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Robert F. Kennedy Jr.,0.0035
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Tulsi Gabbard,0.0035
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Pete Hegseth,0.0035
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Marjorie Taylor Greene,0.0035
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,John McEntee,0.003
+2026-11-05T03:31:47Z,republican-presidential-nominee-2028,Katie Britt,0.0025
