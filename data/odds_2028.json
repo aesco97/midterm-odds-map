@@ -1,351 +1,174 @@
 {
- "updated": "2026-11-06T12:50:00+00:00",
+ "updated": "2026-11-07T00:50:00+00:00",
  "markets": [
   {
    "slug": "presidential-election-winner-2028",
    "title": "Presidential Election Winner 2028",
    "label": "2028 presidential election winner",
-   "volume": 734145960.18,
+   "volume": 735130702.69,
    "outcomes": [
     {
-     "name": "Jon Ossoff",
-     "price": 0.2115,
-     "change24h": 0.0095,
-     "volume": 6629172,
-     "party": "D"
+     "name": "JD Vance",
+     "price": 0.2005,
+     "change24h": 0.01,
+     "volume": 18796710,
+     "party": "R"
     },
     {
-     "name": "JD Vance",
-     "price": 0.205,
-     "change24h": 0.0385,
-     "volume": 18741450,
-     "party": "R"
+     "name": "Jon Ossoff",
+     "price": 0.1925,
+     "change24h": -0.014,
+     "volume": 6789755,
+     "party": "D"
     },
     {
      "name": "Alexandria Ocasio-Cortez",
      "price": 0.1205,
-     "change24h": -0.006,
-     "volume": 14387325,
+     "change24h": -0.001,
+     "volume": 14392602,
      "party": "D"
     },
     {
      "name": "Marco Rubio",
-     "price": 0.0915,
-     "change24h": 0.008,
-     "volume": 13430737,
+     "price": 0.0935,
+     "change24h": 0.002,
+     "volume": 13461092,
      "party": "R"
     },
     {
      "name": "Gavin Newsom",
-     "price": 0.0725,
-     "change24h": -0.0015,
-     "volume": 19080808,
+     "price": 0.0695,
+     "change24h": -0.003,
+     "volume": 19099978,
      "party": "D"
     },
     {
      "name": "Ron DeSantis",
-     "price": 0.0575,
-     "change24h": 0.005,
-     "volume": 12900547,
+     "price": 0.0535,
+     "change24h": -0.004,
+     "volume": 12906439,
      "party": "R"
     },
     {
      "name": "Kamala Harris",
      "price": 0.0355,
-     "change24h": 0.005,
-     "volume": 9717409,
+     "change24h": 0.001,
+     "volume": 9729988,
      "party": "D"
     },
     {
      "name": "Pete Buttigieg",
      "price": 0.0245,
-     "volume": 8684964,
+     "volume": 8692755,
      "party": "D"
     },
     {
      "name": "Josh Shapiro",
-     "price": 0.024,
-     "change24h": -0.0025,
-     "volume": 7753680,
+     "price": 0.023,
+     "change24h": -0.0035,
+     "volume": 7787083,
      "party": "D"
     },
     {
      "name": "James Talarico",
+     "price": 0.0175,
+     "change24h": 0.002,
+     "volume": 8590215
+    },
+    {
+     "name": "Tucker Carlson",
      "price": 0.0145,
-     "volume": 8539626
+     "change24h": 0.003,
+     "volume": 14549520,
+     "party": "R"
+    },
+    {
+     "name": "Andy Beshear",
+     "price": 0.0135,
+     "change24h": 0.001,
+     "volume": 19523960,
+     "party": "D"
     },
     {
      "name": "Donald Trump",
      "price": 0.0135,
-     "change24h": -0.001,
-     "volume": 10978435
+     "volume": 10984722
     },
     {
-     "name": "Andy Beshear",
-     "price": 0.0125,
-     "volume": 19518694,
-     "party": "D"
-    },
-    {
-     "name": "Tucker Carlson",
-     "price": 0.0115,
-     "change24h": -0.002,
-     "volume": 14530360,
-     "party": "R"
+     "name": "Thomas Massie",
+     "price": 0.011,
+     "change24h": 0.001,
+     "volume": 8728105
     },
     {
      "name": "Raphael Warnock",
-     "price": 0.0105,
-     "change24h": -0.003,
-     "volume": 1464022,
+     "price": 0.011,
+     "change24h": 0.002,
+     "volume": 1507315,
      "party": "D"
     },
     {
      "name": "Wes Moore",
-     "price": 0.0095,
-     "change24h": -0.0005,
-     "volume": 13012099,
+     "price": 0.0105,
+     "volume": 13026504,
      "party": "D"
     },
     {
-     "name": "Thomas Massie",
-     "price": 0.0095,
-     "volume": 8718622
-    },
-    {
      "name": "Mark Kelly",
-     "price": 0.0085,
-     "change24h": -0.001,
-     "volume": 1045474
+     "price": 0.0095,
+     "change24h": 0.001,
+     "volume": 1083529
     },
     {
      "name": "Ro Khanna",
      "price": 0.0075,
-     "volume": 11032694
+     "volume": 11035995
     },
     {
      "name": "Dwayne 'The Rock' Johnson",
      "price": 0.0075,
-     "volume": 8582035
+     "change24h": 0.001,
+     "volume": 8587228
     },
     {
      "name": "Ivanka Trump",
      "price": 0.0055,
-     "volume": 8868636
+     "volume": 8873316
     },
     {
      "name": "Glenn Youngkin",
      "price": 0.0045,
-     "change24h": 0.002,
-     "volume": 28928547,
+     "volume": 28950249,
      "party": "R"
     },
     {
      "name": "JB Pritzker",
      "price": 0.0045,
-     "volume": 13321011,
+     "volume": 13340914,
      "party": "D"
     },
     {
      "name": "Rahm Emanuel",
      "price": 0.0045,
-     "volume": 833756,
+     "volume": 841756,
      "party": "D"
+    },
+    {
+     "name": "Nikki Haley",
+     "price": 0.0035,
+     "change24h": 0.0025,
+     "volume": 32145401,
+     "party": "R"
     },
     {
      "name": "Gretchen Whitmer",
      "price": 0.0035,
-     "volume": 15808926,
+     "volume": 15857754,
      "party": "D"
-    },
-    {
-     "name": "Donald Trump Jr.",
-     "price": 0.0035,
-     "change24h": -0.001,
-     "volume": 14190916,
-     "party": "R"
     }
    ],
    "history": {
-    "Jon Ossoff": [
-     [
-      1791331234,
-      0.1045
-     ],
-     [
-      1791590434,
-      0.1005
-     ],
-     [
-      1791633641,
-      0.1015
-     ],
-     [
-      1791676843,
-      0.1015
-     ],
-     [
-      1791720043,
-      0.1015
-     ],
-     [
-      1791763252,
-      0.1035
-     ],
-     [
-      1791806440,
-      0.1035
-     ],
-     [
-      1791849647,
-      0.1035
-     ],
-     [
-      1791892845,
-      0.1035
-     ],
-     [
-      1791936045,
-      0.1035
-     ],
-     [
-      1791979258,
-      0.098
-     ],
-     [
-      1792065652,
-      0.0975
-     ],
-     [
-      1792108849,
-      0.098
-     ],
-     [
-      1792152051,
-      0.0965
-     ],
-     [
-      1792195256,
-      0.0925
-     ],
-     [
-      1792238453,
-      0.0925
-     ],
-     [
-      1792368049,
-      0.1045
-     ],
-     [
-      1792411249,
-      0.1045
-     ],
-     [
-      1792454449,
-      0.1035
-     ],
-     [
-      1792497652,
-      0.0995
-     ],
-     [
-      1792540854,
-      0.089
-     ],
-     [
-      1792584055,
-      0.0925
-     ],
-     [
-      1792670454,
-      0.091
-     ],
-     [
-      1792756852,
-      0.098
-     ],
-     [
-      1792886411,
-      0.0945
-     ],
-     [
-      1792929649,
-      0.0925
-     ],
-     [
-      1793016040,
-      0.0935
-     ],
-     [
-      1793145652,
-      0.0935
-     ],
-     [
-      1793232002,
-      0.0945
-     ],
-     [
-      1793275255,
-      0.0945
-     ],
-     [
-      1793318456,
-      0.093
-     ],
-     [
-      1793534453,
-      0.0985
-     ],
-     [
-      1793577651,
-      0.1015
-     ],
-     [
-      1793620853,
-      0.105
-     ],
-     [
-      1793664042,
-      0.1055
-     ],
-     [
-      1793707258,
-      0.1145
-     ],
-     [
-      1793750447,
-      0.1335
-     ],
-     [
-      1793793649,
-      0.177
-     ],
-     [
-      1793836859,
-      0.1785
-     ],
-     [
-      1793880049,
-      0.2015
-     ],
-     [
-      1793923250,
-      0.2065
-     ],
-     [
-      1793966451,
-      0.2115
-     ],
-     [
-      1793970389,
-      0.2115
-     ]
-    ],
     "JD Vance": [
-     [
-      1791331228,
-      0.2005
-     ],
      [
       1791374447,
       0.2005
@@ -563,15 +386,189 @@
       0.205
      ],
      [
-      1793970385,
-      0.2045
+      1794009639,
+      0.2005
+     ],
+     [
+      1794013520,
+      0.2005
+     ]
+    ],
+    "Jon Ossoff": [
+     [
+      1791590434,
+      0.1005
+     ],
+     [
+      1791633641,
+      0.1015
+     ],
+     [
+      1791676843,
+      0.1015
+     ],
+     [
+      1791720043,
+      0.1015
+     ],
+     [
+      1791763252,
+      0.1035
+     ],
+     [
+      1791806440,
+      0.1035
+     ],
+     [
+      1791849647,
+      0.1035
+     ],
+     [
+      1791892845,
+      0.1035
+     ],
+     [
+      1791936045,
+      0.1035
+     ],
+     [
+      1791979258,
+      0.098
+     ],
+     [
+      1792065652,
+      0.0975
+     ],
+     [
+      1792108849,
+      0.098
+     ],
+     [
+      1792152051,
+      0.0965
+     ],
+     [
+      1792195256,
+      0.0925
+     ],
+     [
+      1792238453,
+      0.0925
+     ],
+     [
+      1792368049,
+      0.1045
+     ],
+     [
+      1792411249,
+      0.1045
+     ],
+     [
+      1792454449,
+      0.1035
+     ],
+     [
+      1792497652,
+      0.0995
+     ],
+     [
+      1792540854,
+      0.089
+     ],
+     [
+      1792584055,
+      0.0925
+     ],
+     [
+      1792670454,
+      0.091
+     ],
+     [
+      1792756852,
+      0.098
+     ],
+     [
+      1792886411,
+      0.0945
+     ],
+     [
+      1792929649,
+      0.0925
+     ],
+     [
+      1793016040,
+      0.0935
+     ],
+     [
+      1793145652,
+      0.0935
+     ],
+     [
+      1793232002,
+      0.0945
+     ],
+     [
+      1793275255,
+      0.0945
+     ],
+     [
+      1793318456,
+      0.093
+     ],
+     [
+      1793534453,
+      0.0985
+     ],
+     [
+      1793577651,
+      0.1015
+     ],
+     [
+      1793620853,
+      0.105
+     ],
+     [
+      1793664042,
+      0.1055
+     ],
+     [
+      1793707258,
+      0.1145
+     ],
+     [
+      1793750447,
+      0.1335
+     ],
+     [
+      1793793649,
+      0.177
+     ],
+     [
+      1793836859,
+      0.1785
+     ],
+     [
+      1793880049,
+      0.2015
+     ],
+     [
+      1793923250,
+      0.2065
+     ],
+     [
+      1793966451,
+      0.2115
+     ],
+     [
+      1794009650,
+      0.1925
+     ],
+     [
+      1794013588,
+      0.1925
      ]
     ],
     "Alexandria Ocasio-Cortez": [
-     [
-      1791331230,
-      0.1325
-     ],
      [
       1791374453,
       0.1315
@@ -773,7 +770,7 @@
       0.1215
      ],
      [
-      1793970386,
+      1794009644,
       0.1205
      ]
     ]
@@ -783,183 +780,182 @@
    "slug": "democratic-presidential-nominee-2028",
    "title": "Democratic Presidential Nominee 2028",
    "label": "Democratic nominee",
-   "volume": 1311587742.56,
+   "volume": 1313297828.92,
    "outcomes": [
     {
      "name": "Jon Ossoff",
-     "price": 0.2745,
-     "change24h": 0.005,
-     "volume": 14590807,
+     "price": 0.2725,
+     "change24h": 0.008,
+     "volume": 14596358,
      "party": "D"
     },
     {
      "name": "Alexandria Ocasio-Cortez",
-     "price": 0.1725,
-     "change24h": 0.027,
-     "volume": 15877248,
+     "price": 0.1745,
+     "change24h": 0.0045,
+     "volume": 15881603,
      "party": "D"
     },
     {
      "name": "Gavin Newsom",
-     "price": 0.125,
-     "change24h": -0.0055,
-     "volume": 28219842,
+     "price": 0.1225,
+     "change24h": -0.004,
+     "volume": 28221143,
      "party": "D"
     },
     {
      "name": "Kamala Harris",
-     "price": 0.048,
-     "change24h": -0.0035,
-     "volume": 14737053,
+     "price": 0.0495,
+     "change24h": 0.006,
+     "volume": 14742161,
      "party": "D"
     },
     {
      "name": "Pete Buttigieg",
-     "price": 0.0445,
-     "change24h": -0.003,
-     "volume": 12348404,
+     "price": 0.0495,
+     "change24h": 0.006,
+     "volume": 12366609,
      "party": "D"
     },
     {
      "name": "Josh Shapiro",
-     "price": 0.0415,
-     "change24h": -0.011,
-     "volume": 10566986,
+     "price": 0.0465,
+     "change24h": 0.002,
+     "volume": 10589326,
      "party": "D"
     },
     {
      "name": "Andy Beshear",
-     "price": 0.038,
-     "change24h": 0.0025,
-     "volume": 13694026,
+     "price": 0.0385,
+     "change24h": 0.0005,
+     "volume": 13696855,
      "party": "D"
     },
     {
      "name": "James Talarico",
-     "price": 0.0285,
-     "change24h": -0.007,
-     "volume": 11893286,
+     "price": 0.0315,
+     "change24h": 0.004,
+     "volume": 11922927,
      "party": "D"
     },
     {
      "name": "Raphael Warnock",
-     "price": 0.0225,
-     "change24h": 0.001,
-     "volume": 34554385,
+     "price": 0.0305,
+     "change24h": 0.007,
+     "volume": 34572950,
      "party": "D"
     },
     {
      "name": "Wes Moore",
-     "price": 0.0215,
-     "change24h": 0.006,
-     "volume": 18730392,
+     "price": 0.024,
+     "change24h": 0.0035,
+     "volume": 18755180,
      "party": "D"
     },
     {
      "name": "Mark Kelly",
      "price": 0.0195,
-     "change24h": -0.003,
-     "volume": 18214932,
+     "volume": 18217259,
      "party": "D"
     },
     {
      "name": "Ro Khanna",
-     "price": 0.015,
-     "change24h": 0.0015,
-     "volume": 11685187,
+     "price": 0.0175,
+     "change24h": 0.0025,
+     "volume": 11693802,
      "party": "D"
     },
     {
      "name": "J.B. Pritzker",
-     "price": 0.0135,
-     "volume": 15911284,
+     "price": 0.0145,
+     "change24h": 0.001,
+     "volume": 15915493,
      "party": "D"
     },
     {
      "name": "Rahm Emanuel",
-     "price": 0.0125,
-     "volume": 14793070,
+     "price": 0.012,
+     "change24h": -0.0005,
+     "volume": 14794476,
      "party": "D"
     },
     {
-     "name": "Chelsea Clinton",
-     "price": 0.0065,
-     "change24h": -0.002,
-     "volume": 51087646,
+     "name": "Abdul El-Sayed",
+     "price": 0.0105,
+     "change24h": 0.0075,
+     "volume": 1442633,
      "party": "D"
     },
     {
      "name": "Roy Cooper",
      "price": 0.0065,
-     "volume": 32490347,
-     "party": "D"
-    },
-    {
-     "name": "Michelle Obama",
-     "price": 0.0065,
-     "change24h": 0.0005,
-     "volume": 26814176,
+     "change24h": 0.001,
+     "volume": 32495838,
      "party": "D"
     },
     {
      "name": "Gretchen Whitmer",
      "price": 0.0065,
-     "volume": 12233132,
-     "party": "D"
-    },
-    {
-     "name": "Dwayne 'The Rock' Johnson",
-     "price": 0.006,
-     "change24h": -0.0025,
-     "volume": 12558761,
-     "party": "D"
-    },
-    {
-     "name": "Chris Van Hollen",
-     "price": 0.006,
-     "change24h": 0.0035,
-     "volume": 2534909,
+     "volume": 12250043,
      "party": "D"
     },
     {
      "name": "Cory Booker",
      "price": 0.0055,
-     "change24h": 0.0015,
-     "volume": 26786706,
+     "volume": 26805590,
      "party": "D"
     },
     {
-     "name": "Abdul El-Sayed",
-     "price": 0.0055,
-     "volume": 446750,
+     "name": "Chelsea Clinton",
+     "price": 0.0045,
+     "change24h": -0.004,
+     "volume": 51097540,
+     "party": "D"
+    },
+    {
+     "name": "Michelle Obama",
+     "price": 0.0045,
+     "change24h": -0.0015,
+     "volume": 26824619,
+     "party": "D"
+    },
+    {
+     "name": "Dwayne 'The Rock' Johnson",
+     "price": 0.0045,
+     "change24h": -0.0005,
+     "volume": 12560841,
+     "party": "D"
+    },
+    {
+     "name": "Chris Van Hollen",
+     "price": 0.0045,
+     "change24h": 0.0005,
+     "volume": 2539503,
      "party": "D"
     },
     {
      "name": "Bernie Sanders",
-     "price": 0.0045,
-     "change24h": -0.002,
-     "volume": 52947875,
+     "price": 0.0035,
+     "change24h": -0.001,
+     "volume": 52951190,
      "party": "D"
     },
     {
      "name": "Jon Stewart",
      "price": 0.0035,
-     "volume": 24930508,
+     "volume": 24930828,
      "party": "D"
     },
     {
-     "name": "Mark Cuban",
+     "name": "Ruben Gallego",
      "price": 0.0035,
-     "volume": 23874641,
+     "change24h": -0.0005,
+     "volume": 9301975,
      "party": "D"
     }
    ],
    "history": {
     "Jon Ossoff": [
-     [
-      1791331229,
-      0.1495
-     ],
      [
       1791374448,
       0.1495
@@ -1173,15 +1169,15 @@
       0.272
      ],
      [
-      1793970385,
-      0.276
+      1794009640,
+      0.2725
+     ],
+     [
+      1794013472,
+      0.2725
      ]
     ],
     "Alexandria Ocasio-Cortez": [
-     [
-      1791331230,
-      0.1795
-     ],
      [
       1791374452,
       0.1795
@@ -1383,15 +1379,15 @@
       0.1725
      ],
      [
-      1793970386,
-      0.1725
+      1794009643,
+      0.1745
+     ],
+     [
+      1794013472,
+      0.1745
      ]
     ],
     "Gavin Newsom": [
-     [
-      1791331225,
-      0.1675
-     ],
      [
       1791374438,
       0.1675
@@ -1613,8 +1609,12 @@
       0.125
      ],
      [
-      1793970382,
-      0.125
+      1794009633,
+      0.1225
+     ],
+     [
+      1794013471,
+      0.1225
      ]
     ]
    }
@@ -1623,185 +1623,180 @@
    "slug": "republican-presidential-nominee-2028",
    "title": "Republican Presidential Nominee 2028",
    "label": "Republican nominee",
-   "volume": 729137215.61,
+   "volume": 730913488.84,
    "outcomes": [
     {
      "name": "J.D. Vance",
-     "price": 0.3865,
-     "change24h": 0.052,
-     "volume": 16927430,
+     "price": 0.3765,
+     "change24h": 0.001,
+     "volume": 16936592,
      "party": "R"
     },
     {
      "name": "Marco Rubio",
      "price": 0.1905,
-     "change24h": 0.0195,
-     "volume": 11453166,
+     "change24h": -0.005,
+     "volume": 11461006,
      "party": "R"
     },
     {
      "name": "Ron DeSantis",
-     "price": 0.1325,
-     "change24h": -0.011,
-     "volume": 16426405,
+     "price": 0.1415,
+     "change24h": 0.012,
+     "volume": 16449858,
      "party": "R"
     },
     {
      "name": "Tucker Carlson",
      "price": 0.0355,
-     "change24h": 0.005,
-     "volume": 13975866,
+     "change24h": 0.0015,
+     "volume": 13981344,
      "party": "R"
     },
     {
      "name": "Glenn Youngkin",
-     "price": 0.0335,
-     "change24h": 0.0195,
-     "volume": 9105847,
-     "party": "R"
-    },
-    {
-     "name": "Ted Cruz",
-     "price": 0.0255,
-     "change24h": 0.001,
-     "volume": 19984514,
+     "price": 0.034,
+     "change24h": -0.005,
+     "volume": 9112023,
      "party": "R"
     },
     {
      "name": "Thomas Massie",
-     "price": 0.0225,
-     "change24h": 0.001,
-     "volume": 6351621,
-     "party": "R"
-    },
-    {
-     "name": "Brian Kemp",
-     "price": 0.0165,
-     "change24h": 0.0035,
-     "volume": 18473998,
-     "party": "R"
-    },
-    {
-     "name": "Donald Trump Jr.",
-     "price": 0.0165,
-     "change24h": -0.0005,
-     "volume": 9829872,
+     "price": 0.03,
+     "change24h": 0.0075,
+     "volume": 6365875,
      "party": "R"
     },
     {
      "name": "John McEntee",
-     "price": 0.0145,
-     "change24h": 0.011,
-     "volume": 1441209,
+     "price": 0.03,
+     "change24h": 0.0225,
+     "volume": 1468794,
      "party": "R"
     },
     {
-     "name": "Ivanka Trump",
-     "price": 0.0135,
-     "change24h": -0.0015,
-     "volume": 8998445,
+     "name": "Ted Cruz",
+     "price": 0.0265,
+     "change24h": 0.001,
+     "volume": 19996787,
+     "party": "R"
+    },
+    {
+     "name": "Brian Kemp",
+     "price": 0.017,
+     "change24h": 0.0035,
+     "volume": 18495707,
+     "party": "R"
+    },
+    {
+     "name": "Donald Trump Jr.",
+     "price": 0.0155,
+     "change24h": -0.001,
+     "volume": 9839543,
      "party": "R"
     },
     {
      "name": "Joe Kent",
-     "price": 0.0115,
-     "change24h": -0.0055,
-     "volume": 9857995,
+     "price": 0.0105,
+     "change24h": 0.0015,
+     "volume": 9859030,
      "party": "R"
     },
     {
      "name": "Byron Donalds",
      "price": 0.0085,
-     "change24h": 0.0005,
-     "volume": 44907280,
+     "volume": 44911643,
      "party": "R"
     },
     {
      "name": "Nikki Haley",
-     "price": 0.0075,
-     "change24h": 0.0015,
-     "volume": 10832556,
+     "price": 0.0085,
+     "change24h": 0.001,
+     "volume": 10896215,
+     "party": "R"
+    },
+    {
+     "name": "Ivanka Trump",
+     "price": 0.008,
+     "change24h": -0.005,
+     "volume": 9001928,
      "party": "R"
     },
     {
      "name": "Donald Trump",
-     "price": 0.0075,
-     "change24h": -0.004,
-     "volume": 9887562,
+     "price": 0.0065,
+     "change24h": -0.005,
+     "volume": 9899349,
      "party": "R"
     },
     {
      "name": "Josh Hawley",
-     "price": 0.0045,
-     "change24h": 0.001,
-     "volume": 20676530,
+     "price": 0.0055,
+     "change24h": 0.002,
+     "volume": 20680339,
      "party": "R"
     },
     {
      "name": "Rand Paul",
-     "price": 0.0045,
-     "change24h": -0.0005,
-     "volume": 19923377,
+     "price": 0.0055,
+     "change24h": 0.001,
+     "volume": 19931462,
+     "party": "R"
+    },
+    {
+     "name": "Tom Cotton",
+     "price": 0.0055,
+     "change24h": -0.0015,
+     "volume": 1994676,
      "party": "R"
     },
     {
      "name": "Marjorie Taylor Greene",
      "price": 0.0045,
-     "change24h": 0.001,
-     "volume": 6957410,
+     "volume": 6987484,
      "party": "R"
     },
     {
-     "name": "Tom Cotton",
-     "price": 0.0045,
-     "change24h": -0.001,
-     "volume": 1986168,
-     "party": "R"
-    },
-    {
-     "name": "Elon Musk",
+     "name": "Sarah Huckabee Sanders",
      "price": 0.0035,
-     "volume": 32000697,
+     "change24h": 0.002,
+     "volume": 36782095,
      "party": "R"
     },
     {
      "name": "Robert F. Kennedy Jr.",
      "price": 0.0035,
-     "volume": 16989362,
-     "party": "R"
-    },
-    {
-     "name": "Tulsi Gabbard",
-     "price": 0.0035,
-     "volume": 14557385,
+     "volume": 17001506,
      "party": "R"
     },
     {
      "name": "Katie Britt",
+     "price": 0.003,
+     "volume": 29133204,
+     "party": "R"
+    },
+    {
+     "name": "Elon Musk",
      "price": 0.0025,
-     "change24h": -0.0005,
-     "volume": 29118186,
+     "change24h": -0.001,
+     "volume": 32017625,
      "party": "R"
     },
     {
      "name": "John N. Kennedy",
      "price": 0.0025,
-     "volume": 2105181,
+     "volume": 2109380,
      "party": "R"
     },
     {
      "name": "Tim Scott",
      "price": 0.0025,
-     "volume": 1787241,
+     "volume": 1807132,
      "party": "R"
     }
    ],
    "history": {
     "J.D. Vance": [
-     [
-      1791331230,
-      0.489
-     ],
      [
       1791374452,
       0.4855
@@ -2007,15 +2002,15 @@
       0.3885
      ],
      [
-      1793970386,
-      0.3855
+      1794009643,
+      0.3765
+     ],
+     [
+      1794013394,
+      0.3765
      ]
     ],
     "Marco Rubio": [
-     [
-      1791331219,
-      0.1525
-     ],
      [
       1791374420,
       0.1525
@@ -2245,15 +2240,15 @@
       0.1905
      ],
      [
-      1793970378,
+      1794009619,
+      0.1905
+     ],
+     [
+      1794013518,
       0.1905
      ]
     ],
     "Ron DeSantis": [
-     [
-      1791331233,
-      0.0265
-     ],
      [
       1791417657,
       0.0275
@@ -2419,8 +2414,8 @@
       0.1325
      ],
      [
-      1793970388,
-      0.1325
+      1794009648,
+      0.142
      ]
     ]
    }
