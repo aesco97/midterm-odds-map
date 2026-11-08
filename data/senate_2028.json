@@ -1,0 +1,217 @@
+{
+ "updated": "2026-11-08T21:22:28Z",
+ "seats": {
+  "CO": {
+   "incumbent": "Michael F. Bennet",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "CT": {
+   "incumbent": "Richard Blumenthal",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "AR": {
+   "incumbent": "John Boozman",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "ID": {
+   "incumbent": "Mike Crapo",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "IA": {
+   "incumbent": "Chuck Grassley",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "ND": {
+   "incumbent": "John Hoeven",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "WI": {
+   "incumbent": "Ron Johnson",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "OK": {
+   "incumbent": "James Lankford",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "UT": {
+   "incumbent": "Mike Lee",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "KS": {
+   "incumbent": "Jerry Moran",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "AK": {
+   "incumbent": "Lisa Murkowski",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "WA": {
+   "incumbent": "Patty Murray",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "KY": {
+   "incumbent": "Rand Paul",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "NY": {
+   "incumbent": "Charles E. Schumer",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "SC": {
+   "incumbent": "Tim Scott",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "SD": {
+   "incumbent": "John Thune",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "MD": {
+   "incumbent": "Chris Van Hollen",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "VT": {
+   "incumbent": "Peter Welch",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "OR": {
+   "incumbent": "Ron Wyden",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "IN": {
+   "incumbent": "Todd Young",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "HI": {
+   "incumbent": "Brian Schatz",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "IL": {
+   "incumbent": "Tammy Duckworth",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "LA": {
+   "incumbent": "John Kennedy",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "NH": {
+   "incumbent": "Margaret Wood Hassan",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "NV": {
+   "incumbent": "Catherine Cortez Masto",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "NC": {
+   "incumbent": "Ted Budd",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "AZ": {
+   "incumbent": "Mark Kelly",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "CA": {
+   "incumbent": "Alex Padilla",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "GA": {
+   "incumbent": "Raphael G. Warnock",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "AL": {
+   "incumbent": "Katie Boyd Britt",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "MO": {
+   "incumbent": "Eric Schmitt",
+   "party": "R",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "PA": {
+   "incumbent": "John Fetterman",
+   "party": "D",
+   "term_end": "2029-01-03",
+   "special_2026": false
+  },
+  "OH": {
+   "incumbent": "Sherrod Brown",
+   "party": "D",
+   "term_end": "2026-11-03",
+   "special_2026": true,
+   "note": "won the 2026 special election"
+  },
+  "FL": {
+   "incumbent": "Ashley Moody",
+   "party": "R",
+   "term_end": "2026-11-03",
+   "special_2026": true,
+   "note": "won the 2026 special election"
+  }
+ },
+ "markets": {},
+ "control": {
+  "market": "which-party-will-win-the-senate-in-2028",
+  "D": 0.87,
+  "R": 0.125
+ }
+}

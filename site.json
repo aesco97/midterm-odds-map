@@ -20,5 +20,9 @@
   "contact": {
     "email": "",
     "url": "https://github.com/aesco97"
+  },
+  "tips": {
+    "url": "",
+    "label": "Keep this running"
   }
 }

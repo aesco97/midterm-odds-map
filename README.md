@@ -1,8 +1,8 @@
-# Midterm Odds Map
+# Political Odds Map (presidentl.app)
 
 Live: https://presidentl.app
 
-A single-page US map of the 2026 midterms shaded by Polymarket odds. Senate, House and Governors tabs; every Senate and governor race links straight to its Polymarket market, and on the House tab you can zoom in to any state to see its congressional districts, each shaded by its own market.
+The daily record of what prediction markets think about American politics. The home page is the 2028 presidential race (winner, both nominees, both VP picks) with a Senate 2028 map; the 2026 midterms are frozen on `2026.html` as final odds against results. Everything rebuilds itself hourly from a GitHub Action.
 
 ## Run it
 
@@ -103,6 +103,18 @@ The hourly workflow runs the script after the odds fetch and rebuilds; if the UF
 ## Fun stats tab
 
 `scripts/fetch_funstats.py` computes the average age of the House and Senate at the start of every Congress from the unitedstates/congress-legislators dataset, pulls US life expectancy at birth from Our World in Data, and adds the Census median age of the population (hand-entered in the script). The tab charts the four lines from 1900, with tiles for today's averages, how many sitting members are older than the national life expectancy, and the oldest and youngest members. Rerun the script at the start of each Congress (or any time, for today's ages): `python3 scripts/fetch_funstats.py`.
+
+## 2026 results page (`2026.html`)
+
+`scripts/build_2026_archive.py` takes the last feed snapshot before polls closed (`data/odds_2026_final.json`, saved from git) and asks Polymarket's Gamma API how every market resolved, writing `data/results_2026.json`. The page grades every race (favourite won / upset / pending), scores Polymarket and Kalshi (Brier, who had the winner higher), and shows accuracy by rating band. Rerun the script as the last markets resolve; it is cheap after the first run because Gamma responses are cached in the temp dir.
+
+## Senate 2028 (`data/senate_2028.json`)
+
+`scripts/fetch_senate_2028.py` (hourly) lists the 34 Class 3 seats from legislators-current, the Florida and Ohio seats taking their 2026 special-election winners, searches Gamma for a per-state market, and reads the Senate-control 2028 market. States are shaded by incumbent party until a market exists.
+
+## Price history backfill
+
+`scripts/backfill_history.py` pulls daily prices from Polymarket's CLOB (`prices-history`) for every 2026 race and every 2028 candidate back to each market's launch and writes them as `data/history/YYYY-MM-DDT00-00.json` snapshots for days before the live snapshots began (Oct 22, 2026). Run once; it skips days that already exist.
 
 ## Ideas for next steps
 

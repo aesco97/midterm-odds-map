@@ -1,0 +1,90 @@
+<title>About · presidentl.app</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!-- Vercel Web Analytics (page views only; the script is served by Vercel for this project) -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a newsroom results board. Control bar up top, big map left, race ledger right; stacks on phones. */
+:root{
+  --bg:#f6f4ef; --panel:#fffdf9; --fg:#1d1b17; --muted:#6c675d; --line:#dcd7cc; --line-soft:#ebe7de;
+  --none:#e4e0d6; --none-fg:#8d877b;
+  --d3:#1b4fb0; --d2:#4f7fd0; --d1:#a9c1ea; --t:#c9c2b2; --r1:#efb3a6; --r2:#d9644f; --r3:#b3251c;
+  --accent:#1d1b17; --hover:#111;
+  --display:"Bricolage Grotesque","Archivo Black",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 40px}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-bottom:12px;border-bottom:2px solid var(--fg)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:20px;margin:28px 0 8px;letter-spacing:-.01em}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+nav a{font-weight:600;text-decoration:none;margin-left:16px}
+p{max-width:68ch}
+.muted{color:var(--muted)}
+code,pre{font-family:var(--mono);font-size:12.5px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;margin:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.btn{display:inline-block;appearance:none;border:0;background:var(--fg);color:var(--bg);font:600 13px var(--body);padding:8px 14px;border-radius:6px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--fg)}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px}
+select,input{font:14px var(--body);padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg);max-width:100%}
+.foot{margin-top:32px;font-size:12px;color:var(--muted)}
+.price{font-family:var(--display);font-weight:800;font-size:28px}
+ul{padding-left:20px} li{margin:4px 0}
+table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top} th{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tbl{overflow-x:auto}
+</style>
+
+<div class="wrap">
+<header><div><p class="kicker">presidentl.app</p><h1>About</h1></div><nav><a href="./">2028 odds</a><a href="2026.html">2026 results</a><a href="data.html">Data</a></nav></header>
+
+<p style="margin-top:18px">presidentl.app is the daily record of what prediction markets think about American politics. It takes the prices on Polymarket and Kalshi for every race with a market, puts them on a map, keeps a snapshot every time they change, and sets them against the results once the votes are counted.</p>
+
+<h2>What the numbers are</h2>
+<p>A price is the market's odds, not a poll and not a prediction by this site. A candidate at 64¢ means traders are paying 64 cents for a contract that pays a dollar if that candidate wins. Markets can be wrong, thin, or moved by a few large bets; the <a href="2026.html">2026 results page</a> shows how they did on every midterm race.</p>
+
+<h2>Where the data comes from</h2>
+<ul>
+<li>Prices: <a href="https://polymarkettrader.com" target="_blank" rel="noopener">PolymarketTrader.com</a>'s free feed of Polymarket and Kalshi markets (CC BY 4.0), refreshed about twice a day, and Polymarket's public Gamma and CLOB APIs for results and price history.</li>
+<li>Maps: state shapes from us-atlas; congressional districts from the Census Bureau's 2024 cartographic boundary files.</li>
+<li>Seats and members: <a href="https://github.com/unitedstates/congress-legislators" target="_blank" rel="noopener">unitedstates/congress-legislators</a>.</li>
+<li>Early vote (2026): UF Election Lab. Life expectancy: Our World in Data. Median age: US Census Bureau.</li>
+</ul>
+<p>Everything shown is downloadable on the <a href="data.html">data page</a>, under the same CC BY license as the feed, and the whole site is <a href="https://github.com/aesco97/midterm-odds-map" target="_blank" rel="noopener">open source</a>.</p>
+
+<h2>Principles</h2>
+<ul>
+<li>Nonpartisan. Blue and red mean the parties, nothing else.</li>
+<li>No ads and no trackers beyond a page-view count.</li>
+<li>Say plainly what the numbers are and where they come from.</li>
+<li>Do few things, and keep them running without hand-work: the site rebuilds itself every hour.</li>
+</ul>
+
+<h2>Money</h2>
+<p id="money">Hosting and the domain cost a few hundred dollars a year. Some links to Polymarket and Kalshi may be referral links, which pay this site a small commission at no cost to you; the data stays free either way.</p>
+<p id="contact"></p>
+<div class="foot">Prediction markets are not available everywhere; check what is legal where you live. Nothing here is betting or investment advice.</div>
+</div>
+<script>
+/*SITE*/
+{ const c=SITE.contact||{}, t=SITE.tips||{}; const el=document.getElementById('contact'); let h='';
+  if(c.email) h+=`Questions, corrections, or a dataset request: <a href="mailto:${c.email}">${c.email}</a>. `; else if(c.url) h+=`Questions or corrections: <a href="${c.url}" target="_blank" rel="noopener">${c.url.replace(/^https?:\/\//,'')}</a>. `;
+  if(t.url) h+=`If the site is useful to you, you can <a href="${t.url}" target="_blank" rel="noopener">${t.label||'help keep it running'}</a>.`;
+  el.innerHTML=h; }
+</script>

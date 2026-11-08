@@ -26,13 +26,17 @@ jobs:
           python-version: "3.12"
       - name: Fetch odds and rebuild the page
         run: python3 scripts/fetch_odds.py
-      - name: Fetch early-vote turnout
-        run: python3 scripts/fetch_earlyvote.py || echo "early vote fetch failed; keeping last snapshot"
+      - name: Senate 2028 seats and markets
+        run: python3 scripts/fetch_senate_2028.py || echo "senate 2028 fetch failed; keeping last file"
+      - name: 2026 results (only races still pending are re-checked)
+        run: python3 scripts/build_2026_archive.py || echo "results refresh failed; keeping last file"
+      # Early-vote tracking is paused until the 2028 general (the 2026 snapshots stay in data/earlyvote/):
+      # - run: python3 scripts/fetch_earlyvote.py || echo "early vote fetch failed; keeping last snapshot"
       - name: Rebuild
         run: python3 scripts/build.py
       - name: Commit if anything changed
         run: |
-          git add -A data index.html embed.html data.html
+          git add -A data index.html embed.html data.html 2026.html about.html
           if git diff --cached --quiet; then
             echo "Odds unchanged; nothing to commit."
             exit 0

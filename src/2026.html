@@ -1,0 +1,145 @@
+<title>2026 Midterms: Final Odds vs Results</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!-- Vercel Web Analytics (page views only; the script is served by Vercel for this project) -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a newsroom results board. Control bar up top, big map left, race ledger right; stacks on phones. */
+:root{
+  --bg:#f6f4ef; --panel:#fffdf9; --fg:#1d1b17; --muted:#6c675d; --line:#dcd7cc; --line-soft:#ebe7de;
+  --none:#e4e0d6; --none-fg:#8d877b;
+  --d3:#1b4fb0; --d2:#4f7fd0; --d1:#a9c1ea; --t:#c9c2b2; --r1:#efb3a6; --r2:#d9644f; --r3:#b3251c;
+  --accent:#1d1b17; --hover:#111;
+  --display:"Bricolage Grotesque","Archivo Black",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a;
+  --accent:#ebe8e1; --hover:#fff; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 40px}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-bottom:12px;border-bottom:2px solid var(--fg)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:20px;margin:28px 0 8px;letter-spacing:-.01em}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+nav a{font-weight:600;text-decoration:none;margin-left:16px}
+p{max-width:68ch}
+.muted{color:var(--muted)}
+code,pre{font-family:var(--mono);font-size:12.5px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;margin:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.btn{display:inline-block;appearance:none;border:0;background:var(--fg);color:var(--bg);font:600 13px var(--body);padding:8px 14px;border-radius:6px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--fg)}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px}
+select,input{font:14px var(--body);padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg);max-width:100%}
+.foot{margin-top:32px;font-size:12px;color:var(--muted)}
+.price{font-family:var(--display);font-weight:800;font-size:28px}
+ul{padding-left:20px} li{margin:4px 0}
+table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top} th{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tbl{overflow-x:auto}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:16px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.tile .k{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.01em;overflow-wrap:anywhere}
+.tile .s{font-size:12px;color:var(--muted);margin-top:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;margin:18px 0 8px}
+.seg button{appearance:none;border:0;background:none;color:var(--fg);font:600 13px var(--body);padding:5px 12px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ok{color:var(--d2);font-weight:700} .miss{color:var(--r2);font-weight:700} .pend{color:var(--muted)}
+tr.is-miss td{background:color-mix(in srgb,var(--r2) 8%,transparent)}
+.chip{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:1px}
+.chip.D{background:var(--d3)} .chip.R{background:var(--r3)} .chip.I{background:var(--t)}
+.bands{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:8px}
+.band{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--panel)}
+.band .k{font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.band .v{font-family:var(--display);font-weight:800;font-size:20px}
+.band .s{font-size:11.5px;color:var(--muted)}
+.bar{height:8px;border-radius:4px;background:var(--line-soft);overflow:hidden;display:flex;margin-top:6px}
+.bar i{display:block;height:100%} .bar .d{background:var(--d3)} .bar .r{background:var(--r3)}
+.race-name{white-space:nowrap}
+.small{font-size:12px;color:var(--muted)}
+</style>
+
+<div class="wrap">
+<header><div><p class="kicker">presidentl.app · 2026 midterms</p><h1>What the markets said, and what happened</h1></div><nav><a href="./">2028 odds</a><a href="data.html">Data</a><a href="about.html">About</a></nav></header>
+
+<p style="margin-top:18px" id="intro"></p>
+<div class="tiles" id="tiles"></div>
+
+<h2>Control of Congress</h2>
+<div class="tiles" id="control"></div>
+
+<h2>How the favourites did, by rating band</h2>
+<p class="small">A race's band is the favourite's final Polymarket price: Safe 95%+, Likely 80–95%, Lean 60–80%, Toss-up under 60%. Well-calibrated markets should lose a few Likelys and a fair share of Toss-ups.</p>
+<div class="bands" id="bands"></div>
+
+<h2>Every race</h2>
+<div class="seg" id="seg"><button aria-pressed="true" data-ch="senate">Senate</button><button aria-pressed="false" data-ch="governor">Governors</button><button aria-pressed="false" data-ch="house">House</button></div>
+<p class="small" id="tsub"></p>
+<div class="tbl"><table id="tbl"></table></div>
+
+<h2>Notes</h2>
+<p class="small" id="notes"></p>
+<div class="foot">Final odds: <a href="https://polymarkettrader.com" target="_blank" rel="noopener">PolymarketTrader.com</a> (CC BY 4.0) feed, last snapshot before polls closed. Results: how each Polymarket market resolved. Kalshi prices as carried by the same feed. Prices are market odds, not polls; nothing here is betting advice. Data files: <a href="data/odds_2026_final.json" download>odds_2026_final.json</a>, <a href="data/results_2026.json" download>results_2026.json</a>, <a href="data/history.csv" download>history.csv</a> (the day-by-day prices through the campaign).</div>
+</div>
+<script>
+/*DATA2026*/
+const REF=(SITE.referral)||{};
+const PM=m=>'https://polymarket.com/event/'+m+(REF.polymarket?'?r='+encodeURIComponent(REF.polymarket):'');
+const pct=p=>p==null?'—':Math.round(p*100)+'%';
+const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+const $=id=>document.getElementById(id);
+const CH={senate:'Senate',governor:'Governor',house:'House'};
+const rows=[...R26.races.senate.map(x=>({...x,ch:'senate',code:x.state})),...R26.races.governor.map(x=>({...x,ch:'governor',code:x.state})),...R26.races.house.map(x=>({...x,ch:'house',code:x.id}))];
+const graded=rows.filter(x=>x.correct!==null), misses=graded.filter(x=>x.correct===false), pending=rows.filter(x=>x.correct===null);
+const band=p=>p>=.95?'Safe':p>=.8?'Likely':p>=.6?'Lean':'Toss-up';
+const brier=xs=>xs.length?xs.reduce((s,x)=>s+Math.pow(1-x,2),0)/xs.length:null;
+// intro + tiles
+const finalAt=new Date(R26.final_odds_at).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'});
+$('intro').textContent=`Polymarket had a market on ${rows.length} races in the 2026 midterms: ${R26.races.senate.length} Senate, ${R26.races.governor.length} governor and ${R26.races.house.length} House. This page freezes the last prices before polls closed (${finalAt}) and sets them against how each market resolved. ${pending.length?pending.length+' race'+(pending.length>1?'s have':' has')+' not resolved yet and will fill in as the hourly refresh sees them.':'Every race has resolved.'}`;
+const kal=graded.filter(x=>x.kalshi_winner_price!=null&&x.winner_price!=null);
+const kCloser=kal.filter(x=>x.kalshi_winner_price>x.winner_price).length, pCloser=kal.filter(x=>x.winner_price>x.kalshi_winner_price).length;
+const bPM=brier(graded.filter(x=>x.winner_price!=null).map(x=>x.winner_price)), bK=brier(kal.map(x=>x.kalshi_winner_price)), bPMk=brier(kal.map(x=>x.winner_price));
+$('tiles').innerHTML=`
+ <div class="tile"><div class="k">Favourites that won</div><div class="v">${graded.length?Math.round(graded.filter(x=>x.correct).length/graded.length*100):0}%</div><div class="s">${graded.filter(x=>x.correct).length} of ${graded.length} resolved races</div></div>
+ <div class="tile"><div class="k">Upsets</div><div class="v">${misses.length}</div><div class="s">${misses.length?'biggest: '+esc(misses.slice().sort((a,b)=>a.winner_price-b.winner_price)[0].code)+', winner was at '+pct(misses.slice().sort((a,b)=>a.winner_price-b.winner_price)[0].winner_price):'none'}</div></div>
+ <div class="tile"><div class="k">Brier score, Polymarket</div><div class="v">${bPM==null?'—':bPM.toFixed(3)}</div><div class="s">0 is perfect, 0.25 is a coin flip; winner's final price on every resolved race</div></div>
+ <div class="tile"><div class="k">Polymarket vs Kalshi</div><div class="v">${pCloser} · ${kCloser}</div><div class="s">races where each had the winner higher, of ${kal.length} Senate and governor races both priced${bK!=null?` · Brier ${bPMk.toFixed(3)} vs ${bK.toFixed(3)}`:''}</div></div>`;
+// control + seats
+function seats(ch,useWinner){ const b=R26.baseline[ch]; const rs=R26.races[ch]; if(ch==='house'){ let d=0,r=0; rs.forEach(x=>{ const p=useWinner?(x.winner&&x.winner.party):x.fav.party; if(p==='D')d++; else if(p==='R')r++; }); return {d,r}; }
+  const held={D:0,R:0}; let d=0,r=0; rs.forEach(x=>{ const h=b.holders[x.state]; if(held[h]!=null) held[h]++; const p=useWinner?(x.winner&&x.winner.party):x.fav.party; if(p==='D')d++; else if(p==='R')r++; }); return {d:b.current.D-held.D+d, r:b.current.R-held.R+r}; }
+const ctl=R26.control; const allRes=ch=>R26.races[ch].every(x=>x.winner);
+$('control').innerHTML=['senate','house'].map(ch=>{ const c=ctl[ch]; const proj=seats(ch,false), act=seats(ch,true); const w=c.winner; return `<div class="tile"><div class="k">${CH[ch]} control market</div><div class="v">D ${pct(c.final.D)} · R ${pct(c.final.R)}</div><div class="s">${w?`Resolved: <b>${w==='D'?'Democrats':w==='R'?'Republicans':esc(w)}</b> won the ${CH[ch]}`:'Not resolved yet'}</div>
+  <div class="bar"><i class="d" style="width:${c.final.D*100}%"></i><i class="r" style="width:${c.final.R*100}%"></i></div></div>
+  <div class="tile"><div class="k">${CH[ch]} seats: markets vs result</div><div class="v">${proj.d} D → ${allRes(ch)?act.d+' D':act.d+'+ D'}</div><div class="s">if every favourite had won: ${proj.d} D · ${proj.r} R${ch==='house'?' (of '+R26.races.house.length+' districts with a market)':''} · actual so far: ${act.d} D · ${act.r} R${allRes(ch)?'':' with races still open'}</div></div>`; }).join('')+
+  (()=>{ const proj=seats('governor',false), act=seats('governor',true); return `<div class="tile"><div class="k">Governorships: markets vs result</div><div class="v">${proj.d} D → ${act.d} D</div><div class="s">if every favourite had won: ${proj.d} D · ${proj.r} R · actual: ${act.d} D · ${act.r} R${allRes('governor')?'':' so far'}</div></div>`; })();
+// bands
+const bands=['Safe','Likely','Lean','Toss-up'].map(b=>{ const xs=graded.filter(x=>band(x.fav.price)===b); const ok=xs.filter(x=>x.correct).length; return {b,n:xs.length,ok,avg:xs.length?xs.reduce((s,x)=>s+x.fav.price,0)/xs.length:0}; });
+$('bands').innerHTML=bands.map(x=>`<div class="band"><div class="k">${x.b}</div><div class="v">${x.n?Math.round(x.ok/x.n*100)+'%':'—'}</div><div class="s">${x.ok} of ${x.n} favourites won${x.n?' · avg price '+pct(x.avg):''}</div></div>`).join('');
+// table
+let ch='senate';
+function render(){ const rs=rows.filter(x=>x.ch===ch).slice().sort((a,b)=>{ const ka=a.correct===false?0:a.correct===null?1:2, kb=b.correct===false?0:b.correct===null?1:2; if(ka!==kb) return ka-kb; return ka===0?a.winner_price-b.winner_price:a.fav.price-b.fav.price; });
+  const hasK=ch!=='house'; const m=rs.filter(x=>x.correct===false).length, p=rs.filter(x=>x.correct===null).length;
+  $('tsub').textContent=`${rs.length} races · ${m} upset${m===1?'':'s'}${p?` · ${p} unresolved`:''} · upsets first, then the closest calls. Click a race to open its market.`;
+  $('tbl').innerHTML=`<tr><th>Race</th><th>Final favourite</th><th class="num">Polymarket</th>${hasK?'<th class="num">Kalshi</th>':''}<th>Winner</th><th class="num">Winner's final price</th><th>Result</th></tr>`+
+   rs.map(x=>{ const w=x.winner; const res=x.correct===null?'<span class="pend">pending</span>':x.correct?'<span class="ok">✓ favourite won</span>':'<span class="miss">✗ upset</span>';
+     const k=x.kalshi&&x.fav.party&&x.kalshi[x.fav.party]!=null?pct(x.kalshi[x.fav.party]):'—';
+     return `<tr class="${x.correct===false?'is-miss':''}"><td class="race-name"><a href="${PM(x.market)}" target="_blank" rel="noopener">${x.code}</a>${x.rating?` <span class="small">${esc(x.rating)}</span>`:''}</td><td><i class="chip ${x.fav.party||'I'}"></i>${esc(x.fav.name)}${x.fav.party?' ('+x.fav.party+')':''}</td><td class="num">${pct(x.fav.price)}</td>${hasK?`<td class="num">${k}</td>`:''}<td>${w?`<i class="chip ${w.party||'I'}"></i>${esc(w.name)}${w.party?' ('+w.party+')':''}`:'—'}</td><td class="num">${pct(x.winner_price)}</td><td>${res}</td></tr>`; }).join(''); }
+document.querySelectorAll('#seg button').forEach(b=>b.addEventListener('click',()=>{ ch=b.dataset.ch; document.querySelectorAll('#seg button').forEach(x=>x.setAttribute('aria-pressed',x===b)); render(); }));
+render();
+$('notes').textContent=`Favourite = the candidate with the highest Polymarket price at the final snapshot. "Winner's final price" is what the market gave the eventual winner at that moment, so an upset at 20% was a bigger surprise than one at 45%. Kalshi prices are the party contract for the favourite's party. ${R26.races.house.length} of 435 House districts had a Polymarket market. Results come from market resolution, which follows the certified outcome; a race still shows as pending until its market resolves. Built ${R26.built}.`;
+</script>

@@ -19,6 +19,8 @@ data2028 = json.loads(read('data/odds_2028.json')) if (root/'data/odds_2028.json
 site = json.loads(read('site.json')) if (root/'site.json').exists() else {}
 base = json.loads(read('data/baseline.json')) if (root/'data/baseline.json').exists() else {}
 fun = json.loads(read('data/funstats.json')) if (root/'data/funstats.json').exists() else {}
+s28 = json.loads(read('data/senate_2028.json')) if (root/'data/senate_2028.json').exists() else {}
+r26 = json.loads(read('data/results_2026.json')) if (root/'data/results_2026.json').exists() else {}
 
 def history():
     """Fold data/history/*.json into series of [unix_seconds, democratic_price] per race, oldest first."""
@@ -42,6 +44,18 @@ def history():
     return series, rows, len(files)
 
 hist, rows, nsnap = history()
+
+# What the page embeds is a thinned copy: history.csv keeps every point, but the home page only needs
+# daily detail for the last 90 days and a weekly point before that, and the retired 2026 chambers only a tail.
+def thin(series, keep_days=90, step=7):
+    if not series: return series
+    cut = series[-1][0] - keep_days * 86400
+    old = [p for p in series if p[0] < cut]; recent = [p for p in series if p[0] >= cut]
+    return old[::-1][::step][::-1] + recent  # every `step`th old point, anchored on the most recent old point
+def tail(series, n=30): return series[-n:]
+hist_page = {'control': {k: thin(v) for k, v in hist['control'].items()},
+             'p2028': {slug: {name: thin(v) for name, v in d.items()} for slug, d in hist['p2028'].items()}}
+for ch in ('senate', 'house', 'governor'): hist_page[ch] = {k: tail(v) for k, v in hist[ch].items()}
 
 def earlyvote():
     """data/earlyvote/*.json (one per day) + data/earlyvote_ref.json -> {ref, days:[...], latest:{st:{...}}, series:{st:[[day, voted, inperson, mail]]}}."""
@@ -79,10 +93,14 @@ def page(body):
 
 J = lambda o: json.dumps(o, ensure_ascii=False, separators=(',', ':'))
 site_js = 'const SITE=' + J(site) + ';'
-inject = f"const DATA={J(data)};\nconst HIST={J(hist)};\nconst DATA2028={J(data2028)};\nconst BASE={J(base)};\nconst EV={J(ev)};\nconst FUN={J(fun)};\n{site_js}"
+inject = f"const DATA={J(data)};\nconst HIST={J(hist_page)};\nconst DATA2028={J(data2028)};\nconst BASE={J(base)};\nconst EV={J(ev)};\nconst FUN={J(fun)};\nconst S28={J(s28)};\n{site_js}"
 body = read('src/template.html').replace('/*STATES*/', read('data/states.js')).replace('/*DISTRICTS*/', read('data/districts.js')).replace('/*DATA*/', inject)
 write('index.html', page(body))
 
+if (root/'src/2026.html').exists():
+    write('2026.html', page(read('src/2026.html').replace('/*DATA2026*/', 'const R26=' + J(r26) + ';\n' + site_js)))
+if (root/'src/about.html').exists():
+    write('about.html', page(read('src/about.html').replace('/*SITE*/', site_js)))
 if (root/'src/embed.html').exists():
     write('embed.html', page(read('src/embed.html').replace('/*SITE*/', site_js)))
 stats = {'snapshots': nsnap, 'rows': len(rows), 'first': rows[0][0] if rows else None, 'last': rows[-1][0] if rows else None,
