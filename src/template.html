@@ -320,7 +320,7 @@ body.embed .badge{display:flex}
 <div class="tip fixed" id="ptip" hidden></div>
 
 <div class="foot">
-  <span class="links"><a href="2026.html">2026 results</a><a href="data.html">Data</a><a href="about.html">About</a><a href="embed.html">Embed</a><a href="https://github.com/aesco97/midterm-odds-map" target="_blank" rel="noopener">Source</a><a id="tips" hidden target="_blank" rel="noopener"></a></span>
+  <span class="links"><a href="2026.html">2026 results</a><a href="data.html">Data</a><a href="about.html">About</a><a href="embed.html">Embed</a></span>
   <span id="stamp"></span>
   <span>Shading = favourite's Polymarket price. Safe ≥95% · Likely 80–95% · Lean 60–80% · Toss-up &lt;60%. Senate 2028: states with a seat up are shaded by the incumbent's party until a market opens; click a state with a market to open it.</span>
   <span class="disclosure" id="disclosure">Odds data: <a href="https://polymarkettrader.com/odds/senate-forecast-2026/" target="_blank" rel="noopener">PolymarketTrader.com</a> (CC BY 4.0), via Polymarket and Kalshi. Prices are market odds, not polls or predictions, and nothing here is betting or investment advice. Prediction markets are not available everywhere; check what is legal where you live.<span id="ref-note"></span></span>
@@ -933,6 +933,6 @@ build();
 if(!EMBED){ const m=/^#(senate|house|governor|2028|turnout|fun|senate2028)(?:\/([A-Z]{2}))?$/.exec(location.hash);
   if(m && ['senate','house','governor'].includes(m[1]) && !location.search.includes('archive=1')) location.replace('2026.html'); // the 2026 races now live on the results page
   else if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
-{ const t=SITE.tips||{}, a=document.getElementById('tips'); if(t.url){ a.href=t.url; a.textContent=t.label||'Keep this running'; a.hidden=false; } }
+
 paint(); if(selState) setVB(stateBox(selState));
 </script>

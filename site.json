@@ -13,16 +13,5 @@
   "newsletter": {
     "action": "",
     "label": "Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."
-  },
-  "embed": {
-    "whitelabel_price": "$149"
-  },
-  "contact": {
-    "email": "",
-    "url": "https://github.com/aesco97"
-  },
-  "tips": {
-    "url": "",
-    "label": "Keep this running"
   }
 }

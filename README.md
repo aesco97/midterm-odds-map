@@ -78,16 +78,14 @@ Everything that turns the site into a business lives in one file; `scripts/build
 |---|---|
 | `referral.polymarket` | Your Polymarket referral code; appended as `?r=CODE` to every market link. Polymarket pays 10% of referred users' net fees for 30 days once your own account has $10K lifetime volume. |
 | `referral.kalshi` | Your Kalshi referral code; appended as `?referral=CODE` to Kalshi links ($25 credit per referral, capped at 40). **Check the Kalshi market URL pattern** in `KL()` in `src/template.html` against a real market page before relying on it. |
-| `sponsor` | `name`, `url`, `text`, `from`, `to` (ISO dates). A "presented by" band shows under the header only inside the window. Links carry `rel="sponsored"`. |
+| `sponsor` | `name`, `url`, `text`, `from`, `to` (ISO dates). A "presented by" band shows under the header only inside the window. Links carry `rel="sponsored"`. Leave `name` empty for no band. |
 | `newsletter.action` | A form endpoint that accepts `POST email=…`, e.g. Buttondown's `https://buttondown.com/api/emails/embed-subscribe/<username>`. The signup box is hidden until this is set. |
-| `embed.whitelabel_price` | Price shown on `embed.html`. |
-| `contact.email` / `contact.url` | Where the embed and data pages send inquiries. |
 
 ## Pages
 
 - `/` — the map. Tabs: Senate, House, Governors, 2028 (winner and both nominee markets, from `data/odds_2028.json`).
 - `/?embed=1&chamber=senate|house|governor[&state=TX][&night=1]` — embed mode: map, legend and a badge, nothing else. Built from the same `index.html`.
-- `/embed.html` — snippet generator, live preview, and the white-label offer.
+- `/embed.html` — snippet generator with a live preview.
 - `/data.html` — the dataset page: `data/odds.json`, `data/odds_2028.json`, `data/history.csv` (long format, one row per race per snapshot) with the schema and CC BY terms.
 
 Kalshi prices (`kalshi` on each Senate and governor race) show as a second line in the ledger with the Polymarket–Kalshi gap; gaps of 3+ points are highlighted.

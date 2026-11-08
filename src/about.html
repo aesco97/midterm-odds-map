@@ -66,7 +66,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <li>Seats and members: <a href="https://github.com/unitedstates/congress-legislators" target="_blank" rel="noopener">unitedstates/congress-legislators</a>.</li>
 <li>Early vote (2026): UF Election Lab. Life expectancy: Our World in Data. Median age: US Census Bureau.</li>
 </ul>
-<p>Everything shown is downloadable on the <a href="data.html">data page</a>, under the same CC BY license as the feed, and the whole site is <a href="https://github.com/aesco97/midterm-odds-map" target="_blank" rel="noopener">open source</a>.</p>
+<p>Everything shown is downloadable on the <a href="data.html">data page</a>, under the same CC BY license as the feed.</p>
 
 <h2>Principles</h2>
 <ul>
@@ -76,15 +76,10 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <li>Do few things, and keep them running without hand-work: the site rebuilds itself every hour.</li>
 </ul>
 
-<h2>Money</h2>
-<p id="money">Hosting and the domain cost a few hundred dollars a year. Some links to Polymarket and Kalshi may be referral links, which pay this site a small commission at no cost to you; the data stays free either way.</p>
-<p id="contact"></p>
+<p id="refnote" class="muted" style="font-size:13px" hidden>Some links to Polymarket and Kalshi are referral links, which pay this site a small commission at no cost to you.</p>
 <div class="foot">Prediction markets are not available everywhere; check what is legal where you live. Nothing here is betting or investment advice.</div>
 </div>
 <script>
 /*SITE*/
-{ const c=SITE.contact||{}, t=SITE.tips||{}; const el=document.getElementById('contact'); let h='';
-  if(c.email) h+=`Questions, corrections, or a dataset request: <a href="mailto:${c.email}">${c.email}</a>. `; else if(c.url) h+=`Questions or corrections: <a href="${c.url}" target="_blank" rel="noopener">${c.url.replace(/^https?:\/\//,'')}</a>. `;
-  if(t.url) h+=`If the site is useful to you, you can <a href="${t.url}" target="_blank" rel="noopener">${t.label||'help keep it running'}</a>.`;
-  el.innerHTML=h; }
+{ const r=SITE.referral||{}; if(r.polymarket||r.kalshi) document.getElementById('refnote').hidden=false; }
 </script>

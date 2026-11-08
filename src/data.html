@@ -63,8 +63,8 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
     <p style="font-size:14px">2026 midterms, frozen: <a href="data/odds_2026_final.json" download>odds_2026_final.json</a> (last prices before polls closed) and <a href="data/results_2026.json" download>results_2026.json</a> (how every market resolved, graded). See the <a href="2026.html">results page</a>.</p>
     <p class="muted" style="font-size:12.5px" id="s-updated"></p></div>
   <div class="card"><h2 style="margin-top:0;font-size:17px">Price history <span class="muted" style="font-weight:500;font-size:13px">CSV</span></h2>
-    <p style="font-size:14px">One row per race per feed update (about two a day) since Oct 22, 2026: the Democratic candidate's price, or the non-Republican share where no Democrat is priced. This is the file that will be worth something in 2028: a daily record of every political market through a full cycle.</p>
-    <p><a class="btn" href="data/history.csv" download>history.csv</a> <a class="btn ghost" href="https://github.com/aesco97/midterm-odds-map/tree/main/data/history" target="_blank" rel="noopener">Raw snapshots</a></p>
+    <p style="font-size:14px">One row per race per day, back to each market's launch in 2025: the Democratic candidate's price, or the non-Republican share where no Democrat is priced, plus every 2028 candidate's price. A daily record of every political market through a full cycle.</p>
+    <p><a class="btn" href="data/history.csv" download>history.csv</a></p>
     <p class="muted" style="font-size:12.5px" id="s-hist"></p></div>
 </div>
 
@@ -81,15 +81,15 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 </table></div>
 
 <h2>Terms</h2>
-<p>Prices are collected from <a href="https://polymarkettrader.com/developers/" target="_blank" rel="noopener">PolymarketTrader.com's free feed</a> of Polymarket and Kalshi markets and are released here under the same <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license: use them for anything, credit "PolymarketTrader.com via presidentl.app". A longer, cleaned history with candidate metadata and both exchanges on every race is in the works for the 2028 cycle; <span id="s-contact">watch this page</span>.</p>
+<p>Prices are collected from <a href="https://polymarkettrader.com/developers/" target="_blank" rel="noopener">PolymarketTrader.com's free feed</a> of Polymarket and Kalshi markets and are released here under the same <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license: use them for anything, credit "PolymarketTrader.com via presidentl.app". A longer, cleaned history with candidate metadata and both exchanges on every race is in the works for the 2028 cycle.</p>
 <p class="muted" style="font-size:13px">Prices are market odds, not polls or predictions, and nothing here is betting or investment advice.</p>
 
-<div class="foot">Built from <a href="https://github.com/aesco97/midterm-odds-map" target="_blank" rel="noopener">aesco97/midterm-odds-map</a>.</div>
+<div class="foot">Prices are market odds, not polls or predictions.</div>
 </div>
 <script>
 /*SITE*/
 const fmt=s=>s?new Date(s).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}):'';
 document.getElementById('s-updated').textContent=`${STATS.races} races · updated ${fmt(STATS.updated)}`;
 document.getElementById('s-hist').textContent=STATS.rows?`${STATS.rows.toLocaleString()} rows from ${STATS.snapshots} snapshots, ${fmt(STATS.first)} to ${fmt(STATS.last)}`:'No snapshots yet.';
-{ const c=SITE.contact||{}; const el=document.getElementById('s-contact'); if(c.email) el.innerHTML=`email <a href="mailto:${c.email}">${c.email}</a> to hear when it ships`; }
+
 </script>

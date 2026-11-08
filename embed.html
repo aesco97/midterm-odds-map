@@ -61,7 +61,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <div class="wrap">
 <header><div><p class="kicker">presidentl.app</p><h1>Embed the odds map</h1></div><nav><a href="./">Map</a><a href="data.html">Data</a></nav></header>
 
-<p style="margin-top:18px">Put the live Senate 2028 map on your own site or newsletter page with one line. It updates itself every hour from the same data as presidentl.app, works on phones, and follows the reader's light or dark theme. Free with the small "presidentl.app" badge; see below for a version without it. The 2026 midterm maps are retired; their final odds and results are on the <a href="2026.html">results page</a>.</p>
+<p style="margin-top:18px">Put the live Senate 2028 map on your own site or newsletter page with one line. It updates itself every hour from the same data as presidentl.app, works on phones, and follows the reader's light or dark theme. Free, with a small "presidentl.app" badge. The 2026 midterm maps are retired; their final odds and results are on the <a href="2026.html">results page</a>.</p>
 
 <div class="grid" style="margin-top:12px">
   <div class="card">
@@ -80,21 +80,10 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
   </div>
 </div>
 
-<h2>Without the badge, in your colors</h2>
-<div class="grid">
-  <div class="card"><div class="price" id="wl-price">$149</div><div class="muted">one-time, through the 2026 cycle</div>
-    <ul><li>No "presidentl.app" badge</li><li>Your palette for the map shading and background</li><li>A fixed URL on this domain, so the snippet never changes</li><li>Same hourly refresh and election-night mode</li></ul>
-    <p class="muted" style="font-size:13px">Odds data remains credited to PolymarketTrader.com (CC BY 4.0), as its license requires; that credit stays as one line under the map.</p>
-    <a class="btn" id="wl-cta" href="#" target="_blank" rel="noopener">Ask about a white-label embed</a></div>
-  <div class="card"><h2 style="margin:0 0 6px;font-size:16px">Newsrooms and newsletters</h2>
-    <p style="font-size:14px">Covering the 2027 governor races or the 2028 primaries? The election-night mode (built for 2026) marks races as the market calls them and orders them by poll-closing time; it comes back for each election with a map.</p>
-    <p style="font-size:14px">Want a chart or a table instead of the map (a Senate control line, a "closest 10" list)? Those exist as data; reach out and we'll add an embed for it.</p></div>
-</div>
-
-<div class="foot">Prices are market odds, not polls or predictions; nothing here is betting advice. Links from the map to Polymarket and Kalshi may be referral links.</div>
+<div class="foot">Prices are market odds, not polls or predictions; nothing here is betting advice.</div>
 </div>
 <script>
-const SITE={"referral":{"polymarket":"","kalshi":""},"sponsor":{"name":"","url":"","text":"","from":"2026-11-03","to":"2026-11-05"},"newsletter":{"action":"","label":"Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."},"embed":{"whitelabel_price":"$149"},"contact":{"email":"","url":"https://github.com/aesco97"},"tips":{"url":"","label":"Keep this running"}};
+const SITE={"referral":{"polymarket":"","kalshi":""},"sponsor":{"name":"","url":"","text":"","from":"2026-11-03","to":"2026-11-05"},"newsletter":{"action":"","label":"Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."}};
 const BASE='https://presidentl.app/';
 const $=id=>document.getElementById(id);
 function url(){ return BASE+'?embed=1&chamber='+$('ch').value; }
@@ -104,8 +93,7 @@ function update(){ const h=Math.max(320,Math.min(1200,+$('h').value||560)); cons
 ['ch','h'].forEach(id=>$(id).addEventListener('input',update)); update();
 $('copy').addEventListener('click',()=>{ const t=$('snip').textContent; const done=()=>{ $('copy').textContent='Copied'; setTimeout(()=>$('copy').textContent='Copy snippet',1500); };
   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done).catch(()=>{ const r=document.createRange(); r.selectNodeContents($('snip')); getSelection().removeAllRanges(); getSelection().addRange(r); }); });
-{ const e=(SITE.embed||{}); if(e.whitelabel_price) $('wl-price').textContent=e.whitelabel_price;
-  const c=SITE.contact||{}; const cta=$('wl-cta'); if(c.email){ cta.href='mailto:'+c.email+'?subject=White-label%20odds%20map%20embed'; cta.textContent='Email '+c.email; } else if(c.url) cta.href=c.url; else cta.hidden=true; }
+
 </script>
 
 </body>
