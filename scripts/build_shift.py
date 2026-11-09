@@ -38,13 +38,33 @@ def add(office, year, f, dem, rep, tot, flag=0):
     else:
         y[f] = [dem, rep, tot, flag]
 
+print('downloading per-district House rows to find uncontested districts (large file)...')
+# A county split across districts can be contested in one and uncontested in the other; the summary can't show that.
+# From the long file: for each year x county x district, D and R votes; the county is flagged if any of its districts
+# had one major party under 3% of that district's county vote (unopposed, write-ins only).
+uncontested = set()
+dist = {}
+for row in csv.DictReader(io.StringIO(get(H + 'us_county_results_long.csv'))):
+    if row['office'] != 'house' or int(row['year']) < 2000: continue
+    k = (row['year'], fips(row['county_fips']), row['district']); d = dist.setdefault(k, [0, 0, 0])
+    v = I(row['votes']); d[2] += v
+    if row['party_group'] == 'DEM': d[0] += v
+    elif row['party_group'] == 'REP': d[1] += v
+for (yr, f, _), (d, r, t) in dist.items():
+    if t and min(d, r) / t < 0.03: uncontested.add((yr, f))
+print(f'  {len(uncontested)} county-years with an uncontested House district')
+
 print('downloading county summary (12 MB)...')
 for row in csv.DictReader(io.StringIO(get(H + 'us_county_results_summary.csv'))):
     yr = int(row['year']); off = row['office']
     if yr < 2000 or off not in res: continue
     q = row['quality_flag'] or ''
+    d, r, t = I(row['dem_votes']), I(row['rep_votes']), I(row['total_votes'])
     flag = 1 if ('one_party_race' in q or 'excludes_unopposed_seat' in q) else 0
-    add(off, yr, fips(row['county_fips']), I(row['dem_votes']), I(row['rep_votes']), I(row['total_votes']), flag)
+    # Effectively uncontested, county-wide or in any one of its districts (write-ins against an unopposed candidate).
+    # Without this, a county swings 90+ points when a seat goes from unopposed to contested.
+    if off == 'house' and (t and min(d, r) / t < 0.03 or (row['year'], fips(row['county_fips'])) in uncontested): flag = 1
+    add(off, yr, fips(row['county_fips']), d, r, t, flag)
 
 print('downloading Hawaii / Alaska presidential rows...')
 t = csv.DictReader(io.StringIO(get(T + 'US_County_Level_Presidential_Results_08-16.csv')))

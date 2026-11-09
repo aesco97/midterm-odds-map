@@ -198,7 +198,7 @@ function draw(){
 function nearest(px,py,radius){ let best=null,bd=radius*radius; for(const ar of arrows){ const [x,y]=toPx(ar.x,ar.y); const d=(x-px)*(x-px)+(y-py)*(y-py); if(d<bd){ bd=d; best=ar; } } return best; }
 function tipHtml(ar){
   const co=parseCmp(cmp); const yr=(label,v,m)=>`<div class="yr">${label}</div><div class="row"><span>Dem ${fmt(v[0])} · Rep ${fmt(v[1])}</span><span>${m>0?'D':'R'} ${sgn(Math.abs(m)).replace(/^[+−]/,'+')}</span></div><div class="row"><span style="color:var(--muted)">${fmt(v[2])} votes</span><span></span></div>`;
-  return `<b>${esc(ar.name)}${ar.f==='02000'?'':' County'}, ${ar.st}</b>`+yr(`${OFF[office]} ${y1}`,ar.v,ar.m1)+yr(`${OFF[co.office]} ${co.year}`,ar.u,ar.m0)+
+  return `<b>${esc(ar.name)}${ar.f==='02000'?'':ar.st==='LA'?' Parish':(ar.st==='VA'&&+ar.f.slice(2)>=510)?' (city)':' County'}, ${ar.st}</b>`+yr(`${OFF[office]} ${y1}`,ar.v,ar.m1)+yr(`${OFF[co.office]} ${co.year}`,ar.u,ar.m0)+
     `<div class="shift ${ar.d>0?'d':'r'}">${ar.d>0?'▲ Toward Democrats':'▼ Toward Republicans'} · ${sgn(ar.d)} pts</div>`;
 }
 function showTip(ar,cx,cy){ tip.innerHTML=tipHtml(ar); tip.hidden=false; let x=cx+14,y=cy+14; if(x+290>innerWidth) x=cx-300; if(y+220>innerHeight) y=cy-200; tip.style.left=x+'px'; tip.style.top=y+'px'; }
