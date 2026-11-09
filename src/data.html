@@ -68,6 +68,11 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
     <p class="muted" style="font-size:12.5px" id="s-hist"></p></div>
 </div>
 
+<div class="card" style="margin-top:16px"><h2 style="margin-top:0;font-size:17px">County results 2000–2024 <span class="muted" style="font-weight:500;font-size:13px">JSON</span></h2>
+    <p style="font-size:14px">The data behind the <a href="shift.html">shift maps</a>: President (2000–2024) and House (2000–2024) votes by county as <code>[dem, rep, total, flag]</code>, plus county centroids in the site's map projection.</p>
+    <p><a class="btn" href="data/shift/results.json" download>results.json</a> <a class="btn ghost" href="data/shift/counties.json" download>counties.json</a></p>
+    <p class="muted" style="font-size:12.5px">County results: Paul Heideman, <em>U.S. county-level election results 1990–2024</em> (CC BY 4.0); Hawaii and Alaska 2008–24 from tonmcg/US_County_Level_Election_Results_08-24. flag = 1 marks a House county where a race was one-party or a seat was unopposed.</p></div>
+
 <h2>Schema</h2>
 <div class="tbl"><table>
 <tr><th>File</th><th>Field</th><th>Meaning</th></tr>
@@ -78,6 +83,8 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <tr><td><code>*.seats[]</code></td><td>{outcome, price}: seat-count buckets</td></tr>
 <tr><td><code>history.csv</code></td><td><code>updated_utc, chamber, race, democratic_price</code></td><td>chamber ∈ senate · house · governor · control, or a 2028 market slug; race is the state code, district id, chamber name for control, or the candidate's name for 2028 (price = that candidate's)</td></tr>
 <tr><td><code>odds_2028.json</code></td><td><code>markets[]</code></td><td>{slug, title, outcomes[] = {name, party, price, change24h}, history{name: [[unix_s, price]]}} for the winner and both nominee markets</td></tr>
+<tr><td><code>shift/results.json</code></td><td><code>{office: {year: {fips: [dem, rep, total, flag]}}}</code></td><td>office ∈ president · house; Alaska is one statewide row (02000); <code>meta.years</code> lists the elections present</td></tr>
+<tr><td><code>shift/counties.json</code></td><td><code>{fips: [name, state, x, y]}</code></td><td>centroid in the 975×610 Albers USA frame the maps use</td></tr>
 </table></div>
 
 <h2>Terms</h2>

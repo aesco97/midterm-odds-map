@@ -99,6 +99,8 @@ write('index.html', page(body))
 
 if (root/'src/2026.html').exists():
     write('2026.html', page(read('src/2026.html').replace('/*DATA2026*/', 'const R26=' + J(r26) + ';\n' + site_js)))
+if (root/'src/shift.html').exists():
+    write('shift.html', page(read('src/shift.html').replace('/*STATES*/', read('data/states.js')).replace('/*SITE*/', site_js)))
 if (root/'src/about.html').exists():
     write('about.html', page(read('src/about.html').replace('/*SITE*/', site_js)))
 if (root/'src/embed.html').exists():

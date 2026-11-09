@@ -16,11 +16,11 @@ Skip: display ads, a paid tier for the map, anything that needs hand-written con
 
 ## Phase 1 — next two weeks
 
-- [x] **Midterm archive page** (`/2026.html`): final odds vs. results for every race. Where the markets were wrong, by how much, Polymarket vs Kalshi. Keep the election-night replay data.
-- [x] **2028 home page** (per-state Senate markets fill in automatically as they open): winner, Democratic and Republican nominee, VP markets; Senate 2028 map (33 seats; markets fill in over time); movers strip and sparklines up top.
-- [x] **CLOB backfill**: `scripts/backfill_history.py` pulls `prices-history` for every market token back to launch so sparklines open with months of data (runs once in the Action; the Action has network, local shells don't).
-- [ ] Turn on the newsletter form (needs a Buttondown account: paste its embed-subscribe URL) (`site.json` → `newsletter.action`).
-- [x] Footer: "data" and "about" links, about page; tips link shows once `site.json` → `tips.url` is set (GitHub Sponsors is not enabled on the account yet).
+- [ ] **Midterm archive page** (`/2026.html`): final odds vs. results for every race. Where the markets were wrong, by how much, Polymarket vs Kalshi. Keep the election-night replay data.
+- [ ] **2028 home page**: winner, Democratic and Republican nominee, VP markets; Senate 2028 map (33 seats; markets fill in over time); movers strip and sparklines up top.
+- [ ] **CLOB backfill**: `scripts/backfill_history.py` pulls `prices-history` for every market token back to launch so sparklines open with months of data (runs once in the Action; the Action has network, local shells don't).
+- [ ] Turn on the newsletter form (`site.json` → `newsletter.action`).
+- [ ] Footer: tips link, "data" and "about" links.
 
 ## Phase 2 — by spring 2027
 
@@ -38,3 +38,15 @@ Skip: display ads, a paid tier for the map, anything that needs hand-written con
 ## Principles (borrowed from election.run, applied to a data site)
 
 Nonpartisan. No ads, no trackers beyond page counts. Say plainly what the numbers are (market prices, not polls or predictions) and where they come from. Do few things.
+
+## Shift maps (added Nov 8)
+
+County-level "shift from last time" arrow maps, 2000–2024, for President and House. Data is in place:
+
+- `data/shift/results.json` — `{office: {year: {fips: [dem, rep, total, flag]}}}` for President 2000–2024 (7 elections) and House 2000–2024 (13), ~3,100 counties each. Built by `scripts/build_shift.py` from Heideman's county dataset (CC BY 4.0; 48 states) plus tonmcg's files for Hawaii and statewide Alaska (2008 on).
+- `data/shift/counties.json` — county centroids in the site's map projection, from `scripts/build_county_centroids.mjs` (us-atlas, Albers USA, same scale/translate as `data/states.js`).
+- `scripts/render_shift_svg.py` — reference renderer; its arrow rules (angle, scale, cap, width by turnout, skip flagged counties) are what `src/shift.html` should implement with a year slider and office toggle.
+
+Known gaps: Hawaii and Alaska before 2008 (MEDSL's county file on Harvard Dataverse has them; add when a fetch path exists). Alaska is one statewide arrow. House arrows skip counties where a race was uncontested in either year, so House maps are sparser in the South. **2026 county results are not yet in any open dataset**; the archive page can show the 2026 shift once MEDSL or Heideman publish them (typically spring after the election), or earlier if we transcribe AP county tables.
+
+Credit line for the page: "County results: Paul Heideman, *U.S. county-level election results 1990–2024* (CC BY 4.0); Hawaii and Alaska 2008–24 from tonmcg/US_County_Level_Election_Results_08-24."
