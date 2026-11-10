@@ -3,7 +3,7 @@
   Seats     unitedstates/congress-legislators legislators-current.json (senators with class 3). The Florida and Ohio
             seats were filled by 2026 special elections; their winners come from data/results_2026.json when available.
   Markets   Gamma public search per state ("<State> Senate 2028"); an open event with candidate markets counts.
-  Control   which-party-will-win-the-senate-in-2028
+  Control   which-party-will-win-the-senate-in-2028, with its daily price history from the CLOB
 
 Runs in the hourly workflow (about 36 requests). Usage: python3 scripts/fetch_senate_2028.py
 """
@@ -51,16 +51,28 @@ def main():
             print(f'  {st}: {e}')
     # chamber control
     control = None
+    prev = json.loads((root/'data/senate_2028.json').read_text(encoding='utf-8')).get('control') if (root/'data/senate_2028.json').exists() else None
     try:
         ev = gamma_event('which-party-will-win-the-senate-in-2028', cache=False)
-        d = {o['name']: o['yes_price'] for o in market_outcomes(ev)}
-        control = {'market': 'which-party-will-win-the-senate-in-2028', 'D': d.get('Democratic Party'), 'R': d.get('Republican Party')}
+        outs = {o['name']: o for o in market_outcomes(ev)}
+        dem, rep = outs.get('Democratic Party'), outs.get('Republican Party')
+        control = {'market': 'which-party-will-win-the-senate-in-2028', 'D': dem and dem['yes_price'], 'R': rep and rep['yes_price'],
+                   'volume': round(float(ev.get('volume') or 0)), 'history': (prev or {}).get('history', [])}
+        # Daily price of the Democratic contract since the market opened (one point per UTC day), for the /senate chart
+        if dem and dem.get('yes_token'):
+            try:
+                h = get_json(f"https://clob.polymarket.com/prices-history?market={dem['yes_token']}&interval=max&fidelity=1440").get('history', [])
+                days = {}
+                for pt in h: days[pt['t'] // 86400] = [int(pt['t']), round(float(pt['p']), 4)]
+                if days: control['history'] = [days[k] for k in sorted(days)]
+            except Exception as e:
+                print(f'  control history: {e} (keeping the last one)')
     except Exception as e:
-        print(f'  control: {e}')
+        print(f'  control: {e}'); control = prev
     out = {'updated': __import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'seats': seats, 'markets': markets, 'control': control}
     (root/'data/senate_2028.json').write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding='utf-8')
     d = sum(1 for s in seats.values() if s['party'] == 'D'); r = sum(1 for s in seats.values() if s['party'] == 'R')
-    print(f'senate_2028.json: {len(seats)} seats ({d} D, {r} R) · {len(markets)} with a market · control {control}')
+    print(f"senate_2028.json: {len(seats)} seats ({d} D, {r} R) · {len(markets)} with a market · control D {control and control.get('D')} R {control and control.get('R')} · {len((control or {}).get('history', []))} days of control history")
 
 if __name__ == '__main__':
     main()

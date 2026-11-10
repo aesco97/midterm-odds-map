@@ -1,0 +1,258 @@
+<title>Senate 2028 · presidentl</title>
+<meta name="description" content="The 34 Senate seats up in November 2028 on a map: who holds each one, the market's odds on control, and per-seat markets as they open.">
+<!-- Vercel Web Analytics (page views only) -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Senate 2028: three numbers up top (control odds, seats up, seat markets), then the map with a seat ledger beside it. */
+:root{
+  --bg:#f6f4ef; --panel:#fffdf9; --fg:#1d1b17; --muted:#6c675d; --line:#dcd7cc; --line-soft:#ebe7de;
+  --none:#e4e0d6; --none-fg:#8d877b;
+  --d3:#1b4fb0; --d2:#4f7fd0; --d1:#a9c1ea; --t:#c9c2b2; --r1:#efb3a6; --r2:#d9644f; --r3:#b3251c;
+  --display:"Bricolage Grotesque","Archivo Black",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --none:#2a2a33; --none-fg:#6c6a73;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a; color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.45;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 36px}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+header{padding:4px 0 12px;border-bottom:2px solid var(--fg)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.num{font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.D{color:var(--d3)} .R{color:var(--r3)}
+.delta{font:600 11px var(--mono);white-space:nowrap}
+.delta.up{color:var(--d2)} .delta.upr{color:var(--r2)} .delta.dn,.delta.flat{color:var(--muted)}
+.chip{display:inline-block;font:600 10px var(--mono);letter-spacing:.06em;padding:1px 6px;border-radius:4px;color:#fff;vertical-align:2px}
+.chip.D{background:var(--d3)} .chip.R{background:var(--r3)} .chip.I{background:var(--none-fg)}
+/* 1. the three numbers */
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+@media (max-width:860px){.strip{grid-template-columns:1fr}}
+.strip .p{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.strip a.p{display:block;text-decoration:none}
+.strip a.p:hover{border-color:var(--fg)}
+.strip .k{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.strip .k span:last-child{letter-spacing:0;text-transform:none}
+.strip .nums{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px}
+.strip .nums .num{font-size:34px;line-height:1}
+.strip .nums small{display:block;font:600 11px var(--body);color:var(--muted);margin-top:2px}
+.strip .bar{height:8px;border-radius:4px;display:flex;overflow:hidden;background:var(--t);margin-top:10px}
+.strip .bar i{display:block;height:100%} .strip .bar .d{background:var(--d3)} .strip .bar .r{background:var(--r3)}
+.strip .s{font-size:12px;color:var(--muted);margin-top:8px}
+.strip svg.hist{width:100%;height:40px;display:block;margin-top:8px;overflow:visible}
+.hist .ln{fill:none;stroke:var(--d3);stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.hist .mid{stroke:var(--line);stroke-dasharray:2 3}
+.hist .dot{fill:var(--d3)}
+.hist text{font:500 9.5px var(--mono);fill:var(--muted)}
+/* 2. map + ledger */
+.main{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:20px;padding-top:18px}
+@media (max-width:860px){.main{grid-template-columns:1fr}}
+.mapbox{min-width:0;position:relative}
+svg.map{width:100%;height:auto;display:block;max-width:100%}
+.st{stroke:none;transition:filter .15s,opacity .2s}
+.st.live{cursor:pointer}
+.st.live:hover,.st.hl{filter:brightness(.88)}
+.st:focus:not(:focus-visible){outline:none}
+.st:focus-visible{outline:2px solid var(--d2)}
+svg.focus .st:not(.sel){opacity:.35}
+.outline{fill:none;stroke:var(--fg);stroke-width:1.8;vector-effect:non-scaling-stroke;pointer-events:none}
+.mesh{fill:none;stroke:var(--bg);stroke-width:.9;vector-effect:non-scaling-stroke;pointer-events:none}
+.lbl{font:600 10px var(--mono);fill:var(--fg);pointer-events:none;text-anchor:middle}
+.lbl.dim{fill:var(--none-fg)} .lbl.inv{fill:#fff}
+svg.focus .lbl{display:none}
+.mapback{position:absolute;top:8px;left:8px;z-index:4;appearance:none;background:var(--panel);border:1px solid var(--line);border-radius:999px;color:var(--fg);font:600 12px var(--body);padding:6px 12px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.mapback:hover{border-color:var(--fg)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)}
+.legend .sw{display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:-2px;margin-right:5px}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:12px;box-shadow:0 6px 20px rgba(0,0,0,.12);min-width:190px;max-width:260px;z-index:5}
+.tip b{font-family:var(--display);font-size:14px}
+.tip .row{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.tip .m{color:var(--muted);margin-top:4px}
+.panel{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;max-height:720px}
+@media (max-width:860px){.panel{max-height:none}}
+.panel-h{padding:12px 14px;border-bottom:1px solid var(--line)}
+.panel-h h2{font-family:var(--display);font-size:16px;margin:0;font-weight:700}
+.panel-h .sub{font-size:12px;color:var(--muted);margin-top:2px}
+.seatgrid{display:flex;flex-wrap:wrap;gap:4px;padding:12px 14px;border-bottom:1px solid var(--line-soft)}
+.seatgrid .cap{width:100%;font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.seat{appearance:none;border:0;padding:0;width:16px;height:16px;border-radius:3px;display:block;cursor:pointer}
+.seat:hover,.seat[aria-pressed="true"]{outline:2px solid var(--fg);outline-offset:1px}
+.card{padding:14px;border-bottom:1px solid var(--line)}
+.card .k{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card .who{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.15;margin-top:4px}
+.card .s{font-size:12.5px;color:var(--muted);margin-top:4px}
+.card .cands{margin-top:10px}
+.card .cand{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:6px 0;border-top:1px solid var(--line-soft);font-size:13px}
+.card .cand b{font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums}
+.card .cand .cb{grid-column:1/-1;height:5px;border-radius:3px;background:var(--line-soft);overflow:hidden}
+.card .cand .cb i{display:block;height:100%}
+.card .empty{margin-top:10px;padding:10px 12px;border:1px dashed var(--line);border-radius:6px;font-size:12.5px;color:var(--muted)}
+.card a.open{display:inline-block;margin-top:10px;font-weight:600;font-size:13px}
+.list{overflow:auto;padding:4px 0}
+.race{appearance:none;border:0;background:none;width:100%;text-align:left;font:inherit;color:inherit;display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--line-soft);cursor:pointer}
+.race:hover,.race[aria-current="true"]{background:var(--bg)}
+.race:focus-visible{outline:2px solid var(--d2);outline-offset:-2px}
+.race .code{font-family:var(--mono);font-weight:500;font-size:12px}
+.race .sq{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:1px}
+.race .n{font-weight:600;font-size:12.5px;line-height:1.3}
+.race .v{color:var(--muted);font-size:11.5px}
+.race .pct{font-family:var(--display);font-weight:800;font-size:18px;font-variant-numeric:tabular-nums;text-align:right;min-width:46px}
+.race .pct.none{color:var(--muted);font-size:13px;font-weight:600}
+.note{font-size:12px;color:var(--muted);margin:14px 0 0;max-width:80ch}
+/* Embed mode (?embed=1): the map, its legend and a badge; everything else is hidden */
+.badge{display:none;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);margin-top:6px}
+.badge a{font-weight:600;color:var(--fg);text-decoration:none}
+body.embed{padding-block:8px}
+body.embed .topnav,body.embed header,body.embed .strip,body.embed .panel,body.embed .note,body.embed .sitefoot{display:none!important}
+body.embed .main{grid-template-columns:1fr;padding-top:0}
+body.embed .badge{display:flex}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<!--NAV-->
+<div class="wrap">
+<header><p class="kicker">Polymarket odds · Class 3 seats · Election Day Nov 7, 2028</p><h1>Senate 2028</h1></header>
+
+<section class="strip" id="strip"></section>
+
+<div class="main">
+  <div class="mapbox">
+    <button class="mapback" id="back" hidden>← All seats</button>
+    <svg class="map" viewBox="0 0 975 610" id="map" role="img" aria-label="US map of the Senate seats up in 2028, shaded by the party that holds each one"></svg>
+    <div class="legend" id="legend"></div>
+    <div class="tip" id="tip" hidden></div>
+  </div>
+  <aside class="panel">
+    <div class="panel-h"><h2 id="p-title"></h2><div class="sub" id="p-sub"></div></div>
+    <div id="card" hidden></div>
+    <div class="seatgrid" id="grid"></div>
+    <div class="list" id="list"></div>
+  </aside>
+</div>
+<div class="badge" id="badge"></div>
+<p class="note">Seats and incumbents: unitedstates/congress-legislators (Class 3 senators; the Florida and Ohio seats show the winners of their 2026 special elections). A state is shaded by the party holding its seat until Polymarket lists a market for it; from then on it takes the favourite's price. Control odds are a thinly traded market this far out.</p>
+<!--FOOT-->
+</div>
+<script>
+/*STATES*/
+/*S28*/
+const $=id=>document.getElementById(id);
+const esc=t=>String(t??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+const pct=p=>p==null?'—':(p*100).toFixed(p*100>=10?0:1)+'%';   // same rounding as the home page, so the two always agree
+const fmtN=n=>n==null?'—':n>=1e6?(n/1e6).toFixed(n>=1e7?1:2)+'M':n>=1e3?Math.round(n/1e3)+'K':String(n);
+const PM=m=>'https://polymarket.com/event/'+m+(REF.polymarket?'?r='+encodeURIComponent(REF.polymarket):'');
+const EMBED=new URLSearchParams(location.search).get('embed')==='1';
+const NO_MARKETS='No seat markets yet; Polymarket usually lists the first in early 2027.';
+const seats=S28.seats||{}, mk=S28.markets||{}, ctl=S28.control||{};
+const codes=Object.keys(seats).sort(), nMk=Object.keys(mk).length;
+const nD=codes.filter(s=>seats[s].party==='D').length, nR=codes.filter(s=>seats[s].party==='R').length;
+function bucket(p,party){ const s=p>=.95?3:p>=.8?2:p>=.6?1:0; return s===0?'t':(party==='D'?'d':'r')+s; }
+const BUCKETS=[['d3','Safe D'],['d2','Likely D'],['d1','Lean D'],['t','Toss-up'],['r1','Lean R'],['r2','Likely R'],['r3','Safe R']];
+const DARK=b=>b==='d3'||b==='d2'||b==='r3'||b==='r2';
+const fav=cs=>cs.reduce((a,c)=>!a||c.price>a.price?c:a,null);
+// A seat's colour: the favourite's price once a market exists, the incumbent's party (pale) until then
+const shade=st=>{ const s=seats[st], m=mk[st]; if(!s) return null; if(m){ const f=fav(m.cands); return bucket(f.price,f.party||s.party); } return s.party==='D'?'d1':s.party==='R'?'r1':'t'; };
+
+// ---- 1. Control odds, seats up, seat markets
+function sevenDay(h){ if(!h||h.length<2) return null; const cut=h[h.length-1][0]-7*86400; let base=null; for(const [t,v] of h) if(t<=cut) base=v; if(base==null) base=h[0][1]; return h[h.length-1][1]-base; }
+function delta(d,party){ if(d==null) return ''; const pts=d*100; if(Math.abs(pts)<0.5) return '<span class="delta flat" title="change, 7 days">—</span>'; const up=pts>0; return `<span class="delta ${up?(party==='R'?'upr':'up'):'dn'}" title="change, 7 days">${up?'▲':'▼'}${Math.abs(pts).toFixed(1)}</span>`; }
+function histSvg(h){ if(!h||h.length<3) return ''; const W=300,H=40,t0=h[0][0],t1=h[h.length-1][0]; const X=t=>(t-t0)/(t1-t0)*W, Y=v=>H-3-v*(H-6); const l=h[h.length-1];
+  const d=t=>new Date(t*1000).toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  return `<svg class="hist" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Democratic control odds from ${d(t0)} to ${d(t1)}"><line class="mid" x1="0" x2="${W}" y1="${Y(.5)}" y2="${Y(.5)}"/><polyline class="ln" points="${h.map(([t,v])=>X(t).toFixed(1)+','+Y(v).toFixed(1)).join(' ')}"/><circle class="dot" cx="${X(l[0]).toFixed(1)}" cy="${Y(l[1]).toFixed(1)}" r="2.4"/></svg>`; }
+{ const h=ctl.history||[], d7=sevenDay(h); const since=h.length?new Date(h[0][0]*1000).toLocaleDateString(undefined,{month:'short',day:'numeric'}):'';
+  const control = ctl.D!=null
+    ? `<a class="p" href="${PM(ctl.market)}" target="_blank" rel="noopener"><div class="k"><span>Control after 2028</span><span>market odds</span></div>
+        <div class="nums"><div><span class="num D">${pct(ctl.D)}</span><small>Democrats ${delta(d7,'D')}</small></div><div style="text-align:right"><span class="num R">${pct(ctl.R)}</span><small>Republicans ${delta(d7==null?null:-d7,'R')}</small></div></div>
+        <div class="bar"><i class="d" style="width:${ctl.D*100}%"></i><i style="width:${Math.max(0,(1-ctl.D-ctl.R)*100)}%"></i><i class="r" style="width:${ctl.R*100}%"></i></div>
+        ${histSvg(h)}<div class="s">Which party wins the Senate in 2028 · $${fmtN(ctl.volume)} traded on Polymarket${since?' · Democrats’ price since the market opened '+since:''}</div></a>`
+    : `<div class="p"><div class="k"><span>Control after 2028</span><span>market odds</span></div><div class="nums"><div><span class="num">—</span><small>No control market yet</small></div></div></div>`;
+  const seatsP=`<div class="p"><div class="k"><span>Seats up in 2028</span><span>${codes.length} of 100</span></div>
+      <div class="nums"><div><span class="num D">${nD}</span><small>held by Democrats</small></div><div style="text-align:right"><span class="num R">${nR}</span><small>held by Republicans</small></div></div>
+      <div class="bar"><i class="d" style="width:${nD/codes.length*100}%"></i><i class="r" style="width:${nR/codes.length*100}%"></i></div>
+      <div class="s">Republicans defend ${nR} of the ${codes.length} seats on the ballot, Democrats ${nD}. The other ${100-codes.length} seats are not up.</div></div>`;
+  let closest=''; if(nMk){ const c=Object.keys(mk).map(st=>({st,f:fav(mk[st].cands)})).sort((a,b)=>a.f.price-b.f.price)[0]; closest=`Closest so far: ${STATES[c.st].name}, ${esc(c.f.name)} at ${pct(c.f.price)}.`; }
+  const markets=`<div class="p"><div class="k"><span>Seat markets</span><span>Polymarket</span></div>
+      <div class="nums"><div><span class="num">${nMk}</span><small>of ${codes.length} seats have a market</small></div></div>
+      <div class="bar"><i style="width:${nMk/codes.length*100}%;background:var(--fg)"></i></div>
+      <div class="s">${nMk?closest+' Seats with a market are shaded by the favourite’s price.':NO_MARKETS+' Until then every seat is shaded by the party that holds it.'}</div></div>`;
+  $('strip').innerHTML=control+seatsP+markets; }
+
+// ---- 2. Map
+const svg=$('map'), tip=$('tip');
+const VB0=[0,0,975,610]; let vb=VB0.slice(), anim=null, sel=null;
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+{ let g='';
+  for(const [st,s] of Object.entries(STATES)){ const b=shade(st), seat=seats[st];
+    g+=`<path class="st${seat?' live':''}" data-st="${st}" d="${s.d}" fill="${b?`var(--${b})`:'var(--none)'}"${seat?` tabindex="0" role="button" aria-label="${esc(s.name)}: ${esc(seat.incumbent)} (${seat.party})"`:''}></path>`; }
+  g+=`<path class="mesh" d="${MESH}"/><path class="outline" id="outline" d="" hidden/>`;
+  for(const [st,s] of Object.entries(STATES)){ const b=shade(st); g+=`<text class="lbl${b?(DARK(b)?' inv':''):' dim'}" x="${s.cx}" y="${s.cy+3.5}">${st}</text>`; }
+  svg.innerHTML=g;
+  svg.querySelectorAll('.st').forEach(p=>{ const st=p.dataset.st;
+    p.addEventListener('mousemove',e=>showTip(st,e));
+    p.addEventListener('mouseleave',()=>tip.hidden=true);
+    p.addEventListener('click',()=>{ if(seats[st]) focusSeat(sel===st?null:st); else if(sel) focusSeat(null); });
+    p.addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ')&&seats[st]){ e.preventDefault(); focusSeat(sel===st?null:st); } }); });
+  svg.addEventListener('click',e=>{ if(e.target===svg&&sel) focusSeat(null); });
+  $('legend').innerHTML=(nMk?BUCKETS.map(([k,l])=>`<span><i class="sw" style="background:var(--${k})"></i>${l}</span>`).join(''):'')+
+    `<span><i class="sw" style="background:var(--d1)"></i>Democratic seat${nMk?', no market yet':''}</span><span><i class="sw" style="background:var(--r1)"></i>Republican seat${nMk?', no market yet':''}</span><span><i class="sw" style="background:var(--none)"></i>No seat up in 2028</span>`; }
+function candRows(cs,n){ return cs.slice().sort((a,b)=>b.price-a.price).slice(0,n).map(c=>`<div class="row"><span>${esc(c.name)}${c.party?' ('+c.party+')':''}</span><span>${pct(c.price)}</span></div>`).join(''); }
+function showTip(st,e){ const s=seats[st], m=mk[st]; let h=`<b>${esc(STATES[st].name)}</b>`;
+  if(!s) h+='<div class="m">No Senate seat up in 2028</div>';
+  else h+=`<div class="row"><span>Incumbent</span><span>${esc(s.incumbent)} (${s.party||'I'})</span></div>`+(s.note?`<div class="m">${esc(s.note)}</div>`:'')+(m?candRows(m.cands,4):`<div class="m">No seat market yet</div>`)+(EMBED?'':`<div class="m">${sel===st?'Click to zoom back out':'Click to zoom in'}</div>`);
+  tip.innerHTML=h; const box=svg.getBoundingClientRect(); let x=e.clientX-box.left+14, y=e.clientY-box.top+14; if(x+260>box.width) x=Math.max(0,x-280); if(y+130>box.height) y-=120; tip.style.left=x+'px'; tip.style.top=y+'px'; tip.hidden=false; }
+
+// ---- Zoom to one seat (same viewBox tween as the other maps)
+function stateBox(st){ const b=svg.querySelector(`[data-st="${st}"]`).getBBox(); const pad=.35; let w=b.width*(1+pad*2), h=b.height*(1+pad*2), cx=b.x+b.width/2, cy=b.y+b.height/2; const ar=975/610; if(w/h<ar) w=h*ar; else h=w/ar; w=Math.max(w,90); h=w/ar; return [cx-w/2,cy-h/2,w,h]; }
+function setVB(v){ vb=v; svg.setAttribute('viewBox',v.map(n=>n.toFixed(2)).join(' ')); }
+function zoomTo(target){ if(anim) cancelAnimationFrame(anim); if(reduceMotion){ setVB(target); return; } const from=vb.slice(), t0=performance.now(), dur=420;
+  const step=now=>{ let t=Math.min(1,(now-t0)/dur); t=1-Math.pow(1-t,3); setVB(from.map((a,i)=>a+(target[i]-a)*t)); if(t<1) anim=requestAnimationFrame(step); else anim=null; }; anim=requestAnimationFrame(step); }
+function focusSeat(st,instant){ sel=st&&seats[st]?st:null; tip.hidden=true;
+  svg.classList.toggle('focus',!!sel); svg.querySelectorAll('.st').forEach(p=>p.classList.toggle('sel',p.dataset.st===sel));
+  const o=$('outline'); if(sel){ o.setAttribute('d',STATES[sel].d); o.removeAttribute('hidden'); } else o.setAttribute('hidden','');
+  $('back').hidden=!sel; renderPanel();
+  const target=sel?stateBox(sel):VB0; if(instant) setVB(target); else zoomTo(target);
+  if(!EMBED){ const h=sel?'#'+sel:''; if(location.hash!==h) history.replaceState(null,'',location.pathname+location.search+h); } }
+$('back').addEventListener('click',()=>focusSeat(null));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&sel) focusSeat(null); });
+
+// ---- 3. Seat ledger
+function renderPanel(){
+  const order=codes.slice().sort((a,b)=>(mk[b]?1:0)-(mk[a]?1:0)||(mk[a]&&mk[b]?fav(mk[a].cands).price-fav(mk[b].cands).price:0)||a.localeCompare(b));
+  $('p-title').textContent=`${codes.length} seats up in November 2028`;
+  $('p-sub').textContent=`${nD} held by Democrats, ${nR} by Republicans. `+(nMk?`${nMk} with a Polymarket market, closest first.`:NO_MARKETS);
+  const card=$('card');
+  if(sel){ const s=seats[sel], m=mk[sel]; card.hidden=false;
+    card.innerHTML=`<div class="card"><div class="k">${esc(STATES[sel].name)} · seat up Nov 7, 2028</div><div class="who">${esc(s.incumbent)} <span class="chip ${s.party||'I'}">${s.party||'I'}</span></div>
+      <div class="s">Holds the seat${s.note?' ('+esc(s.note)+')':''}. The term ends Jan 3, 2029.</div>`+
+      (m?`<div class="cands">${m.cands.slice().sort((a,b)=>b.price-a.price).slice(0,6).map(c=>`<div class="cand"><span>${esc(c.name)}${c.party?' ('+c.party+')':''}</span><b>${pct(c.price)}</b><span class="cb"><i style="width:${Math.min(100,c.price*100)}%;background:var(--${c.party==='D'?'d3':c.party==='R'?'r3':'none-fg'})"></i></span></div>`).join('')}</div><a class="open" href="${PM(m.market)}" target="_blank" rel="noopener">Open this market on Polymarket ↗</a>`
+        :`<div class="empty">${NO_MARKETS} Until this seat has one, ${esc(STATES[sel].name)} is shaded by the party that holds it.</div>`)+`</div>`; }
+  else { card.hidden=true; card.innerHTML=''; }
+  const sq=st=>`var(--${shade(st)})`;
+  $('grid').innerHTML=`<div class="cap">one square per seat · Democratic-held first</div>`+codes.slice().sort((a,b)=>(seats[a].party==='D'?0:1)-(seats[b].party==='D'?0:1)||a.localeCompare(b)).map(st=>`<button class="seat" data-st="${st}" aria-pressed="${sel===st}" aria-label="${st}: ${esc(seats[st].incumbent)} (${seats[st].party})" title="${st}: ${esc(seats[st].incumbent)} (${seats[st].party})" style="background:${sq(st)}"></button>`).join('');
+  $('list').innerHTML=order.map(st=>{ const s=seats[st], m=mk[st], f=m&&fav(m.cands), o=m&&m.cands.filter(c=>c!==f).sort((a,b)=>b.price-a.price)[0];
+    return `<button class="race" data-st="${st}" aria-current="${sel===st}"><span class="code"><i class="sq" style="background:${sq(st)}"></i>${st}</span>
+      <span><div class="n">${m?esc(f.name)+(f.party?' ('+f.party+')':''):esc(s.incumbent)+' ('+(s.party||'I')+')'}</div><div class="v">${m?(o?'vs '+esc(o.name)+' '+pct(o.price)+' · ':'')+'held by '+esc(s.incumbent):(s.note?esc(s.note)+' · ':'')+'no market yet'}</div></span>
+      <span class="pct${m?'':' none'}">${m?pct(f.price):'—'}</span></button>`; }).join('');
+  document.querySelectorAll('#grid .seat, #list .race').forEach(b=>{ const st=b.dataset.st, p=svg.querySelector(`.st[data-st="${st}"]`);
+    b.addEventListener('click',()=>{ focusSeat(sel===st?null:st); if(sel&&innerWidth<=860) svg.scrollIntoView({block:'start',behavior:reduceMotion?'auto':'smooth'}); });
+    b.addEventListener('mouseenter',()=>p.classList.add('hl')); b.addEventListener('mouseleave',()=>p.classList.remove('hl')); });
+}
+
+// ---- Embed mode and deep links (#AZ opens zoomed to that seat)
+if(EMBED){ document.body.classList.add('embed');
+  $('badge').innerHTML=`<span>Senate 2028 · ${nMk?'Polymarket odds':'seats by the party that holds them'}</span><a href="https://presidentl.app/senate" target="_blank" rel="noopener">presidentl.app ↗</a>`; }
+function fromHash(instant){ const m=/^#([A-Za-z]{2})$/.exec(location.hash); const st=m&&m[1].toUpperCase(); focusSeat(st&&seats[st]?st:null,instant); }
+addEventListener('hashchange',()=>fromHash(false));
+fromHash(true);
+</script>

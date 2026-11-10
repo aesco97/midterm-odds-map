@@ -238,7 +238,6 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
 .fun .people .row b{font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums}
 .fun .people .row span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fun .readout{font-size:12px;color:var(--muted);min-height:1.5em;margin-top:4px;font-variant-numeric:tabular-nums}
-body.embed .fun{display:none!important}
 /* 2028: three leaderboards, no map */
 .boards{display:none;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;padding-top:12px;align-items:start}
 .boards.on{display:grid}
@@ -255,37 +254,40 @@ body.embed .fun{display:none!important}
 .board .cand .bar2 i.D{background:var(--d3)} .board .cand .bar2 i.R{background:var(--r3)} .board .cand .bar2 i.X{background:var(--none-fg)}
 .board .empty{padding:18px 14px;font-size:13px;color:var(--muted)}
 .board .more{display:block;padding:10px 14px;font-size:12px;color:var(--muted);text-decoration:none}
-/* Embed mode: map only, with a badge */
-body.embed{padding-block:8px 8px}
-body.embed header,body.embed .control,body.embed .proj,body.embed #evtop,body.embed #evbottom,body.embed .panel,body.embed .foot,body.embed .sponsor,body.embed .boards{display:none!important}
-body.embed .main{grid-template-columns:1fr;padding-top:0}
-body.embed .panel{display:none}
-.badge{display:none;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);margin-top:6px}
-body.embed .badge{display:flex}
-.badge a{font-weight:600;color:var(--fg);text-decoration:none}
-.badge .sp{color:var(--muted)}
+/* 2026 archive: a second, quieter tab group and a one-line note above the archived views */
+.tabsrow{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:flex-end;min-width:0}
+.archlab{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tabs.arch{border-color:var(--line)}
+.tabs.arch .tab{font-weight:500;font-size:13px;padding:6px 11px;color:var(--muted)}
+.tabs.arch .tab[aria-selected="true"]{color:var(--bg)}
+.archnote{margin-top:12px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font-size:12.5px;color:var(--muted)}
+.archnote a{font-weight:600;color:var(--fg)}
 </style>
 
+<!--NAV-->
 <div class="wrap">
 <header>
   <div>
     <p class="kicker">presidentl.app · Polymarket &amp; Kalshi odds · the road to 2028</p>
     <h1>The 2028 race</h1>
   </div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-    <button class="nightbtn" id="nightbtn" aria-pressed="false" title="Sort by poll-closing time and show market-called races"><i></i>Election night</button>
-    <div class="tabs" role="tablist" aria-label="Chamber">
-      <button class="tab" role="tab" id="tab-2028" aria-selected="true" data-ch="2028">2028</button>
-      <button class="tab" role="tab" id="tab-senate2028" aria-selected="false" data-ch="senate2028">Senate 2028</button>
+  <div class="tabsrow">
+    <div class="tabs" role="tablist" aria-label="2028 views">
+      <button class="tab" role="tab" id="tab-2028" aria-selected="true" data-ch="2028">2028 markets</button>
       <button class="tab" role="tab" id="tab-fun" aria-selected="false" data-ch="fun">Congress by age</button>
-      <button class="tab" role="tab" id="tab-senate" aria-selected="false" data-ch="senate" hidden>Senate 2026</button>
-      <button class="tab" role="tab" id="tab-house" aria-selected="false" data-ch="house" hidden>House 2026</button>
-      <button class="tab" role="tab" id="tab-governor" aria-selected="false" data-ch="governor" hidden>Governors 2026</button>
-      <button class="tab" role="tab" id="tab-turnout" aria-selected="false" data-ch="turnout" hidden>Turnout</button>
     </div>
+    <span class="archlab">2026 archive</span>
+    <div class="tabs arch" role="tablist" aria-label="2026 archive">
+      <button class="tab" role="tab" id="tab-senate" aria-selected="false" data-ch="senate">Senate</button>
+      <button class="tab" role="tab" id="tab-house" aria-selected="false" data-ch="house">House</button>
+      <button class="tab" role="tab" id="tab-governor" aria-selected="false" data-ch="governor">Governors</button>
+      <button class="tab" role="tab" id="tab-turnout" aria-selected="false" data-ch="turnout">Early vote</button>
+    </div>
+    <button class="nightbtn" id="nightbtn" aria-pressed="false" hidden><i></i>Election night</button>
   </div>
 </header>
 <div class="sponsor" id="sponsor" hidden></div>
+<div class="archnote" id="archnote" hidden></div>
 
 <div class="control">
   <div class="lab" id="ctl-lab">Who controls the Senate?</div>
@@ -311,7 +313,6 @@ body.embed .badge{display:flex}
     <div class="nl" id="nl" hidden></div>
   </aside>
 </div>
-<div class="badge" id="badge"></div>
 <div class="movers2028" id="movers2028" hidden></div>
 <div class="boards" id="boards"></div>
 <div id="evbottom" hidden></div>
@@ -319,24 +320,20 @@ body.embed .badge{display:flex}
 <div class="tip fixed" id="ptip" hidden></div>
 
 <div class="foot">
-  <span class="links"><a href="2026.html">2026 results</a><a href="shift.html">Shift maps</a><a href="data.html">Data</a><a href="about.html">About</a><a href="embed.html">Embed</a></span>
   <span id="stamp"></span>
-  <span>Shading = favourite's Polymarket price. Safe ≥95% · Likely 80–95% · Lean 60–80% · Toss-up &lt;60%. Senate 2028: states with a seat up are shaded by the incumbent's party until a market opens; click a state with a market to open it.</span>
-  <span class="disclosure" id="disclosure">Odds data: <a href="https://polymarkettrader.com/odds/senate-forecast-2026/" target="_blank" rel="noopener">PolymarketTrader.com</a> (CC BY 4.0), via Polymarket and Kalshi. Prices are market odds, not polls or predictions, and nothing here is betting or investment advice. Prediction markets are not available everywhere; check what is legal where you live.<span id="ref-note"></span></span>
+  <span>Map shading = the favourite's Polymarket price. Safe ≥95% · Likely 80–95% · Lean 60–80% · Toss-up &lt;60%. The 2026 maps show the final prices from the morning of Election Day; on the House map, click a state to zoom in to its districts.</span>
 </div>
+<!--FOOT-->
 </div>
 
 <script>
 /*STATES*/
-/*DISTRICTS*/
 /*DATA*/
 // Outbound links. Referral codes come from site.json; with none set these are plain market links.
 const REF = (SITE.referral)||{};
 const PM = m => 'https://polymarket.com/event/' + m + (REF.polymarket ? '?r=' + encodeURIComponent(REF.polymarket) : '');
 // Kalshi market pages are keyed by series ticker (SENATEIA-26 -> kalshi.com/markets/senateia); the referral code rides along as ?referral=
 const KL = t => 'https://kalshi.com/markets/' + String(t).split('-')[0].toLowerCase() + (REF.kalshi ? '?referral=' + encodeURIComponent(REF.kalshi) : '');
-const EMBED = new URLSearchParams(location.search).get('embed')==='1';
-if(REF.polymarket||REF.kalshi) document.getElementById('ref-note').textContent=' Some links to Polymarket and Kalshi are referral links: if you sign up through them, this site may earn a commission at no cost to you.';
 function bucket(p, party){ // p = favourite price
   const s = p>=.95?3:p>=.8?2:p>=.6?1:0;
   if(s===0) return 't';
@@ -349,12 +346,17 @@ function pct(p){ return Math.round(p*100)+'%'; }
 const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
 
 // ---- Price history (HIST: per race, [[unix_s, democratic_price], ...] oldest first; built from data/history/)
+// The build packs each group as {t:[shared timestamps], v:{key:[price or null]}}; unpack to [[t,p],...] per key.
+const unpack=P=>{ const o={}; for(const k in P.v){ const a=P.v[k], r=[]; for(let i=0;i<a.length;i++) if(a[i]!=null) r.push([P.t[i],a[i]]); o[k]=r; } return o; };
+for(const ch of ['senate','house','governor']) HIST[ch]=unpack(HIST[ch]);
+for(const slug in HIST.p2028) HIST.p2028[slug]=unpack(HIST.p2028[slug]);
 const NOW_S = Date.now()/1000;
+const ARCH_S = Date.parse(DATA.updated)/1000; // the 2026 chambers are frozen at the last snapshot before polls closed; their deltas are measured from there
 function series(ch,key){ return (HIST[ch]&&HIST[ch][key])||[]; }
 // Reference point for deltas: the newest snapshot at least 7 days old, else the oldest one we have.
-function refIndex(s){ if(s.length<2) return -1; const cut=NOW_S-7*86400; let i=-1; for(let k=0;k<s.length-1;k++){ if(s[k][0]<=cut) i=k; } return i>=0?i:0; }
+function refIndex(s,now=NOW_S){ if(s.length<2) return -1; const cut=now-7*86400; let i=-1; for(let k=0;k<s.length-1;k++){ if(s[k][0]<=cut) i=k; } return i>=0?i:0; }
 // Change in the favourite's price, in points, since the reference snapshot. favParty tells which side to read.
-function delta(ch,key,favParty){ const s=series(ch,key); const i=refIndex(s); if(i<0) return null; const a=s[i][1], b=s[s.length-1][1]; const d=(b-a)*100; return {pts: favParty==='D'?d:-d, days:(s[s.length-1][0]-s[i][0])/86400, since:s[i][0]}; }
+function delta(ch,key,favParty){ const s=series(ch,key); const i=refIndex(s,ARCH_S); if(i<0) return null; const a=s[i][1], b=s[s.length-1][1]; const d=(b-a)*100; return {pts: favParty==='D'?d:-d, days:(s[s.length-1][0]-s[i][0])/86400, since:s[i][0]}; }
 // ▲ in the favourite's party colour when the favourite gained ground, ▼ muted when it lost ground
 function deltaHtml(dl,party){ if(!dl||Math.abs(dl.pts)<0.5) return dl?'<span class="delta flat">—</span>':''; const up=dl.pts>0; return `<span class="delta ${up?(party==='R'?'upr':'up'):'dn'}" title="${windowLabel(dl)}">${up?'▲':'▼'}${Math.abs(dl.pts).toFixed(0)}</span>`; }
 function windowLabel(dl){ return dl.days>=6.5?'change over 7 days':'change since '+new Date(dl.since*1000).toLocaleDateString(undefined,{month:'short',day:'numeric'}); }
@@ -375,7 +377,7 @@ const ELECTION_START = Date.UTC(2026,10,3,23,0); // 6 PM ET on Election Day (EST
 const CALL_T=0.985; // a favourite priced at or above this is treated as called by the market
 function closeLabel(st){ const c=CLOSE[st]; if(!c) return ''; let h=c[0]%24, m=c[1]; const ampm=h>=12?'PM':'AM'; h=h%12||12; return `${h}${m?':'+String(m).padStart(2,'0'):''} ${ampm} ET${c[0]>=24?' (Wed)':''}`; }
 function closeOrder(st){ const c=CLOSE[st]||[99,0]; return c[0]*60+c[1]; }
-let night = Date.now()>=ELECTION_START || new URLSearchParams(location.search).get('night')==='1';
+let night = new URLSearchParams(location.search).get('night')==='1'; // off in the archive: these are pre-election prices, not calls
 function calledParty(favPrice,favParty){ return night && favPrice>=CALL_T ? favParty : null; }
 function calledHtml(p){ return `<span class="called ${p}">✓ ${p}</span>`; }
 
@@ -390,9 +392,12 @@ function hFav(r){ const d=r.D?r.D.price:0, R=r.R?r.R.price:0; return d>=R?{party
 function hMargin(r){ return Math.abs((r.D?r.D.price:0)-(r.R?r.R.price:0)); }
 function stateHouse(st){ const rs=HOUSE[st]||[]; let d=0,r=0; rs.forEach(x=>{ hFav(x).party==='D'?d++:r++; }); return {d,r,n:rs.length}; }
 // District geometry: data/districts.js holds every multi-district state; at-large states reuse the state outline
-const DIST_IDS = {}; Object.keys(DISTRICTS).forEach(id=>{ const st=id.slice(0,2); (DIST_IDS[st]=DIST_IDS[st]||[]).push(id); });
+// It is 360 KB and only the archived House map needs it, so it is fetched the first time a state is opened there.
+let DISTRICTS=null, distLoad=null; const DIST_IDS = {};
+function loadDistricts(){ return distLoad || (distLoad=fetch('data/districts.js').then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); }).then(t=>{
+  DISTRICTS=JSON.parse(t.slice(t.indexOf('{'), t.lastIndexOf('}')+1)); Object.keys(DISTRICTS).forEach(id=>{ const st=id.slice(0,2); (DIST_IDS[st]=DIST_IDS[st]||[]).push(id); }); })); }
 function stateDistricts(st){ if(DIST_IDS[st]) return DIST_IDS[st].slice().sort(); return STATES[st]?[st+'-AL']:[]; }
-function geom(id){ return DISTRICTS[id] || (id.endsWith('-AL') ? STATES[id.slice(0,2)] : null); }
+function geom(id){ return (DISTRICTS&&DISTRICTS[id]) || (id.endsWith('-AL') ? STATES[id.slice(0,2)] : null); }
 
 let chamber='2028', selState=null;
 const svg=document.getElementById('map'), tip=document.getElementById('tip'), mapbox=svg.parentElement;
@@ -415,18 +420,19 @@ function build(){
   svg.addEventListener('click',e=>{ if(e.target===svg && selState) focusState(null); });
 }
 function paint(){
-  const is2028 = chamber==='2028', isEV = chamber==='turnout', isFun = chamber==='fun', isS28 = chamber==='senate2028';
+  const is2028 = chamber==='2028', isEV = chamber==='turnout', isFun = chamber==='fun';
   document.querySelector('.main').style.display = (is2028||isFun)?'none':'';
   document.querySelector('.control').style.display = (is2028||isEV||isFun)?'none':'';
   document.getElementById('boards').classList.toggle('on',is2028);
   document.getElementById('movers2028').hidden=!is2028;
   document.getElementById('fun').classList.toggle('on',isFun);
-  document.getElementById('proj').hidden=is2028||isEV||isFun||isS28;
+  document.getElementById('proj').hidden=is2028||isEV||isFun;
   document.getElementById('evtop').hidden=!isEV; document.getElementById('evbottom').hidden=!isEV;
-  document.getElementById('nightbtn').hidden = is2028||isEV||isFun||isS28;
+  { const an=document.getElementById('archnote'), arch=!is2028&&!isFun; an.hidden=!arch;
+    if(arch) an.innerHTML=isEV?'2026 archive: early-vote totals by state through Election Day, as last reported. <a href="/2026">How the election went →</a>'
+      :`2026 archive: the final Polymarket prices from ${new Date(DATA.updated).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'})}, before polls closed. <a href="/2026">What happened in every race →</a>`; }
   if(isFun){ renderFun(); setHash(); return; }
   if(is2028){ render2028(); setHash(); return; }
-  if(isS28){ renderSenate2028(); setHash(); return; }
   if(isEV){ renderTurnout(); setHash(); return; }
   for(const st of Object.keys(STATES)){
     const p=svg.querySelector(`[data-st="${st}"]`), l=svg.querySelector(`[data-lbl="${st}"]`), a=svg.querySelector(`[data-sl="${st}"]`);
@@ -445,7 +451,6 @@ function paint(){
   // control bar
   const lab=document.getElementById('ctl-lab'), txt=document.getElementById('ctl-txt'), bar=document.getElementById('ctl-bar'), oEl=document.getElementById('ctl-o');
   bar.classList.toggle('tally',night); oEl.style.width='0';
-  document.getElementById('nightbtn').setAttribute('aria-pressed',String(night));
   if(night){
     // Election-night tally: races the market has called (favourite ≥ 98.5%) vs. still open
     const t=tally(); const n=t.d+t.r+t.open;
@@ -478,7 +483,6 @@ function paint(){
 
 // ---- Focus: zoom the map to one state and draw its districts
 function clickState(st){
-  if(chamber==='senate2028'){ const m=S28.markets&&S28.markets[st]; if(m) window.open(PM(m.market),'_blank','noopener'); return; }
   if(chamber==='turnout'){ const row=document.querySelector(`.evrow[data-ev="${st}"]`); if(row){ row.scrollIntoView({block:'center',behavior:reduceMotion?'auto':'smooth'}); row.classList.add('hl'); setTimeout(()=>row.classList.remove('hl'),1500); } return; }
   if(chamber!=='house') return; // the <a> around the state carries the Polymarket link
   if(!HOUSE[st]) return;
@@ -509,6 +513,7 @@ function sizeLabels(){
 }
 function renderDistricts(){
   const g=document.getElementById('dl'); g.innerHTML=''; if(!selState) return;
+  if(!DISTRICTS){ const want=selState; loadDistricts().then(()=>{ if(selState===want&&chamber==='house') renderDistricts(); }).catch(()=>{ g.innerHTML=`<path class="outline" d="${STATES[want].d}"/>`; }); g.innerHTML=`<path class="outline" d="${STATES[selState].d}"/>`; return; }
   const ids=stateDistricts(selState); let h='';
   ids.forEach(id=>{ const geo=geom(id), r=HR[id]; if(!geo) return;
     if(r){ const f=hFav(r), c=calledParty(f.price,f.party); h+=`<a href="${PM(r.market)}" target="_blank" rel="noopener"><path class="dist" data-id="${id}" d="${geo.d}" fill="var(--${c?(c==='D'?'dc':'rc'):bucket(f.price,f.party)})"/></a>`; }
@@ -538,11 +543,6 @@ function tipKalshi(r){ const k=r.kalshi, f=fav(r.cands); if(!k||!f.party||k[f.pa
 function tipDelta(ch,key,party){ const dl=delta(ch,key,party); if(!dl) return ''; return `<div class="row"><span style="color:var(--muted)">Favourite, ${windowLabel(dl)}</span>${deltaHtml(dl,party)}</div>`; }
 function showTip(st,e){
   let html='';
-  if(chamber==='senate2028'){ const s=S28.seats&&S28.seats[st], m=S28.markets&&S28.markets[st];
-    if(!s) html=`<b>${STATES[st].name}</b><div>No Senate seat up in 2028</div>`;
-    else { html=`<b>${STATES[st].name} Senate 2028</b><div class="row"><span>Incumbent</span><span>${esc(s.incumbent)} (${s.party||'I'})</span></div>`+(s.note?`<div style="color:var(--muted)">${esc(s.note)}</div>`:'')+
-      (m?candRows(m.cands,4)+`<div style="color:var(--muted);margin-top:4px">Click to open on Polymarket ↗</div>`:`<div style="color:var(--muted);margin-top:4px">No Polymarket market yet; shaded by the incumbent's party</div>`); }
-    tip.innerHTML=html; placeTip(e); return; }
   if(chamber==='turnout'){ const x=EV.latest[st]&&evState(st); if(!x){ html=`<b>${STATES[st].name}</b><div>No early-vote data</div>`; } else {
     html=`<b>${STATES[st].name}</b><div class="row"><span>Early ballots</span><span>${fmtFull(x.voted)}</span></div><div class="row"><span>In person · mail</span><span>${fmtFull(x.ip)} · ${fmtFull(x.mail)}</span></div>`+(x.t22!=null?`<div class="row"><span>Of 2022 turnout</span><span>${(x.t22*100).toFixed(0)}%</span></div>`:'')+(x.t18!=null?`<div class="row"><span>Of 2018 turnout</span><span>${(x.t18*100).toFixed(0)}%</span></div>`:'')+(x.ev22!=null?`<div class="row"><span>Of 2022 early vote</span><span>${(x.ev22*100).toFixed(0)}%</span></div>`:'')+(x.party?`<div class="row"><span>Reg. D / R / other</span><span>${(x.party.d/x.voted*100).toFixed(0)} / ${(x.party.r/x.voted*100).toFixed(0)} / ${(x.party.n/x.voted*100).toFixed(0)}%</span></div>`:'')+`<div style="color:var(--muted);margin-top:4px">Updated ${x.l.last_update}</div>`; }
     tip.innerHTML=html; placeTip(e); return; }
@@ -640,7 +640,7 @@ function renderProjection(){
   const majTxt=p.majority?`${p.majority} for a majority`:'';
   const flipHtml=p.flips.length?`<span>Projected flips (${p.flips.length}):</span>`+p.flips.map(f=>`<a class="flip" href="${PM(f.market)}" target="_blank" rel="noopener" title="${esc(f.name)} ${pct(f.price)}"><i style="background:var(--${f.to==='D'?'d3':'r3'})"></i>${f.st} ${f.from}→${f.to} <span style="color:var(--muted)">${pct(f.price)}</span></a>`).join('')
     : chamber==='house'?'':'<span>No seat is projected to change hands.</span>';
-  const notes=[`If every race goes to its current favourite, however close.`, `Today: D ${p.current.D} · R ${p.current.R}${chamber==='senate'?' (D includes 2 independents)':''}${BASE.asof?', as of '+new Date(BASE.asof+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}):''}.`];
+  const notes=[`If every race had gone to its final favourite, however close.`, `Before the election: D ${p.current.D} · R ${p.current.R}${chamber==='senate'?' (D includes 2 independents)':''}${BASE.asof?', as of '+new Date(BASE.asof+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}):''}.`];
   if(p.missing) notes.push(`${p.missing} district${p.missing>1?'s have':' has'} no market and is left out, so the changes do not sum to zero.`);
   if(p.o) notes.push(`${p.o} race${p.o>1?'s':''} favour${p.o>1?'':'s'} a candidate with no party label.`);
   el.hidden=false;
@@ -698,7 +698,7 @@ function evState(st){ const l=EV.latest[st]; if(!l) return null; const t=TURN[st
   const party=(l.voted_dem||l.voted_rep)?{d:l.voted_dem,r:l.voted_rep,n:l.voted_none}:null;
   return {st,l,voted:l.voted,ip:l.inperson_all,mail:l.accept_all,req:l.request_all,party,
     t22:t.b22?l.voted/t.b22:null, t18:t.b18?l.voted/t.b18:null, ev22:e.total?l.voted/e.total:null, ev22tot:e.total||null,
-    mailShare:l.voted?l.accept_all/l.voted:null, ser:EV.series[st]||[]}; }
+    mailShare:l.voted?l.accept_all/l.voted:null, prev:l.prev}; }
 function evMetricVal(x){ return evMetric==='t22'?x.t22:evMetric==='ev22'?x.ev22:evMetric==='mail'?x.mailShare:(x.party?(x.party.d-x.party.r)/(x.party.d+x.party.r+x.party.n):null); }
 function evBucket(v){ // sequential 6-step for shares; diverging for party
   if(v==null) return null;
@@ -718,7 +718,7 @@ function renderTurnout(){
   const nat={voted:0,ip:0,mail:0,t22:0,t18:0,ev22:0,ev22tot:0,states:all.length};
   all.forEach(x=>{ nat.voted+=x.voted; nat.ip+=x.ip; nat.mail+=x.mail; nat.t22+=(TURN[x.st]||{}).b22||0; nat.t18+=(TURN[x.st]||{}).b18||0; if(x.ev22tot){nat.ev22+=x.voted; nat.ev22tot+=x.ev22tot;} });
   const prevDay=EV.days.length>1?EV.days[EV.days.length-2]:null;
-  let delta=null; if(prevDay){ let a=0; all.forEach(x=>{ const r=x.ser.find(q=>q[0]===prevDay); if(r) a+=r[1]; }); delta=nat.voted-a; }
+  let delta=null; if(prevDay){ const pn=(EV.nat||[]).find(q=>q[0]===prevDay); if(pn) delta=nat.voted-pn[1]; }
   const asOf=all.reduce((m,x)=>x.l.last_update>m?x.l.last_update:m,'');
   // map
   for(const st of Object.keys(STATES)){
@@ -748,7 +748,7 @@ function renderTurnout(){
   const mname={t22:'share of 2022 turnout',ev22:'share of 2022 early vote',party:'Democratic registration edge',mail:'mail share'}[evMetric];
   const rows=all.filter(x=>evMetricVal(x)!=null).sort((a,b)=>evMetricVal(b)-evMetricVal(a));
   t.textContent=`Every reporting state, by ${mname}`; sub.textContent=`Alabama and New Hampshire do not publish early-vote counts. Party figures are voter registration, not votes.`;
-  list.innerHTML=rows.map(x=>{ const v=evMetricVal(x); const prev=x.ser.length>1?x.ser[x.ser.length-2][1]:null; const d=prev!=null?x.voted-prev:null;
+  list.innerHTML=rows.map(x=>{ const v=evMetricVal(x); const prev=x.prev; const d=prev!=null?x.voted-prev:null;
     const big=evMetric==='party'?`${v>0?'D':'R'} +${(Math.abs(v)*100).toFixed(0)}<small>REG. EDGE</small>`:`${(v*100).toFixed(0)}%<small>${evMetric==='t22'?'OF 2022':evMetric==='ev22'?'OF 2022 EV':'MAIL'}</small>`;
     return `<a class="evrow" href="${/^https?:/.test(x.l.source)?esc(x.l.source):'#'}" target="_blank" rel="noopener" data-ev="${x.st}">
       <span class="code">${x.st}</span>
@@ -762,7 +762,7 @@ function renderTurnout(){
 }
 function natChart(all){
   const days=EV.days; if(!days.length) return '';
-  const tot=days.map(d=>{ let s=0; all.forEach(x=>{ const r=x.ser.find(q=>q[0]===d); if(r) s+=r[1]; }); return s; });
+  const tot=days.map(d=>((EV.nat||[]).find(q=>q[0]===d)||[d,0])[1]);
   const ev22=(EVREF.ev2022_national||{}).total||0; const W=520,H=200,P={l:46,r:12,t:12,b:26};
   const t0=new Date(days[0]+'T12:00:00'), t1=new Date(EVREF.election_day+'T12:00:00'); const span=Math.max(1,t1-t0);
   const ymax=Math.max(ev22, ...tot)*1.08; const X=d=>P.l+(new Date(d+'T12:00:00')-t0)/span*(W-P.l-P.r), Y=v=>P.t+(1-v/ymax)*(H-P.t-P.b);
@@ -828,37 +828,6 @@ function renderFun(){
   svgEl.addEventListener('mouseleave',()=>{ cross.hidden=true; });
 }
 
-// ---- Senate 2028: the 34 Class 3 seats, shaded by incumbent party until a market opens (data/senate_2028.json)
-function renderSenate2028(){
-  svg.classList.remove('focus'); document.getElementById('map-back').hidden=true; document.getElementById('dl').innerHTML='';
-  const seats=S28.seats||{}, mk=S28.markets||{};
-  for(const st of Object.keys(STATES)){
-    const p=svg.querySelector(`[data-st="${st}"]`), l=svg.querySelector(`[data-lbl="${st}"]`), a=svg.querySelector(`[data-sl="${st}"]`);
-    const s=seats[st], m=mk[st]; let b=null;
-    if(m){ const f=fav(m.cands); b=bucket(f.price,f.party||s.party); } else if(s){ b=s.party==='D'?'d1':s.party==='R'?'r1':'t'; }
-    p.setAttribute('fill', b?`var(--${b})`:'var(--none)'); p.classList.toggle('live',!!m); p.classList.remove('sel');
-    if(m) a.setAttribute('href',PM(m.market)); else a.removeAttribute('href');
-    p.removeAttribute('tabindex'); p.removeAttribute('role');
-    l.className.baseVal='lbl'+(s?(DARK(b)?' inv':''):' dim'); l.textContent=st;
-  }
-  const c=S28.control||{}; const lab=document.getElementById('ctl-lab'), txt=document.getElementById('ctl-txt'), bar=document.getElementById('ctl-bar');
-  bar.classList.remove('tally'); document.getElementById('ctl-o').style.width='0';
-  lab.textContent='Who controls the Senate after 2028?';
-  if(c.D!=null){ document.getElementById('ctl-d').style.width=(c.D*100)+'%'; document.getElementById('ctl-r').style.width=(c.R*100)+'%'; txt.textContent=`D ${pct(c.D)} · R ${pct(c.R)}`; bar.title='Polymarket: which party will win the Senate in 2028?'; }
-  else { txt.textContent='No market yet'; }
-  const nD=Object.values(seats).filter(s=>s.party==='D').length, nR=Object.values(seats).filter(s=>s.party==='R').length;
-  document.getElementById('legend').innerHTML=(Object.keys(mk).length?BUCKETS.map(([k,l])=>`<span><i class="sw" style="background:var(--${k})"></i>${l}</span>`).join(''):'')+
-    `<span><i class="sw" style="background:var(--d1)"></i>Democratic seat, no market yet</span><span><i class="sw" style="background:var(--r1)"></i>Republican seat, no market yet</span><span><i class="sw" style="background:var(--none)"></i>No seat up in 2028</span>`;
-  // panel
-  const t=document.getElementById('p-title'), sub=document.getElementById('p-sub'), list=document.getElementById('list'), grid=document.getElementById('seatgrid');
-  document.getElementById('movers').hidden=true; document.getElementById('night-note').hidden=true; document.getElementById('p-back').hidden=true;
-  t.textContent=`${Object.keys(seats).length} Senate seats up in November 2028`; sub.textContent=`${nD} held by Democrats, ${nR} by Republicans · ${Object.keys(mk).length?Object.keys(mk).length+' with a Polymarket market so far':'no per-state markets yet; they appear here as they open'}`;
-  const order=Object.keys(seats).sort((a,b)=>(mk[b]?1:0)-(mk[a]?1:0) || a.localeCompare(b));
-  grid.hidden=false; grid.innerHTML=`<div class="cap">one square per seat · Democratic-held left</div>`+order.slice().sort((a,b)=>(seats[a].party==='D'?0:1)-(seats[b].party==='D'?0:1)||a.localeCompare(b)).map(st=>{const s=seats[st]; return `<a class="seat" href="${mk[st]?PM(mk[st].market):'#'}" ${mk[st]?'target="_blank" rel="noopener"':''} aria-label="${st}: ${esc(s.incumbent)} (${s.party})" title="${st}: ${esc(s.incumbent)} (${s.party})" style="background:var(--${s.party==='D'?'d1':s.party==='R'?'r1':'t'})"></a>`;}).join('');
-  list.innerHTML=order.map(st=>{ const s=seats[st], m=mk[st];
-    if(m){ const f=fav(m.cands); return raceRow(st,m.cands,m.market,m.volume,bucket(f.price,f.party||s.party),null,'senate2028',st,st); }
-    return `<div class="race" style="cursor:default"><span class="code"><i class="chip" style="background:var(--${s.party==='D'?'d1':s.party==='R'?'r1':'t'})"></i>${st}</span><span class="who"><div class="n">${esc(s.incumbent)} (${s.party||'I'})</div><div class="v">${s.note?esc(s.note)+' · ':''}no market yet</div></span><span class="pct" style="color:var(--muted);font-size:13px">—</span></div>`; }).join('');
-}
 // ---- 2028 sparklines and movers (from HIST.p2028)
 function sparkSvg(s,cls){
   if(s.length<3) return '';
@@ -908,30 +877,21 @@ function render2028(){
 { const nl=SITE.newsletter||{}, el=document.getElementById('nl');
   if(nl.action){ el.hidden=false; el.innerHTML=`<label for="nl-email">${esc(nl.label||'Get the biggest odds moves in your inbox.')}</label><form id="nl-form" action="${esc(nl.action)}" method="post" target="_blank"><input id="nl-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email"><button type="submit">Subscribe</button></form>`;
     el.querySelector('form').addEventListener('submit',()=>{ setTimeout(()=>{ el.innerHTML='<span class="ok">Check your inbox to confirm.</span>'; },300); }); } }
-// ---- Embed mode: ?embed=1[&chamber=senate|house|governor][&state=TX] strips the page to the map and a badge
-if(EMBED){ document.body.classList.add('embed');
-  const q=new URLSearchParams(location.search), ch=q.get('chamber'); setTab(['senate2028','turnout'].includes(ch)?ch:'senate2028');
-  const st=(q.get('state')||'').toUpperCase(); if(chamber==='house' && HOUSE[st]) selState=st;
-  const home='https://presidentl.app/#'+chamber+(selState?'/'+selState:'');
-  document.getElementById('badge').innerHTML=`<span>Polymarket odds · ${new Date(DATA.updated).toLocaleDateString(undefined,{month:'short',day:'numeric'})}</span><span><a href="${home}" target="_blank" rel="noopener">presidentl.app ↗</a> <span class="sp">· data: PolymarketTrader.com</span></span>`; }
-
-// ---- Tabs, back buttons, deep links (#senate · #house · #house/TX · #governor · #2028)
+// ---- Tabs, back buttons, deep links (#2028 · #fun · and the archive: #senate · #house · #house/TX · #governor · #turnout)
 function setTab(ch){ chamber=ch; document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x.dataset.ch===ch)); }
-function setHash(){ if(EMBED) return; const h='#'+chamber+(selState?'/'+selState:''); if(location.hash!==h) history.replaceState(null,'',h); }
+function setHash(){ const h='#'+chamber+(selState?'/'+selState:''); if(location.hash!==h) history.replaceState(null,'',h); }
 document.querySelectorAll('button.tab').forEach(b=>b.addEventListener('click',()=>{ setTab(b.dataset.ch); selState=null; paint(); if(!['2028','turnout','fun'].includes(chamber)) zoomTo(VB0); }));
 document.getElementById('p-back').addEventListener('click',()=>focusState(null));
 document.getElementById('map-back').addEventListener('click',()=>focusState(null));
 document.addEventListener('keydown',e=>{ if(e.key==='Escape' && selState) focusState(null); });
-document.getElementById('nightbtn').addEventListener('click',()=>{ night=!night; paint(); });
 document.getElementById('list').addEventListener('click',e=>{ const k=e.target.closest('.klink'); if(k){ e.preventDefault(); e.stopPropagation(); window.open(k.dataset.href,'_blank','noopener'); } });
 document.getElementById('list').addEventListener('keydown',e=>{ const k=e.target.closest('.klink'); if(k&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); e.stopPropagation(); window.open(k.dataset.href,'_blank','noopener'); } });
-{ const age=(Date.now()-new Date(DATA.updated))/3.6e6, el=document.getElementById('stamp');
-  el.textContent='Odds as of '+new Date(DATA.updated).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'})+(age>12?` (${Math.round(age)} h old)`:'');
-  if(age>12) el.style.color='var(--r2)'; }
+{ const up=DATA2028.updated, el=document.getElementById('stamp'); if(up){ const age=(Date.now()-new Date(up))/3.6e6;
+  el.textContent='2028 odds as of '+new Date(up).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'})+(age>36?` (${Math.round(age)} h old)`:''); if(age>36) el.style.color='var(--r2)'; } }
 build();
-if(!EMBED){ const m=/^#(senate|house|governor|2028|turnout|fun|senate2028)(?:\/([A-Z]{2}))?$/.exec(location.hash);
-  if(m && ['senate','house','governor'].includes(m[1]) && !location.search.includes('archive=1')) location.replace('2026.html'); // the 2026 races now live on the results page
-  else if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
+{ const m=/^#(2028|fun|senate|house|governor|turnout)(?:\/([A-Z]{2}))?$/.exec(location.hash);
+  if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }
+addEventListener('hashchange',()=>{ const m=/^#(2028|fun|senate|house|governor|turnout)(?:\/([A-Z]{2}))?$/.exec(location.hash); if(m&&(m[1]!==chamber||(m[2]||null)!==selState)){ setTab(m[1]); selState=(m[1]==='house'&&HOUSE[m[2]])?m[2]:null; paint(); if(!['2028','turnout','fun'].includes(chamber)) zoomTo(selState?stateBox(selState):VB0); } });
 
 paint(); if(selState) setVB(stateBox(selState));
 </script>

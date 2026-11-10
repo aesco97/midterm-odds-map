@@ -55,6 +55,8 @@ ul{padding-left:20px} li{margin:4px 0}
 table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top} th{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .tbl{overflow-x:auto}
 </style>
+</head>
+<body>
 <style>
 /* Site-wide top bar. Injected by scripts/build.py at the top of <body> on every page; the page's own <header> keeps its title. */
 .topnav{display:flex;align-items:center;gap:18px;padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:10px;font-family:var(--body)}
@@ -83,11 +85,9 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
   <span class="asof">odds as of Nov 9, 02:01 UTC</span>
 </nav>
 
-</head>
-<body>
 
 <div class="wrap">
-<header><div><p class="kicker">presidentl.app</p><h1>About</h1></div></header>
+<header><div><p class="kicker">presidentl.app</p><h1>About</h1></div><nav><a href="./">2028 odds</a><a href="2026.html">2026 results</a><a href="data.html">Data</a></nav></header>
 
 <p style="margin-top:18px">presidentl.app is the daily record of what prediction markets think about American politics. It takes the prices on Polymarket and Kalshi for every race with a market, puts them on a map, keeps a snapshot every time they change, and sets them against the results once the votes are counted.</p>
 

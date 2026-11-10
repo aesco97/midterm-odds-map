@@ -1,10 +1,14 @@
-"""Assemble the site from src/ + data/.
+"""Assemble the site from src/ + data/. Every page gets the shared top bar (src/partials/nav.html) and source line
+(src/partials/footer.html); vercel.json serves them at clean URLs.
 
-  index.html        <- src/home.html (numbers-first front page; data/home.json)
-  2028.html         <- src/template.html + data/states.js + data/districts.js + data/odds.json + data/odds_2028.json + data/history/
-  embed.html        <- src/embed.html   (embed snippet generator, white-label pitch)
-  data.html         <- src/data.html    (dataset page)
-  data/history.csv  <- data/history/*.json flattened to long format
+  index.html   /        <- src/home.html      numbers-first front page; inlines data/home.json (also written here)
+  2028.html    /2028    <- src/template.html  2028 boards, Congress by age, and the archived 2026 maps (final odds) and early vote
+  senate.html  /senate  <- src/senate.html    Senate 2028 map; inlines data/states.js + data/senate_2028.json
+  2026.html    /2026    <- src/2026.html      final odds vs results
+  shift.html   /shift   <- src/shift.html     county shift arrows (fetches data/shift/*.json at runtime)
+  data.html    /data    <- src/data.html      downloads and schema
+  about.html   /about   <- src/about.html     about + the embed snippet builder (/embed redirects to /about#embed)
+  data/history.csv      <- data/history/*.json flattened to long format
 
 Site settings (referral codes, sponsor slot, newsletter form) live in site.json at the repo root.
 """
@@ -46,17 +50,40 @@ def history():
 
 hist, rows, nsnap = history()
 
-# What the page embeds is a thinned copy: history.csv keeps every point, but the home page only needs
-# daily detail for the last 90 days and a weekly point before that, and the retired 2026 chambers only a tail.
-def thin(series, keep_days=90, step=7):
+# ---- What /2028 inlines. history.csv keeps every point; the page gets thinned, packed copies.
+final26 = json.loads(read('data/odds_2026_final.json')) if (root/'data/odds_2026_final.json').exists() else data
+T_FINAL = int(datetime.fromisoformat(final26['updated'].replace('Z', '+00:00')).timestamp())   # last feed snapshot before polls closed
+
+def thin(series, keep_days=30, step=10):
+    """Daily detail for the last `keep_days`, every `step`th point before that (anchored on the newest old point)."""
     if not series: return series
     cut = series[-1][0] - keep_days * 86400
     old = [p for p in series if p[0] < cut]; recent = [p for p in series if p[0] >= cut]
-    return old[::-1][::step][::-1] + recent  # every `step`th old point, anchored on the most recent old point
-def tail(series, n=30): return series[-n:]
-hist_page = {'control': {k: thin(v) for k, v in hist['control'].items()},
-             'p2028': {slug: {name: thin(v) for name, v in d.items()} for slug, d in hist['p2028'].items()}}
-for ch in ('senate', 'house', 'governor'): hist_page[ch] = {k: tail(v) for k, v in hist[ch].items()}
+    return old[::-1][::step][::-1] + recent
+def upto(series, t): return [p for p in series if p[0] <= t]
+def pack(by_key):
+    """{key: [[t, v], ...]} -> {'t': [shared sorted timestamps], 'v': {key: [v or None per timestamp]}}; unpacked in the page.
+    Series in one chamber or market share their snapshot times, so this is about a third of the size."""
+    ts = sorted({p[0] for ser in by_key.values() for p in ser}); ix = {t: i for i, t in enumerate(ts)}
+    out = {}
+    for k, ser in by_key.items():
+        row = [None] * len(ts)
+        for t, v in ser: row[ix[t]] = round(v, 4)
+        out[k] = row
+    return {'t': ts, 'v': out}
+
+# 2028 boards: the 15 leading names per market (the boards list 12, the movers strip looks at 15)
+top28 = {m['slug']: [o['name'] for o in m['outcomes'][:15]] for m in data2028.get('markets', [])}
+hist_page = {'p2028': {slug: pack({n: thin(hist['p2028'].get(slug, {}).get(n, [])) for n in names}) for slug, names in top28.items()},
+             # archived 2026 chambers: the 30 snapshots up to the final pre-election one, nothing after (resolved markets read 0)
+             'control': {k: thin(upto(v, T_FINAL)) for k, v in hist['control'].items()}}
+for ch in ('senate', 'house', 'governor'):
+    hist_page[ch] = pack({k: upto(v, T_FINAL)[-30:] for k, v in hist[ch].items()})
+# archived 2026 odds: the final prices, without the seat-count buckets
+arch26 = {'updated': final26['updated']}
+for ch in ('senate', 'house', 'governor'):
+    arch26[ch] = {k: v for k, v in final26[ch].items() if k != 'seats'}
+data2028_page = dict(data2028, markets=[{k: v for k, v in m.items() if k != 'history'} for m in data2028.get('markets', [])])
 
 def earlyvote():
     """data/earlyvote/*.json (one per day) + data/earlyvote_ref.json -> {ref, days:[...], latest:{st:{...}}, series:{st:[[day, voted, inperson, mail]]}}."""
@@ -83,6 +110,18 @@ def earlyvote():
             pass
     return {'ref': ref, 'days': days, 'latest': latest, 'series': series, 'fetched': fetched}
 ev = earlyvote()
+def earlyvote_page(ev):
+    keep = ('last_update', 'source', 'request_all', 'accept_all', 'inperson_all', 'voted', 'voted_dem', 'voted_rep', 'voted_none')
+    nat = [[d, sum(r[1] for ser in ev['series'].values() for r in ser if r[0] == d)] for d in ev['days']]
+    latest = {}
+    for st, r in ev['latest'].items():
+        ser = ev['series'].get(st, [])
+        latest[st] = dict({k: r.get(k) for k in keep if r.get(k) not in (None, '')}, prev=ser[-2][1] if len(ser) > 1 else None)
+    ref = dict(ev['ref'])
+    ref['ev2022'] = {st: {'total': v.get('total')} for st, v in (ref.get('ev2022') or {}).items()}
+    ref.pop('notes', None)
+    return {'ref': ref, 'days': ev['days'], 'nat': nat, 'latest': latest, 'fetched': ev['fetched']}
+ev_page = earlyvote_page(ev)
 
 # history.csv: one row per (snapshot, chamber, race); the price is the Democrat's (or the non-Republican share where no Democrat is priced)
 with (root/'data/history.csv').open('w', newline='', encoding='utf-8') as f:
@@ -94,22 +133,9 @@ def page(body):
 
 J = lambda o: json.dumps(o, ensure_ascii=False, separators=(',', ':'))
 site_js = 'const SITE=' + J(site) + ';'
-inject = f"const DATA={J(data)};\nconst HIST={J(hist_page)};\nconst DATA2028={J(data2028)};\nconst BASE={J(base)};\nconst EV={J(ev)};\nconst FUN={J(fun)};\nconst S28={J(s28)};\n{site_js}"
-body = read('src/template.html').replace('/*STATES*/', read('data/states.js')).replace('/*DISTRICTS*/', read('data/districts.js')).replace('/*DATA*/', inject)
-write('index.html', page(body))
-
-if (root/'src/2026.html').exists():
-    write('2026.html', page(read('src/2026.html').replace('/*DATA2026*/', 'const R26=' + J(r26) + ';\n' + site_js)))
-if (root/'src/shift.html').exists():
-    write('shift.html', page(read('src/shift.html').replace('/*STATES*/', read('data/states.js')).replace('/*SITE*/', site_js)))
-if (root/'src/about.html').exists():
-    write('about.html', page(read('src/about.html').replace('/*SITE*/', site_js)))
-if (root/'src/embed.html').exists():
-    write('embed.html', page(read('src/embed.html').replace('/*SITE*/', site_js)))
+states_js = read('data/states.js')
 stats = {'snapshots': nsnap, 'rows': len(rows), 'first': rows[0][0] if rows else None, 'last': rows[-1][0] if rows else None,
-         'races': len(data['senate']['races']) + len(data['house']['races']) + len(data['governor']['races']), 'updated': data['updated']}
-if (root/'src/data.html').exists():
-    write('data.html', page(read('src/data.html').replace('/*SITE*/', site_js + '\nconst STATS=' + J(stats) + ';')))
+         'races': len(final26['senate']['races']) + len(final26['house']['races']) + len(final26['governor']['races']), 'updated': data['updated']}
 
 # ---- Redesign: site-wide nav, home.json and the home page -------------------------------------------------
 NAV = read('src/partials/nav.html') if (root/'src/partials/nav.html').exists() else ''
@@ -207,21 +233,27 @@ def build_home():
     return home
 
 home = build_home()
-if (root/'src/home.html').exists():
-    write('index.html', page(with_nav(read('src/home.html').replace('/*HOME*/', 'const H=' + J(home) + ';'), 'home')))
-    write('2028.html', page(with_nav(body, '2028')))          # the former home page: the 2028 boards, Senate 2028 map, 2026 views
-else:
-    write('index.html', page(body))
-for name, key in (('2026', '2026'), ('shift', 'shift'), ('data', 'data'), ('about', 'about'), ('embed', 'about')):
-    p = root/f'{name}.html'
-    if p.exists():
-        html = p.read_text(encoding='utf-8')
-        # drop the old per-page <nav> inside the title header; the top bar replaces it
-        import re as _re
-        html = _re.sub(r'<header>(.*?)<nav>.*?</nav>', r'<header>\1', html, count=1, flags=_re.S)
-        p.write_text(with_nav(html, key), encoding='utf-8')
-print(f"home: party={'yes' if home['party'] else 'pending'} · front {len(home['front']['dem'])}/{len(home['front']['rep'])} · movers {len(home['movers'])} · 2026 S {home['result2026']['senate']} H {home['result2026']['house']}")
 
-print(f"index.html: {len(body)//1024} KB · {len(data['senate']['races'])} Senate · {len(data['house']['races'])} House · "
-      f"{len(data['governor']['races'])} Governor · {len(data2028['markets'])} 2028 markets · odds as of {data['updated']} · "
-      f"{len(rows)} history rows from {nsnap} snapshots · early vote: {len(ev['days'])} day(s), {len(ev['latest'])} states")
+FOOT = read('src/partials/footer.html') if (root/'src/partials/footer.html').exists() else ''
+def with_foot(html):
+    """The shared source line (same text as the home page footer) at <!--FOOT-->."""
+    return html.replace('<!--FOOT-->', FOOT.replace('<!--ASOF_ISO-->', home['updated'] or '').replace('<!--ASOF-->', asof_txt), 1)
+def emit(name, html, key):
+    write(f'{name}.html', page(with_foot(with_nav(html, key))))
+    return len((root/f'{name}.html').read_bytes())
+
+sizes = {}
+sizes['index'] = emit('index', read('src/home.html').replace('/*HOME*/', 'const H=' + J(home) + ';'), 'home')
+inject = (f"const DATA={J(arch26)};\nconst HIST={J(hist_page)};\nconst DATA2028={J(data2028_page)};\nconst BASE={J(base)};\n"
+          f"const EV={J(ev_page)};\nconst FUN={J(fun)};\n{site_js}")
+sizes['2028'] = emit('2028', read('src/template.html').replace('/*STATES*/', states_js).replace('/*DATA*/', inject), '2028')
+sizes['senate'] = emit('senate', read('src/senate.html').replace('/*STATES*/', states_js).replace('/*S28*/', 'const S28=' + J(s28) + ';\nconst REF=' + J(site.get('referral', {})) + ';'), 'senate')
+sizes['2026'] = emit('2026', read('src/2026.html').replace('/*DATA2026*/', 'const R26=' + J(r26) + ';\n' + site_js), '2026')
+sizes['shift'] = emit('shift', read('src/shift.html').replace('/*STATES*/', states_js).replace('/*SITE*/', site_js), 'shift')
+sizes['data'] = emit('data', read('src/data.html').replace('/*SITE*/', site_js + '\nconst STATS=' + J(stats) + ';'), 'data')
+sizes['about'] = emit('about', read('src/about.html').replace('/*SITE*/', site_js), 'about')
+
+print(f"home: party={'yes' if home['party'] else 'pending'} · front {len(home['front']['dem'])}/{len(home['front']['rep'])} · movers {len(home['movers'])} · 2026 S {home['result2026']['senate']} H {home['result2026']['house']}")
+print('pages: ' + ' · '.join(f"/{'' if k == 'index' else k} {v/1024:.0f} KB" for k, v in sizes.items()))
+print(f"data: {len(data2028['markets'])} 2028 markets · odds as of {data['updated']} · {len(rows)} history rows from {nsnap} snapshots · "
+      f"2026 archive {len(final26['senate']['races'])} Senate / {len(final26['house']['races'])} House / {len(final26['governor']['races'])} Governor · early vote {len(ev['days'])} days")

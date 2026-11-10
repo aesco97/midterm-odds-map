@@ -55,6 +55,8 @@ ul{padding-left:20px} li{margin:4px 0}
 table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top} th{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .tbl{overflow-x:auto}
 </style>
+</head>
+<body>
 <style>
 /* Site-wide top bar. Injected by scripts/build.py at the top of <body> on every page; the page's own <header> keeps its title. */
 .topnav{display:flex;align-items:center;gap:18px;padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:10px;font-family:var(--body)}
@@ -83,11 +85,9 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
   <span class="asof">odds as of Nov 9, 02:01 UTC</span>
 </nav>
 
-</head>
-<body>
 
 <div class="wrap">
-<header><div><p class="kicker">presidentl.app</p><h1>The odds, as data</h1></div></header>
+<header><div><p class="kicker">presidentl.app</p><h1>The odds, as data</h1></div><nav><a href="./">Map</a><a href="embed.html">Embed</a></nav></header>
 
 <p style="margin-top:18px">Everything the map shows is a flat file in a public repository, refreshed hourly. Two things you can download right now, and one that is being built up every day.</p>
 
@@ -130,7 +130,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 </div>
 <script>
 const SITE={"referral":{"polymarket":"","kalshi":""},"sponsor":{"name":"","url":"","text":"","from":"2026-11-03","to":"2026-11-05"},"newsletter":{"action":"","label":"Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."}};
-const STATS={"snapshots":495,"rows":185646,"first":"2025-07-19T00:00:00Z","last":"2026-11-09T02:01:57Z","races":25,"updated":"2026-11-09T02:01:57+00:00"};
+const STATS={"snapshots":495,"rows":185646,"first":"2025-07-19T00:00:00Z","last":"2026-11-09T02:01:57Z","races":505,"updated":"2026-11-09T02:01:57+00:00"};
 const fmt=s=>s?new Date(s).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}):'';
 document.getElementById('s-updated').textContent=`${STATS.races} races · updated ${fmt(STATS.updated)}`;
 document.getElementById('s-hist').textContent=STATS.rows?`${STATS.rows.toLocaleString()} rows from ${STATS.snapshots} snapshots, ${fmt(STATS.first)} to ${fmt(STATS.last)}`:'No snapshots yet.';
