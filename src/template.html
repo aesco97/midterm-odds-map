@@ -224,7 +224,7 @@ svg.spark{width:84px;height:20px;display:block;margin-top:4px;overflow:visible}
 .evcharts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
 @media (max-width:900px){.evcharts{grid-template-columns:1fr}}
 .evnote{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
-/* Fun stats */
+/* Congress by age */
 .fun{display:none;padding-top:18px}
 .fun.on{display:block}
 .fun .tiles{border-bottom:0;padding-top:0}
@@ -785,9 +785,9 @@ function txChart(){
   return `<div class="chart"><h3>Texas, same day of early voting</h3><div class="sub">Cumulative in-person early vote by day of the 12-day period. ${cmp}</div><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Texas early vote by day, 2018 to 2026">${grid}${lines}${xl}</svg><div class="lg"><span><i style="background:var(--ev5)"></i>2026</span><span><i style="background:var(--r2)"></i>2022</span><span><i style="background:var(--d1)"></i>2018</span><span><i style="background:var(--none-fg)"></i>2024 (presidential)</span></div></div>`;
 }
 
-// ---- Fun stats: how old is Congress, against the country it represents (data/funstats.json)
+// ---- Congress by age: how old is Congress, against the country it represents (data/funstats.json)
 function renderFun(){
-  const el=document.getElementById('fun'); if(!FUN.congress){ el.innerHTML='<div class="chart"><h3>Fun stats</h3><div class="sub">No data yet: run scripts/fetch_funstats.py</div></div>'; return; }
+  const el=document.getElementById('fun'); if(!FUN.congress){ el.innerHTML='<div class="chart"><h3>Congress by age</h3><div class="sub">No data yet: run scripts/fetch_funstats.py</div></div>'; return; }
   const T=FUN.today, le=T.life_expectancy, cg=FUN.congress.filter(r=>r.house&&r.senate);
   const now=cg[cg.length-1], first1900=cg.find(r=>r.year>=1901);
   const tiles=`<div class="tiles">
@@ -887,7 +887,7 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape' && selState) focusS
 document.getElementById('list').addEventListener('click',e=>{ const k=e.target.closest('.klink'); if(k){ e.preventDefault(); e.stopPropagation(); window.open(k.dataset.href,'_blank','noopener'); } });
 document.getElementById('list').addEventListener('keydown',e=>{ const k=e.target.closest('.klink'); if(k&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); e.stopPropagation(); window.open(k.dataset.href,'_blank','noopener'); } });
 { const up=DATA2028.updated, el=document.getElementById('stamp'); if(up){ const age=(Date.now()-new Date(up))/3.6e6;
-  el.textContent='2028 odds as of '+new Date(up).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'})+(age>36?` (${Math.round(age)} h old)`:''); if(age>36) el.style.color='var(--r2)'; } }
+  el.textContent='Odds as of '+new Date(up).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'})+(age>36?` (${Math.round(age)} h old)`:''); if(age>36) el.style.color='var(--r2)'; } }
 build();
 { const m=/^#(2028|fun|senate|house|governor|turnout)(?:\/([A-Z]{2}))?$/.exec(location.hash);
   if(m){ setTab(m[1]); if(m[1]==='house' && HOUSE[m[2]]) selState=m[2]; } }

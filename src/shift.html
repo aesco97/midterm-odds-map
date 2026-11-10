@@ -1,4 +1,4 @@
-<title>Shift Maps · presidentl.app</title>
+<title>Shift maps · presidentl</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <!-- Vercel Web Analytics (page views only; the script is served by Vercel for this project) -->
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
@@ -33,7 +33,6 @@ header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-be
 h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
 h2{font-family:var(--display);font-weight:700;font-size:20px;margin:28px 0 8px;letter-spacing:-.01em}
 .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
-nav a{font-weight:600;text-decoration:none;margin-left:16px}
 p{max-width:68ch}
 .muted{color:var(--muted)}
 code,pre{font-family:var(--mono);font-size:12.5px}
@@ -96,8 +95,9 @@ canvas.arrows{position:absolute;inset:0;width:100%;height:100%;display:block;cur
 .err{color:var(--r2);font-weight:600}
 </style>
 
+<!--NAV-->
 <div class="wrap">
-<header><div><p class="kicker">presidentl.app · county results 2000–2024</p><h1 id="h1">Shift maps</h1></div><nav><a href="./">2028 odds</a><a href="2026.html">2026 results</a><a href="data.html">Data</a></nav></header>
+<header><div><p class="kicker">County results 2000–2024 · President and House</p><h1 id="h1">Shift maps</h1></div></header>
 
 <div class="ctl">
   <span class="seg" id="office"><button aria-pressed="true" data-o="president">President</button><button aria-pressed="false" data-o="house">House</button></span>
@@ -126,6 +126,7 @@ canvas.arrows{position:absolute;inset:0;width:100%;height:100%;display:block;cur
   <p>County results: Paul Heideman, <em>U.S. county-level election results 1990–2024</em> (CC BY 4.0); Hawaii and Alaska 2008–24 from tonmcg/US_County_Level_Election_Results_08-24.</p>
   <p>Gaps: Alaska is one statewide arrow (its returns are by election district); Hawaii and Alaska start in 2008; House arrows skip counties where a race was uncontested in either year, so House maps are sparser in the South; 2026 county results are not yet published in any open dataset. Prices elsewhere on this site are market odds; this page is certified vote counts.</p>
 </div>
+<!--FOOT-->
 </div>
 <script>
 /*STATES*/
@@ -240,7 +241,6 @@ function fillControls(){
   $('cmp').innerHTML=`<optgroup label="${OFF[office]}">${same.join('')}</optgroup><optgroup label="${OFF[other]}, a different office">${cross.join('')}</optgroup>`;
   $('office').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.o===office)));
   const co=parseCmp(cmp); $('h1').textContent=`Shift maps: ${OFF[office]} ${y1} vs ${co.office!==office?OFF[co.office]+' ':''}${co.year}`;
-  document.title=`Shift map, ${OFF[office]} ${y1} vs ${co.office!==office?OFF[co.office]+' ':''}${co.year} · presidentl.app`;
 }
 function defaultCmp(){ const ys=R.meta.years[office]; const i=ys.indexOf(y1); return i>0?ys[i-1]:null; }
 function apply(){ compute(); fillControls(); summary(); draw(); setHash(); }

@@ -1,4 +1,4 @@
-<title>Midterm Odds Data</title>
+<title>Data · presidentl</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <!-- Vercel Web Analytics (page views only; the script is served by Vercel for this project) -->
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
@@ -33,7 +33,6 @@ header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-be
 h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
 h2{font-family:var(--display);font-weight:700;font-size:20px;margin:28px 0 8px;letter-spacing:-.01em}
 .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
-nav a{font-weight:600;text-decoration:none;margin-left:16px}
 p{max-width:68ch}
 .muted{color:var(--muted)}
 code,pre{font-family:var(--mono);font-size:12.5px}
@@ -51,8 +50,9 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 .tbl{overflow-x:auto}
 </style>
 
+<!--NAV-->
 <div class="wrap">
-<header><div><p class="kicker">presidentl.app</p><h1>The odds, as data</h1></div><nav><a href="./">Map</a><a href="embed.html">Embed</a></nav></header>
+<header><div><p class="kicker">Downloads, schema and licence</p><h1>The odds, as data</h1></div></header>
 
 <p style="margin-top:18px">Everything the map shows is a flat file in a public repository, refreshed hourly. Two things you can download right now, and one that is being built up every day.</p>
 
@@ -60,7 +60,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
   <div class="card"><h2 style="margin-top:0;font-size:17px">Current odds <span class="muted" style="font-weight:500;font-size:13px">JSON</span></h2>
     <p style="font-size:14px">Every 2026 Senate, House and governor race with a market: candidates, parties, Polymarket price, Kalshi price where one exists, volume, rating, plus the chamber-control and seat-count markets.</p>
     <p><a class="btn" href="data/odds_2028.json" download>odds_2028.json</a> <a class="btn ghost" href="data/odds.json" download>odds.json</a> <a class="btn ghost" href="data/senate_2028.json" download>senate_2028.json</a></p>
-    <p style="font-size:14px">2026 midterms, frozen: <a href="data/odds_2026_final.json" download>odds_2026_final.json</a> (last prices before polls closed) and <a href="data/results_2026.json" download>results_2026.json</a> (how every market resolved, graded). See the <a href="2026.html">results page</a>.</p>
+    <p style="font-size:14px">2026 midterms, frozen: <a href="data/odds_2026_final.json" download>odds_2026_final.json</a> (last prices before polls closed) and <a href="data/results_2026.json" download>results_2026.json</a> (how every market resolved, graded). See the <a href="/2026">results page</a>.</p>
     <p class="muted" style="font-size:12.5px" id="s-updated"></p></div>
   <div class="card"><h2 style="margin-top:0;font-size:17px">Price history <span class="muted" style="font-weight:500;font-size:13px">CSV</span></h2>
     <p style="font-size:14px">One row per race per day, back to each market's launch in 2025: the Democratic candidate's price, or the non-Republican share where no Democrat is priced, plus every 2028 candidate's price. A daily record of every political market through a full cycle.</p>
@@ -69,7 +69,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 </div>
 
 <div class="card" style="margin-top:16px"><h2 style="margin-top:0;font-size:17px">County results 2000–2024 <span class="muted" style="font-weight:500;font-size:13px">JSON</span></h2>
-    <p style="font-size:14px">The data behind the <a href="shift.html">shift maps</a>: President (2000–2024) and House (2000–2024) votes by county as <code>[dem, rep, total, flag]</code>, plus county centroids in the site's map projection.</p>
+    <p style="font-size:14px">The data behind the <a href="/shift">shift maps</a>: President (2000–2024) and House (2000–2024) votes by county as <code>[dem, rep, total, flag]</code>, plus county centroids in the site's map projection.</p>
     <p><a class="btn" href="data/shift/results.json" download>results.json</a> <a class="btn ghost" href="data/shift/counties.json" download>counties.json</a></p>
     <p class="muted" style="font-size:12.5px">County results: Paul Heideman, <em>U.S. county-level election results 1990–2024</em> (CC BY 4.0); Hawaii and Alaska 2008–24 from tonmcg/US_County_Level_Election_Results_08-24. flag = 1 marks a House county where a race was one-party or a seat was unopposed.</p></div>
 
@@ -91,7 +91,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <p>Prices are collected from <a href="https://polymarkettrader.com/developers/" target="_blank" rel="noopener">PolymarketTrader.com's free feed</a> of Polymarket and Kalshi markets and are released here under the same <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license: use them for anything, credit "PolymarketTrader.com via presidentl.app". A longer, cleaned history with candidate metadata and both exchanges on every race is in the works for the 2028 cycle.</p>
 <p class="muted" style="font-size:13px">Prices are market odds, not polls or predictions, and nothing here is betting or investment advice.</p>
 
-<div class="foot">Prices are market odds, not polls or predictions.</div>
+<!--FOOT-->
 </div>
 <script>
 /*SITE*/
