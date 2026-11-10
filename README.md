@@ -97,11 +97,7 @@ Clean URLs (`vercel.json` → `cleanUrls`); the `.html` paths redirect. One shar
 
 What `/2028` inlines, and why it is half its old size: state outlines; the final 2026 odds; history packed as one shared time axis per group (15 names per 2028 market with daily points for 30 days and every tenth before; a 30-snapshot tail per 2026 race); the latest early-vote snapshot with national daily totals. District shapes (`data/districts.js`, 360 KB) are fetched the first time a state is opened on the archived House map.
 
-`embed.html` in the repo root is a redirect stub, not a built page. It only exists because the hourly workflow's `git add` line names it and git fails on a path that matches nothing. That same line does not yet name `2028.html`, `senate.html` or `shift.html`, so those pages are only re-committed by a manual build until the line is updated to:
-
-```yaml
-          git add -A data index.html 2028.html senate.html 2026.html shift.html data.html about.html
-```
+The hourly workflow stages every built page by name (`git add -A data index.html 2028.html senate.html 2026.html shift.html data.html about.html`). Git fails on a listed path that does not exist, so when a page is added or removed, update that line in the same commit.
 
 ## Early vote (2026 archive tab on /2028)
 

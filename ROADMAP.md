@@ -45,7 +45,7 @@ Nonpartisan. No ads, no trackers beyond page counts. Say plainly what the number
 - [x] Senate 2028 split out of `/2028` into its own page, `/senate`, with control-odds history and an embed mode.
 - [x] Embed builder folded into `/about#embed`; `/embed` and `/embed.html` redirect.
 - [x] `/2028` cut from 1.36 MB to 0.61 MB; the 2026 archive tabs show final pre-election prices.
-- [ ] **Hourly workflow staging line.** `git add` in `refresh-odds.yml` still lists the old page set, so `2028.html`, `senate.html` and `shift.html` are not re-committed hourly, and `embed.html` has to stay as a stub. One-line change; see README → Pages.
+- [x] Hourly workflow staging line lists the current page set; the `embed.html` stub is gone.
 
 ## Shift maps (added Nov 8)
 
