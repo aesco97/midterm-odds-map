@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>About · presidentl.app</title>
+<title>About · presidentl</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <!-- Vercel Web Analytics (page views only; the script is served by Vercel for this project) -->
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
@@ -38,7 +38,6 @@ header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-be
 h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
 h2{font-family:var(--display);font-weight:700;font-size:20px;margin:28px 0 8px;letter-spacing:-.01em}
 .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
-nav a{font-weight:600;text-decoration:none;margin-left:16px}
 p{max-width:68ch}
 .muted{color:var(--muted)}
 code,pre{font-family:var(--mono);font-size:12.5px}
@@ -58,13 +57,41 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 </head>
 <body>
 
+<style>
+/* Site-wide top bar. Injected by scripts/build.py at the top of <body> on every page; the page's own <header> keeps its title. */
+.topnav{display:flex;align-items:center;gap:18px;padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:10px;font-family:var(--body)}
+.topnav .brand{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.02em;text-decoration:none;color:var(--fg);white-space:nowrap;display:inline-flex;align-items:center;gap:7px}
+.topnav .brand i{display:inline-block;width:9px;height:9px;border-radius:2px;background:linear-gradient(90deg,var(--d3) 50%,var(--r3) 50%)}
+.topnav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
+.topnav ul::-webkit-scrollbar{display:none}
+.topnav a.nl{display:block;padding:6px 10px;border-radius:6px;font-size:13.5px;font-weight:600;color:var(--muted);text-decoration:none;white-space:nowrap}
+.topnav a.nl:hover{color:var(--fg);background:var(--line-soft)}
+.topnav a.nl[aria-current="page"]{color:var(--fg);box-shadow:inset 0 -2px 0 var(--fg);border-radius:6px 6px 0 0}
+.topnav a:focus-visible{outline:2px solid var(--d2);outline-offset:2px}
+.topnav .asof{margin-left:auto;font:500 10.5px var(--mono);letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+@media (max-width:700px){.topnav{gap:10px}.topnav .asof{display:none}.topnav a.nl{padding:6px 8px;font-size:13px}}
+</style>
+<nav class="topnav" aria-label="Site">
+  <a class="brand" href="/"><i></i>presidentl</a>
+  <ul>
+    <li><a class="nl" href="/" data-page="home">Home</a></li>
+    <li><a class="nl" href="/2028" data-page="2028">2028</a></li>
+    <li><a class="nl" href="/senate" data-page="senate">Senate 2028</a></li>
+    <li><a class="nl" href="/2026" data-page="2026">2026 results</a></li>
+    <li><a class="nl" href="/shift" data-page="shift">Shift maps</a></li>
+    <li><a class="nl" href="/data" data-page="data">Data</a></li>
+    <li><a class="nl" href="/about" data-page="about" aria-current="page">About</a></li>
+  </ul>
+  <span class="asof">odds as of Nov 9, 02:01 UTC</span>
+</nav>
+
 <div class="wrap">
-<header><div><p class="kicker">presidentl.app</p><h1>About</h1></div><nav><a href="./">2028 odds</a><a href="2026.html">2026 results</a><a href="data.html">Data</a></nav></header>
+<header><div><p class="kicker">What this site is, and how to embed it</p><h1>About</h1></div></header>
 
 <p style="margin-top:18px">presidentl.app is the daily record of what prediction markets think about American politics. It takes the prices on Polymarket and Kalshi for every race with a market, puts them on a map, keeps a snapshot every time they change, and sets them against the results once the votes are counted.</p>
 
 <h2>What the numbers are</h2>
-<p>A price is the market's odds, not a poll and not a prediction by this site. A candidate at 64¢ means traders are paying 64 cents for a contract that pays a dollar if that candidate wins. Markets can be wrong, thin, or moved by a few large bets; the <a href="2026.html">2026 results page</a> shows how they did on every midterm race.</p>
+<p>A price is the market's odds, not a poll and not a prediction by this site. A candidate at 64¢ means traders are paying 64 cents for a contract that pays a dollar if that candidate wins. Markets can be wrong, thin, or moved by a few large bets; the <a href="/2026">2026 results page</a> shows how they did on every midterm race.</p>
 
 <h2>Where the data comes from</h2>
 <ul>
@@ -73,7 +100,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <li>Seats and members: <a href="https://github.com/unitedstates/congress-legislators" target="_blank" rel="noopener">unitedstates/congress-legislators</a>.</li>
 <li>Early vote (2026): UF Election Lab. Life expectancy: Our World in Data. Median age: US Census Bureau.</li>
 </ul>
-<p>Everything shown is downloadable on the <a href="data.html">data page</a>, under the same CC BY license as the feed.</p>
+<p>Everything shown is downloadable on the <a href="/data">data page</a>, under the same CC BY license as the feed.</p>
 
 <h2>Principles</h2>
 <ul>
@@ -83,12 +110,46 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <li>Do few things, and keep them running without hand-work: the site rebuilds itself every hour.</li>
 </ul>
 
-<p id="refnote" class="muted" style="font-size:13px" hidden>Some links to Polymarket and Kalshi are referral links, which pay this site a small commission at no cost to you.</p>
-<div class="foot">Prediction markets are not available everywhere; check what is legal where you live. Nothing here is betting or investment advice.</div>
+<p class="muted" style="font-size:13px">Prediction markets are not available everywhere; check what is legal where you live. Nothing here is betting or investment advice.</p>
+
+<h2 id="embed">Embed the Senate 2028 map</h2>
+<p>Put the live <a href="/senate">Senate 2028 map</a> on your own site or newsletter page with one line. It updates itself every hour from the same data as this site, works on phones, and follows the reader's light or dark theme. Free, with a small "presidentl.app" badge under the map.</p>
+<div class="grid" style="margin-top:12px">
+  <div class="card">
+    <h3 style="margin:0 0 4px;font-family:var(--display);font-size:16px">Build your snippet</h3>
+    <label for="em-h">Height (px)</label>
+    <input id="em-h" type="number" value="560" min="320" max="1200" style="width:100px">
+    <label for="em-snip">Snippet</label>
+    <pre id="em-snip" style="white-space:pre-wrap;word-break:break-all" tabindex="0"></pre>
+    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="em-copy">Copy snippet</button><a class="btn ghost" id="em-open" href="/senate?embed=1" target="_blank" rel="noopener">Open the embed in a new tab</a></div>
+  </div>
+  <div class="card">
+    <h3 style="margin:0 0 8px;font-family:var(--display);font-size:16px">Preview</h3>
+    <iframe id="em-prev" title="Senate 2028 map embed preview" style="width:100%;height:560px;border:0;border-radius:6px;background:var(--bg)" loading="lazy"></iframe>
+  </div>
+</div>
+<style>
+/* Site-wide source line; the same text as the home page footer. Injected by scripts/build.py at <!--FOOT-->. */
+footer.sitefoot{margin-top:28px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);line-height:1.6;max-width:none}
+footer.sitefoot a{color:var(--muted)}
+</style>
+<footer class="sitefoot">Odds: Polymarket and Kalshi via <a href="https://polymarkettrader.com" target="_blank" rel="noopener">PolymarketTrader.com</a> (CC BY 4.0) · County results: Paul Heideman, <i>U.S. county-level election results 1990–2024</i> (CC BY 4.0) · Early vote: UF Election Lab · Odds as of <time id="sf-asof" datetime="2026-11-09T00:50:00+00:00">Nov 9, 02:01 UTC</time>. Prices are market odds, not polls or predictions, and nothing here is betting advice. Some links to Polymarket and Kalshi are referral links.</footer>
+<script>{ const t=document.getElementById('sf-asof'), d=new Date(t.dateTime); if(!isNaN(d)) t.textContent=d.toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}); }</script>
+
 </div>
 <script>
 const SITE={"referral":{"polymarket":"","kalshi":""},"sponsor":{"name":"","url":"","text":"","from":"2026-11-03","to":"2026-11-05"},"newsletter":{"action":"","label":"Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."}};
-{ const r=SITE.referral||{}; if(r.polymarket||r.kalshi) document.getElementById('refnote').hidden=false; }
+// Embed snippet builder. The snippet always points at the live site; the preview uses the local file when this page is opened from a dev server.
+{ const $=id=>document.getElementById(id), LIVE='https://presidentl.app/senate?embed=1';
+  const local=location.protocol==='file:'||/^(localhost|127\.|\[::1\])/.test(location.hostname);
+  const update=()=>{ const h=Math.max(320,Math.min(1200,+$('em-h').value||560));
+    $('em-snip').textContent=`<iframe src="${LIVE}" width="100%" height="${h}" style="border:0;max-width:100%" loading="lazy" title="Senate 2028 map (presidentl.app)"></iframe>`;
+    $('em-prev').style.height=h+'px'; };
+  $('em-prev').src=local?'senate.html?embed=1':'/senate?embed=1'; if(local) $('em-open').href='senate.html?embed=1';
+  $('em-h').addEventListener('input',update); update();
+  $('em-copy').addEventListener('click',()=>{ const t=$('em-snip').textContent; const done=()=>{ $('em-copy').textContent='Copied'; setTimeout(()=>$('em-copy').textContent='Copy snippet',1500); };
+    const select=()=>{ const r=document.createRange(); r.selectNodeContents($('em-snip')); getSelection().removeAllRanges(); getSelection().addRange(r); };
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done).catch(select); else select(); }); }
 </script>
 </body>
 </html>

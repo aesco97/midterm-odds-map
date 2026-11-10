@@ -6,13 +6,13 @@ The daily record of what prediction markets think about American politics. The h
 
 ## Run it
 
-`index.html` is fully self-contained (geometry and odds are baked in), so any static server works:
+Every page is a self-contained static file built by `scripts/build.py`, so any static server works. Clean URLs come from `vercel.json`, so locally open the `.html` paths (`/2028.html`, `/senate.html`); the nav's `/2028`-style links only resolve on Vercel.
 
 ```bash
 python3 -m http.server 8000      # then open http://localhost:8000
 ```
 
-Opening `index.html` directly from Finder also works.
+The shift maps fetch their county data at runtime and the 2028 page fetches district shapes on demand, so those two need a server rather than a `file://` open.
 
 ## Refresh the odds
 
@@ -22,20 +22,20 @@ The page is a static snapshot, refreshed automatically: a GitHub Actions workflo
 python3 scripts/fetch_odds.py
 ```
 
-That downloads PolymarketTrader.com's free JSON of Polymarket prices (CC BY 4.0, refreshed twice a day), rewrites `data/odds.json`, and regenerates `index.html`. No dependencies beyond Python 3. (If you already have a copy of the feed, pass its path: `python3 scripts/fetch_odds.py feed.json`.)
+That downloads PolymarketTrader.com's free JSON of Polymarket prices (CC BY 4.0, refreshed twice a day), rewrites `data/odds.json`, and rebuilds every page. No dependencies beyond Python 3. (If you already have a copy of the feed, pass its path: `python3 scripts/fetch_odds.py feed.json`.)
 
 ## Layout
 
 ```
-index.html           built page (don't edit by hand; run scripts/build.py)
-src/template.html    page source: markup, CSS, and the map/panel logic
+*.html               built pages (don't edit by hand; run scripts/build.py); see the Pages table below
+src/*.html           page sources; src/partials/nav.html and footer.html are injected into every page
 data/states.js       projected SVG path data for the 50 states (us-atlas, Albers USA)
 data/districts.js    projected SVG paths for the 429 multi-district House seats (Census, 119th Congress)
 data/odds.json       Senate + House + Governor odds in the page's schema
 data/baseline.json   current seat counts and who holds each seat up in 2026 (for the projection and flip list)
-data/funstats.json   age of Congress per Congress, US life expectancy, median age (Fun stats tab)
+data/funstats.json   age of Congress per Congress, US life expectancy, median age (Congress by age tab on /2028)
 data/history/        one compact snapshot per feed update (Democratic price per race); feeds the deltas and sparklines
-scripts/build.py     template + data -> index.html
+scripts/build.py     src/ + data/ -> every page, data/home.json, data/history.csv
 scripts/fetch_odds.py  refresh data/odds.json from the feed, then build
 scripts/build_districts.js  regenerate data/districts.js from the Census shapefile (needs node)
 ```
@@ -56,7 +56,7 @@ The script simplifies the boundaries (topology-preserving) and projects them wit
 
 Color = the favourite's Polymarket price in that race. Safe ≥95%, Likely 80–95%, Lean 60–80%, Toss-up <60%; blue for the Democrat, red for the Republican. On the House tab a state's color reflects the share of its districts each party is favoured in; click a state to zoom in and see each district shaded by its own market (Esc or "All states" zooms back out). The Governors tab shades the 36 states with a 2026 governor race; there is no chamber-control market for governors, so the bar shows how many races each party is favoured in.
 
-Deep links: `#senate`, `#house`, `#governor`, or `#house/TX` to open zoomed in to a state.
+Deep links on `/2028`: `#2028`, `#fun`, and for the 2026 archive `#senate`, `#house`, `#governor`, `#turnout`, or `#house/TX` to open zoomed in to a state. On `/senate`, `#AZ` opens zoomed to that seat.
 
 ## Movement over time
 
@@ -83,14 +83,23 @@ Everything that turns the site into a business lives in one file; `scripts/build
 
 ## Pages
 
-- `/` — the map. Tabs: Senate, House, Governors, 2028 (winner and both nominee markets, from `data/odds_2028.json`).
-- `/?embed=1&chamber=senate|house|governor[&state=TX][&night=1]` — embed mode: map, legend and a badge, nothing else. Built from the same `index.html`.
-- `/embed.html` — snippet generator with a live preview.
-- `/data.html` — the dataset page: `data/odds.json`, `data/odds_2028.json`, `data/history.csv` (long format, one row per race per snapshot) with the schema and CC BY terms.
+Clean URLs (`vercel.json` → `cleanUrls`); the `.html` paths redirect. One shared top bar on every page (`src/partials/nav.html`) and one shared source line at the bottom (`src/partials/footer.html`, the same text as the home page footer), both injected by `build.py`. Page titles are `<Nav label> · presidentl`; each page's own header is a kicker and an `h1`, no links.
 
-Kalshi prices (`kalshi` on each Senate and governor race) show as a second line in the ledger with the Polymarket–Kalshi gap; gaps of 3+ points are highlighted.
+| URL | Source | What it is | Built size |
+|---|---|---|---|
+| `/` | `src/home.html` + `data/home.json` | Numbers-first front page: balance-of-power strip (White House 2028 party market, Senate 2028 control, 2026 result), 2028 front-runners with 7-day change and sparklines, biggest moves, one tile per section. | 23 KB |
+| `/2028` | `src/template.html` | The 2028 markets (winner, nominees, VPs, party), Congress by age, and the 2026 archive: Senate, House and governor maps at their final pre-election prices, and the early-vote tracker. | 612 KB |
+| `/senate` | `src/senate.html` + `data/senate_2028.json` | Senate 2028: control odds with their history, seats up by party, the map shaded by incumbent party until seat markets open, a seat ledger, `#ST` deep links, `?embed=1` for the embeddable map. | 226 KB |
+| `/2026` | `src/2026.html` | Final odds vs results, calibration. | 187 KB |
+| `/shift` | `src/shift.html` | County shift arrows 2000–2024 (data fetched at runtime). | 222 KB |
+| `/data` | `src/data.html` | Downloads and schema. | 13 KB |
+| `/about` | `src/about.html` | About, plus the embed snippet builder at `#embed`. `/embed` and `/embed.html` redirect here; old `/?embed=1` embeds redirect to `/senate`. | 12 KB |
 
-## Turnout tab (early vote)
+What `/2028` inlines, and why it is half its old size: state outlines; the final 2026 odds; history packed as one shared time axis per group (15 names per 2028 market with daily points for 30 days and every tenth before; a 30-snapshot tail per 2026 race); the latest early-vote snapshot with national daily totals. District shapes (`data/districts.js`, 360 KB) are fetched the first time a state is opened on the archived House map.
+
+The hourly workflow stages every built page by name (`git add -A data index.html 2028.html senate.html 2026.html shift.html data.html about.html`). Git fails on a listed path that does not exist, so when a page is added or removed, update that line in the same commit.
+
+## Early vote (2026 archive tab on /2028)
 
 `scripts/fetch_earlyvote.py` (run by the hourly workflow) saves one snapshot a day of the UF Election Lab's 2026 early-vote tracker to `data/earlyvote/YYYY-MM-DD.json`, refreshes the Texas day-by-day series in `data/earlyvote_ref.json` from the Texas SOS daily reports (via github.com/Seeker-Cliff/tx-early-vote-live), and, with `--backfill`, tries to fill earlier days from the Wayback Machine (it rate-limits and had no captures when tried on Oct 30, so this is off in the hourly run). `data/earlyvote_ref.json` also holds static reference data: 2018 and 2022 total ballots and eligible population per state (UF Election Lab turnout files) and the 2022 final early-vote totals per state (US Elections Project 2022 tracker).
 
@@ -98,7 +107,7 @@ The page shows early ballots so far as a share of 2022 and 2018 total turnout an
 
 The hourly workflow runs the script after the odds fetch and rebuilds; if the UF feed is down the last snapshot is kept.
 
-## Fun stats tab
+## Congress by age (tab on /2028)
 
 `scripts/fetch_funstats.py` computes the average age of the House and Senate at the start of every Congress from the unitedstates/congress-legislators dataset, pulls US life expectancy at birth from Our World in Data, and adds the Census median age of the population (hand-entered in the script). The tab charts the four lines from 1900, with tiles for today's averages, how many sitting members are older than the national life expectancy, and the oldest and youngest members. Rerun the script at the start of each Congress (or any time, for today's ages): `python3 scripts/fetch_funstats.py`.
 
@@ -108,7 +117,7 @@ The hourly workflow runs the script after the odds fetch and rebuilds; if the UF
 
 ## Senate 2028 (`data/senate_2028.json`)
 
-`scripts/fetch_senate_2028.py` (hourly) lists the 34 Class 3 seats from legislators-current, the Florida and Ohio seats taking their 2026 special-election winners, searches Gamma for a per-state market, and reads the Senate-control 2028 market. States are shaded by incumbent party until a market exists.
+`scripts/fetch_senate_2028.py` (hourly) lists the 34 Class 3 seats from legislators-current, the Florida and Ohio seats taking their 2026 special-election winners, searches Gamma for a per-state market, and reads the Senate-control 2028 market with its daily price history from the CLOB (`control.history`). States are shaded by incumbent party until a market exists.
 
 ## Price history backfill
 

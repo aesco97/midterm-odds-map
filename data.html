@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Midterm Odds Data</title>
+<title>Data · presidentl</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <!-- Vercel Web Analytics (page views only; the script is served by Vercel for this project) -->
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
@@ -38,7 +38,6 @@ header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-be
 h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1;margin:0;letter-spacing:-.02em;text-wrap:balance}
 h2{font-family:var(--display);font-weight:700;font-size:20px;margin:28px 0 8px;letter-spacing:-.01em}
 .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
-nav a{font-weight:600;text-decoration:none;margin-left:16px}
 p{max-width:68ch}
 .muted{color:var(--muted)}
 code,pre{font-family:var(--mono);font-size:12.5px}
@@ -58,8 +57,36 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 </head>
 <body>
 
+<style>
+/* Site-wide top bar. Injected by scripts/build.py at the top of <body> on every page; the page's own <header> keeps its title. */
+.topnav{display:flex;align-items:center;gap:18px;padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:10px;font-family:var(--body)}
+.topnav .brand{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.02em;text-decoration:none;color:var(--fg);white-space:nowrap;display:inline-flex;align-items:center;gap:7px}
+.topnav .brand i{display:inline-block;width:9px;height:9px;border-radius:2px;background:linear-gradient(90deg,var(--d3) 50%,var(--r3) 50%)}
+.topnav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
+.topnav ul::-webkit-scrollbar{display:none}
+.topnav a.nl{display:block;padding:6px 10px;border-radius:6px;font-size:13.5px;font-weight:600;color:var(--muted);text-decoration:none;white-space:nowrap}
+.topnav a.nl:hover{color:var(--fg);background:var(--line-soft)}
+.topnav a.nl[aria-current="page"]{color:var(--fg);box-shadow:inset 0 -2px 0 var(--fg);border-radius:6px 6px 0 0}
+.topnav a:focus-visible{outline:2px solid var(--d2);outline-offset:2px}
+.topnav .asof{margin-left:auto;font:500 10.5px var(--mono);letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+@media (max-width:700px){.topnav{gap:10px}.topnav .asof{display:none}.topnav a.nl{padding:6px 8px;font-size:13px}}
+</style>
+<nav class="topnav" aria-label="Site">
+  <a class="brand" href="/"><i></i>presidentl</a>
+  <ul>
+    <li><a class="nl" href="/" data-page="home">Home</a></li>
+    <li><a class="nl" href="/2028" data-page="2028">2028</a></li>
+    <li><a class="nl" href="/senate" data-page="senate">Senate 2028</a></li>
+    <li><a class="nl" href="/2026" data-page="2026">2026 results</a></li>
+    <li><a class="nl" href="/shift" data-page="shift">Shift maps</a></li>
+    <li><a class="nl" href="/data" data-page="data" aria-current="page">Data</a></li>
+    <li><a class="nl" href="/about" data-page="about">About</a></li>
+  </ul>
+  <span class="asof">odds as of Nov 9, 02:01 UTC</span>
+</nav>
+
 <div class="wrap">
-<header><div><p class="kicker">presidentl.app</p><h1>The odds, as data</h1></div><nav><a href="./">Map</a><a href="embed.html">Embed</a></nav></header>
+<header><div><p class="kicker">Downloads, schema and licence</p><h1>The odds, as data</h1></div></header>
 
 <p style="margin-top:18px">Everything the map shows is a flat file in a public repository, refreshed hourly. Two things you can download right now, and one that is being built up every day.</p>
 
@@ -67,7 +94,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
   <div class="card"><h2 style="margin-top:0;font-size:17px">Current odds <span class="muted" style="font-weight:500;font-size:13px">JSON</span></h2>
     <p style="font-size:14px">Every 2026 Senate, House and governor race with a market: candidates, parties, Polymarket price, Kalshi price where one exists, volume, rating, plus the chamber-control and seat-count markets.</p>
     <p><a class="btn" href="data/odds_2028.json" download>odds_2028.json</a> <a class="btn ghost" href="data/odds.json" download>odds.json</a> <a class="btn ghost" href="data/senate_2028.json" download>senate_2028.json</a></p>
-    <p style="font-size:14px">2026 midterms, frozen: <a href="data/odds_2026_final.json" download>odds_2026_final.json</a> (last prices before polls closed) and <a href="data/results_2026.json" download>results_2026.json</a> (how every market resolved, graded). See the <a href="2026.html">results page</a>.</p>
+    <p style="font-size:14px">2026 midterms, frozen: <a href="data/odds_2026_final.json" download>odds_2026_final.json</a> (last prices before polls closed) and <a href="data/results_2026.json" download>results_2026.json</a> (how every market resolved, graded). See the <a href="/2026">results page</a>.</p>
     <p class="muted" style="font-size:12.5px" id="s-updated"></p></div>
   <div class="card"><h2 style="margin-top:0;font-size:17px">Price history <span class="muted" style="font-weight:500;font-size:13px">CSV</span></h2>
     <p style="font-size:14px">One row per race per day, back to each market's launch in 2025: the Democratic candidate's price, or the non-Republican share where no Democrat is priced, plus every 2028 candidate's price. A daily record of every political market through a full cycle.</p>
@@ -76,7 +103,7 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 </div>
 
 <div class="card" style="margin-top:16px"><h2 style="margin-top:0;font-size:17px">County results 2000–2024 <span class="muted" style="font-weight:500;font-size:13px">JSON</span></h2>
-    <p style="font-size:14px">The data behind the <a href="shift.html">shift maps</a>: President (2000–2024) and House (2000–2024) votes by county as <code>[dem, rep, total, flag]</code>, plus county centroids in the site's map projection.</p>
+    <p style="font-size:14px">The data behind the <a href="/shift">shift maps</a>: President (2000–2024) and House (2000–2024) votes by county as <code>[dem, rep, total, flag]</code>, plus county centroids in the site's map projection.</p>
     <p><a class="btn" href="data/shift/results.json" download>results.json</a> <a class="btn ghost" href="data/shift/counties.json" download>counties.json</a></p>
     <p class="muted" style="font-size:12.5px">County results: Paul Heideman, <em>U.S. county-level election results 1990–2024</em> (CC BY 4.0); Hawaii and Alaska 2008–24 from tonmcg/US_County_Level_Election_Results_08-24. flag = 1 marks a House county where a race was one-party or a seat was unopposed.</p></div>
 
@@ -98,11 +125,18 @@ table{border-collapse:collapse;font-size:13px;width:100%} th,td{text-align:left;
 <p>Prices are collected from <a href="https://polymarkettrader.com/developers/" target="_blank" rel="noopener">PolymarketTrader.com's free feed</a> of Polymarket and Kalshi markets and are released here under the same <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> license: use them for anything, credit "PolymarketTrader.com via presidentl.app". A longer, cleaned history with candidate metadata and both exchanges on every race is in the works for the 2028 cycle.</p>
 <p class="muted" style="font-size:13px">Prices are market odds, not polls or predictions, and nothing here is betting or investment advice.</p>
 
-<div class="foot">Prices are market odds, not polls or predictions.</div>
+<style>
+/* Site-wide source line; the same text as the home page footer. Injected by scripts/build.py at <!--FOOT-->. */
+footer.sitefoot{margin-top:28px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);line-height:1.6;max-width:none}
+footer.sitefoot a{color:var(--muted)}
+</style>
+<footer class="sitefoot">Odds: Polymarket and Kalshi via <a href="https://polymarkettrader.com" target="_blank" rel="noopener">PolymarketTrader.com</a> (CC BY 4.0) · County results: Paul Heideman, <i>U.S. county-level election results 1990–2024</i> (CC BY 4.0) · Early vote: UF Election Lab · Odds as of <time id="sf-asof" datetime="2026-11-09T00:50:00+00:00">Nov 9, 02:01 UTC</time>. Prices are market odds, not polls or predictions, and nothing here is betting advice. Some links to Polymarket and Kalshi are referral links.</footer>
+<script>{ const t=document.getElementById('sf-asof'), d=new Date(t.dateTime); if(!isNaN(d)) t.textContent=d.toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}); }</script>
+
 </div>
 <script>
 const SITE={"referral":{"polymarket":"","kalshi":""},"sponsor":{"name":"","url":"","text":"","from":"2026-11-03","to":"2026-11-05"},"newsletter":{"action":"","label":"Get the biggest odds moves in your inbox, weekly through the midterms, then 2028."}};
-const STATS={"snapshots":495,"rows":185646,"first":"2025-07-19T00:00:00Z","last":"2026-11-09T02:01:57Z","races":25,"updated":"2026-11-09T02:01:57+00:00"};
+const STATS={"snapshots":495,"rows":185646,"first":"2025-07-19T00:00:00Z","last":"2026-11-09T02:01:57Z","races":505,"updated":"2026-11-09T02:01:57+00:00"};
 const fmt=s=>s?new Date(s).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}):'';
 document.getElementById('s-updated').textContent=`${STATS.races} races · updated ${fmt(STATS.updated)}`;
 document.getElementById('s-hist').textContent=STATS.rows?`${STATS.rows.toLocaleString()} rows from ${STATS.snapshots} snapshots, ${fmt(STATS.first)} to ${fmt(STATS.last)}`:'No snapshots yet.';

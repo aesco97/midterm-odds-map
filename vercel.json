@@ -1,0 +1,12 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/", "has": [ { "type": "query", "key": "embed", "value": "1" } ], "destination": "/senate", "permanent": false },
+    { "source": "/embed", "destination": "/about#embed", "permanent": false },
+    { "source": "/embed.html", "destination": "/about#embed", "permanent": false }
+  ],
+  "headers": [
+    { "source": "/data/(.*)", "headers": [ { "key": "Access-Control-Allow-Origin", "value": "*" }, { "key": "Cache-Control", "value": "public, max-age=900" } ] }
+  ]
+}

@@ -1,0 +1,27 @@
+<style>
+/* Site-wide top bar. Injected by scripts/build.py at the top of <body> on every page; the page's own <header> keeps its title. */
+.topnav{display:flex;align-items:center;gap:18px;padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:10px;font-family:var(--body)}
+.topnav .brand{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.02em;text-decoration:none;color:var(--fg);white-space:nowrap;display:inline-flex;align-items:center;gap:7px}
+.topnav .brand i{display:inline-block;width:9px;height:9px;border-radius:2px;background:linear-gradient(90deg,var(--d3) 50%,var(--r3) 50%)}
+.topnav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
+.topnav ul::-webkit-scrollbar{display:none}
+.topnav a.nl{display:block;padding:6px 10px;border-radius:6px;font-size:13.5px;font-weight:600;color:var(--muted);text-decoration:none;white-space:nowrap}
+.topnav a.nl:hover{color:var(--fg);background:var(--line-soft)}
+.topnav a.nl[aria-current="page"]{color:var(--fg);box-shadow:inset 0 -2px 0 var(--fg);border-radius:6px 6px 0 0}
+.topnav a:focus-visible{outline:2px solid var(--d2);outline-offset:2px}
+.topnav .asof{margin-left:auto;font:500 10.5px var(--mono);letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+@media (max-width:700px){.topnav{gap:10px}.topnav .asof{display:none}.topnav a.nl{padding:6px 8px;font-size:13px}}
+</style>
+<nav class="topnav" aria-label="Site">
+  <a class="brand" href="/"><i></i>presidentl</a>
+  <ul>
+    <li><a class="nl" href="/" data-page="home">Home</a></li>
+    <li><a class="nl" href="/2028" data-page="2028">2028</a></li>
+    <li><a class="nl" href="/senate" data-page="senate">Senate 2028</a></li>
+    <li><a class="nl" href="/2026" data-page="2026">2026 results</a></li>
+    <li><a class="nl" href="/shift" data-page="shift">Shift maps</a></li>
+    <li><a class="nl" href="/data" data-page="data">Data</a></li>
+    <li><a class="nl" href="/about" data-page="about">About</a></li>
+  </ul>
+  <span class="asof">odds as of <!--ASOF--></span>
+</nav>

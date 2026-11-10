@@ -76,6 +76,7 @@ MARKETS_2028 = [  # PolymarketTrader single-market feed slugs (= Polymarket even
     ("republican-presidential-nominee-2028", "Republican nominee"),
     ("democratic-vp-nominee-2028", "Democratic VP nominee"),
     ("republican-vp-nominee-2028", "Republican VP nominee"),
+    ("which-party-wins-2028-us-presidential-election", "Party to win"),
 ]
 PARTY_2028 = {  # party hints for the winner market; nominee markets are single-party
     "JD Vance": "R", "J.D. Vance": "R", "Marco Rubio": "R", "Donald Trump Jr.": "R", "Ron DeSantis": "R", "Vivek Ramaswamy": "R", "Ted Cruz": "R", "Glenn Youngkin": "R", "Nikki Haley": "R", "Tucker Carlson": "R", "Greg Abbott": "R", "Josh Hawley": "R", "Rand Paul": "R", "Tim Scott": "R",
