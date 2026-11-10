@@ -1,0 +1,153 @@
+<title>presidentl · political odds and results</title>
+<meta name="description" content="What prediction markets think about American politics, in numbers: the 2028 race, Senate control, how the 2026 midterms went, and how every county has shifted since 2000.">
+<!-- Vercel Web Analytics (page views only) -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Home: a results-desk front page. Balance-of-power strip, front-runner cards, movers, then one tile per section. No map, no leaderboards. */
+:root{
+  --bg:#f6f4ef; --panel:#fffdf9; --fg:#1d1b17; --muted:#6c675d; --line:#dcd7cc; --line-soft:#ebe7de;
+  --d3:#1b4fb0; --d2:#4f7fd0; --d1:#a9c1ea; --t:#c9c2b2; --r1:#efb3a6; --r2:#d9644f; --r3:#b3251c;
+  --display:"Bricolage Grotesque","Archivo Black",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#14141a; --panel:#1c1c24; --fg:#ebe8e1; --muted:#9b978e; --line:#33333e; --line-soft:#262630;
+  --d3:#2b63cf; --d2:#5486d8; --d1:#2f4470; --t:#4a4a52; --r1:#6b3630; --r2:#d05a45; --r3:#c3322a; color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.45;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 36px}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,34px);line-height:1.05;letter-spacing:-.02em;margin:14px 0 4px;text-wrap:balance}
+.lede{color:var(--muted);font-size:14px;max-width:62ch;margin:0 0 18px}
+h2{font-family:var(--display);font-weight:700;font-size:15px;margin:26px 0 10px;letter-spacing:-.01em;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+h2 .more{font:600 12.5px var(--body);color:var(--muted);text-decoration:none}
+h2 .more:hover{color:var(--fg)}
+.num{font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.D{color:var(--d3)} .R{color:var(--r3)}
+.delta{font:600 11px var(--mono);white-space:nowrap}
+.delta.up{color:var(--d2)} .delta.upr{color:var(--r2)} .delta.dn{color:var(--muted)} .delta.flat{color:var(--muted)}
+.chip{display:inline-block;font:600 10px var(--mono);letter-spacing:.06em;padding:1px 6px;border-radius:4px;color:#fff;vertical-align:2px}
+.chip.D{background:var(--d3)} .chip.R{background:var(--r3)}
+/* 1. balance of power */
+.bop{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.bop{grid-template-columns:1fr}}
+.bop a.panel{display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;text-decoration:none;min-width:0}
+.bop a.panel:hover{border-color:var(--fg)}
+.bop .k{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.bop .k span:last-child{letter-spacing:0;text-transform:none}
+.bop .nums{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px}
+.bop .nums .num{font-size:34px;line-height:1}
+.bop .nums small{display:block;font:600 11px var(--body);color:var(--muted);margin-top:2px}
+.bop .bar{height:8px;border-radius:4px;display:flex;overflow:hidden;background:var(--t);margin-top:10px}
+.bop .bar i{display:block;height:100%} .bop .bar .d{background:var(--d3)} .bop .bar .r{background:var(--r3)} .bop .bar .o{background:transparent}
+.bop .s{font-size:12px;color:var(--muted);margin-top:8px}
+/* 2. front-runners */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.cards{grid-template-columns:1fr}}
+a.card{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:11px 13px;text-decoration:none;min-width:0}
+a.card:hover{border-color:var(--fg)}
+.card .n{font-weight:600;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .p{font-size:24px;line-height:1;text-align:right}
+.card .sub{font-size:11.5px;color:var(--muted)}
+.card svg{grid-column:1/-1;width:100%;height:28px;display:block;margin-top:4px;overflow:visible}
+.card .ln{fill:none;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.card .ln.D{stroke:var(--d3)} .card .ln.R{stroke:var(--r3)}
+.card .dot.D{fill:var(--d3)} .card .dot.R{fill:var(--r3)}
+.card .mid{stroke:var(--line);stroke-dasharray:2 2}
+.rowlabel{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
+.rowlabel:first-of-type{margin-top:0}
+/* 3. movers */
+.movers{display:flex;flex-wrap:wrap;gap:6px}
+.mv{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12.5px;text-decoration:none;background:var(--panel)}
+.mv:hover{border-color:var(--fg)}
+.mv .who{font-weight:600} .mv .mk{color:var(--muted);font-size:11.5px}
+/* 4. sections */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.tiles{grid-template-columns:1fr 1fr}} @media (max-width:560px){.tiles{grid-template-columns:1fr}}
+a.tile{display:flex;flex-direction:column;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;text-decoration:none;min-height:150px;min-width:0}
+a.tile:hover{border-color:var(--fg)}
+.tile h3{font-family:var(--display);font-size:16px;margin:0;font-weight:700;display:flex;justify-content:space-between;align-items:baseline}
+.tile h3 span{font:600 12px var(--body);color:var(--muted)}
+.tile p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.4}
+.tile .fig{margin-top:auto;display:flex;gap:16px;flex-wrap:wrap}
+.tile .fig b{display:block;font-family:var(--display);font-weight:800;font-size:20px;line-height:1.1;font-variant-numeric:tabular-nums}
+.tile .fig small{font:500 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+footer{margin-top:28px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);line-height:1.6}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<!--NAV-->
+<div class="wrap">
+<h1>What the markets think, in numbers</h1>
+<p class="lede">Prediction-market odds on American politics, recorded every hour, plus how the 2026 midterms actually went and how every county has shifted since 2000. Prices are market odds, not polls.</p>
+
+<section class="bop" id="bop"></section>
+
+<h2>Front-runners for 2028 <a class="more" href="/2028">All 2028 markets →</a></h2>
+<div class="rowlabel">Democratic nominee</div>
+<div class="cards" id="dem"></div>
+<div class="rowlabel">Republican nominee</div>
+<div class="cards" id="rep"></div>
+
+<h2>Biggest moves this week <a class="more" href="/2028">7-day change, all 2028 markets →</a></h2>
+<div class="movers" id="movers"></div>
+
+<h2>Everything on the site</h2>
+<div class="tiles" id="tiles"></div>
+
+<footer id="foot"></footer>
+</div>
+<script>
+/*HOME*/
+const esc=t=>String(t??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+const pct=p=>p==null?'—':(p*100).toFixed(p*100>=10?0:1)+'%';
+const fmtN=n=>n==null?'—':n>=1e6?(n/1e6).toFixed(n>=1e7?1:2)+'M':n>=1e3?Math.round(n/1e3)+'K':String(n);
+const REF=(H.site&&H.site.referral)||{};
+const PM=m=>'https://polymarket.com/event/'+m+(REF.polymarket?'?r='+encodeURIComponent(REF.polymarket):'');
+// ▲ in the party's colour when that side gained; ▼ muted when it lost
+const delta=(d,party,win='7d')=>{ if(d==null) return ''; const pts=d*100; if(Math.abs(pts)<0.5) return `<span class="delta flat" title="change, ${win}">—</span>`; const up=pts>0; return `<span class="delta ${up?(party==='R'?'upr':'up'):'dn'}" title="change, ${win}">${up?'▲':'▼'}${Math.abs(pts).toFixed(1)}</span>`; };
+
+// 1. Balance of power
+{ const el=document.getElementById('bop'); const p=H.party, s=H.senate2028, r=H.result2026;
+  const panel=(k,sub,href,dN,rN,dSub,rSub,dW,rW,oW,note)=>`<a class="panel" href="${href}"${/^https?:/.test(href)?' target="_blank" rel="noopener"':''}><div class="k"><span>${k}</span><span>${sub}</span></div>
+    <div class="nums"><div><span class="num D">${dN}</span><small>${dSub}</small></div><div style="text-align:right"><span class="num R">${rN}</span><small>${rSub}</small></div></div>
+    <div class="bar"><i class="d" style="width:${dW}%"></i><i class="o" style="width:${oW}%"></i><i class="r" style="width:${rW}%"></i></div><div class="s">${note}</div></a>`;
+  let html='';
+  if(p&&p.D!=null) html+=panel('White House 2028','market odds',PM(p.market),pct(p.D),pct(p.R),'Democrats '+delta(p.dD,'D'),'Republicans '+delta(p.dR,'R'),p.D*100,p.R*100,0,`Which party wins the presidency · $${fmtN(p.volume)} traded on Polymarket`);
+  else html+=panel('White House 2028','market odds','/2028','—','—','Democrats','Republicans',50,50,0,'The party-to-win market arrives with the next hourly refresh.');
+  if(s&&s.D!=null) html+=panel('Senate 2028 control','market odds','/senate',pct(s.D),pct(s.R),'Democrats','Republicans',s.D*100,s.R*100,0,`${s.seatsD+s.seatsR} seats up in 2028: ${s.seatsR} held by Republicans, ${s.seatsD} by Democrats · Democrats start the cycle at ${r.senate.D}`);
+  html+=panel('2026 midterms','result','/2026',r.senate.D+'–'+r.senate.R,r.house.D+'–'+r.house.R,'Senate, D–R'+(r.senate.open?` · ${r.senate.open} open`:''),'House, D–R'+(r.house.open?` · ${r.house.open} open`:''),
+    r.senate.D/(r.senate.D+r.senate.R+r.senate.open)*100, r.senate.R/(r.senate.D+r.senate.R+r.senate.open)*100, r.senate.open/(r.senate.D+r.senate.R+r.senate.open)*100,
+    `Democrats won both chambers · markets had it at D ${pct(r.ctl.senate)} Senate, D ${pct(r.ctl.house)} House on election morning`);
+  el.innerHTML=html; }
+
+// 2. Front-runners
+function spark(series,party){ if(!series||series.length<3) return ''; const W=200,Hh=28; const t0=series[0][0],t1=series[series.length-1][0]; const ys=series.map(p=>p[1]); const lo=Math.min(...ys),hi=Math.max(...ys); const X=t=>t1===t0?W:(t-t0)/(t1-t0)*W, Y=v=>hi===lo?Hh/2:Hh-(v-lo)/(hi-lo)*(Hh-4)-2; const pts=series.map(([t,v])=>`${X(t).toFixed(1)},${Y(v).toFixed(1)}`).join(' '); const l=series[series.length-1]; return `<svg viewBox="0 0 ${W} ${Hh}" preserveAspectRatio="none" aria-hidden="true"><polyline class="ln ${party}" points="${pts}"/><circle class="dot ${party}" cx="${X(l[0]).toFixed(1)}" cy="${Y(l[1]).toFixed(1)}" r="2.2"/></svg>`; }
+for(const [id,key,party] of [['dem','dem','D'],['rep','rep','R']]){ const list=H.front[key]||[]; const m=H.front[key+'_market'];
+  document.getElementById(id).innerHTML=list.map(c=>`<a class="card" href="${PM(m)}" target="_blank" rel="noopener"><span class="n">${esc(c.name)} <span class="chip ${party}">${party}</span></span><span class="num p">${pct(c.price)}</span><span class="sub">${esc(H.front[key+'_label']||'')}</span><span class="sub" style="text-align:right">${delta(c.d7,party)} <span style="color:var(--muted)">7d</span></span>${spark(c.spark,party)}</a>`).join(''); }
+
+// 3. Movers
+document.getElementById('movers').innerHTML=(H.movers||[]).map(x=>`<a class="mv" href="${PM(x.market)}" target="_blank" rel="noopener"><span class="who">${esc(x.name)}</span><span class="mk">${esc(x.label)}</span>${delta(x.d7,x.party||'D')}</a>`).join('')||'<span style="color:var(--muted)">No moves of a point or more this week.</span>';
+
+// 4. Sections
+{ const t=H.tiles; const fig=(b,s)=>`<div><b>${b}</b><small>${s}</small></div>`;
+  const tiles=[
+    ['/2028','The 2028 race','Winner, nominee and VP markets with 7-day moves and price history back to each market\'s launch.',[fig(t.markets2028+'','markets'),fig(t.cands2028+'','candidates priced')]],
+    ['/senate','Senate 2028',`The ${H.senate2028.seatsD+H.senate2028.seatsR} seats up in 2028 on a map, with control odds and per-seat markets as they open.`,[fig('D '+pct(H.senate2028.D),'control odds'),fig(H.senate2028.seatsR+' R · '+H.senate2028.seatsD+' D','seats up')]],
+    ['/2026','2026 results','What the markets said on election morning and what happened, race by race, with calibration by rating band.',[fig(t.favWon+'%','favourites won'),fig(t.brier,'Brier score'),fig(t.upsets+'','upsets')]],
+    ['/shift','Shift maps','County-by-county arrows showing where each party gained since the previous election, President and House, 2000–2024.',[fig((t.shift2024>0?'+':'')+t.shift2024.toFixed(1)+' pts','2024 median county shift'),fig('3,100','counties')]],
+    ['/2028#turnout','Early vote 2026','Daily early-vote totals by state through Election Day, against 2022 and 2018 turnout.',[fig(fmtN(t.earlyVotes),'early ballots'),fig(t.earlyStates+'','states reporting')]],
+    ['/data','Data','Every number on the site as JSON and CSV, with the schema and licence. Odds are recorded hourly.',[fig(t.marketsTracked+'','markets tracked'),fig(t.snapshots.toLocaleString(),'odds snapshots')]],
+  ];
+  document.getElementById('tiles').innerHTML=tiles.map(([href,title,desc,figs])=>`<a class="tile" href="${href}"><h3>${title}<span>→</span></h3><p>${desc}</p><div class="fig">${figs.join('')}</div></a>`).join(''); }
+
+document.getElementById('foot').innerHTML=`Odds: Polymarket and Kalshi via <a href="https://polymarkettrader.com" target="_blank" rel="noopener">PolymarketTrader.com</a> (CC BY 4.0) · County results: Paul Heideman, <i>U.S. county-level election results 1990–2024</i> (CC BY 4.0) · Early vote: UF Election Lab · Odds as of ${new Date(H.updated).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'})}. Prices are market odds, not polls or predictions, and nothing here is betting advice. Some links to Polymarket and Kalshi are referral links.`;
+</script>

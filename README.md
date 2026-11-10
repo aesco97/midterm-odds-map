@@ -83,12 +83,17 @@ Everything that turns the site into a business lives in one file; `scripts/build
 
 ## Pages
 
-- `/` — the map. Tabs: Senate, House, Governors, 2028 (winner and both nominee markets, from `data/odds_2028.json`).
-- `/?embed=1&chamber=senate|house|governor[&state=TX][&night=1]` — embed mode: map, legend and a badge, nothing else. Built from the same `index.html`.
-- `/embed.html` — snippet generator with a live preview.
-- `/data.html` — the dataset page: `data/odds.json`, `data/odds_2028.json`, `data/history.csv` (long format, one row per race per snapshot) with the schema and CC BY terms.
+Clean URLs (`vercel.json` → `cleanUrls`); the `.html` paths redirect. One shared top bar on every page, from `src/partials/nav.html`, injected by `build.py` with the current page marked.
 
-Kalshi prices (`kalshi` on each Senate and governor race) show as a second line in the ledger with the Polymarket–Kalshi gap; gaps of 3+ points are highlighted.
+| URL | Source | What it is |
+|---|---|---|
+| `/` | `src/home.html` + `data/home.json` | Numbers-first front page: balance-of-power strip (White House 2028 party market, Senate 2028 control, 2026 result), 2028 front-runners with 7-day change and sparklines, biggest moves, one tile per section. Inlines only `home.json` (~14 KB). |
+| `/2028` | `src/template.html` | The 2028 markets (winner, nominees, VPs), the Senate 2028 map, the archived 2026 views and Congress by age. |
+| `/senate` | redirect → `/2028#senate2028` | Until the Senate map becomes its own page. |
+| `/2026` | `src/2026.html` | Final odds vs results, calibration. |
+| `/shift` | `src/shift.html` | County shift arrows 2000–2024. |
+| `/data` | `src/data.html` | Downloads and schema. |
+| `/about` | `src/about.html` | About; `/embed` redirects here. |
 
 ## Turnout tab (early vote)
 

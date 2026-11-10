@@ -1,6 +1,7 @@
 """Assemble the site from src/ + data/.
 
-  index.html        <- src/template.html + data/states.js + data/districts.js + data/odds.json + data/odds_2028.json + data/history/
+  index.html        <- src/home.html (numbers-first front page; data/home.json)
+  2028.html         <- src/template.html + data/states.js + data/districts.js + data/odds.json + data/odds_2028.json + data/history/
   embed.html        <- src/embed.html   (embed snippet generator, white-label pitch)
   data.html         <- src/data.html    (dataset page)
   data/history.csv  <- data/history/*.json flattened to long format
@@ -109,6 +110,117 @@ stats = {'snapshots': nsnap, 'rows': len(rows), 'first': rows[0][0] if rows else
          'races': len(data['senate']['races']) + len(data['house']['races']) + len(data['governor']['races']), 'updated': data['updated']}
 if (root/'src/data.html').exists():
     write('data.html', page(read('src/data.html').replace('/*SITE*/', site_js + '\nconst STATS=' + J(stats) + ';')))
+
+# ---- Redesign: site-wide nav, home.json and the home page -------------------------------------------------
+NAV = read('src/partials/nav.html') if (root/'src/partials/nav.html').exists() else ''
+asof_txt = datetime.fromisoformat(data['updated'].replace('Z', '+00:00')).astimezone(timezone.utc).strftime('%b %-d, %H:%M UTC') if data.get('updated') else ''
+def with_nav(html, page_key):
+    """Insert the shared top bar at the top of <body> (right after the page's </style>) and mark the current page."""
+    nav = NAV.replace('<!--ASOF-->', asof_txt).replace(f'data-page="{page_key}"', f'data-page="{page_key}" aria-current="page"')
+    if '<!--NAV-->' in html: return html.replace('<!--NAV-->', nav, 1)
+    i = html.find('</style>')
+    return html if i < 0 else html[:i+8] + '\n' + nav + html[i+8:]
+
+def seven_day(series):
+    """Change over the last 7 days from a [[unix_s, price], ...] series; None if under 2 points."""
+    if not series or len(series) < 2: return None
+    cut = series[-1][0] - 7*86400
+    base = None
+    for t, v in series:
+        if t <= cut: base = v
+    if base is None: base = series[0][1]
+    return series[-1][1] - base
+
+def build_home():
+    p28 = hist.get('p2028', {})
+    mk = {m['slug']: m for m in data2028.get('markets', [])}
+    # party-to-win market (added to fetch_odds MARKETS_2028); 7-day change from its own history, else from our snapshots
+    party = None
+    pm = mk.get('which-party-wins-2028-us-presidential-election')
+    if pm:
+        o = {x['name']: x for x in pm['outcomes']}
+        if 'Democratic' in o and 'Republican' in o:
+            hD = pm.get('history', {}).get('Democratic') or p28.get(pm['slug'], {}).get('Democratic')
+            hR = pm.get('history', {}).get('Republican') or p28.get(pm['slug'], {}).get('Republican')
+            party = {'market': pm['slug'], 'D': o['Democratic']['price'], 'R': o['Republican']['price'], 'dD': seven_day(hD), 'dR': seven_day(hR), 'volume': pm.get('volume')}
+    # front-runners: top 3 of each nominee market, with 7d change and a 30-day sparkline from our snapshots
+    def top3(slug):
+        m = mk.get(slug); out = []
+        if not m: return out
+        for c in sorted(m['outcomes'], key=lambda x: -x['price'])[:3]:
+            ser = p28.get(slug, {}).get(c['name'], [])
+            cut = ser[-1][0] - 30*86400 if ser else 0
+            out.append({'name': c['name'], 'price': c['price'], 'd7': seven_day(ser), 'spark': [[t, v] for t, v in ser if t >= cut][-60:]})
+        return out
+    front = {'dem': top3('democratic-presidential-nominee-2028'), 'dem_market': 'democratic-presidential-nominee-2028', 'dem_label': 'Democratic nominee',
+             'rep': top3('republican-presidential-nominee-2028'), 'rep_market': 'republican-presidential-nominee-2028', 'rep_label': 'Republican nominee'}
+    # movers: biggest 7-day moves across the candidate markets, 1 point or more
+    movers = []
+    for slug, m in mk.items():
+        if slug == 'which-party-wins-2028-us-presidential-election': continue
+        for c in m['outcomes']:
+            d = seven_day(p28.get(slug, {}).get(c['name'], []))
+            if d is not None and abs(d) >= 0.01:
+                movers.append({'name': c['name'], 'market': slug, 'label': m.get('label', ''), 'party': c.get('party', ''), 'd7': d})
+    movers.sort(key=lambda x: -abs(x['d7'])); movers = movers[:8]
+    # senate 2028
+    seats = s28.get('seats', {}); ctl = s28.get('control', {})
+    senate2028 = {'D': ctl.get('D'), 'R': ctl.get('R'), 'seatsD': sum(1 for v in seats.values() if v.get('party') == 'D'), 'seatsR': sum(1 for v in seats.values() if v.get('party') == 'R')}
+    # 2026 result + calibration
+    r = {'senate': {'D': 0, 'R': 0, 'open': 0}, 'house': {'D': 0, 'R': 0, 'open': 0}, 'ctl': {}}
+    favwon = resolved = upsets = 0; brier = []
+    if r26:
+        races = r26.get('races', {})
+        for ch in ('senate', 'house', 'governor'):
+            for x in races.get(ch, []):
+                w = (x.get('winner') or {}).get('party'); fav = x.get('fav') or {}
+                if not w:
+                    if ch in r: r[ch]['open'] += 1
+                    continue
+                resolved += 1
+                if w == fav.get('party'): favwon += 1; brier.append((1 - fav.get('price', 0))**2)
+                else: upsets += 1; brier.append(fav.get('price', 0)**2)
+                if ch in r and w in ('D', 'R'): r[ch][w] += 1
+        b = r26.get('baseline', {}).get('senate', {})
+        if b:  # seats not up in 2026 keep their holder; add this cycle's winners
+            hold_up = {'D': 0, 'R': 0}
+            for p in b.get('holders', {}).values():
+                if p in hold_up: hold_up[p] += 1
+            for p in ('D', 'R'): r['senate'][p] = b['current'][p] - hold_up[p] + r['senate'][p]
+        r['ctl'] = {ch: (r26.get('control', {}).get(ch, {}).get('final') or {}).get('D') for ch in ('senate', 'house')}
+    # shift: 2024 median county shift
+    shift2024 = None
+    if (root/'data/shift/results.json').exists():
+        S = json.loads(read('data/shift/results.json'))
+        a, b2 = S['president'].get('2024', {}), S['president'].get('2020', {})
+        mg = lambda v: (v[0]-v[1])/v[2]*100 if v[2] else None
+        ds = sorted(mg(v) - mg(b2[f]) for f, v in a.items() if f in b2 and v[2] and b2[f][2])
+        if ds: shift2024 = ds[len(ds)//2]
+    tiles = {'markets2028': len(mk), 'cands2028': sum(len(m['outcomes']) for m in mk.values()),
+             'favWon': round(favwon/resolved*100) if resolved else None, 'brier': f'{sum(brier)/len(brier):.3f}' if brier else '—', 'upsets': upsets,
+             'shift2024': shift2024 or 0,
+             'earlyVotes': sum(v.get('voted', 0) for v in ev['latest'].values()), 'earlyStates': len(ev['latest']),
+             'marketsTracked': sum(len(v) for v in r26.get('races', {}).values()) + sum(len(m['outcomes']) for m in mk.values()),
+             'snapshots': nsnap}
+    home = {'updated': data2028.get('updated') or data['updated'], 'party': party, 'senate2028': senate2028, 'result2026': r, 'front': front, 'movers': movers, 'tiles': tiles, 'site': {'referral': site.get('referral', {})}}
+    write('data/home.json', json.dumps(home, ensure_ascii=False, indent=1))
+    return home
+
+home = build_home()
+if (root/'src/home.html').exists():
+    write('index.html', page(with_nav(read('src/home.html').replace('/*HOME*/', 'const H=' + J(home) + ';'), 'home')))
+    write('2028.html', page(with_nav(body, '2028')))          # the former home page: the 2028 boards, Senate 2028 map, 2026 views
+else:
+    write('index.html', page(body))
+for name, key in (('2026', '2026'), ('shift', 'shift'), ('data', 'data'), ('about', 'about'), ('embed', 'about')):
+    p = root/f'{name}.html'
+    if p.exists():
+        html = p.read_text(encoding='utf-8')
+        # drop the old per-page <nav> inside the title header; the top bar replaces it
+        import re as _re
+        html = _re.sub(r'<header>(.*?)<nav>.*?</nav>', r'<header>\1', html, count=1, flags=_re.S)
+        p.write_text(with_nav(html, key), encoding='utf-8')
+print(f"home: party={'yes' if home['party'] else 'pending'} · front {len(home['front']['dem'])}/{len(home['front']['rep'])} · movers {len(home['movers'])} · 2026 S {home['result2026']['senate']} H {home['result2026']['house']}")
 
 print(f"index.html: {len(body)//1024} KB · {len(data['senate']['races'])} Senate · {len(data['house']['races'])} House · "
       f"{len(data['governor']['races'])} Governor · {len(data2028['markets'])} 2028 markets · odds as of {data['updated']} · "
