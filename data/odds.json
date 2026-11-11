@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09T02:01:57+00:00",
+ "updated": "2026-11-11T01:58:15+00:00",
  "senate": {
   "control": {
    "D": 0,
@@ -12,23 +12,23 @@
     "name": "Alaska",
     "market": "alaska-senate-election-winner",
     "rating": "Safe Democrat",
-    "volume": 7983439,
+    "volume": 8377293,
     "cands": [
      {
       "name": "Mary Peltola",
       "party": "D",
-      "price": 0.984
+      "price": 0.9875
      },
      {
       "name": "Sen. Dan Sullivan",
       "party": "R",
-      "price": 0.0155
+      "price": 0.0125
      }
     ],
     "kalshi": {
      "ticker": "SENATEAK-26",
-     "D": 0.9725,
-     "R": 0.027
+     "D": 0.9825,
+     "R": 0.0165
     }
    },
    {
@@ -36,23 +36,23 @@
     "name": "Mississippi",
     "market": "mississippi-senate-election-winner",
     "rating": "Safe Democrat",
-    "volume": 6257257,
+    "volume": 6347825,
     "cands": [
      {
       "name": "Scott Colom",
       "party": "D",
-      "price": 0.9865
+      "price": 0.9905
      },
      {
       "name": "Cindy Hyde-Smith",
       "party": "R",
-      "price": 0.011
+      "price": 0.01
      }
     ],
     "kalshi": {
      "ticker": "SENATEMS-26",
-     "D": 0.9855,
-     "R": 0.015
+     "D": 0.99,
+     "R": 0.0095
     }
    }
   ]
@@ -69,11 +69,11 @@
    },
    {
     "outcome": "170-174",
-    "price": 0.0765
+    "price": 0.1555
    },
    {
     "outcome": "175-179",
-    "price": 0.8835
+    "price": 0.8295
    },
    {
     "outcome": "180-184",
@@ -85,10 +85,10 @@
     "id": "AK-AL",
     "market": "ak-al-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 177347,
+    "volume": 204835,
     "R": {
      "name": "Republican Party",
-     "price": 0.911
+     "price": 0.903
     },
     "D": {
      "name": "Democratic Party",
@@ -96,31 +96,17 @@
     },
     "other": {
      "name": "Bill Hill",
-     "price": 0.0805
-    }
-   },
-   {
-    "id": "AZ-02",
-    "market": "az-02-house-election-winner",
-    "rating": "Safe Republican",
-    "volume": 342590,
-    "R": {
-     "name": "Eli Crane",
-     "price": 0.984
-    },
-    "D": {
-     "name": "Jonathan Nez",
-     "price": 0.01
+     "price": 0.0945
     }
    },
    {
     "id": "CA-04",
     "market": "ca-04-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 56338,
+    "volume": 57617,
     "D": {
      "name": "Democratic Party",
-     "price": 0.9805
+     "price": 0.974
     },
     "R": {
      "name": "Republican Party",
@@ -138,245 +124,175 @@
     },
     "R": {
      "name": "Republican Party",
-     "price": 0.001
+     "price": 0.0005
     }
    },
    {
     "id": "CA-23",
     "market": "ca-23-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 286154,
+    "volume": 289840,
     "R": {
      "name": "Jay Obernolte",
-     "price": 0.973
+     "price": 0.9785
     },
     "D": {
      "name": "Tessa Lynn Hodge",
-     "price": 0.027
+     "price": 0.022
     }
    },
    {
     "id": "CO-04",
     "market": "co-04-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 162553,
+    "volume": 176653,
     "D": {
      "name": "Eileen Laubacher",
-     "price": 0.9915
+     "price": 0.993
     },
     "R": {
      "name": "Lauren Boebert",
-     "price": 0.009
-    }
-   },
-   {
-    "id": "FL-07",
-    "market": "fl-07-house-election-winner",
-    "rating": "Safe Republican",
-    "volume": 149279,
-    "R": {
-     "name": "Ryan Elijah",
-     "price": 0.9875
-    },
-    "D": {
-     "name": "Bale Dalton",
-     "price": 0.0095
-    }
-   },
-   {
-    "id": "FL-09",
-    "market": "fl-09-house-election-winner",
-    "rating": "Safe Democrat",
-    "volume": 176376,
-    "D": {
-     "name": "Darren Soto",
-     "price": 0.991
-    },
-    "R": {
-     "name": "Dan Green",
-     "price": 0.0035
-    }
-   },
-   {
-    "id": "FL-26",
-    "market": "fl-26-house-election-winner",
-    "rating": "Safe Republican",
-    "volume": 183033,
-    "R": {
-     "name": "Mario Díaz-Balart",
-     "price": 0.992
-    },
-    "D": {
-     "name": "Nicole Locklin",
-     "price": 0.0065
-    }
-   },
-   {
-    "id": "FL-27",
-    "market": "fl-27-house-election-winner",
-    "rating": "Safe Republican",
-    "volume": 188908,
-    "R": {
-     "name": "María Elvira Salazar",
-     "price": 0.979
-    },
-    "D": {
-     "name": "Eliott Rodriguez",
-     "price": 0.0205
+     "price": 0.007
     }
    },
    {
     "id": "LA-05",
     "market": "la-05-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 31091,
+    "volume": 31208,
     "R": {
      "name": "Republican Party",
-     "price": 0.9415
+     "price": 0.9145
     },
     "D": {
      "name": "Democratic Party",
-     "price": 0.0575
+     "price": 0.0725
     }
    },
    {
     "id": "LA-06",
     "market": "la-06-house-election-winner",
     "rating": "Likely Republican",
-    "volume": 86807,
+    "volume": 86865,
     "R": {
      "name": "Republican Party",
-     "price": 0.9235
+     "price": 0.933
     },
     "D": {
      "name": "Democratic Party",
-     "price": 0.0815
+     "price": 0.076
     }
    },
    {
     "id": "ME-02",
     "market": "me-02-house-election-winner-20260720160226434",
     "rating": "Safe Republican",
-    "volume": 225566,
+    "volume": 225591,
     "R": {
      "name": "Paul LePage",
-     "price": 0.9945
+     "price": 0.995
     },
     "D": {
      "name": "Matthew Dunlap",
-     "price": 0.004
+     "price": 0.0025
     }
    },
    {
     "id": "MN-01",
     "market": "mn-01-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 132224,
+    "volume": 147519,
     "D": {
      "name": "Jake Johnson",
-     "price": 0.967
+     "price": 0.9605
     },
     "R": {
      "name": "Brad Finstad",
-     "price": 0.033
+     "price": 0.0305
     }
    },
    {
     "id": "NC-03",
     "market": "nc-03-house-election-winner",
-    "rating": "Likely Democrat",
-    "volume": 1273404,
+    "rating": "Safe Democrat",
+    "volume": 1353106,
     "D": {
      "name": "Raymond Smith Jr.",
-     "price": 0.8515
+     "price": 0.9905
     },
     "R": {
      "name": "Greg Murphy",
-     "price": 0.1495
+     "price": 0.002
     }
    },
    {
     "id": "NC-05",
     "market": "nc-05-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 143309,
+    "volume": 171163,
     "D": {
      "name": "Chuck Hubbard",
-     "price": 0.966
+     "price": 0.992
     },
     "R": {
      "name": "Virginia Foxx",
-     "price": 0.03
+     "price": 0.008
     }
    },
    {
     "id": "NC-07",
     "market": "nc-07-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 65446,
+    "volume": 67256,
     "R": {
      "name": "David Rouzer",
-     "price": 0.991
+     "price": 0.984
     },
     "D": {
      "name": "Kimberly Hardy",
-     "price": 0.0065
+     "price": 0.017
     }
    },
    {
     "id": "NC-10",
     "market": "nc-10-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 20089,
+    "volume": 20677,
     "R": {
      "name": "Pat Harrigan",
-     "price": 0.996
+     "price": 0.99
     },
     "D": {
      "name": "Ashley Bell",
-     "price": 0.002
+     "price": 0.0105
     }
    },
    {
     "id": "SC-02",
     "market": "sc-02-house-election-winner",
     "rating": "Safe Republican",
-    "volume": 101924,
+    "volume": 106435,
     "R": {
      "name": "Joe Wilson",
-     "price": 0.9915
+     "price": 0.991
     },
     "D": {
      "name": "Zyon Khalifa",
-     "price": 0.0075
+     "price": 0.01
     }
    },
    {
     "id": "TN-04",
     "market": "tn-04-house-election-winner",
     "rating": "Safe Democrat",
-    "volume": 178035,
+    "volume": 178566,
     "D": {
      "name": "Victoria Broderick",
-     "price": 0.9535
+     "price": 0.9705
     },
     "R": {
      "name": "Scott DesJarlais",
-     "price": 0.045
-    }
-   },
-   {
-    "id": "WA-05",
-    "market": "wa-05-house-election-winner",
-    "rating": "Safe Republican",
-    "volume": 168011,
-    "R": {
-     "name": "Michael Baumgartner",
-     "price": 0.9755
-    },
-    "D": {
-     "name": "Carmela Conroy",
-     "price": 0.019
+     "price": 0.023
     }
    }
   ]
@@ -385,11 +301,11 @@
   "seats": [
    {
     "outcome": "<22",
-    "price": 0.934
+    "price": 0.965
    },
    {
     "outcome": "22–23",
-    "price": 0.034
+    "price": 0.0325
    }
   ],
   "races": [
@@ -398,7 +314,7 @@
     "name": "Kansas",
     "market": "kansas-governor-winner-2026",
     "rating": "Safe Democrat",
-    "volume": 865389,
+    "volume": 870705,
     "cands": [
      {
       "name": "Cindy Holscher",
@@ -408,8 +324,8 @@
     ],
     "kalshi": {
      "ticker": "GOVPARTYKS-27",
-     "D": 0.998,
-     "R": 0.003
+     "D": 0.9965,
+     "R": 0.0035
     }
    },
    {
@@ -417,12 +333,12 @@
     "name": "Alaska",
     "market": "alaska-governor-election-winner",
     "rating": "Safe (Jonathan Kreiss-Tomkins)",
-    "volume": 1953257,
+    "volume": 1965907,
     "cands": [
      {
       "name": "Jonathan Kreiss-Tomkins",
       "party": "D",
-      "price": 0.9935
+      "price": 0.9955
      }
     ]
    }

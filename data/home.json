@@ -1,15 +1,15 @@
 {
- "updated": "2026-11-09T00:50:00+00:00",
+ "updated": "2026-11-11T00:50:00+00:00",
  "party": {
   "market": "which-party-wins-2028-us-presidential-election",
   "D": 0.675,
   "R": 0.325,
-  "dD": 0.020000000000000018,
-  "dR": -0.019999999999999962,
-  "volume": 2733056.48
+  "dD": 0.015000000000000013,
+  "dR": 0.0,
+  "volume": 2738731.07
  },
  "senate2028": {
-  "D": 0.875,
+  "D": 0.88,
   "R": 0.125,
   "seatsD": 16,
   "seatsR": 18
@@ -21,9 +21,9 @@
    "open": 2
   },
   "house": {
-   "D": 253,
-   "R": 165,
-   "open": 16
+   "D": 254,
+   "R": 166,
+   "open": 14
   },
   "ctl": {
    "senate": 0.775,
@@ -34,17 +34,9 @@
   "dem": [
    {
     "name": "Jon Ossoff",
-    "price": 0.2585,
-    "d7": 0.122,
+    "price": 0.2655,
+    "d7": 0.11700000000000002,
     "spark": [
-     [
-      1791676800,
-      0.1505
-     ],
-     [
-      1791763200,
-      0.1535
-     ],
      [
       1791849600,
       0.1445
@@ -192,22 +184,18 @@
      [
       1794189717,
       0.2585
+     ],
+     [
+      1794362295,
+      0.2655
      ]
     ]
    },
    {
     "name": "Alexandria Ocasio-Cortez",
-    "price": 0.1645,
-    "d7": 0.0040000000000000036,
+    "price": 0.1465,
+    "d7": -0.01200000000000001,
     "spark": [
-     [
-      1791676800,
-      0.1785
-     ],
-     [
-      1791763200,
-      0.1775
-     ],
      [
       1791849600,
       0.1775
@@ -355,22 +343,18 @@
      [
       1794189717,
       0.1645
+     ],
+     [
+      1794362295,
+      0.1465
      ]
     ]
    },
    {
     "name": "Gavin Newsom",
-    "price": 0.0845,
-    "d7": -0.0705,
+    "price": 0.1065,
+    "d7": -0.048,
     "spark": [
-     [
-      1791676800,
-      0.1555
-     ],
-     [
-      1791763200,
-      0.1545
-     ],
      [
       1791849600,
       0.1545
@@ -518,6 +502,10 @@
      [
       1794189717,
       0.0845
+     ],
+     [
+      1794362295,
+      0.1065
      ]
     ]
    }
@@ -527,17 +515,9 @@
   "rep": [
    {
     "name": "J.D. Vance",
-    "price": 0.3215,
-    "d7": -0.05299999999999999,
+    "price": 0.3075,
+    "d7": -0.05349999999999999,
     "spark": [
-     [
-      1791676800,
-      0.4845
-     ],
-     [
-      1791763200,
-      0.4845
-     ],
      [
       1791849600,
       0.4845
@@ -685,22 +665,18 @@
      [
       1794189717,
       0.3215
+     ],
+     [
+      1794362295,
+      0.3075
      ]
     ]
    },
    {
     "name": "Marco Rubio",
-    "price": 0.2035,
-    "d7": 0.0,
+    "price": 0.1815,
+    "d7": -0.0050000000000000044,
     "spark": [
-     [
-      1791676800,
-      0.1475
-     ],
-     [
-      1791763200,
-      0.1475
-     ],
      [
       1791849600,
       0.1475
@@ -852,22 +828,18 @@
      [
       1794189717,
       0.2035
+     ],
+     [
+      1794362295,
+      0.1815
      ]
     ]
    },
    {
     "name": "Ron DeSantis",
-    "price": 0.15,
-    "d7": 0.11049999999999999,
+    "price": 0.1595,
+    "d7": 0.119,
     "spark": [
-     [
-      1791676800,
-      0.0255
-     ],
-     [
-      1791763200,
-      0.0245
-     ],
      [
       1791849600,
       0.025
@@ -1011,6 +983,10 @@
      [
       1794189717,
       0.15
+     ],
+     [
+      1794362295,
+      0.1595
      ]
     ]
    }
@@ -1020,60 +996,60 @@
  },
  "movers": [
   {
+   "name": "Ron DeSantis",
+   "market": "republican-vp-nominee-2028",
+   "label": "Republican VP nominee",
+   "party": "R",
+   "d7": 0.171
+  },
+  {
+   "name": "Brian Kemp",
+   "market": "republican-vp-nominee-2028",
+   "label": "Republican VP nominee",
+   "party": "R",
+   "d7": 0.16499999999999998
+  },
+  {
    "name": "Tucker Carlson",
    "market": "republican-vp-nominee-2028",
    "label": "Republican VP nominee",
    "party": "R",
-   "d7": 0.2195
-  },
-  {
-   "name": "Rand Paul",
-   "market": "republican-vp-nominee-2028",
-   "label": "Republican VP nominee",
-   "party": "R",
-   "d7": 0.124
-  },
-  {
-   "name": "Jon Ossoff",
-   "market": "democratic-presidential-nominee-2028",
-   "label": "Democratic nominee",
-   "party": "D",
-   "d7": 0.122
+   "d7": 0.1535
   },
   {
    "name": "Ron DeSantis",
    "market": "republican-presidential-nominee-2028",
    "label": "Republican nominee",
    "party": "R",
-   "d7": 0.11049999999999999
+   "d7": 0.119
+  },
+  {
+   "name": "Jon Ossoff",
+   "market": "democratic-presidential-nominee-2028",
+   "label": "Democratic nominee",
+   "party": "D",
+   "d7": 0.11700000000000002
   },
   {
    "name": "Marco Rubio",
    "market": "republican-vp-nominee-2028",
    "label": "Republican VP nominee",
    "party": "R",
-   "d7": -0.09999999999999998
-  },
-  {
-   "name": "Katie Britt",
-   "market": "republican-vp-nominee-2028",
-   "label": "Republican VP nominee",
-   "party": "R",
-   "d7": 0.084
-  },
-  {
-   "name": "Alexandria Ocasio-Cortez",
-   "market": "democratic-vp-nominee-2028",
-   "label": "Democratic VP nominee",
-   "party": "D",
-   "d7": 0.08
+   "d7": -0.09499999999999997
   },
   {
    "name": "Pete Hegseth",
    "market": "republican-vp-nominee-2028",
    "label": "Republican VP nominee",
    "party": "R",
-   "d7": 0.0785
+   "d7": 0.066
+  },
+  {
+   "name": "Jon Ossoff",
+   "market": "presidential-election-winner-2028",
+   "label": "2028 presidential election winner",
+   "party": "D",
+   "d7": 0.05899999999999998
   }
  ],
  "tiles": {
@@ -1086,7 +1062,7 @@
   "earlyVotes": 67497961,
   "earlyStates": 49,
   "marketsTracked": 632,
-  "snapshots": 495
+  "snapshots": 496
  },
  "site": {
   "referral": {
