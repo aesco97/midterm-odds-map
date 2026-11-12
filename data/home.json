@@ -16,9 +16,9 @@
  },
  "result2026": {
   "senate": {
-   "D": 54,
+   "D": 55,
    "R": 44,
-   "open": 2
+   "open": 1
   },
   "house": {
    "D": 254,
@@ -1056,8 +1056,8 @@
   "markets2028": 6,
   "cands2028": 127,
   "favWon": 96,
-  "brier": "0.027",
-  "upsets": 18,
+  "brier": "0.028",
+  "upsets": 19,
   "shift2024": -3.1554341120752625,
   "earlyVotes": 67497961,
   "earlyStates": 49,
