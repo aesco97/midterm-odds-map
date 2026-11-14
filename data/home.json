@@ -21,9 +21,9 @@
    "open": 1
   },
   "house": {
-   "D": 255,
+   "D": 256,
    "R": 168,
-   "open": 11
+   "open": 10
   },
   "ctl": {
    "senate": 0.775,
@@ -1056,8 +1056,8 @@
   "markets2028": 6,
   "cands2028": 127,
   "favWon": 96,
-  "brier": "0.030",
-  "upsets": 21,
+  "brier": "0.031",
+  "upsets": 22,
   "shift2024": -3.1554341120752625,
   "earlyVotes": 67497961,
   "earlyStates": 49,
