@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T01:27:19Z",
+ "updated": "2026-11-21T09:40:35Z",
  "seats": {
   "CO": {
    "incumbent": "Michael F. Bennet",
@@ -213,7 +213,7 @@
   "market": "which-party-will-win-the-senate-in-2028",
   "D": 0.88,
   "R": 0.125,
-  "volume": 6880,
+  "volume": 6906,
   "history": [
    [
     1793404850,
@@ -296,7 +296,7 @@
     0.88
    ],
    [
-    1795224416,
+    1795254010,
     0.88
    ]
   ]
